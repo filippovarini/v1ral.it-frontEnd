@@ -1,0 +1,35 @@
+body {
+  background: rgb(230, 230, 230);
+}
+
+p {
+  margin: 0px;
+}
+
+img {
+  width: 100%;
+}
+
+.button {
+  background: black;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: white;
+  text-align: center;
+  height: 35px;
+  line-height: 35px;
+  width: 250px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 3px 3px 10px black;
+}
+
+.box {
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px gray;
+  background: rgb(245, 245, 245);
+}

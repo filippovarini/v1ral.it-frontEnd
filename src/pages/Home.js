@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
 // components
-import QuickFacts from "../components/QuickFacts/QuickFacts";
-import BarChart from "../components/BarChart/BarChart";
-import Regions from "../components/RegionsMap/Regions";
 import TopHalf from "../components/HomeTopHalf/HomeTopHalf";
 import BottomHalf from "../components/HomeBottomHalf/BottomHalf";
 
@@ -16,7 +13,7 @@ export class Home extends Component {
         <TopHalf />
         <BottomHalf />
 
-        <QuickFacts
+        {/* <QuickFacts
           totalCases={(134, 123, 2132)}
           dailyCases={(13, 432)}
           dailyIncrement={-10}
@@ -25,7 +22,7 @@ export class Home extends Component {
           supportIncrement={58}
         />
         <BarChart cases={dailyCases} />
-        <Regions />
+        <Regions /> */}
       </div>
     );
   }

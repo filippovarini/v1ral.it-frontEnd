@@ -1,5 +1,4 @@
 const colors = {
-  boxBackground: "#ebebeb",
   cross: "red",
   negative: "red",
   neutral: "yellow",

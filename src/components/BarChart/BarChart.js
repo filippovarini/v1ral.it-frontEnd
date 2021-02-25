@@ -1,5 +1,6 @@
 /* props:
-cases: [{date, number}] 
+cases: [{date, number}]
+statisticsDimentions
 */
 
 import React, { Component } from "react";
@@ -28,9 +29,16 @@ const getMovingAverage = cases => {
 export class BarChart extends Component {
   render() {
     return (
-      <div id="bar-chart-container">
-        <p id="bar-chart-title">Positivi Giornalieri</p>
+      <div
+        id="bar-chart-container"
+        className={`${
+          this.props.statisticsDimensions.height ? "statistics-box" : ""
+        }`}
+      >
+        {/* <p id="bar-chart-title">Positivi Giornalieri</p> */}
         <Bar
+          height={this.props.statisticsDimensions.height}
+          width={this.props.statisticsDimensions.width}
           data={{
             labels: this.props.cases.map(dailyReport => dailyReport.date),
             datasets: [
@@ -58,6 +66,8 @@ export class BarChart extends Component {
             ]
           }}
           options={{
+            responsive: true,
+            maintainAspectRatio: false,
             legend: {
               display: false
             },
@@ -79,6 +89,7 @@ export class BarChart extends Component {
                     display: false
                   },
                   ticks: {
+                    padding: -5,
                     autoSkip: true,
                     autoSkipPadding: 100,
                     fontSize: 10,

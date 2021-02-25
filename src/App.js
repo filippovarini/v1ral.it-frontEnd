@@ -1,4 +1,4 @@
-import "./App.css";
+import "./StandardStyle.css";
 
 // component imports
 import Home from "./pages/Home";

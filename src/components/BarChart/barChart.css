@@ -1,5 +1,8 @@
 #bar-chart-container {
-  width: 500px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #bar-chart-title {
