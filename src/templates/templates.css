@@ -1,0 +1,19 @@
+/* ----------
+Box
+------------- */
+
+#box-container {
+  position: relative;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+/* ----------
+Cross 
+------------- */
+#cross-container {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+#bar-chart-container {
+  width: 500px;
+}
+
+#bar-chart-title {
+  text-align: center;
+  font-weight: bold;
+}
