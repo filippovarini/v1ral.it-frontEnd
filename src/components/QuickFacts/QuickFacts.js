@@ -11,7 +11,7 @@ import React, { Component } from "react";
 import "./QuickFacts.css";
 
 import colors from "../../style/colors";
-import boxStyle from "../../style/boxStyle";
+import boxStyle from "../../style/box";
 
 const colourFromIncrement = increment => {
   if (increment > 0) {

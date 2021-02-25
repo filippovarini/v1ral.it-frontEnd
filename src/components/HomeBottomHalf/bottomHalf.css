@@ -1,0 +1,18 @@
+#bottomHalf {
+  margin: 20px;
+}
+
+#bottomHalf-nav {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bottomHalf-nav-container {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.bottomHalf-nav-container:hover {
+  text-decoration: underline;
+}
