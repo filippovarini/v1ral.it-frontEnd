@@ -1,0 +1,15 @@
+#challenged-container {
+  width: 300px;
+  padding: 30px 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.challenged-input {
+  margin-bottom: 20px;
+}
+
+#username-submit {
+  margin: 0 auto;
+  width: 100%;
+}

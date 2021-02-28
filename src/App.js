@@ -1,14 +1,22 @@
+import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 import "./StandardStyle.css";
 
-// component imports
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
+import Shops from "./pages/Shops/Shops";
+import ShopProfile from "./pages/ShopProfile/Shop";
 
-function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/shops" component={Shops} />
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "../bottomHalf.css";
+import "./statistics.css";
 
 import QuickFacts from "./QuickFacts";
-import BarChart from "../../BarChart/BarChart";
+import BarChart from "../../../../../components/BarChart/BarChart";
 
-import cases from "../../../faqData/casesGraph";
+import cases from "../../../../../faqData/casesGraph";
 
 const totalMargin = 40;
 const quickFactsWidth = 250;
@@ -16,7 +16,7 @@ const graphSize = {
 export class Statistics extends Component {
   render() {
     return (
-      <div id="statistics-container">
+      <div id="statistics-container" className={this.props.class}>
         <QuickFacts
           totalCases={(134, 123, 2132)}
           dailyCases={(13, 432)}

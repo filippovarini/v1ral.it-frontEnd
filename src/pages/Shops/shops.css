@@ -1,0 +1,33 @@
+#shops-description {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.shops-container {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.shops-filter {
+  width: 140px;
+  font-size: 1rem;
+}
+
+.shops-text {
+  font-weight: bold;
+}
+
+.shops-order-button {
+  cursor: pointer;
+}
+
+#shopBoxes-container {
+  display: grid;
+  grid-gap: 50px;
+  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}

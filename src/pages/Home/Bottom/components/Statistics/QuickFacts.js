@@ -8,9 +8,9 @@
 -  */
 
 import React, { Component } from "react";
-import "../bottomHalf.css";
+import "./statistics.css";
 
-import colors from "../../../style/colors";
+import colors from "../../../../../style/colors";
 
 const colourFromIncrement = increment => {
   if (increment > 0) {
@@ -36,8 +36,9 @@ export class QuickFacts extends Component {
     const supportIncrementStyle = {
       color: colourFromIncrement(this.props.supportIncrement)
     };
+
     return (
-      <div id="quick-facts" className="statistics-box">
+      <div id="quick-facts" className="statistics-box box">
         <div id="facts-container">
           <div className="fact">
             <p className="fact-title">Totale Positivi</p>

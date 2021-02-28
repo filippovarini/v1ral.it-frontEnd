@@ -14,13 +14,23 @@
   margin: 20px;
   position: absolute;
   top: 0px;
+  width: 90%;
 }
+
+#topHalf-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Logo */
 
 #topHalf-logo {
   font-weight: bold;
   font-size: 3rem;
   color: white;
 }
+
+/* Button */
 
 #home-button-container {
   margin-top: 150px;
@@ -36,4 +46,18 @@
 
 #home-button {
   margin-top: 30px;
+}
+
+/* Navigator */
+#home-nav {
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-nav-item {
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
 }

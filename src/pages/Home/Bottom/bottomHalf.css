@@ -1,0 +1,15 @@
+/* Root Component */
+
+#bottomHalf {
+  margin: 20px;
+}
+
+/* Navigator */
+
+#bottomHalf-nav {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}

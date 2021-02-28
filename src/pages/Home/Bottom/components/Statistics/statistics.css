@@ -1,25 +1,13 @@
-/* Root Component */
-
-#bottomHalf {
-  margin: 20px;
-}
-
 /* Statistics Container */
 
 #statistics-container {
   height: 40vh;
-  margin-top: 20px;
   display: flex;
   justify-content: space-around;
 }
 
-/* Navigator */
-
-#bottomHalf-nav {
-  display: flex;
-  max-width: 500px;
-  margin: 0 auto;
-  justify-content: space-around;
+#statistics-container.hidden {
+  display: none;
 }
 
 .bottomHalf-nav-container {
@@ -41,8 +29,6 @@
   flex-direction: column;
   justify-content: space-around;
   border-radius: 8px;
-  box-shadow: 0px 0px 5px gray;
-  /* background: rgb(245, 245, 245); */
 }
 
 #facts-container {
