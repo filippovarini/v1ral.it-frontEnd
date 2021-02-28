@@ -1,0 +1,34 @@
+#shopProfile-serviceBox-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#serviceBox {
+  width: 300px;
+  margin: 20px;
+}
+
+#serviceBox-type {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.serviceBox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.serviceBox-icon {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  padding: 5px;
+  border-radius: 25px;
+  background: white;
+  margin-right: 10px;
+}

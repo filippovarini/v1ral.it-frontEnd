@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Navigator from "./components/Navigator";
+import Navigator from "../../../components/Navigator/Navigator";
 import Statistics from "./components/Statistics/Statistics";
 import Shops from "./components/Shops";
 import "./bottomHalf.css";
@@ -18,10 +18,13 @@ export class BottomHalf extends Component {
   render() {
     return (
       <div id="bottomHalf">
-        <Navigator
-          updateNav={this.updateNav}
-          active={this.state.navigatorIndex}
-        />
+        <div id="bottomHalf-nav-container">
+          <Navigator
+            updateNav={this.updateNav}
+            active={this.state.navigatorIndex}
+            titles={["Statistiche", "Focolai", "Positivi"]}
+          />
+        </div>
         <Statistics class={this.state.navigatorIndex === 0 ? null : "hidden"} />
         <Shops
           shops={shops}

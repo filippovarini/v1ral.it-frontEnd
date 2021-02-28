@@ -10,15 +10,6 @@
   display: none;
 }
 
-.bottomHalf-nav-container {
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.bottomHalf-nav-container:hover {
-  text-decoration: underline;
-}
-
 /* QuickFacts */
 
 #quick-facts {

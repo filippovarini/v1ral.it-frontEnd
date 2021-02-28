@@ -4,7 +4,7 @@ import "./StandardStyle.css";
 
 import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
-import ShopProfile from "./pages/ShopProfile/Shop";
+import ShopProfile from "./pages/ShopProfile/ShopProfile";
 
 export class App extends Component {
   render() {
@@ -12,7 +12,8 @@ export class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact path="/" component={Home} />
-          <Route exact path="/shops" component={Shops} />
+          <Route path="/shops" component={Shops} />
+          <Route path="/shop/:username" component={ShopProfile} />
         </div>
       </BrowserRouter>
     );

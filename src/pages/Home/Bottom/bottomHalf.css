@@ -6,10 +6,8 @@
 
 /* Navigator */
 
-#bottomHalf-nav {
-  display: flex;
+#bottomHalf-nav-container {
   max-width: 500px;
   margin: 0 auto;
-  justify-content: space-around;
   margin-bottom: 20px;
 }
