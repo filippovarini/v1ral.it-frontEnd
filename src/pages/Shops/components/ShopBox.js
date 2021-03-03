@@ -9,12 +9,21 @@
 */
 
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./shopBox.css";
 
 export class ShopBox extends Component {
+  handleClick = () => {
+    this.props.history.push("/shop/@username");
+  };
+
   render() {
     return (
-      <div id="shopBox-container" className="box box-hover">
+      <div
+        id="shopBox-container"
+        className="box box-hover"
+        onClick={this.handleClick}
+      >
         <div id="shopBox-image-container">
           <img src={this.props.shop.background} alt="imagine del negozio" />
           <img
@@ -35,4 +44,4 @@ export class ShopBox extends Component {
   }
 }
 
-export default ShopBox;
+export default withRouter(ShopBox);
