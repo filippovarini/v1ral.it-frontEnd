@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./addServiceComponents.css";
 
-import HideCross from "../../../../../../components/HideCross/HideCross";
+import HideCross from "../../../../../components/HideCross/HideCross";
 
-import icons from "../../../../../../faqData/icons";
+import icons from "../../../../../faqData/icons";
 
 /**
  * PROPS:

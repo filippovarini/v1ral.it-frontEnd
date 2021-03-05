@@ -4,7 +4,7 @@ import "./form.css";
 export class Form extends Component {
   render() {
     return (
-      <div id="input-container">
+      <div id="input-container" className="shop-register-body">
         <div className="bioInfo-input-container">
           <label htmlFor="name">Nome impresa</label>
           <input

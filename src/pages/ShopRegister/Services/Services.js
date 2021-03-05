@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "./services.css";
 
 import Header from "../../../components/Header/Header";
-import ServiceHeader from "./components/ServicesHeader/ServicesHeader";
+import ServiceHeader from "../components/ShopRegisterHeader/ShopRegisterHeader";
 import ServiceBoxes from "../../../components/ServiceBoxes/ServiceBoxes";
 import Indexer from "../components/Indexer";
-import AddService from "./components/AddService/AddService";
+import AddService from "../components/AddService/AddService";
 
 import faqTitles from "../../../faqData/faqHeaderTitles";
 
@@ -32,33 +32,46 @@ export class Services extends Component {
     });
   };
 
+  handleSubmit = () => {
+    this.props.history.push("/shop/register/goals");
+  };
+
   render() {
     return (
       <div>
         <Header titles={faqTitles} />
         <div className="box page-wrapper shop-register-container">
-          <ServiceHeader />
+          <ServiceHeader title="SCEGLI I SERVIZI DA OFFRIRE" />
           <p id="services-warning">
             Attenzione:
             <br />È fondamentale offrire servizi <b>
               utili
             </b> <b>tangibili</b> e <b>utilizzabili</b>
           </p>
-          <ServiceBoxes
-            boxes={[
-              { type: "premium", services: this.state.premium },
-              { type: "viral", services: this.state.viral }
-            ]}
-            editing={true}
-            handleClick={this.toggleAddService}
-          />
-          <Indexer index={1} />
-          <AddService
-            hidden={this.state.addServiceHidden}
-            hide={this.toggleAddService}
-            type={this.state.typeAdding}
-            handleAdd={this.addService}
-          />
+          <div className="shop-register-body">
+            <ServiceBoxes
+              boxes={[
+                { type: "premium", services: this.state.premium },
+                { type: "viral", services: this.state.viral }
+              ]}
+              editing={true}
+              handleClick={this.toggleAddService}
+            />
+            <Indexer index={1} />
+            <AddService
+              hidden={this.state.addServiceHidden}
+              hide={this.toggleAddService}
+              type={this.state.typeAdding}
+              handleAdd={this.addService}
+              bestSellings={["Salta Fila", "Targhetta sul muro", "Scono 10%"]}
+            />
+            <p
+              className="button shop-register-button"
+              onClick={this.handleSubmit}
+            >
+              PROSEGUI
+            </p>
+          </div>
         </div>
       </div>
     );

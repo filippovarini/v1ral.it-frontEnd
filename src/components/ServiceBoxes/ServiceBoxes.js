@@ -11,7 +11,7 @@ import ServiceBox from "./ServiceBox";
 export class ServiceBoxes extends Component {
   render() {
     return (
-      <div id="shopProfile-serviceBox-container">
+      <div id="serviceBox-container">
         {this.props.boxes.map(box => {
           return (
             <ServiceBox

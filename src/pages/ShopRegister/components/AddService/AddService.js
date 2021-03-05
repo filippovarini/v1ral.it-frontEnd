@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./addService.css";
 
-import HideCross from "../../../../../components/HideCross/HideCross";
+import HideCross from "../../../../components/HideCross/HideCross";
 import Icons from "./components/Icons";
 import IconFields from "./components/IconFields";
+import BestSellings from "./components/BestSelling";
 
 /**
  * PROPS:
@@ -11,6 +12,7 @@ import IconFields from "./components/IconFields";
  * handleAdd()
  * hidden
  * hide()
+ * bestSellings
  * */
 
 const emptyState = {
@@ -47,7 +49,6 @@ export class AddService extends Component {
   };
 
   render() {
-    console.log(this.state.title);
     return (
       <div
         className="popUp-background"
@@ -63,18 +64,7 @@ export class AddService extends Component {
           <p id="addService-header">Aggiungi un servizio {this.props.type}</p>
           <p id="bestSelling-header">Best selling:</p>
           <div id="bestSelling-container" className="flex-col">
-            <div className="bestSelling flex-line box-hover">
-              <p className="bestSelling-title">Salta Fila</p>
-              <i className="fas fa-plus bestSelling-icon icon"></i>
-            </div>
-            <div className="bestSelling flex-line box-hover">
-              <p className="bestSelling-title">Targhetta con nome</p>
-              <i className="fas fa-plus bestSelling-icon icon"></i>
-            </div>
-            <div className="bestSelling flex-line box-hover">
-              <p className="bestSelling-title">Sconto del 10%</p>
-              <i className="fas fa-plus bestSelling-icon icon "></i>
-            </div>
+            <BestSellings bestSellings={this.props.bestSellings} />
           </div>
           <form
             id="addService-form"
