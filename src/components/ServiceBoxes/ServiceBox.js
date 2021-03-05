@@ -1,12 +1,13 @@
 /* PROPS
-type: viral / premium 
-services: [{icon, title}]
+type: viral / premium / goal
+body: [{title, otherData}]
 editing: boolean
 handleClick(type)
 */
-
 import React, { Component } from "react";
 import "./serviceBox.css";
+
+import ServiceBody from "./serviceBody";
 
 export class ServiceBox extends Component {
   render() {
@@ -26,19 +27,14 @@ export class ServiceBox extends Component {
     return (
       <div id="serviceBox" className="box">
         <p id="serviceBox-type">{this.props.type}</p>
-        {this.props.services.map(service => {
+        {this.props.services.map((service, i) => {
           return (
-            <div
-              className="serviceBox-container"
-              key={this.props.services.indexOf(service)}
-            >
-              <img
-                className="serviceBox-icon"
-                src={service.icon}
-                alt="icona servizio"
-              />
-              <p className="serviceBox-title">{service.title}</p>
-            </div>
+            <ServiceBody
+              key={i}
+              title={service.title}
+              otherData={service.otherData}
+              type={this.props.type}
+            />
           );
         })}
         {editingBody}

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import "./services.css";
 
-import Header from "../../../components/Header/Header";
-import ServiceHeader from "../components/ShopRegisterHeader/ShopRegisterHeader";
-import ServiceBoxes from "../../../components/ServiceBoxes/ServiceBoxes";
-import Indexer from "../components/Indexer";
-import AddService from "../components/AddService/AddService";
+import Header from "../../components/Header/Header";
+import ServiceHeader from "../ShopRegister/components/ShopRegisterHeader/ShopRegisterHeader";
+import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
+import Indexer from "../ShopRegister/components/Indexer";
+import AddService from "../ShopRegister/components/AddService/AddService";
 
-import faqTitles from "../../../faqData/faqHeaderTitles";
+import faqTitles from "../../faqData/faqHeaderTitles";
 
 export class Services extends Component {
   state = {
@@ -57,7 +56,6 @@ export class Services extends Component {
               editing={true}
               handleClick={this.toggleAddService}
             />
-            <Indexer index={1} />
             <AddService
               hidden={this.state.addServiceHidden}
               hide={this.toggleAddService}
@@ -72,6 +70,7 @@ export class Services extends Component {
               PROSEGUI
             </p>
           </div>
+          <Indexer index={1} />
         </div>
       </div>
     );

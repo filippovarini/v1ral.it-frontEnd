@@ -10,7 +10,8 @@ import ShopProfile from "./pages/ShopProfile/ShopProfile";
 
 // shop register
 import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
-import Services from "./pages/ShopRegister/Services/Services";
+import Services from "./pages/ShopRegister/Services";
+import Goals from "./pages/ShopRegister/Goals";
 
 export class App extends Component {
   render() {
@@ -22,6 +23,7 @@ export class App extends Component {
           <Route exact path="/shop/profile/:username" component={ShopProfile} />
           <Route exact path="/shop/register/bio" component={BioInfo} />
           <Route exact path="/shop/register/services" component={Services} />
+          <Route exact path="/shop/register/goals" component={Goals} />
         </div>
       </BrowserRouter>
     );

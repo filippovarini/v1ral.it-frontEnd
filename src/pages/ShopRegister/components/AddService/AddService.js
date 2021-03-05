@@ -40,7 +40,10 @@ export class AddService extends Component {
     } else {
       this.setState(emptyState);
       this.props.hide();
-      this.props.handleAdd({ icon: this.state.icon, title: this.state.title });
+      this.props.handleAdd({
+        otherData: this.state.icon,
+        title: this.state.title
+      });
     }
   };
 

@@ -24,6 +24,10 @@
   margin-bottom: 8px;
 }
 
+.serviceBox-goal {
+  justify-content: space-around;
+}
+
 .serviceBox-icon {
   box-sizing: border-box;
   width: 30px;
