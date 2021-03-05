@@ -11,8 +11,7 @@ export class Navigator extends Component {
     const titles = this.props.titles;
     return (
       <div id="nav">
-        {titles.map(title => {
-          const i = titles.indexOf(title);
+        {titles.map((title, i) => {
           return (
             <div
               key={i}

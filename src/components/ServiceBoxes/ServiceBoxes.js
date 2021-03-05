@@ -12,12 +12,12 @@ export class ServiceBoxes extends Component {
   render() {
     return (
       <div id="serviceBox-container">
-        {this.props.boxes.map(box => {
+        {this.props.boxes.map((box, i) => {
           return (
             <ServiceBox
               services={box.services}
               type={box.type}
-              key={this.props.boxes.indexOf(box)}
+              key={i}
               editing={this.props.editing}
               handleClick={this.props.handleClick}
             />

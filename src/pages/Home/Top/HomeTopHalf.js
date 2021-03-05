@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 import ChallengeButton from "./components/HomeButton";
 import Header from "../../../components/Header/Header";
@@ -28,7 +29,10 @@ export class HomeTopHalf extends Component {
             { name: "vision" },
             { name: "diventa virale" },
             { name: "login" },
-            { name: "portale aziende" }
+            {
+              name: "portale aziende",
+              handleClick: () => this.props.history.push("shop/register/bio")
+            }
           ]}
         />
         <ChallengeButton show={this.toggleChallenged} />
@@ -37,4 +41,4 @@ export class HomeTopHalf extends Component {
   }
 }
 
-export default HomeTopHalf;
+export default withRouter(HomeTopHalf);

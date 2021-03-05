@@ -20,19 +20,17 @@ export class Table extends Component {
               return <th key={key}>{key}</th>;
             })}
           </tr>
-          {data.map(row => {
+          {data.map((row, i1) => {
             return (
-              <tr key={data.indexOf(row)}>
-                {Object.values(row).map(value => {
+              <tr key={i1}>
+                {Object.values(row).map((value, i2) => {
                   let content = value;
                   if (isLink(value)) {
                     content = (
                       <img src={value} className="table-image" alt="logo" />
                     );
                   }
-                  return (
-                    <td key={Object.values(row).indexOf(value)}>{content}</td>
-                  );
+                  return <td key={i2}>{content}</td>;
                 })}
               </tr>
             );

@@ -28,8 +28,8 @@ export class Shops extends Component {
             <p className=" shops-order-button">BISOGNO</p>
           </div>
           <div id="shopBoxes-container">
-            {shops.map(shop => (
-              <ShopBox key={shops.indexOf(shop)} shop={shop} />
+            {shops.map((shop, i) => (
+              <ShopBox key={i} shop={shop} />
             ))}
           </div>
         </div>
