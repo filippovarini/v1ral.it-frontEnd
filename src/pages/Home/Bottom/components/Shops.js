@@ -4,7 +4,7 @@ shops: [{logo, name, category, goalsDone (correct format), cases}] */
 import React, { Component } from "react";
 
 import Table from "../../../../components/Table/Table";
-import shops from "../../../../faqData/shops";
+import shops from "../../../../faqData/shopsList";
 
 export class Shops extends Component {
   render() {

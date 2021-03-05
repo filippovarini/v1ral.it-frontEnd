@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import "./StandardStyle.css";
+import "./StandardStyle/tags.css";
+import "./StandardStyle/forms.css";
+import "./StandardStyle/boxes.css";
 
 import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
 import ShopProfile from "./pages/ShopProfile/ShopProfile";
+
+// shop register
+import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
+import Services from "./pages/ShopRegister/Services/Services";
 
 export class App extends Component {
   render() {
@@ -12,8 +18,10 @@ export class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact path="/" component={Home} />
-          <Route path="/shops" component={Shops} />
-          <Route path="/shop/:username" component={ShopProfile} />
+          <Route exact path="/shops" component={Shops} />
+          <Route exact path="/shop/profile/:username" component={ShopProfile} />
+          <Route exact path="/shop/register/bio" component={BioInfo} />
+          <Route exact path="/shop/register/services" component={Services} />
         </div>
       </BrowserRouter>
     );

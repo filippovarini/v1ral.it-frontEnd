@@ -11,29 +11,33 @@ const isLink = value => {
 
 export class Table extends Component {
   render() {
+    const data = this.props.data;
     return (
       <table>
-        <tr>
-          {Object.keys(this.props.data[0]).map(key => {
-            return <th key={key}>{key}</th>;
-          })}
-        </tr>
-        {this.props.data.map(data => {
-          return (
-            <tr>
-              {Object.values(data).map(value => {
-                if (isLink(value)) {
-                  return (
-                    <td>
+        <tbody>
+          <tr>
+            {Object.keys(data[0]).map(key => {
+              return <th key={key}>{key}</th>;
+            })}
+          </tr>
+          {data.map(row => {
+            return (
+              <tr key={data.indexOf(row)}>
+                {Object.values(row).map(value => {
+                  let content = value;
+                  if (isLink(value)) {
+                    content = (
                       <img src={value} className="table-image" alt="logo" />
-                    </td>
+                    );
+                  }
+                  return (
+                    <td key={Object.values(row).indexOf(value)}>{content}</td>
                   );
-                }
-                return <td>{value}</td>;
-              })}
-            </tr>
-          );
-        })}
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     );
   }

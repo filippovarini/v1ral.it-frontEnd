@@ -7,7 +7,7 @@ for (let i = 0; i < 100; i++) {
     usaername: "marco.valdi",
     mainContact: (
       <span>
-        fedex <i class="far fa-check-circle"></i>
+        fedex <i className="far fa-check-circle"></i>
       </span>
     ),
     cases: 23,

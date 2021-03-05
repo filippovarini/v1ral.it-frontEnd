@@ -1,5 +1,7 @@
 /* PROPS
-boxes: [{type, services}] */
+boxes: [{type, services}]
+editing
+handleClick */
 
 import React, { Component } from "react";
 import "./serviceBox.css";
@@ -16,6 +18,8 @@ export class ServiceBoxes extends Component {
               services={box.services}
               type={box.type}
               key={this.props.boxes.indexOf(box)}
+              editing={this.props.editing}
+              handleClick={this.props.handleClick}
             />
           );
         })}

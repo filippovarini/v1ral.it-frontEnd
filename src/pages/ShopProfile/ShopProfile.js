@@ -6,9 +6,10 @@
 import React, { Component } from "react";
 import "./shopProfile.css";
 
+import Header from "../../components/Header/Header";
 import ShopProfileHeader from "./components/ProfileHeader/ShopProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
-import ServiceBoxes from "./components/ServiceBoxes/ServiceBoxes";
+import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
 import Info from "./components/Info/Info";
 
 // faq data
@@ -29,50 +30,47 @@ export class ShopProfile extends Component {
   updateNav = i => this.setState({ navState: i });
 
   render() {
-    let bodyComponent = null;
-    switch (this.state.navState) {
-      case 0:
-        bodyComponent = (
-          <ServiceBoxes
-            boxes={[
-              { type: "premium", services },
-              { type: "viral", services }
-            ]}
-          />
-        );
-        break;
-      case 1:
-        bodyComponent = <Info />;
-        break;
-      default:
-        throw "Only 0 or 1 as navigator state permitted";
-    }
+    let bodyComponent =
+      this.state.navState === 0 ? (
+        <ServiceBoxes
+          boxes={[
+            { type: "premium", services },
+            { type: "viral", services }
+          ]}
+        />
+      ) : (
+        <Info />
+      );
+
     return (
-      <div className="page-wrapper">
-        <div id="shopProfile-header-container">
-          <div id="shopProfile-logo" className="box">
-            <img
-              src="http://www.ciroamergellina.it/wp-content/themes/yootheme/cache/Logo-Ciro-a-Mergellina-detto-o-nas-e-cane-9075f8fa.png"
-              alt="logo dell'impresa"
+      <div>
+        <Header titles={[{ name: "carrello" }, { name: "profilo" }]} />
+        <div className="page-wrapper">
+          <div id="shopProfile-header-container">
+            <div id="shopProfile-logo" className="box">
+              <img
+                src="http://www.ciroamergellina.it/wp-content/themes/yootheme/cache/Logo-Ciro-a-Mergellina-detto-o-nas-e-cane-9075f8fa.png"
+                alt="logo dell'impresa"
+              />
+            </div>
+            <ShopProfileHeader
+              name={this.state.name}
+              goalsDone={this.state.goalsDone}
+              totalCases={this.state.totalCases}
+              dailyCases={this.state.dailyCases}
+              description={this.state.description}
+              goalsDonePercentage={this.state.goalsDonePercentage}
             />
           </div>
-          <ShopProfileHeader
-            name={this.state.name}
-            goalsDone={this.state.goalsDone}
-            totalCases={this.state.totalCases}
-            dailyCases={this.state.dailyCases}
-            description={this.state.description}
-            goalsDonePercentage={this.state.goalsDonePercentage}
-          />
+          <div id="shopProfile-nav">
+            <Navigator
+              active={this.state.navState}
+              updateNav={this.updateNav}
+              titles={["Servizi Premium", "Info Focolaio"]}
+            />
+          </div>
+          {bodyComponent}
         </div>
-        <div id="shopProfile-nav">
-          <Navigator
-            active={this.state.navState}
-            updateNav={this.updateNav}
-            titles={["Servizi Premium", "Info Focolaio"]}
-          />
-        </div>
-        {bodyComponent}
       </div>
     );
   }

@@ -1,0 +1,44 @@
+.button {
+  background: black;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: white;
+  text-align: center;
+  height: 35px;
+  line-height: 35px;
+  width: 250px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.button-small {
+  background: black;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  width: 250px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  box-shadow: 3px 3px 10px black;
+}
+
+.button-small:hover {
+  box-shadow: 3px 3px 10px black;
+}
+
+.input-header {
+  font-weight: bold;
+}
+
+.form-error {
+  color: red;
+  text-align: center;
+}

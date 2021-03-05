@@ -6,6 +6,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./challenged.css";
 
+import HideCross from "../../HideCross/HideCross";
+
 import colors from "../../../style/colors";
 
 export class Challenged extends Component {
@@ -29,15 +31,16 @@ export class Challenged extends Component {
 
   render() {
     return (
-      <div className={`popUp-background ${this.props.class}`}>
+      <div
+        className="popUp-background"
+        style={this.props.hidden ? { display: "none" } : null}
+      >
         <div
           id="challenged-container"
           className="box"
           style={{ background: colors.boxBackground }}
         >
-          <div className="hide-cross" onClick={this.props.hide}>
-            <i className="fas fa-times"></i>
-          </div>
+          <HideCross hide={this.props.hide} />
           <p id="challenged-title" className="input-header">
             Chi ti ha sfidato?
           </p>

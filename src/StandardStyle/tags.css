@@ -1,0 +1,56 @@
+body {
+  background: rgb(230, 230, 230);
+}
+
+p {
+  margin: 0px;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+label {
+  margin: 0px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgb(230, 230, 230);
+}
+
+th {
+  background: rgb(210, 210, 210);
+}
+
+tr {
+  border: 1px solid white;
+}
+
+tr:nth-child(even) {
+  background: rgb(235, 235, 235);
+}
+
+td {
+  text-align: center;
+  height: 30px;
+}
+
+.table-image {
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+}
+
+.page-wrapper {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.hidden {
+  display: none;
+}

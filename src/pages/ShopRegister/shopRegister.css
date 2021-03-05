@@ -1,0 +1,10 @@
+.shop-register-container {
+  height: 80vh;
+  position: relative;
+}
+
+.shop-register-button {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 80px;
+}

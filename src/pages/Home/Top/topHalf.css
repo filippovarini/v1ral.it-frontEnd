@@ -2,38 +2,17 @@
   position: relative;
   width: 100%;
   height: 50vh;
-}
-
-#home-background-container {
-  width: 100%;
-  height: 100%;
+  background-image: url("../../../images/home-background.jpg");
+  background-position: center;
+  background-size: cover;
   overflow: hidden;
 }
 
-#topHalf-content {
-  margin: 20px;
-  position: absolute;
-  top: 0px;
-  width: 90%;
-}
-
-#topHalf-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Logo */
-
-#topHalf-logo {
-  font-weight: bold;
-  font-size: 3rem;
-  color: white;
-}
-
 /* Button */
-
 #home-button-container {
   margin-top: 150px;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
 
 #challgne-text {
@@ -46,18 +25,4 @@
 
 #home-button {
   margin-top: 30px;
-}
-
-/* Navigator */
-#home-nav {
-  display: flex;
-  width: 500px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.home-nav-item {
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
 }
