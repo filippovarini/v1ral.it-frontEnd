@@ -3,10 +3,12 @@ import "./addService.css";
 
 import HideCross from "../../../../components/HideCross/HideCross";
 import Icons from "./components/Icons";
-import IconFields from "./components/IconFields";
 import BestSellings from "./components/BestSelling";
+import ServiceForm from "./components/ServiceForm";
+import GoalForm from "./components/GoalForm";
 
 /**
+ * Used to select BOTH goals and services
  * PROPS:
  * type
  * handleAdd()
@@ -16,12 +18,11 @@ import BestSellings from "./components/BestSelling";
  * */
 
 const emptyState = {
-  icon: null,
+  otherData: null,
   title: "",
   error: null,
   iconsHidden: true
 };
-
 export class AddService extends Component {
   state = emptyState;
 
@@ -30,18 +31,22 @@ export class AddService extends Component {
   };
 
   handleImageChange = url => {
-    this.setState({ icon: url, iconsHidden: true });
+    this.setState({ otherData: url, iconsHidden: true });
+  };
+
+  handleOtherDataChange = e => {
+    this.setState({ otherData: e.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    if (!this.state.icon || !this.state.title) {
+    if (!this.state.otherData || !this.state.title) {
       this.setState({ error: "Compila tutti i campi" });
     } else {
       this.setState(emptyState);
       this.props.hide();
       this.props.handleAdd({
-        otherData: this.state.icon,
+        otherData: this.state.otherData,
         title: this.state.title
       });
     }
@@ -52,43 +57,44 @@ export class AddService extends Component {
   };
 
   render() {
+    const serviceForm = (
+      <ServiceForm
+        handleSubmit={this.handleSubmit}
+        toggleIcons={this.toggleIcons}
+        otherData={this.state.otherData}
+        handleServiceChange={this.handleServiceChange}
+        title={this.state.title}
+        handleImageChange={this.handleImageChange}
+      />
+    );
+    const goalForm = (
+      <GoalForm
+        handleSubmit={this.handleSubmit}
+        handleServiceChange={this.handleServiceChange}
+        title={this.state.title}
+        handleOtherDataChange={this.handleOtherDataChange}
+      />
+    );
+
+    const form = this.props.type === "goal" ? goalForm : serviceForm;
     return (
       <div
         className="popUp-background"
         style={this.props.hidden ? { display: "none" } : null}
       >
         <div id="addService-container" className="box popUp">
+          <HideCross hide={() => this.props.hide(null)} />
           <Icons
             addIcon={this.handleImageChange}
             hidden={this.state.iconsHidden}
             hideIcons={this.toggleIcons}
           />
-          <HideCross hide={() => this.props.hide(null)} />
           <p id="addService-header">Aggiungi un servizio {this.props.type}</p>
           <p id="bestSelling-header">Best selling:</p>
           <div id="bestSelling-container" className="flex-col">
             <BestSellings bestSellings={this.props.bestSellings} />
           </div>
-          <form
-            id="addService-form"
-            className="flex-line"
-            onSubmit={this.handleSubmit}
-          >
-            <IconFields
-              showIcons={this.toggleIcons}
-              url={this.state.icon}
-              removeIcon={() => {
-                this.handleImageChange(null);
-              }}
-            />
-            <input
-              id="title-input"
-              type="text"
-              placeholder="nome servizio"
-              onChange={this.handleServiceChange}
-              value={this.state.title}
-            />
-          </form>
+          {form}
           <p
             id="addService-submit"
             className="button-small"

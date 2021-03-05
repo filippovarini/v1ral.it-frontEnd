@@ -1,6 +1,6 @@
 /* PROPS
 type: viral / premium / goal
-body: [{title, otherData}]
+services: [{title, otherData}]
 editing: boolean
 handleClick(type)
 */

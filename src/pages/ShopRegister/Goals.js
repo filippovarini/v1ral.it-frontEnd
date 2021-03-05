@@ -41,17 +41,13 @@ export class Services extends Component {
             riceverai
           </p>
           <div className="shop-register-body">
-            {/* <ServiceBoxes
-              boxes={[
-                { type: "premium", services: this.state.premium },
-                { type: "viral", services: this.state.viral }
-              ]}
+            <ServiceBoxes
+              boxes={[{ type: "goal", services: this.state.goals }]}
               editing={true}
-              handleClick={this.toggleAddService}
-            /> */}
-
+              handleClick={this.toggleAddGoal}
+            />
             <AddService
-              hidden={!this.state.addGoalHidden}
+              hidden={this.state.addGoalHidden}
               hide={this.toggleAddGoal}
               type="goal"
               handleAdd={this.addGoal}
@@ -65,7 +61,7 @@ export class Services extends Component {
               className="button shop-register-button"
               onClick={this.handleSubmit}
             >
-              PROSEGUI
+              CONFERMA
             </p>
           </div>
           <Indexer index={2} />
