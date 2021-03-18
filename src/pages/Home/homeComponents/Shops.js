@@ -35,7 +35,7 @@ export class Shops extends Component {
   render() {
     return (
       <div id="shops-container" className={this.props.class}>
-        {this.state.loading ? <Loading /> : <Table data={shops} />}
+        {this.state.loading ? <Loading /> : <Table data={this.state.info} />}
       </div>
     );
   }
