@@ -1,6 +1,6 @@
 /* PROPS:
-- background
-- logo
+- logourl
+- backgroundurl
 - name
 - place
 - goalsCompleted
@@ -14,10 +14,11 @@ import "./shopBox.css";
 
 export class ShopBox extends Component {
   handleClick = () => {
-    this.props.history.push("/shop/@username");
+    this.props.history.push(`/shop/profile/${this.props.shop.id}`);
   };
 
   render() {
+    console.log(this.props.shop);
     return (
       <div
         id="shopBox-container"
@@ -25,19 +26,21 @@ export class ShopBox extends Component {
         onClick={this.handleClick}
       >
         <div id="shopBox-image-container">
-          <img src={this.props.shop.background} alt="imagine del negozio" />
+          <img src={this.props.shop.backgroundurl} alt="imagine del negozio" />
           <img
-            src={this.props.shop.logo}
+            src={this.props.shop.logourl}
             id="shopBox-logo"
             alt="logo del negozio"
           />
         </div>
         <div>
           <p>{this.props.shop.name}</p>
-          <p>{this.props.shop.place}</p>
+          <p>
+            {this.props.shop.city}, {this.props.shop.province}
+          </p>
           <p>{this.props.shop.category}</p>
-          <p>{this.props.shop.goalsDone}</p>
-          <p>{this.props.shop.cases}</p>
+          <p>{this.props.shop.goalsdone}</p>
+          <p>{this.props.shop.premiums}</p>
         </div>
       </div>
     );

@@ -3,7 +3,7 @@ challenged: true / false
  */
 
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "./challenged.css";
 
 import HideCross from "../../../../components/HideCross/HideCross";
@@ -28,7 +28,6 @@ export class Challenged extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.challenger);
     this.setState({ loading: true });
     fetch("user/challenger", {
       method: "POST",
@@ -41,7 +40,6 @@ export class Challenged extends Component {
       .then(jsonRes => {
         if (jsonRes.success) this.props.history.push("/shops");
         else {
-          errorHandler(jsonRes);
           this.setState({
             loading: false,
             error: "username sfidante non valido"
@@ -79,6 +77,7 @@ export class Challenged extends Component {
               placeholder="username"
             />
             <p className="form-error">{this.state.error}</p>
+            <Link to="/shops">ho già un account</Link>
             <input type="submit" style={{ display: "none" }} />
           </form>
         </div>
