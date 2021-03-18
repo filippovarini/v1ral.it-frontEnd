@@ -1,0 +1,22 @@
+/* Root Component */
+
+#bottomHalf {
+  margin: 20px;
+}
+
+/* Navigator */
+#bottomHalf-nav-container {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+#topHalf {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background-image: url("../../images/home-background.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}

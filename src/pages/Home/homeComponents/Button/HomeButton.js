@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../topHalf.css";
+import "./button.css";
 
 export class HomeButton extends Component {
   render() {

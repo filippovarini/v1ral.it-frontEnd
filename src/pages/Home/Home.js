@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 // components
-import TopHalf from "./Top/HomeTopHalf";
-import BottomHalf from "./Bottom/BottomHalf";
+import TopHalf from "./TopHalf";
+import BottomHalf from "./BottomHalf";
 
 // for scrolling header
 const offset = 40;

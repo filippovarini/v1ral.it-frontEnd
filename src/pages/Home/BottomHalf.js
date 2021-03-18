@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import Navigator from "../../../components/Navigator/Navigator";
-import Statistics from "./components/Statistics/Statistics";
-import Shops from "./components/Shops";
-import Cases from "./components/Cases";
-import "./bottomHalf.css";
+import Navigator from "../../components/Navigator/Navigator";
+import Statistics from "./homeComponents/Statistics/Statistics";
+import Shops from "./homeComponents/Shops";
+import Cases from "./homeComponents/Cases";
+import "./home.css";
 
 export class BottomHalf extends Component {
   state = {

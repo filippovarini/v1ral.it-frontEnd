@@ -4,6 +4,8 @@ import "./StandardStyle/tags.css";
 import "./StandardStyle/forms.css";
 import "./StandardStyle/boxes.css";
 
+import Workplace from "./workplace/workplace";
+
 import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
 import ShopProfile from "./pages/ShopProfile/ShopProfile";
@@ -24,6 +26,7 @@ export class App extends Component {
           <Route exact path="/shop/register/bio" component={BioInfo} />
           <Route exact path="/shop/register/services" component={Services} />
           <Route exact path="/shop/register/goals" component={Goals} />
+          <Route exact path="/workplace" component={Workplace} />
         </div>
       </BrowserRouter>
     );

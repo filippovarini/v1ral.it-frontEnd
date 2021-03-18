@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import "./statistics.css";
 
 import QuickFacts from "./QuickFacts";
-import BarChart from "../../../../../components/BarChart/BarChart";
+import BarChart from "../../../../components/BarChart/BarChart";
+import Loading from "../../../../components/Loading/Loading";
 
-import cases from "../../../../../faqData/casesGraph";
+import cases from "../../../../faqData/casesGraph";
 
 const totalMargin = 40;
 const quickFactsWidth = 250;
@@ -14,6 +15,10 @@ const graphSize = {
 };
 
 export class Statistics extends Component {
+  state = {
+    chartLoading: true
+  };
+
   render() {
     return (
       <div id="statistics-container" className={this.props.class}>
@@ -25,7 +30,11 @@ export class Statistics extends Component {
           supportedShops={981}
           supportIncrement={58}
         />
-        <BarChart cases={cases} statisticsDimensions={graphSize} />
+        {this.state.chartLoading ? (
+          <Loading />
+        ) : (
+          <BarChart cases={cases} statisticsDimensions={graphSize} />
+        )}
       </div>
     );
   }

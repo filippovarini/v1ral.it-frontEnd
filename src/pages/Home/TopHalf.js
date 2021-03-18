@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import "./home.css";
 
-import ChallengeButton from "./components/HomeButton";
-import Header from "../../../components/Header/Header";
+import ChallengeButton from "./homeComponents/Button/HomeButton";
+import Header from "../../components/Header/Header";
 
 //popups
-import Challenged from "../../../components/PopUps/Challenged/Challenged";
+import Challenged from "../../components/PopUps/Challenged/Challenged";
 
 export class HomeTopHalf extends Component {
   state = {
