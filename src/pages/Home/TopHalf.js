@@ -4,6 +4,7 @@ import "./home.css";
 
 import ChallengeButton from "./homeComponents/Button/HomeButton";
 import Header from "../../components/Header/Header";
+import Countdown from "./homeComponents/CountDown/CountDown";
 
 //popups
 import Challenged from "../../components/PopUps/Challenged/Challenged";
@@ -36,6 +37,7 @@ export class HomeTopHalf extends Component {
             }
           ]}
         />
+        <Countdown />
         <ChallengeButton show={this.toggleChallenged} />
       </div>
     );

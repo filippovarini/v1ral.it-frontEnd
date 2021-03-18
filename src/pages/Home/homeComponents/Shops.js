@@ -2,6 +2,7 @@
 shops: [{logo, name, category, goalsDone (correct format), cases}] */
 
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
@@ -34,10 +35,10 @@ export class Shops extends Component {
   render() {
     return (
       <div id="shops-container" className={this.props.class}>
-        {this.state.loading ? <Loading /> : <Table data={this.state.info} />}
+        {this.state.loading ? <Loading /> : <Table data={shops} />}
       </div>
     );
   }
 }
 
-export default Shops;
+export default withRouter(Shops);
