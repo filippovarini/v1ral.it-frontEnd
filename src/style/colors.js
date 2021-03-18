@@ -1,8 +1,5 @@
 const colors = {
   cross: "red",
-  negative: "red",
-  neutral: "yellow",
-  positive: "green",
   graph: {
     background: "rgba(0, 65, 122, .5)",
     hover: "rgba(0, 65, 122, .8)",

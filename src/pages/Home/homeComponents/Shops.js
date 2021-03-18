@@ -32,10 +32,30 @@ export class Shops extends Component {
     }
   };
 
+  /** Formats data for the table */
+  formatDataForTable = () => {
+    if (!this.state.info) return null;
+    else
+      return this.state.info.map(infoObj => {
+        return {
+          logo: infoObj.logourl,
+          nome: infoObj.name,
+          categoria: infoObj.category,
+          città: `${infoObj.city}, ${infoObj.province}`,
+          positivi: infoObj.premiums,
+          "indice di ripresa": infoObj.goalsdone
+        };
+      });
+  };
+
   render() {
     return (
       <div id="shops-container" className={this.props.class}>
-        {this.state.loading ? <Loading /> : <Table data={this.state.info} />}
+        {!this.state.loading && this.state.info ? (
+          <Table data={this.formatDataForTable()} />
+        ) : (
+          <Loading />
+        )}
       </div>
     );
   }

@@ -5,23 +5,25 @@ import "./home.css";
 import ChallengeButton from "./homeComponents/Button/HomeButton";
 import Header from "../../components/Header/Header";
 import Countdown from "./homeComponents/CountDown/CountDown";
-import Challenged from "./homeComponents/Challenged/Challenged";
+import Challenged from "../../components/InsertChallenger/Challenger";
 
 export class HomeTopHalf extends Component {
   state = {
-    challengedHidden: true
+    challengerHidden: true
   };
 
-  toggleChallenged = () => {
-    this.setState({ challengedHidden: !this.state.challengedHidden });
+  toggleChallenger = () => {
+    this.setState({ challengerHidden: !this.state.challengerHidden });
   };
 
   render() {
     return (
       <div id="topHalf">
         <Challenged
-          hidden={this.state.challengedHidden}
-          hide={this.toggleChallenged}
+          hidden={this.state.challengerHidden}
+          hide={this.toggleChallenger}
+          alreadyAccountRedirection="/shops"
+          successRedirection="/shops"
         />
         <Header
           class={this.props.class}
@@ -36,7 +38,7 @@ export class HomeTopHalf extends Component {
           ]}
         />
         <Countdown />
-        <ChallengeButton show={this.toggleChallenged} />
+        <ChallengeButton show={this.toggleChallenger} />
       </div>
     );
   }

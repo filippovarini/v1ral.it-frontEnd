@@ -32,11 +32,25 @@ export class Shops extends Component {
     }
   };
 
+  /** Formats data for the table */
+  formatDataForTable = () => {
+    if (!this.state.info) return null;
+    else
+      return this.state.info.map(infoObj => {
+        return {
+          profilo: infoObj.profileurl,
+          username: infoObj.username,
+          "indice Rt": infoObj.rt,
+          "focolai supportati": infoObj.number
+        };
+      });
+  };
+
   render() {
     return (
       <div id="shops-container" className={this.props.class}>
         {!this.state.loading && this.state.info ? (
-          <Table data={this.state.info} />
+          <Table data={this.formatDataForTable()} />
         ) : (
           <Loading />
         )}

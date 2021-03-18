@@ -10,15 +10,13 @@
 import React, { Component } from "react";
 import "./statistics.css";
 
-import colors from "../../../../style/colors";
-
-const colourFromIncrement = increment => {
+const classFromIncrement = increment => {
   if (increment > 0) {
-    return colors.positive;
+    return "positive";
   } else if (increment === 0) {
-    return colors.neutral;
+    return "neutral";
   } else {
-    return colors.negative;
+    return "negative";
   }
 };
 
@@ -34,14 +32,6 @@ export class QuickFacts extends Component {
   };
 
   render() {
-    // aside data style
-    const dailyIncrementStyle = {
-      color: colourFromIncrement(this.props.dailyIncrement)
-    };
-    const supportIncrementStyle = {
-      color: colourFromIncrement(this.props.supportIncrement)
-    };
-
     const body = (
       <div id="quick-facts" className="statistics-box box">
         <div id="facts-container">
@@ -55,7 +45,11 @@ export class QuickFacts extends Component {
             <p className="fact-title">Positivi Oggi</p>
             <div className="fact-data">
               <p>{this.props.dailyCases}</p>
-              <p className="fact-aside" style={dailyIncrementStyle}>
+              <p
+                className={`fact-aside ${classFromIncrement(
+                  this.props.dailyIncrement
+                )}`}
+              >
                 {printIncrement(this.props.dailyIncrement, true)}
               </p>
             </div>
@@ -70,7 +64,11 @@ export class QuickFacts extends Component {
             <p className="fact-title">Imprese Finanziate</p>
             <div className="fact-data">
               <p>{this.props.supportedShops}</p>
-              <p className="fact-aside" style={supportIncrementStyle}>
+              <p
+                className={`fact-aside ${classFromIncrement(
+                  this.props.supportIncrement
+                )}`}
+              >
                 {printIncrement(this.props.supportIncrement, false)}
               </p>
             </div>

@@ -4,13 +4,10 @@ challenged: true / false
 
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
-import "./challenged.css";
+import "./challenger.css";
 
-import HideCross from "../../../../components/HideCross/HideCross";
-import Loading from "../../../../components/Loading/Loading";
-
-import errorHandler from "../../../Error/ErrorHandler";
-import colors from "../../../../style/colors";
+import HideCross from "../HideCross/HideCross";
+import Loading from "../Loading/Loading";
 
 export class Challenged extends Component {
   state = {
@@ -29,7 +26,7 @@ export class Challenged extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ loading: true });
-    fetch("user/challenger", {
+    fetch("/user/challenger", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -38,8 +35,10 @@ export class Challenged extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        if (jsonRes.success) this.props.history.push("/shops");
-        else {
+        if (jsonRes.success) {
+          this.props.hide();
+          this.props.history.push(this.props.successRedirection);
+        } else {
           this.setState({
             loading: false,
             error: "username sfidante non valido"
@@ -58,11 +57,7 @@ export class Challenged extends Component {
         className="popUp-background"
         style={this.props.hidden ? { display: "none" } : null}
       >
-        <div
-          id="challenged-container"
-          className="box"
-          style={{ background: colors.boxBackground }}
-        >
+        <div id="challenged-container" className="box">
           <HideCross hide={this.props.hide} />
           <p id="challenged-title" className="input-header">
             Chi ti ha sfidato?
@@ -77,7 +72,9 @@ export class Challenged extends Component {
               placeholder="username"
             />
             <p className="form-error">{this.state.error}</p>
-            <Link to="/shops">ho già un account</Link>
+            <Link to={this.props.alreadyAccountRedirection}>
+              ho già un account
+            </Link>
             <input type="submit" style={{ display: "none" }} />
           </form>
         </div>
@@ -89,11 +86,7 @@ export class Challenged extends Component {
         className="popUp-background"
         style={this.props.hidden ? { display: "none" } : null}
       >
-        <div
-          id="challenged-container"
-          className="box"
-          style={{ background: colors.boxBackground }}
-        >
+        <div id="challenged-container" className="box">
           <HideCross hide={this.props.hide} />
           <Loading />
         </div>

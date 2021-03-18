@@ -4,6 +4,7 @@
 3. output info
 */
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./shopProfile.css";
 
 import Header from "../../components/Header/Header";
@@ -12,37 +13,64 @@ import Navigator from "../../components/Navigator/Navigator";
 import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
 import Info from "./components/Info/Info";
 import Loading from "../../components/Loading/Loading";
+import InsertChallenger from "../../components/InsertChallenger/Challenger";
 
 // faq data
 import services from "../../faqData/services";
 
 import errorHandler from "../Error/ErrorHandler";
 
-const faqState = {
-  navState: 0,
-  name: "Ciro a mergellina",
-  goalsDone: 3,
-  totalCases: 233454,
-  dailyCases: 12300,
-  goalsDonePercentage: 59,
-  description:
-    "Siamo un'impresa familiare con 127 anni di storia. Il covid ci ha costretto a licenziare il 75% del personale. Utilizzeremo i finanziamenti per riassumere il nostro team e riportare sul mercato i nostri fantastici prodotti"
-};
-
 export class ShopProfile extends Component {
   state = {
     loading: true,
     navState: 0,
-    shop: null
+    shop: null,
+    added: false,
+    insertChallengerHidden: true
   };
 
+  toggleChallenger = () => {
+    this.setState({
+      insertChallengerHidden: !this.state.insertChallengerHidden
+    });
+  };
+
+  /** Get info from database and session */
   componentDidMount = () => {
     const id = this.props.history.location.pathname.split("/").slice(-1)[0];
     fetch(`/page/shopProfile/${id}`)
       .then(res => res.json())
       .then(jsonRes => {
-        if (jsonRes.success) this.setState({ shop: jsonRes.shop });
+        if (jsonRes.success)
+          this.setState({ shop: jsonRes.shop, added: jsonRes.added });
         else errorHandler(jsonRes);
+        this.setState({ loading: false });
+      })
+      .catch(e => {
+        console.log(e);
+        this.props.history.push("/error");
+      });
+  };
+
+  /** Adds shop to the cart
+   * If not validated, lets the user insert the challenger or login
+   */
+  handleSubmit = () => {
+    this.setState({ loading: true });
+    fetch("/shop/updateCart", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ shopId: this.state.shop.id })
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        if (!jsonRes.success) {
+          if (jsonRes.insertChallenger) this.toggleChallenger();
+          else this.props.history.push("/login");
+        } else this.setState({ added: true });
         this.setState({ loading: false });
       })
       .catch(e => {
@@ -54,7 +82,6 @@ export class ShopProfile extends Component {
   updateNav = i => this.setState({ navState: i });
 
   render() {
-    console.log(this.state.shop);
     let bodyComponent =
       this.state.navState === 0 ? (
         <ServiceBoxes
@@ -70,6 +97,12 @@ export class ShopProfile extends Component {
     const body = this.state.shop ? (
       <div className="page-wrapper">
         <div id="shopProfile-header-container">
+          <InsertChallenger
+            hidden={this.state.insertChallengerHidden}
+            hide={this.toggleChallenger}
+            alreadyAccountRedirection="/login"
+            successRedirection={this.props.history.location.pathname}
+          />
           <div id="shopProfile-logo" className="box">
             <img
               src="http://www.ciroamergellina.it/wp-content/themes/yootheme/cache/Logo-Ciro-a-Mergellina-detto-o-nas-e-cane-9075f8fa.png"
@@ -83,6 +116,8 @@ export class ShopProfile extends Component {
             dailyCases={-1}
             description={this.state.shop.bio}
             goalsDonePercentage={this.state.shop.goalsdone}
+            handleSubmit={this.handleSubmit}
+            added={this.state.added}
           />
         </div>
         <div id="shopProfile-nav">
@@ -106,4 +141,4 @@ export class ShopProfile extends Component {
   }
 }
 
-export default ShopProfile;
+export default withRouter(ShopProfile);

@@ -55,7 +55,13 @@ export class Shops extends Component {
     return (
       <div>
         <Header titles={[{ name: "carrello" }, { name: "profilo" }]} />
-        {this.state.loading ? <Loading /> : body}
+        {this.state.loading ? (
+          <div className="page-wrapper">
+            <Loading />
+          </div>
+        ) : (
+          body
+        )}
       </div>
     );
   }

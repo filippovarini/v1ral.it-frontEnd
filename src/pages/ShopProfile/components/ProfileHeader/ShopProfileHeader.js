@@ -41,9 +41,24 @@ export class ShopProfileHeader extends Component {
             <p>{this.props.goalsDonePercentage}%</p>
           </div>
         </div>
-        <p id="shopProfile-support" className="button">
-          CONTAGIATI QUI
-        </p>
+        {this.props.added ? (
+          <p
+            id="shopProfile-support"
+            className="button button-disabled"
+            onClick={this.props.handleSubmit}
+            style={{ background: "green" }}
+          >
+            CONTAGIATO
+          </p>
+        ) : (
+          <p
+            id="shopProfile-support"
+            className="button"
+            onClick={this.props.handleSubmit}
+          >
+            CONTAGIATI QUI
+          </p>
+        )}
       </div>
     );
   }

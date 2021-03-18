@@ -12,7 +12,7 @@ const isLink = value => {
 export class Table extends Component {
   render() {
     const data = this.props.data;
-    return (
+    return data ? (
       <table>
         <tbody>
           <tr>
@@ -37,7 +37,7 @@ export class Table extends Component {
           })}
         </tbody>
       </table>
-    );
+    ) : null;
   }
 }
 

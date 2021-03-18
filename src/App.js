@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import "./StandardStyle/tags.css";
 import "./StandardStyle/forms.css";
 import "./StandardStyle/boxes.css";
+import "./StandardStyle/text.css";
 
 import Workplace from "./workplace/workplace";
 
