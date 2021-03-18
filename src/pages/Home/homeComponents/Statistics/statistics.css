@@ -2,8 +2,12 @@
 
 #statistics-container {
   height: 40vh;
+}
+
+#statistics {
   display: flex;
   justify-content: space-around;
+  height: 40vh;
 }
 
 #statistics-container.hidden {

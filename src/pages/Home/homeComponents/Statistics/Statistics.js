@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./statistics.css";
 
 import QuickFacts from "./QuickFacts";
@@ -6,6 +7,7 @@ import BarChart from "../../../../components/BarChart/BarChart";
 import Loading from "../../../../components/Loading/Loading";
 
 import cases from "../../../../faqData/casesGraph";
+import errorHandler from "../../../Error/ErrorHandler";
 
 const totalMargin = 40;
 const quickFactsWidth = 250;
@@ -14,30 +16,58 @@ const graphSize = {
   height: Math.round((window.screen.height * 4) / 10)
 };
 
+const getDailyIncrement = totalCases => {
+  const [predDay, currDay] = totalCases.slice(-2);
+  return Math.round((100 * (currDay.number - predDay.number)) / predDay.number);
+};
+
 export class Statistics extends Component {
   state = {
-    chartLoading: true
+    loading: true,
+    info: null
+  };
+
+  componentDidMount = () => {
+    if (!this.state.info) {
+      fetch("page/home/quickFacts")
+        .then(res => res.json())
+        .then(jsonRes => {
+          if (jsonRes.success) this.setState({ info: jsonRes.info });
+          else errorHandler(jsonRes);
+          this.setState({ loading: false });
+        })
+        .catch(e => {
+          console.log(e);
+          this.props.history.push("/error");
+        });
+    }
   };
 
   render() {
-    return (
-      <div id="statistics-container" className={this.props.class}>
+    const info = this.state.info;
+    const body = info ? (
+      <div id="statistics">
         <QuickFacts
-          totalCases={(134, 123, 2132)}
-          dailyCases={(13, 432)}
-          dailyIncrement={-10}
-          rtIndex={4.53}
-          supportedShops={981}
+          totalCases={info.totalCases.reduce((acc, day) => acc + day.number, 0)}
+          dailyCases={info.dailyCases}
+          dailyIncrement={
+            info.totalCases.length >= 2
+              ? getDailyIncrement(info.totalCases)
+              : info.dailyCases
+          }
+          rtIndex={info.rtIndex}
+          supportedShops={info.financedShops}
           supportIncrement={58}
         />
-        {this.state.chartLoading ? (
-          <Loading />
-        ) : (
-          <BarChart cases={cases} statisticsDimensions={graphSize} />
-        )}
+        <BarChart cases={cases} statisticsDimensions={graphSize} />
+      </div>
+    ) : null;
+    return (
+      <div id="statistics-container" className={this.props.class}>
+        {this.state.loading ? <Loading /> : body}
       </div>
     );
   }
 }
 
-export default Statistics;
+export default withRouter(Statistics);
