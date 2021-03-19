@@ -5,6 +5,7 @@
 */
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import errorHandler from "../../errorHandler";
 import "./shopProfile.css";
 
 import Header from "../../components/Header/Header";
@@ -17,8 +18,6 @@ import InsertChallenger from "../../components/InsertChallenger/Challenger";
 
 // faq data
 import services from "../../faqData/services";
-
-import errorHandler from "../Error/ErrorHandler";
 
 export class ShopProfile extends Component {
   state = {
@@ -43,12 +42,12 @@ export class ShopProfile extends Component {
       .then(jsonRes => {
         if (jsonRes.success)
           this.setState({ shop: jsonRes.shop, added: jsonRes.added });
-        else errorHandler(jsonRes);
+        else errorHandler.serverError(jsonRes);
         this.setState({ loading: false });
       })
       .catch(e => {
         console.log(e);
-        this.props.history.push("/error");
+        errorHandler.clientError();
       });
   };
 
@@ -75,7 +74,7 @@ export class ShopProfile extends Component {
       })
       .catch(e => {
         console.log(e);
-        this.props.history.push("/error");
+        errorHandler.clientError();
       });
   };
 

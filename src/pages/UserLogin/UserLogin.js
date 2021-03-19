@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import errorHandler from "../../errorHandler";
 
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
-
-import errorHandler from "../Error/ErrorHandler";
 
 export class UserLogin extends Component {
   state = {
@@ -56,12 +55,12 @@ export class UserLogin extends Component {
         .then(res => res.json())
         .then(jsonRes => {
           if (jsonRes.success) this.props.history.push("/");
-          else if (jsonRes.serverError) errorHandler(jsonRes);
+          else if (jsonRes.serverError) errorHandler.serverError(jsonRes);
           else this.setState({ loading: false, error: "Credenziali errate" });
         })
         .catch(e => {
           console.log(e);
-          this.props.history.push("/error");
+          errorHandler.clientError();
         });
     }
   };

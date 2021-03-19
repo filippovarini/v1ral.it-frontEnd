@@ -3,12 +3,11 @@ shops: [{logo, name, category, goalsDone (correct format), cases}] */
 
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import errorHandler from "../../../errorHandler";
 
 import Table from "../../../components/Table/Table";
 import cases from "../../../faqData/cases";
 import Loading from "../../../components/Loading/Loading";
-
-import errorHandler from "../../Error/ErrorHandler";
 
 export class Shops extends Component {
   state = {
@@ -22,12 +21,12 @@ export class Shops extends Component {
         .then(res => res.json())
         .then(jsonRes => {
           if (jsonRes.success) this.setState({ info: jsonRes.userList });
-          else errorHandler(jsonRes);
+          else errorHandler.serverError(jsonRes);
           this.setState({ loading: false });
         })
         .catch(e => {
           console.log(e);
-          this.props.history.push("/error");
+          errorHandler.clientError();
         });
     }
   };

@@ -8,7 +8,7 @@ import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
 import shops from "../../../faqData/shopsList";
 
-import errorHandler from "../../Error/ErrorHandler";
+import errorHandler from "../../../errorHandler";
 
 export class Shops extends Component {
   state = {
@@ -22,12 +22,12 @@ export class Shops extends Component {
         .then(res => res.json())
         .then(jsonRes => {
           if (jsonRes.success) this.setState({ info: jsonRes.shopList });
-          else errorHandler(jsonRes);
+          else errorHandler.serverError(jsonRes);
           this.setState({ loading: false });
         })
         .catch(e => {
           console.log(e);
-          this.props.history.push("/error");
+          errorHandler.clientError();
         });
     }
   };

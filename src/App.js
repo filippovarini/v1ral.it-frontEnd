@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import errorHandler from "./errorHandler";
 import "./StandardStyle/tags.css";
 import "./StandardStyle/forms.css";
 import "./StandardStyle/boxes.css";
@@ -37,7 +38,7 @@ export class App extends Component {
       })
       .catch(e => {
         console.log(e);
-        this.props.history.push("/error");
+        errorHandler.clientError();
       });
   };
   render() {

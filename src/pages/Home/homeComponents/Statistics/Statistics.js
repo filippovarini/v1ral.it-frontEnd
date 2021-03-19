@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import errorHandler from "../../../../errorHandler";
 import "./statistics.css";
 
 import QuickFacts from "./QuickFacts";
@@ -7,7 +8,6 @@ import BarChart from "../../../../components/BarChart/BarChart";
 import Loading from "../../../../components/Loading/Loading";
 
 import cases from "../../../../faqData/casesGraph";
-import errorHandler from "../../../Error/ErrorHandler";
 
 const totalMargin = 40;
 const quickFactsWidth = 250;
@@ -33,12 +33,12 @@ export class Statistics extends Component {
         .then(res => res.json())
         .then(jsonRes => {
           if (jsonRes.success) this.setState({ info: jsonRes.info });
-          else errorHandler(jsonRes);
+          else errorHandler.serverError(jsonRes);
           this.setState({ loading: false });
         })
         .catch(e => {
           console.log(e);
-          this.props.history.push("/error");
+          errorHandler.clientError();
         });
     }
   };

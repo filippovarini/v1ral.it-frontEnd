@@ -4,6 +4,7 @@ challenged: true / false
 
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
+import errorHandler from "../../errorHandler";
 import "./challenger.css";
 
 import HideCross from "../HideCross/HideCross";
@@ -47,7 +48,7 @@ export class Challenged extends Component {
       })
       .catch(e => {
         console.log(e);
-        this.props.history.push("/error");
+        errorHandler.clientError();
       });
   };
 
