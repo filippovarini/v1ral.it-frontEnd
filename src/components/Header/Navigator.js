@@ -3,9 +3,16 @@ titles: [{name, handleClick}] */
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import "./header.css";
 
 export class Navigator extends Component {
+  // redirects the user to the relative dashboard page
+  redirect = username => {
+    const path = username[0] === "@" ? "/user" : "/shop";
+    this.props.history.push("/dashboard" + path);
+  };
+
   render() {
     const titles = this.props.user.name
       ? this.props.titles.filter(
@@ -29,7 +36,7 @@ export class Navigator extends Component {
           <div
             key={-1}
             className="header-nav-item"
-            onClick={() => alert("click")}
+            onClick={() => this.redirect(this.props.user.name)}
           >
             <img
               src={this.props.user.userProfile}
@@ -46,4 +53,4 @@ const mapStateToProps = state => {
   return { user: state.user };
 };
 
-export default connect(mapStateToProps)(Navigator);
+export default connect(mapStateToProps)(withRouter(Navigator));

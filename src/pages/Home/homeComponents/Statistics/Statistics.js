@@ -57,7 +57,7 @@ export class Statistics extends Component {
           }
           rtIndex={info.rtIndex}
           supportedShops={info.financedShops}
-          supportIncrement={58}
+          supportIncrement={info.dailyFinancedShops}
         />
         <BarChart cases={cases} statisticsDimensions={graphSize} />
       </div>

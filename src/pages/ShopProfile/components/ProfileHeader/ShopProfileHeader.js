@@ -1,10 +1,10 @@
 /* PROPS
 - name
-- goalsDone
+- services
 - goalsDonePercentage
 - totalCases
-- description
-- dailyCases */
+- viralCases
+- description */
 
 import React, { Component } from "react";
 import "./shopProfileHeader.css";
@@ -16,16 +16,16 @@ export class ShopProfileHeader extends Component {
         <p id="shopProfle-name">{this.props.name}</p>
         <div id="shopProfile-info-container">
           <div className="shopProfile-info">
-            <p className="shopProfile-info-number">{this.props.goalsDone}</p>
-            <p className="shopProfile-info-description">obbiettivi raggiunti</p>
+            <p className="shopProfile-info-number">{this.props.services}</p>
+            <p className="shopProfile-info-description">privilegi offerti</p>
           </div>
           <div className="shopProfile-info">
             <p className="shopProfile-info-number">{this.props.totalCases}</p>
             <p className="shopProfile-info-description">contagi</p>
           </div>
           <div className="shopProfile-info">
-            <p className="shopProfile-info-number">{this.props.dailyCases}</p>
-            <p className="shopProfile-info-description">casi giornalieri</p>
+            <p className="shopProfile-info-number">{this.props.viralCases}</p>
+            <p className="shopProfile-info-description">di cui virali</p>
           </div>
         </div>
         <div>

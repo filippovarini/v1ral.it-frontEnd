@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import errorHandler from "./errorHandler";
+
+// style
 import "./StandardStyle/tags.css";
 import "./StandardStyle/forms.css";
 import "./StandardStyle/boxes.css";
 import "./StandardStyle/text.css";
+import "./StandardStyle/quickFacts.css";
 
 import Workplace from "./workplace/workplace";
 

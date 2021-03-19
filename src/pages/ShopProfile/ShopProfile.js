@@ -11,7 +11,9 @@ import "./shopProfile.css";
 import Header from "../../components/Header/Header";
 import ShopProfileHeader from "./components/ProfileHeader/ShopProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
-import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
+// import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
+import Services from "../../components/Services/Services";
+import Goals from "../../components/Goals/Goals";
 import Info from "./components/Info/Info";
 import Loading from "../../components/Loading/Loading";
 import InsertChallenger from "../../components/InsertChallenger/Challenger";
@@ -41,7 +43,12 @@ export class ShopProfile extends Component {
       .then(res => res.json())
       .then(jsonRes => {
         if (jsonRes.success)
-          this.setState({ shop: jsonRes.shop, added: jsonRes.added });
+          this.setState({
+            shop: jsonRes.shop,
+            added: jsonRes.added,
+            services: jsonRes.services,
+            goals: jsonRes.goals
+          });
         else errorHandler.serverError(jsonRes);
         this.setState({ loading: false });
       })
@@ -80,15 +87,23 @@ export class ShopProfile extends Component {
 
   updateNav = i => this.setState({ navState: i });
 
+  getGoalsDone = () => {
+    const totalGoals = this.state.goals.reduce(
+      (acc, goal) => acc + goal.amount,
+      0
+    );
+    return (parseFloat(this.state.shop.financed_so_far) / totalGoals).toFixed(
+      2
+    );
+  };
+
   render() {
     let bodyComponent =
       this.state.navState === 0 ? (
-        <ServiceBoxes
-          boxes={[
-            { type: "premium", services },
-            { type: "viral", services }
-          ]}
-        />
+        <div id="boxes-container">
+          <Services services={this.state.services || []} />
+          <Goals goals={this.state.goals || []} />
+        </div>
       ) : (
         <Info />
       );
@@ -110,11 +125,11 @@ export class ShopProfile extends Component {
           </div>
           <ShopProfileHeader
             name={this.state.shop.name}
-            goalsDone={-1}
-            totalCases={this.state.shop.premiums}
-            dailyCases={-1}
+            services={this.state.services.length}
+            totalCases={this.state.shop.total_premiums}
+            viralCases={this.state.shop.viral_premiums}
             description={this.state.shop.bio}
-            goalsDonePercentage={this.state.shop.goalsdone}
+            goalsDonePercentage={this.getGoalsDone()}
             handleSubmit={this.handleSubmit}
             added={this.state.added}
           />

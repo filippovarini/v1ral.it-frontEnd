@@ -1,0 +1,79 @@
+.quick-facts {
+  width: 250px;
+  min-width: 250px;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.quick-facts-margin {
+  margin: 20px;
+}
+
+.quick-facts-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.quick-facts.quick-facts-wide {
+  width: 300px;
+}
+
+.facts-header {
+  text-align: center;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.facts-container {
+  width: 90%;
+  margin: 0px auto;
+}
+
+.fact {
+  margin: 20px;
+}
+
+.fact-align {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.fact-align-between {
+  justify-content: space-between;
+}
+
+.fact-align-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin-right: 20px;
+}
+
+.fact-align-image.viral {
+  box-shadow: 0px 0px 5px lime;
+}
+
+.fact-title {
+  font-size: 1.5rem;
+}
+
+.fact-title-small {
+  font-size: 1.2rem;
+}
+
+.fact-data {
+  font-weight: bold;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fact-aside {
+  font-size: 1rem;
+  font-weight: normal;
+}

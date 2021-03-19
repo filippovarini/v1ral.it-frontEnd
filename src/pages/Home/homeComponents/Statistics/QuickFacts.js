@@ -33,8 +33,8 @@ export class QuickFacts extends Component {
 
   render() {
     const body = (
-      <div id="quick-facts" className="statistics-box box">
-        <div id="facts-container">
+      <div className="statistics-box box quick-facts quick-facts-flex">
+        <div className="facts-container">
           <div className="fact">
             <p className="fact-title">Totale Positivi</p>
             <div className="fact-data">

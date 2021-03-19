@@ -25,3 +25,11 @@
   justify-content: space-between;
   margin: 0 auto;
 }
+
+#boxes-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 400px;
+}
