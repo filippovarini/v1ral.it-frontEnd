@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import "./StandardStyle/tags.css";
 import "./StandardStyle/forms.css";
 import "./StandardStyle/boxes.css";
@@ -23,6 +24,22 @@ import UserLogin from "./pages/UserLogin/UserLogin";
 import Error from "./pages/Error/Error";
 
 export class App extends Component {
+  componentDidMount = () => {
+    // fetch user profile and name
+    fetch("/page/header")
+      .then(res => res.json())
+      .then(jsonRes => {
+        if (jsonRes.success)
+          this.props.dispatch({
+            type: "SET-USER",
+            user: { name: jsonRes.name, userProfile: jsonRes.userProfile }
+          });
+      })
+      .catch(e => {
+        console.log(e);
+        this.props.history.push("/error");
+      });
+  };
   render() {
     return (
       <BrowserRouter>
@@ -42,4 +59,4 @@ export class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);

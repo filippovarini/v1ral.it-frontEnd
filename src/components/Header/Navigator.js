@@ -2,11 +2,12 @@
 titles: [{name, handleClick}] */
 
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./header.css";
 
 export class Navigator extends Component {
   render() {
-    const titles = this.props.loggedProfile
+    const titles = this.props.user.name
       ? this.props.titles.filter(
           title => title.name !== "login" && title.name !== "portale aziende"
         )
@@ -24,14 +25,14 @@ export class Navigator extends Component {
             </div>
           );
         })}
-        {this.props.loggedProfile ? (
+        {this.props.user.name ? (
           <div
             key={-1}
             className="header-nav-item"
-            onClick={this.props.loggedProfile.handleClick}
+            onClick={() => alert("click")}
           >
             <img
-              src={this.props.loggedProfile.url}
+              src={this.props.user.userProfile}
               className="header-nav-title header-nav-image"
             />
           </div>
@@ -41,4 +42,8 @@ export class Navigator extends Component {
   }
 }
 
-export default Navigator;
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps)(Navigator);

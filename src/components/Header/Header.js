@@ -13,33 +13,12 @@ export class Header extends Component {
   state = {
     userProfile: null
   };
-  componentDidMount = () => {
-    fetch("/page/header")
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.success)
-          this.setState({ userProfile: jsonRes.userProfile });
-      })
-      .catch(e => {
-        console.log(e);
-        this.props.history.push("/error");
-      });
-  };
+
   render() {
     return (
       <div id="header" className={this.props.class}>
         <Logo />
-        <Navigator
-          loggedProfile={
-            this.state.userProfile
-              ? {
-                  url: this.state.userProfile,
-                  handleClick: () => alert("click")
-                }
-              : false
-          }
-          titles={this.props.titles}
-        />
+        <Navigator titles={this.props.titles} />
       </div>
     );
   }
