@@ -9,11 +9,24 @@ import Challenged from "../../components/InsertChallenger/Challenger";
 
 export class HomeTopHalf extends Component {
   state = {
-    challengerHidden: true
+    challengerHidden: true,
+    challengeLoading: false
   };
 
   toggleChallenger = () => {
     this.setState({ challengerHidden: !this.state.challengerHidden });
+  };
+
+  clickChallengeButton = () => {
+    this.setState({ challengeLoading: true });
+    fetch("/session")
+      .then(res => res.json())
+      .then(jsonRes => {
+        if (!jsonRes.session.loginId) {
+          this.setState({ challengeLoading: false });
+          this.toggleChallenger();
+        } else this.props.history.push("/shops");
+      });
   };
 
   render() {
@@ -38,7 +51,10 @@ export class HomeTopHalf extends Component {
           ]}
         />
         <Countdown />
-        <ChallengeButton show={this.toggleChallenger} />
+        <ChallengeButton
+          loading={this.state.challengeLoading}
+          click={this.clickChallengeButton}
+        />
       </div>
     );
   }

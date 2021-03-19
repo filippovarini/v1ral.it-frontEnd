@@ -28,3 +28,9 @@
   margin-top: 20px;
   background: transparent;
 }
+
+.header-nav-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+}

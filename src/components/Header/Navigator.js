@@ -6,12 +6,17 @@ import "./header.css";
 
 export class Navigator extends Component {
   render() {
+    const titles = this.props.loggedProfile
+      ? this.props.titles.filter(
+          title => title.name !== "login" && title.name !== "portale aziende"
+        )
+      : this.props.titles;
     return (
       <div id="header-nav" className={this.props.class}>
-        {this.props.titles.map(title => {
+        {titles.map((title, i) => {
           return (
             <div
-              key={title.name}
+              key={i}
               className="header-nav-item"
               onClick={title.handleClick}
             >
@@ -19,6 +24,18 @@ export class Navigator extends Component {
             </div>
           );
         })}
+        {this.props.loggedProfile ? (
+          <div
+            key={-1}
+            className="header-nav-item"
+            onClick={this.props.loggedProfile.handleClick}
+          >
+            <img
+              src={this.props.loggedProfile.url}
+              className="header-nav-title header-nav-image"
+            />
+          </div>
+        ) : null}
       </div>
     );
   }

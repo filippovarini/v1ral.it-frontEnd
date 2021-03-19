@@ -16,6 +16,9 @@ import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
 import Services from "./pages/ShopRegister/Services";
 import Goals from "./pages/ShopRegister/Goals";
 
+// user log
+import UserLogin from "./pages/UserLogin/UserLogin";
+
 // error
 import Error from "./pages/Error/Error";
 
@@ -31,6 +34,7 @@ export class App extends Component {
           <Route exact path="/shop/register/services" component={Services} />
           <Route exact path="/shop/register/goals" component={Goals} />
           <Route exact path="/workplace" component={Workplace} />
+          <Route exact path="/login" component={UserLogin} />
           <Route exact path="/error" component={Error} />
         </div>
       </BrowserRouter>

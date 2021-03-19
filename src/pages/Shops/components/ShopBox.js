@@ -18,7 +18,6 @@ export class ShopBox extends Component {
   };
 
   render() {
-    console.log(this.props.shop);
     return (
       <div
         id="shopBox-container"

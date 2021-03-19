@@ -9,8 +9,8 @@ export class HomeButton extends Component {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime,
           beatae.
         </p>
-        <p id="home-button" className="button" onClick={this.props.show}>
-          CONTAGIATI
+        <p id="home-button" className="button" onClick={this.props.click}>
+          {this.props.loading ? "loading..." : "CONTAGIATI"}
         </p>
       </div>
     );
