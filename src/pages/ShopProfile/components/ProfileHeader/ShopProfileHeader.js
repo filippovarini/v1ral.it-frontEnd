@@ -45,7 +45,7 @@ export class ShopProfileHeader extends Component {
           <p
             id="shopProfile-support"
             className="button button-disabled"
-            onClick={this.props.handleSubmit}
+            // onClick={this.props.handleSubmit}
             style={{ background: "green" }}
           >
             CONTAGIATO

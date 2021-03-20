@@ -54,7 +54,7 @@ export class UserLogin extends Component {
       })
         .then(res => res.json())
         .then(jsonRes => {
-          if (jsonRes.success) this.props.history.push("/");
+          if (jsonRes.success) window.location = "/";
           else if (jsonRes.serverError) errorHandler.serverError(jsonRes);
           else this.setState({ loading: false, error: "Credenziali errate" });
         })

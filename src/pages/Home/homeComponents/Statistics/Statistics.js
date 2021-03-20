@@ -7,8 +7,6 @@ import QuickFacts from "./QuickFacts";
 import BarChart from "../../../../components/BarChart/BarChart";
 import Loading from "../../../../components/Loading/Loading";
 
-import cases from "../../../../faqData/casesGraph";
-
 const totalMargin = 40;
 const quickFactsWidth = 250;
 const graphSize = {
@@ -44,7 +42,6 @@ export class Statistics extends Component {
   };
 
   render() {
-    console.log(this.state.info);
     const info = this.state.info;
     const body = info ? (
       <div id="statistics">

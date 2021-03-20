@@ -44,6 +44,7 @@ export class App extends Component {
         errorHandler.clientError();
       });
   };
+
   render() {
     return (
       <BrowserRouter>

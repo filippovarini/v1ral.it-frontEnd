@@ -1,5 +1,5 @@
 /* PROPS:
-- class
+- class?
 - titles [{name, function}] */
 
 import React, { Component } from "react";
