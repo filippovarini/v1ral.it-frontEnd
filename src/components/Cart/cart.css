@@ -1,0 +1,8 @@
+#cart {
+  height: 400px;
+  width: 300px;
+  position: absolute;
+  right: 100px;
+  top: 60px;
+  background: lightblue;
+}

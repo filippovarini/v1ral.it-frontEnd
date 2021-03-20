@@ -3,17 +3,18 @@ import "./shops.css";
 
 import ShopBox from "./components/ShopBox";
 import Loading from "../../components/Loading/Loading";
+import Header from "../../components/Header/Header";
+import Cart from "../../components/Cart/Cart";
 
 //data
-import shops from "../../faqData/shopsList";
-import Header from "../../components/Header/Header";
 
 import errorHandler from "../Error/ErrorHandler";
 
 export class Shops extends Component {
   state = {
     loading: true,
-    shops: null
+    shops: null,
+    cartHidden: true
   };
 
   componentDidMount = () => {
@@ -26,6 +27,14 @@ export class Shops extends Component {
           this.setState({ loading: false });
         });
     }
+  };
+
+  showCart = () => {
+    this.setState({ cartHidden: false });
+  };
+
+  cartContainerClick = e => {
+    if (e.target.id === "cart-container") this.setState({ cartHidden: true });
   };
 
   render() {
@@ -54,7 +63,19 @@ export class Shops extends Component {
     ) : null;
     return (
       <div>
-        <Header titles={[{ name: "carrello" }, { name: "profilo" }]} />
+        <Header
+          titles={[
+            { name: "carrello", handleClick: this.showCart },
+            { name: "profilo" }
+          ]}
+        />
+        <div
+          id="cart-container"
+          onClick={this.cartContainerClick}
+          style={this.state.cartHidden ? { height: "0px" } : null}
+        >
+          <Cart />
+        </div>
         {this.state.loading ? (
           <div className="page-wrapper">
             <Loading />

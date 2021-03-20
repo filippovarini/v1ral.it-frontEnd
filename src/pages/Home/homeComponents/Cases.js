@@ -6,7 +6,6 @@ import { withRouter } from "react-router-dom";
 import errorHandler from "../../../errorHandler";
 
 import Table from "../../../components/Table/Table";
-import cases from "../../../faqData/cases";
 import Loading from "../../../components/Loading/Loading";
 
 export class Shops extends Component {

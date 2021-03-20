@@ -18,9 +18,6 @@ import Info from "./components/Info/Info";
 import Loading from "../../components/Loading/Loading";
 import InsertChallenger from "../../components/InsertChallenger/Challenger";
 
-// faq data
-import services from "../../faqData/services";
-
 export class ShopProfile extends Component {
   state = {
     loading: true,

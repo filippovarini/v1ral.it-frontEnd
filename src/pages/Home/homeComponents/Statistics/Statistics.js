@@ -44,6 +44,7 @@ export class Statistics extends Component {
   };
 
   render() {
+    console.log(this.state.info);
     const info = this.state.info;
     const body = info ? (
       <div id="statistics">
@@ -59,7 +60,10 @@ export class Statistics extends Component {
           supportedShops={info.financedShops}
           supportIncrement={info.dailyFinancedShops}
         />
-        <BarChart cases={cases} statisticsDimensions={graphSize} />
+        <BarChart
+          cases={this.state.info.totalCases}
+          statisticsDimensions={graphSize}
+        />
       </div>
     ) : null;
     return (

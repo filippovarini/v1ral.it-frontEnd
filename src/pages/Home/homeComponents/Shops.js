@@ -6,7 +6,6 @@ import { withRouter } from "react-router-dom";
 
 import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
-import shops from "../../../faqData/shopsList";
 
 import errorHandler from "../../../errorHandler";
 
@@ -53,7 +52,6 @@ export class Shops extends Component {
   };
 
   render() {
-    console.log(this.state.info);
     return (
       <div id="shops-container" className={this.props.class}>
         {!this.state.loading && this.state.info ? (

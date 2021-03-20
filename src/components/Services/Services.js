@@ -14,6 +14,7 @@ export class Services extends Component {
               <div className="fact fact-align" key={i}>
                 <img
                   className={"fact-align-image " + service.type}
+                  alt={"Imagine del servizio " + service.name}
                   src={service.image}
                 />
 

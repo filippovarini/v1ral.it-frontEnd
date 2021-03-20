@@ -40,6 +40,7 @@ export class Navigator extends Component {
           >
             <img
               src={this.props.user.userProfile}
+              alt="Imagine profilo dell'utente"
               className="header-nav-title header-nav-image"
             />
           </div>
