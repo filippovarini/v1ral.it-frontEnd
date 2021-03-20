@@ -18,6 +18,7 @@ export class ShopBox extends Component {
   };
 
   render() {
+    console.log(this.props.shop);
     return (
       <div
         id="shopBox-container"
@@ -40,6 +41,13 @@ export class ShopBox extends Component {
           <p>{this.props.shop.category}</p>
           <p>{this.props.shop.goalsdone}</p>
           <p>{this.props.shop.premiums}</p>
+          <p>
+            {this.props.shop.alreadybought
+              ? "già comprato"
+              : this.props.shop.inCart
+              ? "nel carrello"
+              : null}
+          </p>
         </div>
       </div>
     );

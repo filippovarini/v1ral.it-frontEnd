@@ -24,6 +24,7 @@ export class ShopProfile extends Component {
     navState: 0,
     shop: null,
     added: false,
+    alreadyBought: false,
     insertChallengerHidden: true
   };
 
@@ -43,6 +44,7 @@ export class ShopProfile extends Component {
           this.setState({
             shop: jsonRes.shop,
             added: jsonRes.added,
+            alreadyBought: jsonRes.alreadyBought,
             services: jsonRes.services,
             goals: jsonRes.goals
           });
@@ -129,6 +131,7 @@ export class ShopProfile extends Component {
             goalsDonePercentage={this.getGoalsDone()}
             handleSubmit={this.handleSubmit}
             added={this.state.added}
+            alreadyBought={this.state.alreadyBought}
           />
         </div>
         <div id="shopProfile-nav">

@@ -23,12 +23,13 @@ export class Navigator extends Component {
 
   /** Reguests the cart info (validating cart ids) */
   showCart = () => {
+    this.setState({ cartHidden: false });
     fetch("/page/checkout")
       .then(res => res.json())
       .then(jsonRes => {
         if (!jsonRes.success) {
           if (jsonRes.cartEmpty)
-            this.setState({ cart: [], cartLoading: false, cartHidden: false });
+            this.setState({ cart: [], cartLoading: false });
           else errorHandler.serverError();
         } else
           this.setState({

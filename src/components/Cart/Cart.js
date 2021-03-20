@@ -12,7 +12,6 @@ import Loading from "../Loading/Loading";
 
 export class Cart extends Component {
   render() {
-    console.log(this.props.shops);
     const body =
       this.props.shops && this.props.shops.length > 0 ? (
         <div id="cart-items">
