@@ -1,0 +1,31 @@
+.communication-panel {
+  background: rgb(200, 200, 200);
+  width: 350px;
+  height: 200px;
+  box-sizing: border-box;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -175px;
+  position: absolute;
+}
+
+.communication-panel-header {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.communication-panel-text {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.communication-panel-button {
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  margin-top: 40px;
+  text-transform: uppercase;
+}

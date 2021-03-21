@@ -18,6 +18,8 @@ label {
 
 table {
   width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   border-collapse: collapse;
   background: rgb(230, 230, 230);
 }
@@ -53,4 +55,8 @@ td {
 
 .hidden {
   display: none;
+}
+
+.pointer {
+  cursor: pointer;
 }

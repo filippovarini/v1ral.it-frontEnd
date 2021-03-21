@@ -1,0 +1,17 @@
+#insertUser-container {
+  margin-top: 100px;
+}
+
+#insertUser-header {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#checkout-confirm {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}

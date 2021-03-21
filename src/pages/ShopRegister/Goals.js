@@ -6,8 +6,6 @@ import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
 import Indexer from "../ShopRegister/components/Indexer";
 import AddService from "../ShopRegister/components/AddService/AddService";
 
-import faqTitles from "../../faqData/faqHeaderTitles";
-
 export class Services extends Component {
   state = {
     goals: [],
@@ -33,7 +31,7 @@ export class Services extends Component {
   render() {
     return (
       <div>
-        <Header titles={faqTitles} />
+        <Header />
         <div className="box page-wrapper shop-register-container">
           <ServiceHeader title="COSA FARAI CON IL FINANZIAMENTO" />
           <p id="services-warning">

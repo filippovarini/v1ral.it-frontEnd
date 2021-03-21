@@ -16,7 +16,9 @@ const graphSize = {
 
 const getDailyIncrement = totalCases => {
   const [predDay, currDay] = totalCases.slice(-2);
-  return Math.round((100 * (currDay.number - predDay.number)) / predDay.number);
+  return (
+    Math.round((100 * (currDay.number - predDay.number)) / predDay.number) || 0
+  );
 };
 
 export class Statistics extends Component {

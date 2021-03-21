@@ -113,7 +113,9 @@ export class ShopProfile extends Component {
           <InsertChallenger
             hidden={this.state.insertChallengerHidden}
             hide={this.toggleChallenger}
-            alreadyAccountRedirection="/login"
+            alreadyAccountRedirection={
+              "/login/?onSuccess=" + window.location.pathname
+            }
             successRedirection={this.props.history.location.pathname}
           />
           <div id="shopProfile-logo" className="box">
@@ -146,7 +148,7 @@ export class ShopProfile extends Component {
     ) : null;
     return (
       <div>
-        <Header titles={[{ name: "carrello" }, { name: "profilo" }]} />
+        <Header />
         <div className="page-wrapper">
           {this.state.loading ? <Loading /> : body}
         </div>

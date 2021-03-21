@@ -9,12 +9,14 @@ import "./StandardStyle/forms.css";
 import "./StandardStyle/boxes.css";
 import "./StandardStyle/text.css";
 import "./StandardStyle/quickFacts.css";
+import "./StandardStyle/communicationPanel.css";
 
 import Workplace from "./workplace/workplace";
 
 import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
 import ShopProfile from "./pages/ShopProfile/ShopProfile";
+import Checkout from "./pages/Checkout/Checkout";
 
 // shop register
 import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
@@ -57,6 +59,7 @@ export class App extends Component {
           <Route exact path="/shop/register/goals" component={Goals} />
           <Route exact path="/workplace" component={Workplace} />
           <Route exact path="/login" component={UserLogin} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/error" component={Error} />
         </div>
       </BrowserRouter>

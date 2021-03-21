@@ -6,9 +6,6 @@ import Images from "./components/Images/ImagesUploading";
 import Form from "./components/Form/Form";
 import Indexer from "../components/Indexer";
 
-// faq data
-import faqTitles from "../../../faqData/faqHeaderTitles";
-
 export class BioInfo extends Component {
   handleSubmit = () => {
     this.props.history.push("/shop/register/services");
@@ -17,7 +14,7 @@ export class BioInfo extends Component {
   render() {
     return (
       <div>
-        <Header class="standard" titles={faqTitles} />
+        <Header />
         <div className="page-wrapper box shop-register-container">
           <Images />
           <Form />

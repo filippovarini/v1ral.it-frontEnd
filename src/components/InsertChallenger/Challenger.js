@@ -1,7 +1,3 @@
-/* PROPS:
-challenged: true / false
- */
-
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import errorHandler from "../../errorHandler";
@@ -10,6 +6,12 @@ import "./challenger.css";
 import HideCross from "../HideCross/HideCross";
 import Loading from "../Loading/Loading";
 
+/** PopUp used for the user to insert
+ * @param hidden show / hide
+ * @param hide function to hide the popup
+ * @param successRedirection where to redirect upon successful challenger insert
+ * @param alreadyAccountRedirection where to redirect if user already logged
+ */
 export class Challenged extends Component {
   state = {
     challenger: null,

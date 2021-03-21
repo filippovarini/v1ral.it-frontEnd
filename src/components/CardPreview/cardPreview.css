@@ -1,0 +1,71 @@
+#cardPreview {
+  border: 1px solid black;
+  width: 100%;
+  max-width: 500px;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#cardPreview-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+#cardPreview-halves {
+  display: flex;
+  height: 150px;
+  justify-content: space-between;
+}
+
+.cardPreview-half {
+  width: 50%;
+  position: relative;
+}
+
+#cardPreview-texts {
+  box-sizing: border-box;
+  padding-top: 30px;
+  padding-left: 10px;
+}
+
+.cardPreview-text {
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.cardPreview-text-key {
+  margin-right: 10px;
+}
+
+.cardPreview-text-value {
+  font-weight: bold;
+}
+
+#profileInputLabel {
+  font-size: 3rem;
+}
+
+.profile {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+#resetImage {
+  position: absolute;
+  right: 60px;
+  top: 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}

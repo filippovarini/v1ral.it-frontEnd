@@ -38,18 +38,7 @@ export class HomeTopHalf extends Component {
           alreadyAccountRedirection="/shops"
           successRedirection="/shops"
         />
-        <Header
-          class={this.props.class}
-          titles={[
-            { name: "vision" },
-            { name: "diventa virale" },
-            { name: "login" },
-            {
-              name: "portale aziende",
-              handleClick: () => this.props.history.push("shop/register/bio")
-            }
-          ]}
-        />
+        <Header class={this.props.class} />
         <Countdown />
         <ChallengeButton
           loading={this.state.challengeLoading}

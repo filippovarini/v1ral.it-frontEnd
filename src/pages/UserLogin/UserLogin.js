@@ -43,7 +43,6 @@ export class UserLogin extends Component {
     e.preventDefault();
     if (this.notEmpty()) {
       this.setState({ loading: true });
-      console.log("sending");
       fetch("/user/login", {
         method: "POST",
         headers: {
@@ -54,7 +53,10 @@ export class UserLogin extends Component {
       })
         .then(res => res.json())
         .then(jsonRes => {
-          if (jsonRes.success) window.location = "/";
+          if (jsonRes.success)
+            window.location = window.location.search
+              ? window.location.search.split("=")[1]
+              : "/";
           else if (jsonRes.serverError) errorHandler.serverError(jsonRes);
           else this.setState({ loading: false, error: "Credenziali errate" });
         })
@@ -93,9 +95,7 @@ export class UserLogin extends Component {
 
     return (
       <div>
-        <Header
-          titles={[{ name: "link1" }, { name: "link2" }, { name: "link3" }]}
-        />
+        <Header />
         <div className="page-wrapper">
           {this.state.loading ? (
             <div className="log-form box box-background">

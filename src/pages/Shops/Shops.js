@@ -63,12 +63,7 @@ export class Shops extends Component {
     ) : null;
     return (
       <div>
-        <Header
-          titles={[
-            { name: "carrello", handleClick: this.showCart },
-            { name: "profilo" }
-          ]}
-        />
+        <Header />
         <div
           id="cart-container"
           onClick={this.cartContainerClick}

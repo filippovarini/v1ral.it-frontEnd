@@ -1,0 +1,17 @@
+#checkout-header {
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#checkout-cart {
+  margin-top: 40px;
+}
+
+#checkout-cart-header {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
