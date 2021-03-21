@@ -4,31 +4,18 @@ import "./cardPreview.css";
 import Loading from "../Loading/Loading";
 
 /** Preview of the card
- * @param imageUrl
- * @param handleChangeUrl
+ * @param setUrl Function to set the profileUrl
  * @param username
  * @param challenger
+ * @param url
+ * @param imageLoading
+ * @param handleImageChange
+ * @param resetImage
  */
 export class CardPreview extends Component {
   state = {
     url: null,
     imageLoading: false
-  };
-
-  handleImageChange = e => {
-    this.setState({ imageLoading: true });
-    if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = function(event) {
-        this.setState({
-          url: event.target.result,
-          imageLoading: false
-          // submitting: false,
-          // loading: false
-        });
-      }.bind(this);
-      reader.readAsDataURL(e.target.files[0]);
-    }
   };
 
   render() {
@@ -40,7 +27,7 @@ export class CardPreview extends Component {
         <input
           id="profileInput"
           type="file"
-          onChange={this.handleImageChange}
+          onChange={this.props.handleImageChange}
           className="hidden"
           accept="image/*"
         />
@@ -52,10 +39,10 @@ export class CardPreview extends Component {
         <i
           id="resetImage"
           className="fas fa-times"
-          onClick={() => this.setState({ url: null })}
+          onClick={this.props.resetImage}
         ></i>
         <img
-          src={this.state.url}
+          src={this.props.url}
           className="profile"
           alt="imagine profilo sulla carta"
         />
@@ -82,9 +69,9 @@ export class CardPreview extends Component {
               <p className="cardPreview-text-value">{this.props.challenger}</p>
             </div>
           </div>
-          {this.state.imageLoading
+          {this.props.imageLoading
             ? imageLoading
-            : this.state.url
+            : this.props.url
             ? image
             : input}
         </div>

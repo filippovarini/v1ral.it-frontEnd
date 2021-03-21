@@ -16,7 +16,10 @@ import Workplace from "./workplace/workplace";
 import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
 import ShopProfile from "./pages/ShopProfile/ShopProfile";
+
+// transaction
 import Checkout from "./pages/Checkout/Checkout";
+import TransactionSuccess from "./pages/TransactionSuccess/TransactionSuccess";
 
 // shop register
 import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
@@ -60,6 +63,10 @@ export class App extends Component {
           <Route exact path="/workplace" component={Workplace} />
           <Route exact path="/login" component={UserLogin} />
           <Route exact path="/checkout" component={Checkout} />
+          <Route
+            path="/success/:transactionId"
+            component={TransactionSuccess}
+          />
           <Route exact path="/error" component={Error} />
         </div>
       </BrowserRouter>

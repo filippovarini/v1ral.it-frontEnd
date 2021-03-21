@@ -85,6 +85,36 @@ export class Checkout extends Component {
     });
   };
 
+  handleSubmit = newUser => {
+    this.setState({ loading: true });
+    fetch("/transaction/challengerCheckout", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ newUser })
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        console.log(jsonRes);
+        if (jsonRes.unauthorized) {
+          alert(
+            "Errore con il carrello! Carrello vuoto o contenente items non validi"
+          );
+          window.location = window.location.pathname;
+        } else if (jsonRes.success) {
+          window.location = "/success/" + jsonRes.transactionId;
+        } else {
+          errorHandler.serverError(jsonRes);
+        }
+      })
+      .catch(e => {
+        console.log(e);
+        errorHandler.clientError();
+      });
+  };
+
   render() {
     const body =
       this.state.shops.length > 0 ? (
@@ -96,7 +126,10 @@ export class Checkout extends Component {
           </div>
           <div id="checkout-user">
             {this.state.isLogged ? null : (
-              <InsertUser challenger={this.state.challenger} />
+              <InsertUser
+                challenger={this.state.challenger}
+                handleSubmit={this.handleSubmit}
+              />
             )}
           </div>
         </div>
