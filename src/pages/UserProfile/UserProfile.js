@@ -18,7 +18,7 @@ export class UserProfile extends Component {
 
   /** Get info from database and session */
   componentDidMount = () => {
-    const id = this.props.history.location.pathname.split("/").slice(-1)[0];
+    const id = this.props.match.params.username;
     fetch(`/page/userProfile/${id}`)
       .then(res => res.json())
       .then(jsonRes => {
@@ -56,6 +56,7 @@ export class UserProfile extends Component {
             <img src={this.state.user.profileurl} alt="logo dell'impresa" />
           </div>
           <ProfileHeader
+            dashboard={this.props.dashboard}
             name={this.state.user.username}
             info={[
               { title: "focolai supportati", data: this.state.user.number },

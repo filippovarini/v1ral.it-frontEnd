@@ -18,7 +18,7 @@ export class Navigator extends Component {
   // redirects the user to the relative dashboard page
   redirect = username => {
     const path = username[0] === "@" ? "/user" : "/shop";
-    this.props.history.push("/dashboard" + path);
+    this.props.history.push(path + "/dashboard/" + this.props.user.id);
   };
 
   /** Reguests the cart info (validating cart ids) */

@@ -43,7 +43,11 @@ export class App extends Component {
         if (jsonRes.success)
           this.props.dispatch({
             type: "SET-USER",
-            user: { name: jsonRes.name, userProfile: jsonRes.userProfile }
+            user: {
+              name: jsonRes.name,
+              userProfile: jsonRes.userProfile,
+              id: jsonRes.id
+            }
           });
       })
       .catch(e => {
@@ -58,9 +62,18 @@ export class App extends Component {
         <div>
           <Route exact path="/" component={Home} />
           <Route exact path="/shops" component={Shops} />
-          <Route exact path="/shop/profile/:username" component={ShopProfile} />
+          <Route exact path="/shop/profile/:id" component={ShopProfile} />
           <Route exact path="/user/profile/:username" component={UserProfile} />
-          <Route exact path="/shop/register/bio" component={BioInfo} />
+          <Route
+            exact
+            path="/shop/dashboard/:id"
+            render={() => <ShopProfile dashboard={true} />}
+          />
+          <Route
+            exact
+            path="/user/dashboard/:username"
+            render={() => <UserProfile dashboard={true} />}
+          />
           <Route exact path="/shop/register/services" component={Services} />
           <Route exact path="/shop/register/goals" component={Goals} />
           <Route exact path="/workplace" component={Workplace} />

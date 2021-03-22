@@ -36,7 +36,7 @@ export class ShopProfile extends Component {
 
   /** Get info from database and session */
   componentDidMount = () => {
-    const id = this.props.history.location.pathname.split("/").slice(-1)[0];
+    const id = this.props.match.params.id;
     fetch(`/page/shopProfile/${id}`)
       .then(res => res.json())
       .then(jsonRes => {
@@ -139,6 +139,7 @@ export class ShopProfile extends Component {
             <img src={this.state.shop.logourl} alt="logo dell'impresa" />
           </div>
           <ShopProfileHeader
+            dashboard={this.props.dashboard}
             name={this.state.shop.name}
             info={[
               { title: "privilegi offerti", data: this.state.services.length },
