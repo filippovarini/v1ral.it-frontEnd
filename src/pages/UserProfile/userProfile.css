@@ -1,0 +1,30 @@
+#userProfile-header-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+#userProfile-logo {
+  width: 300px;
+  height: 300px;
+  min-width: 300px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 150px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+#userProfile-shops-header {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#userProfile-empty-shops {
+  margin-top: 100px;
+}

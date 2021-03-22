@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import errorHandler from "../../functions/errorHandler";
 import "./shops.css";
 
-import ShopBox from "./components/ShopBox";
+import ShopBox from "../../components/ShopBox/ShopBox";
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
 import Cart from "../../components/Cart/Cart";
@@ -55,7 +55,7 @@ export class Shops extends Component {
           <p className=" shops-order-button">CASI</p>
           <p className=" shops-order-button">BISOGNO</p>
         </div>
-        <div id="shopBoxes-container">
+        <div className="shopBoxes-container">
           {this.state.shops.map((shop, i) => (
             <ShopBox key={i} shop={shop} />
           ))}

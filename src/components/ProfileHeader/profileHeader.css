@@ -1,0 +1,44 @@
+#profile-header {
+  max-width: 600px;
+  min-width: 600px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#profile-name {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#profile-info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-info-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#profile-place {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+#profile-description {
+  font-size: 1.3rem;
+  line-height: 18px;
+}
+
+#profile-button {
+  width: 100%;
+  margin-top: 20px;
+}

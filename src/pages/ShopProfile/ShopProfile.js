@@ -9,7 +9,7 @@ import errorHandler from "../../functions/errorHandler";
 import "./shopProfile.css";
 
 import Header from "../../components/Header/Header";
-import ShopProfileHeader from "./components/ProfileHeader/ShopProfileHeader";
+import ShopProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
 // import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
 import Services from "../../components/Services/Services";
@@ -40,16 +40,22 @@ export class ShopProfile extends Component {
     fetch(`/page/shopProfile/${id}`)
       .then(res => res.json())
       .then(jsonRes => {
-        if (jsonRes.success)
+        if (jsonRes.success) {
           this.setState({
             shop: jsonRes.shop,
             added: jsonRes.added,
             alreadyBought: jsonRes.alreadyBought,
             services: jsonRes.services,
-            goals: jsonRes.goals
+            goals: jsonRes.goals,
+            loading: false
           });
-        else errorHandler.serverError(jsonRes);
-        this.setState({ loading: false });
+        } else if (jsonRes.invalidShopId) {
+          alert(jsonRes.message);
+          window.location = "/shops";
+        } else {
+          errorHandler.serverError(jsonRes);
+          this.setState({ loading: false });
+        }
       })
       .catch(e => {
         console.log(e);
@@ -107,6 +113,17 @@ export class ShopProfile extends Component {
         <Info />
       );
 
+    let profileHeaderButtonStyle = null;
+    let profileHeaderButtonText = "contagiati qui";
+    let profileHeaderButtonClickHandler = this.handleSubmit;
+    if (this.state.added || this.state.alreadyBought) {
+      profileHeaderButtonClickHandler = null;
+      profileHeaderButtonStyle = { background: "green" };
+      profileHeaderButtonText = this.state.added
+        ? "contagiandoti..."
+        : "già contagiato";
+    }
+
     const body = this.state.shop ? (
       <div className="page-wrapper">
         <div id="shopProfile-header-container">
@@ -119,21 +136,21 @@ export class ShopProfile extends Component {
             successRedirection={this.props.history.location.pathname}
           />
           <div id="shopProfile-logo" className="box">
-            <img
-              src="http://www.ciroamergellina.it/wp-content/themes/yootheme/cache/Logo-Ciro-a-Mergellina-detto-o-nas-e-cane-9075f8fa.png"
-              alt="logo dell'impresa"
-            />
+            <img src={this.state.shop.logourl} alt="logo dell'impresa" />
           </div>
           <ShopProfileHeader
             name={this.state.shop.name}
-            services={this.state.services.length}
-            totalCases={this.state.shop.total_premiums}
-            viralCases={this.state.shop.viral_premiums}
+            info={[
+              { title: "privilegi offerti", data: this.state.services.length },
+              { title: "contagi", data: this.state.shop.total_premiums },
+              { title: "di cui virali", data: this.state.shop.viral_premiums }
+            ]}
             description={this.state.shop.bio}
-            goalsDonePercentage={this.getGoalsDone()}
-            handleSubmit={this.handleSubmit}
-            added={this.state.added}
-            alreadyBought={this.state.alreadyBought}
+            city={this.state.shop.city}
+            province={this.state.shop.province}
+            handleSubmit={profileHeaderButtonClickHandler}
+            buttonText={profileHeaderButtonText}
+            style={profileHeaderButtonStyle}
           />
         </div>
         <div id="shopProfile-nav">

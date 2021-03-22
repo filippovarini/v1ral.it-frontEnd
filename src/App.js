@@ -15,8 +15,10 @@ import Workplace from "./workplace/workplace";
 
 import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
-import ShopProfile from "./pages/ShopProfile/ShopProfile";
 
+// profiles
+import ShopProfile from "./pages/ShopProfile/ShopProfile";
+import UserProfile from "./pages/UserProfile/UserProfile";
 // transaction
 import Checkout from "./pages/Checkout/Checkout";
 import TransactionSuccess from "./pages/TransactionSuccess/TransactionSuccess";
@@ -57,6 +59,7 @@ export class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/shops" component={Shops} />
           <Route exact path="/shop/profile/:username" component={ShopProfile} />
+          <Route exact path="/user/profile/:username" component={UserProfile} />
           <Route exact path="/shop/register/bio" component={BioInfo} />
           <Route exact path="/shop/register/services" component={Services} />
           <Route exact path="/shop/register/goals" component={Goals} />

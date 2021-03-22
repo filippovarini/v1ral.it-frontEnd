@@ -24,10 +24,3 @@
 .shops-order-button {
   cursor: pointer;
 }
-
-#shopBoxes-container {
-  display: grid;
-  grid-gap: 50px;
-  margin-top: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
