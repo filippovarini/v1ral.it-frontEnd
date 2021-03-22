@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import errorHandler from "../../../../errorHandler";
+import errorHandler from "../../../../functions/errorHandler";
 import "./statistics.css";
 
 import QuickFacts from "./QuickFacts";

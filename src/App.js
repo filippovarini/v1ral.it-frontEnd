@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import errorHandler from "./errorHandler";
+import errorHandler from "./functions/errorHandler";
 
 // style
 import "./StandardStyle/tags.css";

@@ -4,7 +4,7 @@ titles: [{name, handleClick}] */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import errorHandler from "../../errorHandler";
+import errorHandler from "../../functions/errorHandler";
 import "./header.css";
 
 import Cart from "../Cart/Cart";

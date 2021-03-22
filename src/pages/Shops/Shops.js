@@ -1,14 +1,11 @@
 import React, { Component } from "react";
+import errorHandler from "../../functions/errorHandler";
 import "./shops.css";
 
 import ShopBox from "./components/ShopBox";
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
 import Cart from "../../components/Cart/Cart";
-
-//data
-
-import errorHandler from "../Error/ErrorHandler";
 
 export class Shops extends Component {
   state = {
@@ -23,8 +20,12 @@ export class Shops extends Component {
         .then(res => res.json())
         .then(jsonRes => {
           if (jsonRes.success) this.setState({ shops: jsonRes.shops });
-          else errorHandler(jsonRes);
+          else errorHandler.serverError(jsonRes);
           this.setState({ loading: false });
+        })
+        .catch(e => {
+          console.log(e);
+          errorHandler.clientError();
         });
     }
   };

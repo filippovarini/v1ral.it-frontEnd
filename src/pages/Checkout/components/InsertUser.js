@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import errorHandler from "../../../errorHandler";
+import postImage from "../../../functions/postImage";
 import "./components.css";
 
 import CardPreview from "../../../components/CardPreview/CardPreview";
-import Loading from "../../../components/Loading/Loading";
+import FormInput from "./ShipmentForm";
 
 /** Insert new user info
  * @param challenger
@@ -40,7 +40,7 @@ export class InsertUser extends Component {
   /** Saves the new image to s3 getting back an url
    * Once real url got back, set it on InsertUser state
    */
-  handleImageChange = e => {
+  handleImageChange = async e => {
     this.setState({ imageLoading: true });
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
@@ -59,23 +59,8 @@ export class InsertUser extends Component {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     this.setState({ multerOperating: true });
-    fetch("/image", {
-      method: "POST",
-      headers: {
-        Accept: "application/json"
-      },
-      body: formData
-    })
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.success) {
-          this.setState({ profileUrl: jsonRes.url, multerOperating: false });
-        } else errorHandler.serverError(jsonRes);
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
-      });
+    const url = await postImage(formData);
+    this.setState({ profileUrl: url, multerOperating: false });
   };
 
   // checks user has inserted all credentials
@@ -171,38 +156,7 @@ export class InsertUser extends Component {
             onChange={this.handleChange}
           />
         </form>
-        <form
-          id="shipment-form"
-          className="log-form"
-          style={{ marginBottom: "0px" }}
-        >
-          <p className="form-header">SPEDIZIONE</p>
-          <input
-            type="text"
-            placeholder="città"
-            id="city"
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            placeholder="provincia"
-            id="province"
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            placeholder="via"
-            id="street"
-            onChange={this.handleChange}
-          />
-          <input
-            type="number"
-            placeholder="CAP"
-            id="postcode"
-            onChange={this.handleChange}
-          />
-          <p className="form-error">{this.state.credentialError}</p>
-        </form>
+        <FormInput handleChange={this.handleChange} />
         <p className="form-error">{this.state.error}</p>
         {this.state.multerOperating ? (
           <div id="checkout-confirm" className="button button-disabled">

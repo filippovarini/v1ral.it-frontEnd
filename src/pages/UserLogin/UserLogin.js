@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import errorHandler from "../../errorHandler";
+import errorHandler from "../../functions/errorHandler";
 
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";

@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
 
-import errorHandler from "../../../errorHandler";
+import errorHandler from "../../../functions/errorHandler";
 
 export class Shops extends Component {
   state = {

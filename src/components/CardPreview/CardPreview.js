@@ -40,6 +40,7 @@ export class CardPreview extends Component {
           id="resetImage"
           className="fas fa-times"
           onClick={this.props.resetImage}
+          style={this.props.static ? { display: "none" } : null}
         ></i>
         <img
           src={this.props.url}

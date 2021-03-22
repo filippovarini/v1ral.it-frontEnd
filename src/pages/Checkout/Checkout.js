@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import errorHandler from "../../errorHandler";
+import errorHandler from "../../functions/errorHandler";
 import "./checkout.css";
 
 // loading
@@ -9,16 +9,18 @@ import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import Table from "../../components/Table/Table";
 import InsertUser from "./components/InsertUser";
+import UserLoggedInfo from "./components/UserLoggedInfo";
 
 export class Checkout extends Component {
   state = {
     loading: true,
     shops: [],
     isLogged: false,
-    challenger: false
+    challenger: false,
+    user: null
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     fetch("/page/checkout")
       .then(res => res.json())
       .then(jsonRes => {
@@ -34,7 +36,8 @@ export class Checkout extends Component {
               this.setState({
                 shops: jsonRes.shops,
                 isLogged: jsonRes.isLogged,
-                challenger: jsonRes.challenger
+                challenger: jsonRes.challenger,
+                user: jsonRes.user
               });
             }
           }
@@ -93,7 +96,7 @@ export class Checkout extends Component {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ newUser })
+      body: newUser ? JSON.stringify({ newUser }) : JSON.stringify({})
     })
       .then(res => res.json())
       .then(jsonRes => {
@@ -125,7 +128,12 @@ export class Checkout extends Component {
             <Table data={this.formatDateForTable(this.state.shops)} />
           </div>
           <div id="checkout-user">
-            {this.state.isLogged ? null : (
+            {this.state.isLogged ? (
+              <UserLoggedInfo
+                defaultInfo={this.state.user}
+                handleSubmit={this.handleSubmit}
+              />
+            ) : (
               <InsertUser
                 challenger={this.state.challenger}
                 handleSubmit={this.handleSubmit}
