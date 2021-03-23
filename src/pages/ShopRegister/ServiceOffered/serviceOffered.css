@@ -10,6 +10,10 @@
   margin: 10px 0;
 }
 
+#addService-form {
+  width: 230px;
+}
+
 .addService-form-line {
   justify-content: space-between;
 }

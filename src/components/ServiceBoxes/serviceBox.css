@@ -1,9 +1,3 @@
-#serviceBox-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 #serviceBox {
   width: 300px;
   margin: 20px;
@@ -16,12 +10,6 @@
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 20px;
-}
-
-.serviceBox-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
 }
 
 .serviceBox-goal {

@@ -9,6 +9,12 @@
   margin-top: 80px;
 }
 
+#shop-register-goals-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
 /* FORMS */
 #input-container {
   display: grid;
@@ -96,7 +102,6 @@
 }
 
 .addInfo-form {
-  width: 230px;
   margin: 0 auto;
   justify-content: space-between;
   margin-top: 20px;

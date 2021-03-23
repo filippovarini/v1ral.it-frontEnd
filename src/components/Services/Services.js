@@ -8,10 +8,7 @@ import React, { Component } from "react";
 export class Services extends Component {
   render() {
     const adding = this.props.adding ? (
-      <div
-        className="serviceBox-container button fact-align"
-        onClick={this.props.handleAddClick}
-      >
+      <div className=" button fact-align" onClick={this.props.handleAddClick}>
         <i className="fas fa-plus fact-align-image sg-add-icon fact-title-small"></i>
         <p className="sg-add-title fact-title-small">Aggiungi</p>
       </div>
