@@ -45,13 +45,14 @@ export class Shops extends Component {
           "indice di ripresa":
             (
               parseFloat(infoObj.financed_so_far) /
-              parseFloat(infoObj.disruption_index)
+                parseFloat(infoObj.disruption_index) || 0
             ).toFixed(2) + "%"
         };
       });
   };
 
   render() {
+    console.log(this.state.info);
     return (
       <div id="shops-container" className={this.props.class}>
         {!this.state.loading && this.state.info ? (

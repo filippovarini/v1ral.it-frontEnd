@@ -28,9 +28,7 @@ import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
 import ShopCredentials from "./pages/ShopRegister/ShopCredentials/ShopCredentials";
 import ServicesOffered from "./pages/ShopRegister/ServiceOffered/ServicesOffered";
 import ShopGoals from "./pages/ShopRegister/ShopGoals/ShopGoals";
-import RegisterDone, {
-  ShopRegisterDone
-} from "./pages/ShopRegister/ShopRegisterDone";
+import ShopRegisterDone from "./pages/ShopRegister/ShopRegisterDone";
 
 // user log
 import UserLogin from "./pages/UserLogin/UserLogin";

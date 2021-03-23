@@ -85,6 +85,12 @@ export class BioInfo extends Component {
       this.setState({ error: "Completa tutti i campi" });
       return false;
     }
+    if (this.state.bio && this.state.bio.length > 250) {
+      this.setState({
+        error: "La bio deve essere lunga massimo 250 caratteri"
+      });
+      return false;
+    }
     return true;
   };
 

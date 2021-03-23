@@ -53,7 +53,7 @@ export class PlaceForm extends Component {
             type="number"
             id="postcode"
             autoComplete="off"
-            value={this.props.postcode || 0}
+            value={this.props.postcode || ""}
             placeholder="CAP"
             onChange={this.props.handleChange}
             className="short-width"

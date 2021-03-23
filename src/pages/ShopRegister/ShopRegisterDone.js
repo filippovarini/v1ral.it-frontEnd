@@ -2,18 +2,20 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import errorHandler from "../../functions/errorHandler";
+
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
 
 export class ShopRegisterDone extends Component {
   state = {
-    loading: false
+    loading: true,
+    name: null
   };
 
   componentDidMount = () => {
-    if (!this.props.shopRegister) this.props.history.push("/shop/register/bio");
-    else if (!this.props.shopRegister.bio)
-      this.props.history.push("/shop/register/bio");
+    if (!this.props.shopRegister) this.props.history.push("/");
+    else if (!this.props.shopRegister.bio) this.props.history.push("/");
     else if (!this.props.shopRegister.credentials)
       this.props.history.push("/shop/register/credentials");
     else if (!this.props.shopRegister.services)
@@ -61,6 +63,25 @@ export class ShopRegisterDone extends Component {
         clicks: 0,
         connectedId: "still to implement"
       };
+      fetch("/shop/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({ shop, goals, services })
+      })
+        .then(res => res.json())
+        .then(jsonRes => {
+          if (jsonRes.success) {
+            this.setState({ loading: false, name: jsonRes.name });
+          } else {
+            errorHandler.serverError(jsonRes);
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
   };
 
@@ -100,4 +121,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default ShopRegisterDone;
+export default connect(mapStateToProps)(ShopRegisterDone);
