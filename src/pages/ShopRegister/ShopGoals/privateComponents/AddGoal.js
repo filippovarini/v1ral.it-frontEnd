@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import HideCross from "../../../../components/HideCross/HideCross";
-import BestSellings from "../../components/BestSelling";
 import Form from "./AddGoalForm";
 
 /** Pop up used to insert new goals
@@ -10,9 +9,9 @@ import Form from "./AddGoalForm";
  * @param hide function to hide component
  * */
 
-const bestSellingServices = [
+const bestSellingGoals = [
   "Riassumere il 10% del personale",
-  "Riassumere il 50% del persoale",
+  "Riassumere il 50% del personale",
   "Ristrutturare"
 ];
 
@@ -35,11 +34,15 @@ export class AddGoal extends Component {
     return true;
   };
 
+  resetForm = () => {
+    this.props.hide();
+    document.getElementById("addGoal-form").reset();
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     if (this.validFields()) {
-      this.props.hide();
-      document.getElementById("addGoal-form").reset();
+      this.resetForm();
       this.props.handleAdd({
         name: this.state.name,
         amount: parseInt(this.state.amount)
@@ -62,7 +65,13 @@ export class AddGoal extends Component {
           <p id="addInfo-header">Aggiungi un privilegio</p>
           <p id="bestSelling-header">Best selling:</p>
           <div id="bestSelling-container" className="flex-col">
-            <BestSellings bestSellings={bestSellingServices} />
+            {bestSellingGoals.map((goal, i) => {
+              return (
+                <p key={i} className="bestSelling-title">
+                  {goal}
+                </p>
+              );
+            })}
           </div>
           <Form
             handleSubmit={this.handleSubmit}

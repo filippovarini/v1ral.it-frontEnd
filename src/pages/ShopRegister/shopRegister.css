@@ -77,19 +77,14 @@
 }
 
 #bestSelling-container {
-  height: 80px;
+  height: 60px;
   width: 60%;
+  margin-left: 15px;
 }
 
 #bestSelling-header {
-  /* font-weight: bold; */
   font-size: 1.2rem;
   margin-bottom: 10px;
-}
-
-.bestSelling {
-  justify-content: space-between;
-  height: 20px;
 }
 
 .bestSelling-icon {
@@ -104,7 +99,7 @@
 .addInfo-form {
   margin: 0 auto;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 #addInfo-submit {

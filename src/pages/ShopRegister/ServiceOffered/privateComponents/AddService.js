@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import HideCross from "../../../../components/HideCross/HideCross";
 import Icons from "./Icons";
-import BestSellings from "../../components/BestSelling";
 import ServiceForm from "./AddServiceForm";
 
 /** Pop up used to insert new goals and services
@@ -77,7 +76,13 @@ export class AddService extends Component {
           <p id="addInfo-header">Aggiungi un privilegio</p>
           <p id="bestSelling-header">Best selling:</p>
           <div id="bestSelling-container" className="flex-col">
-            <BestSellings bestSellings={bestSellingServices} />
+            {bestSellingServices.map((service, i) => {
+              return (
+                <p key={i} className="bestSelling-title">
+                  {service}
+                </p>
+              );
+            })}
           </div>
           <ServiceForm
             handleSubmit={this.handleSubmit}
