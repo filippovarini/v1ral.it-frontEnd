@@ -23,7 +23,7 @@ export class ShopCredentials extends Component {
     } else if (
       this.props.shopRegister &&
       this.props.shopRegister.credentials &&
-      this.props.shopRegister.city
+      this.props.shopRegister.credentials.city
     ) {
       this.setState({
         city: this.props.shopRegister.credentials.city,

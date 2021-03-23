@@ -3,11 +3,11 @@ const shopRegisterReducer = (state = {}, action) => {
     case "SET-BIO":
       return { ...state, bio: action.bio };
     case "SET-CREDENTIALS":
-      return { ...state, bio: action.credentials };
+      return { ...state, credentials: action.credentials };
     case "SET-SERVICES":
-      return { ...state, bio: action.services };
+      return { ...state, services: action.services };
     case "SET-GOALS":
-      return { ...state, bio: action.goals };
+      return { ...state, goals: action.goals };
     case "RESET":
       return {};
     default:

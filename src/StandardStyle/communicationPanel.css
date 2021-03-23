@@ -11,6 +11,16 @@
   position: absolute;
 }
 
+.communication-panel.big {
+  width: 350px;
+  height: 300px;
+  margin-top: -150px;
+}
+
+.communication-panel .communication-panel-text {
+  font-size: 1rem;
+}
+
 .communication-panel-header {
   font-weight: bold;
   text-align: center;

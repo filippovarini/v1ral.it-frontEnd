@@ -42,7 +42,7 @@ export class BioInfo extends Component {
   };
 
   resetImage = id => {
-    this.setState({ [id]: null });
+    this.setState({ [id]: null, [`${id}MulterOperating`]: false });
   };
 
   /**

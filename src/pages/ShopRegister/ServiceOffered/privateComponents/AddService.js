@@ -47,6 +47,7 @@ export class AddService extends Component {
     e.preventDefault();
     if (this.validFields()) {
       this.props.hide();
+      this.setState({ image: null });
       document.getElementById("addService-form").reset();
       this.props.handleAdd({
         image: this.state.image,

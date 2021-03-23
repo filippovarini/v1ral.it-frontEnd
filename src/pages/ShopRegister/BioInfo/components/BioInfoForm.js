@@ -31,6 +31,9 @@ export class Form extends Component {
             onChange={this.props.handleChange}
             value={this.props.category || ""}
           >
+            <option value="" disabled selected hidden>
+              seleziona
+            </option>
             <option value="Bar">Bar</option>
             <option value="Cocktail Bar">Cocktail Bar</option>
             <option value="Discoteca">Discoteca</option>

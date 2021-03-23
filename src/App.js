@@ -28,6 +28,9 @@ import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
 import ShopCredentials from "./pages/ShopRegister/ShopCredentials/ShopCredentials";
 import ServicesOffered from "./pages/ShopRegister/ServiceOffered/ServicesOffered";
 import ShopGoals from "./pages/ShopRegister/ShopGoals/ShopGoals";
+import RegisterDone, {
+  ShopRegisterDone
+} from "./pages/ShopRegister/ShopRegisterDone";
 
 // user log
 import UserLogin from "./pages/UserLogin/UserLogin";
@@ -87,6 +90,11 @@ export class App extends Component {
             component={ServicesOffered}
           />
           <Route exact path="/shop/register/goals" component={ShopGoals} />
+          <Route
+            exact
+            path="/shop/register/done"
+            component={ShopRegisterDone}
+          />
           <Route exact path="/workplace" component={Workplace} />
           <Route exact path="/login" component={UserLogin} />
           <Route exact path="/checkout" component={Checkout} />

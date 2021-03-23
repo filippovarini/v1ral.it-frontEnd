@@ -1,0 +1,2 @@
+- shopRegister using unique state (reducder, not local)
+- check services and goals are unique

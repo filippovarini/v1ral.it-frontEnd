@@ -75,7 +75,7 @@ export class ServicesOffered extends Component {
     if (this.validFields() && this.validServices()) {
       this.props.dispatch({
         type: "SET-SERVICES",
-        service: {
+        services: {
           services: this.state.services,
           maxPremiums: this.state.maxPremiums,
           initialPrice: this.state.initialPrice

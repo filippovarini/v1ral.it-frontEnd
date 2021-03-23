@@ -27,7 +27,9 @@ export class GoalForm extends Component {
           className="short-width"
           onChange={this.props.handleChange}
         >
-          <option disabled={true}>prezzo</option>
+          <option value="" disabled selected hidden>
+            prezzo
+          </option>
           <option value={100}>100</option>
           <option value={500}>500</option>
           <option value={1000}>1k</option>
