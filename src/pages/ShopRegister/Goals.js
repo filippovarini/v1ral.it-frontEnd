@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import Header from "../../components/Header/Header";
-import ServiceHeader from "../ShopRegister/components/ShopRegisterHeader/ShopRegisterHeader";
+import ServiceHeader from "./components/ShopRegisterHeader";
 import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
 import Indexer from "../ShopRegister/components/Indexer";
-import AddService from "../ShopRegister/components/AddService/AddService";
+// import AddService from "../ShopRegister/components/AddService/AddService";
 
 export class Services extends Component {
   state = {
@@ -44,7 +44,7 @@ export class Services extends Component {
               editing={true}
               handleClick={this.toggleAddGoal}
             />
-            <AddService
+            {/* <AddService
               hidden={this.state.addGoalHidden}
               hide={this.toggleAddGoal}
               type="goal"
@@ -54,7 +54,7 @@ export class Services extends Component {
                 "Riassumere il 50% del persoale",
                 "Ristrutturare"
               ]}
-            />
+            /> */}
             <p
               className="button shop-register-button"
               onClick={this.handleSubmit}
@@ -62,7 +62,7 @@ export class Services extends Component {
               CONFERMA
             </p>
           </div>
-          <Indexer index={2} />
+          <Indexer index={3} />
         </div>
       </div>
     );

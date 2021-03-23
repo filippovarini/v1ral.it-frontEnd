@@ -8,3 +8,152 @@
   margin: 0 auto;
   margin-top: 80px;
 }
+
+/* FORMS */
+#input-container {
+  display: grid;
+  grid-gap: 20px;
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 50px;
+}
+
+.shopRegister-input-container {
+  display: grid;
+}
+
+/* COMPONENTS */
+#service-header-container {
+  background: white;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#service-header {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#indexer-container {
+  width: 70px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 50%;
+  margin-left: -35px;
+  bottom: 20px;
+}
+
+.indexer-nav {
+  border: 1px solid black;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+/* ADD INFO */
+#addInfo-container {
+  width: 500px;
+  margin-left: -250px;
+  height: 400px;
+  margin-top: -175px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+#addInfo-header {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+#bestSelling-container {
+  height: 80px;
+  width: 60%;
+}
+
+#bestSelling-header {
+  /* font-weight: bold; */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.bestSelling {
+  justify-content: space-between;
+  height: 20px;
+}
+
+.bestSelling-icon {
+  border: transparent;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.addInfo-form {
+  width: 230px;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#addInfo-submit {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#addInfo-error {
+  margin-top: 20px;
+}
+
+/* ADD INFO COMPONENTS */
+#service-icon-container {
+  border: 1px solid black;
+}
+
+.service-icon {
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 5px;
+  position: relative;
+}
+
+#hideCross-container {
+  background: white;
+  top: -5px;
+  right: -5px;
+  position: absolute;
+  font-size: 0.8rem;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+}
+
+/* ICONS */
+#icons-container {
+  width: 500px;
+  margin-left: -250px;
+  height: 350px;
+  margin-top: -175px;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 1;
+}
+
+#icons-header {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#icons-image-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: auto auto auto auto auto;
+}

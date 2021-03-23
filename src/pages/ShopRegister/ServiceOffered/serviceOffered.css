@@ -1,0 +1,21 @@
+#serviceOffered-body {
+  min-width: 600px;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 30px;
+  justify-content: space-around;
+}
+
+#service-form .shopRegister-input-container {
+  margin: 10px 0;
+}
+
+.addService-form-line {
+  justify-content: space-between;
+}
+
+#viral-service-checkbox {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  justify-content: center;
+}

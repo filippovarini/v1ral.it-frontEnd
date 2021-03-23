@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import "./addServiceComponents.css";
-
-import HideCross from "../../../../../components/HideCross/HideCross";
-
-import icons from "../../../../../faqData/icons";
 
 /**
- * PROPS:
- * addIcon
- * hide
- * hidden
+ * AddInfo component
+ */
+import HideCross from "../../../../components/HideCross/HideCross";
+
+import icons from "../../../../faqData/icons";
+
+/** List of icons for services
+ * @param addIcon function to fire on click
+ * @param hide hide icon popUp function
+ * @param hidden
  */
 export class Icons extends Component {
   render() {

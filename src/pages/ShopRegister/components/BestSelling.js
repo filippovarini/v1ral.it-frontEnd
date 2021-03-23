@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 /** Returns a list of best selling stuff (services of goals)
- * bestSellings[]
+ * @param bestSellings[{title, handleSubmit}]
  */
 export class BestSelling extends Component {
   render() {

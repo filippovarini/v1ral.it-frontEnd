@@ -18,7 +18,7 @@ export class Header extends Component {
     return (
       <div id="header" className={this.props.class}>
         <Logo />
-        <Navigator titles={this.props.titles} />
+        <Navigator />
       </div>
     );
   }

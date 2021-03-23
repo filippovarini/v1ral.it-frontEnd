@@ -1,6 +1,3 @@
-/* PROPS:
-titles: [{name, handleClick}] */
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -115,7 +112,7 @@ export class Navigator extends Component {
           }
         ];
     return (
-      <div id="header-nav" className={this.props.class}>
+      <div id="header-nav">
         <div
           id="cart-container"
           onClick={this.cartContainerClick}

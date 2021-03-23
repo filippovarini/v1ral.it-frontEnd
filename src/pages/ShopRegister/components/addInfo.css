@@ -1,4 +1,4 @@
-#addService-container {
+#addInfo-container {
   width: 500px;
   margin-left: -250px;
   height: 350px;
@@ -7,7 +7,7 @@
   padding: 20px;
 }
 
-#addService-header {
+#addInfo-header {
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 30px;
@@ -39,19 +39,19 @@
   cursor: pointer;
 }
 
-#addService-form {
+#addInfo-form {
   width: 230px;
   margin: 0 auto;
   justify-content: space-between;
   margin-top: 30px;
 }
 
-#addService-submit {
+#addInfo-submit {
   width: 100%;
   margin: 0 auto;
   margin-top: 20px;
 }
 
-#addService-error {
+#addInfo-error {
   margin-top: 20px;
 }

@@ -10,7 +10,7 @@ export class GoalForm extends Component {
   render() {
     return (
       <form
-        id="addService-form"
+        id="addInfo-form"
         className="flex-line"
         onSubmit={this.props.handleSubmit}
       >
