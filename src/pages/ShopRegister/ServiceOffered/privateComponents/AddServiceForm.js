@@ -43,6 +43,7 @@ export class ServiceForm extends Component {
           <input
             id="title"
             type="text"
+            autoComplete="off"
             placeholder="nome servizio"
             onChange={this.props.handleChange}
           />

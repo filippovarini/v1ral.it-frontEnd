@@ -19,6 +19,7 @@ export class GoalForm extends Component {
           type="text"
           className="long-width"
           placeholder="nome obbiettivo"
+          autoComplete="off"
           onChange={this.props.handleChange}
         />
         <select

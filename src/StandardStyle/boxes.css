@@ -50,6 +50,11 @@
   cursor: pointer;
 }
 
+.hide-cross.bottomright {
+  top: 100px;
+  right: 0px;
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;

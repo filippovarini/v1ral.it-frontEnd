@@ -9,9 +9,11 @@ import App from "./App";
 
 // reducers
 import UserReducer from "./reducers/UserReducer";
+import ShopRegisterReducer from "./reducers/ShopRegisterReducer";
 
 const reducers = combineReducers({
-  user: UserReducer
+  user: UserReducer,
+  shopRegister: ShopRegisterReducer
 });
 
 const store = createStore(reducers, composeWithDevTools());

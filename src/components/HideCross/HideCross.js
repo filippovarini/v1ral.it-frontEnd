@@ -7,7 +7,10 @@ import React, { Component } from "react";
 export class HideCross extends Component {
   render() {
     return (
-      <div className="hide-cross" onClick={this.props.hide}>
+      <div
+        className={"hide-cross " + this.props.class}
+        onClick={this.props.hide}
+      >
         <i className="fas fa-times"></i>
       </div>
     );

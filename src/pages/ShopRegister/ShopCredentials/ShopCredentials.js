@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Header from "../../../components/Header/Header";
 import Indexer from "../components/Indexer";
@@ -14,6 +15,25 @@ export class ShopCredentials extends Component {
     email: null,
     psw: null,
     error: null
+  };
+
+  componentDidMount = () => {
+    if (!this.props.shopRegister || !this.props.shopRegister.bio) {
+      this.props.history.push("/shop/register/bio");
+    } else if (
+      this.props.shopRegister &&
+      this.props.shopRegister.credentials &&
+      this.props.shopRegister.city
+    ) {
+      this.setState({
+        city: this.props.shopRegister.credentials.city,
+        street: this.props.shopRegister.credentials.street,
+        province: this.props.shopRegister.credentials.province,
+        postcode: this.props.shopRegister.credentials.postcode,
+        email: this.props.shopRegister.credentials.email,
+        psw: this.props.shopRegister.credentials.psw
+      });
+    }
   };
 
   handleChange = e => {
@@ -52,6 +72,17 @@ export class ShopCredentials extends Component {
 
   handleSubmit = () => {
     if (this.credentialsValid() && this.placeValid()) {
+      this.props.dispatch({
+        type: "SET-CREDENTIALS",
+        credentials: {
+          city: this.state.city,
+          street: this.state.street,
+          province: this.state.province,
+          postcode: this.state.postcode,
+          email: this.state.email,
+          psw: this.state.psw
+        }
+      });
       this.props.history.push("/shop/register/services");
     }
   };
@@ -66,6 +97,12 @@ export class ShopCredentials extends Component {
             handleChange={this.handleChange}
             error={this.state.error}
             handleSubmit={this.handleSubmit}
+            email={this.state.email}
+            psw={this.state.psw}
+            city={this.state.city}
+            street={this.state.street}
+            province={this.state.province}
+            postcode={this.state.postcode}
           />
           <p
             className="button shop-register-button"
@@ -80,4 +117,10 @@ export class ShopCredentials extends Component {
   }
 }
 
-export default ShopCredentials;
+const mapStateToProps = state => {
+  return {
+    shopRegister: state.shopRegister
+  };
+};
+
+export default connect(mapStateToProps)(ShopCredentials);

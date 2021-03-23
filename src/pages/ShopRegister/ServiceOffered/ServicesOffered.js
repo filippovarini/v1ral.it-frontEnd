@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./serviceOffered.css";
 
 import Header from "../../../components/Header/Header";
@@ -15,6 +16,24 @@ export class ServicesOffered extends Component {
     services: [],
     addInfoHidden: true,
     error: null
+  };
+
+  componentDidMount = () => {
+    if (!this.props.shopRegister) this.props.history.push("/shop/register/bio");
+    else if (!this.props.shopRegister.bio)
+      this.props.history.push("/shop/register/bio");
+    else if (!this.props.shopRegister.credentials)
+      this.props.history.push("/shop/register/credentials");
+    else if (
+      this.props.shopRegister.services &&
+      this.props.shopRegister.services.maxPremiums
+    ) {
+      this.setState({
+        services: this.props.shopRegister.services.services,
+        maxPremiums: this.props.shopRegister.services.maxPremiums,
+        initialPrice: this.props.shopRegister.services.initialPrice
+      });
+    }
   };
 
   handleChange = e => {
@@ -53,8 +72,17 @@ export class ServicesOffered extends Component {
   };
 
   handleSubmit = () => {
-    if (this.validFields() && this.validServices())
+    if (this.validFields() && this.validServices()) {
+      this.props.dispatch({
+        type: "SET-SERVICES",
+        service: {
+          services: this.state.services,
+          maxPremiums: this.state.maxPremiums,
+          initialPrice: this.state.initialPrice
+        }
+      });
       this.props.history.push("/shop/register/goals");
+    }
   };
 
   render() {
@@ -80,6 +108,8 @@ export class ServicesOffered extends Component {
                 handleChange={this.handleChange}
                 error={this.state.error}
                 handleSubmit={this.handleSubmit}
+                maxPremiums={this.state.maxPremiums}
+                initialPrice={this.state.initialPrice}
               />
               <AddService
                 headerText="Aggiungi un privilegio"
@@ -104,4 +134,10 @@ export class ServicesOffered extends Component {
   }
 }
 
-export default ServicesOffered;
+const mapStateToProps = state => {
+  return {
+    shopRegister: state.shopRegister
+  };
+};
+
+export default connect(mapStateToProps)(ServicesOffered);

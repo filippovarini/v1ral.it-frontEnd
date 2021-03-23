@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./placeForm.css";
 
+/** Form for place
+ * @param city, province, street, postcode (for static form)
+ * @param handleChange
+ */
 export class PlaceForm extends Component {
   render() {
     return (
@@ -10,6 +14,7 @@ export class PlaceForm extends Component {
             type="text"
             className="short-width"
             value="Italia"
+            autoComplete="off"
             disabled={true}
             readOnly={true}
           />
@@ -18,14 +23,18 @@ export class PlaceForm extends Component {
           <input
             type="text"
             id="city"
+            autoComplete="off"
             placeholder="città"
+            value={this.props.city || ""}
             onChange={this.props.handleChange}
             className="long-width"
           />
           <input
             type="text"
             id="province"
+            autoComplete="off"
             placeholder="provincia"
+            value={this.props.province || ""}
             onChange={this.props.handleChange}
             className="short-width"
           />
@@ -34,6 +43,8 @@ export class PlaceForm extends Component {
           <input
             type="text"
             id="street"
+            autoComplete="off"
+            value={this.props.street || ""}
             placeholder="indirizzo"
             onChange={this.props.handleChange}
             className="long-width"
@@ -41,6 +52,8 @@ export class PlaceForm extends Component {
           <input
             type="number"
             id="postcode"
+            autoComplete="off"
+            value={this.props.postcode || 0}
             placeholder="CAP"
             onChange={this.props.handleChange}
             className="short-width"

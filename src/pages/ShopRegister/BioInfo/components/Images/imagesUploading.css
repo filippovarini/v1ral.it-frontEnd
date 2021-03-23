@@ -2,24 +2,56 @@
   position: relative;
 }
 
-#bioInfo-bacground {
+.bioInfo-bacground {
   height: 150px;
-  font-size: 4rem;
+  overflow: hidden;
 }
 
-#bioInfo-logo {
+.bioInfo-bacground img {
+  width: 100%;
+  height: auto;
+}
+
+.bioInfo-logo-container {
   position: absolute;
-  bottom: -40px;
+  bottom: -60px;
   left: 20px;
+}
+
+.bioInfo-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  overflow: hidden;
   border: 1px solid black;
-  font-size: 2rem;
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
+}
+
+.bioInfo-logo img {
+  width: 100%;
+  height: 100%;
 }
 
 .bioInfo-image-input {
   background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#background-input-label {
+  font-size: 2rem;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+}
+
+#logo-input-label {
+  font-size: 2rem;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

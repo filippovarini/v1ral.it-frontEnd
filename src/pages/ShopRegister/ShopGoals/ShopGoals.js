@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./shopGoals.css";
 
 import Header from "../../../components/Header/Header";
@@ -12,6 +13,19 @@ export class ShopGoals extends Component {
     goals: [],
     addGoalHidden: true,
     error: null
+  };
+
+  componentDidMount = () => {
+    if (!this.props.shopRegister) this.props.history.push("/shop/register/bio");
+    else if (!this.props.shopRegister.bio)
+      this.props.history.push("/shop/register/bio");
+    else if (!this.props.shopRegister.credentials)
+      this.props.history.push("/shop/register/credentials");
+    else if (!this.props.shopRegister.services)
+      this.props.history.push("/shop/register/services");
+    else if (this.props.shopRegister.goals) {
+      this.setState({ goals: this.props.shopRegister.goals });
+    }
   };
 
   toggleAddGoal = () => {
@@ -37,6 +51,10 @@ export class ShopGoals extends Component {
 
   handleSubmit = () => {
     if (this.validGoals()) {
+      this.props.dispatch({
+        type: "SET-GOALS",
+        goals: this.state.goals
+      });
       this.props.history.push("/shop/register/done");
     }
   };
@@ -79,4 +97,10 @@ export class ShopGoals extends Component {
   }
 }
 
-export default ShopGoals;
+const mapStateToProps = state => {
+  return {
+    shopRegister: state.shopRegister
+  };
+};
+
+export default connect(mapStateToProps)(ShopGoals);

@@ -19,12 +19,18 @@ export class Form extends Component {
             type="text"
             id="name"
             placeholder="nome"
+            autoComplete="off"
+            value={this.props.name || ""}
             onChange={this.props.handleChange}
           />
         </div>
         <div className="shopRegister-input-container">
           <label htmlFor="name">Categoria</label>
-          <select id="category" onChange={this.props.handleChange}>
+          <select
+            id="category"
+            onChange={this.props.handleChange}
+            value={this.props.category || ""}
+          >
             <option value="Bar">Bar</option>
             <option value="Cocktail Bar">Cocktail Bar</option>
             <option value="Discoteca">Discoteca</option>
@@ -40,6 +46,7 @@ export class Form extends Component {
           <textarea
             rows={5}
             onChange={this.props.handleChange}
+            value={this.props.bio || ""}
             id="bio"
             placeholder="Raccontaci la vostra storia, come rendete 
         l'italia un posto migliore e come il virus vi ha colpito"

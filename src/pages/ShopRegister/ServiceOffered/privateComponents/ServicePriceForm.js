@@ -18,6 +18,7 @@ export class ServiceForm extends Component {
           <input
             type="number"
             id="maxPremiums"
+            value={this.props.maxPremiums || 0}
             placeholder="max contagiati"
             onChange={this.props.handleChange}
           />
@@ -28,6 +29,7 @@ export class ServiceForm extends Component {
             type="number"
             id="initialPrice"
             placeholder="prezzo"
+            value={this.props.initialPrice || 0}
             onChange={this.props.handleChange}
           />
         </div>
