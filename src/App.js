@@ -19,6 +19,9 @@ import Shops from "./pages/Shops/Shops";
 // profiles
 import ShopProfile from "./pages/ShopProfile/ShopProfile";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import UserDashboard from "./pages/UserDashboard/UserDashboard";
+import ShopDashboard from "./pages/ShopDashboard/ShopDashboard";
+
 // transaction
 import Checkout from "./pages/Checkout/Checkout";
 import TransactionSuccess from "./pages/TransactionSuccess/TransactionSuccess";
@@ -65,16 +68,8 @@ export class App extends Component {
           <Route exact path="/shops" component={Shops} />
           <Route exact path="/shop/profile/:id" component={ShopProfile} />
           <Route exact path="/user/profile/:username" component={UserProfile} />
-          <Route
-            exact
-            path="/shop/dashboard/:id"
-            render={() => <ShopProfile dashboard={true} />}
-          />
-          <Route
-            exact
-            path="/user/dashboard/:username"
-            render={() => <UserProfile dashboard={true} />}
-          />
+          <Route exact path="/shop/dashboard" component={ShopDashboard} />
+          <Route exact path="/user/dashboard" component={UserDashboard} />
           <Route exact path="/shop/register/bio" component={BioInfo} />
           <Route
             exact

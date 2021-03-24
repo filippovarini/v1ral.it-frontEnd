@@ -19,6 +19,13 @@
   box-sizing: border-box;
 }
 
+#userProfile-logo img {
+  width: 300px;
+  border: 1px solid black;
+  display: block;
+  min-height: 300px;
+}
+
 #userProfile-shops-header {
   font-weight: bold;
   text-align: center;

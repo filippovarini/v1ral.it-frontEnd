@@ -11,35 +11,49 @@ import ShopBox from "../../components/ShopBox/ShopBox";
 export class UserProfile extends Component {
   state = {
     loading: true,
-    navState: 0,
     shops: null,
-    user: null
+    user: null,
+    dashboard: false
   };
 
-  /** Get info from database and session */
+  /** Get info from database and session or from props if it is a dashboard */
   componentDidMount = () => {
-    const id = this.props.match.params.username;
-    fetch(`/page/userProfile/${id}`)
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.success) {
-          this.setState({
-            shops: jsonRes.shops,
-            user: jsonRes.user,
-            loading: false
-          });
-        } else if (jsonRes.invalidUsername) {
-          alert(jsonRes.message);
-          window.location = "/users";
-        } else {
-          errorHandler.serverError(jsonRes);
-          this.setState({ loading: false });
-        }
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
+    if (
+      window.location.pathname === "/user/dashboard" &&
+      this.props.user &&
+      this.props.shops
+    ) {
+      // dashboard
+      this.setState({
+        loading: false,
+        shops: this.props.shops,
+        user: this.props.user,
+        dashboard: true
       });
+    } else {
+      const id = this.props.match.params.username;
+      fetch(`/page/userProfile/${id}`)
+        .then(res => res.json())
+        .then(jsonRes => {
+          if (jsonRes.success) {
+            this.setState({
+              shops: jsonRes.shops,
+              user: jsonRes.user,
+              loading: false
+            });
+          } else if (jsonRes.invalidUsername) {
+            alert(jsonRes.message);
+            window.location = "/users";
+          } else {
+            errorHandler.serverError(jsonRes);
+            this.setState({ loading: false });
+          }
+        })
+        .catch(e => {
+          console.log(e);
+          errorHandler.clientError();
+        });
+    }
   };
 
   numberToGetViral = () => {
@@ -56,7 +70,7 @@ export class UserProfile extends Component {
             <img src={this.state.user.profileurl} alt="logo dell'impresa" />
           </div>
           <ProfileHeader
-            dashboard={this.props.dashboard}
+            dashboard={this.state.dashboard}
             name={this.state.user.username}
             info={[
               { title: "focolai supportati", data: this.state.user.number },
