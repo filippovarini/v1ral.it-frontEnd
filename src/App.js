@@ -30,8 +30,7 @@ import ServicesOffered from "./pages/ShopRegister/ServiceOffered/ServicesOffered
 import ShopGoals from "./pages/ShopRegister/ShopGoals/ShopGoals";
 import ShopRegisterDone from "./pages/ShopRegister/ShopRegisterDone";
 
-// user log
-import UserLogin from "./pages/UserLogin/UserLogin";
+import Login from "./pages/Login/Login";
 
 // error
 import Error from "./pages/Error/Error";
@@ -94,7 +93,7 @@ export class App extends Component {
             component={ShopRegisterDone}
           />
           <Route exact path="/workplace" component={Workplace} />
-          <Route exact path="/login" component={UserLogin} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/checkout" component={Checkout} />
           <Route
             path="/success/:transactionId"

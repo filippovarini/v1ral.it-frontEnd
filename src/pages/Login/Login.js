@@ -10,7 +10,8 @@ export class UserLogin extends Component {
     login: null,
     error: null,
     psw: null,
-    loading: true
+    loading: true,
+    type: "user"
   };
 
   componentDidMount = () => {
@@ -41,30 +42,42 @@ export class UserLogin extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.notEmpty()) {
-      this.setState({ loading: true });
-      fetch("/user/login", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ login: this.state.login, psw: this.state.psw })
+    const body =
+      this.state.type === "user"
+        ? { login: this.state.login, psw: this.state.psw }
+        : { email: this.state.login, psw: this.state.psw };
+    if (this.notEmpty()) this.login(body);
+  };
+
+  login = body => {
+    this.setState({ loading: true });
+    fetch(`/${this.state.type}/login`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        if (jsonRes.success)
+          window.location = window.location.search
+            ? window.location.search.split("=")[1]
+            : "/";
+        else if (jsonRes.serverError) errorHandler.serverError(jsonRes);
+        else
+          this.setState({
+            loading: false,
+            error: "Credenziali errate",
+            login: null,
+            psw: null
+          });
       })
-        .then(res => res.json())
-        .then(jsonRes => {
-          if (jsonRes.success)
-            window.location = window.location.search
-              ? window.location.search.split("=")[1]
-              : "/";
-          else if (jsonRes.serverError) errorHandler.serverError(jsonRes);
-          else this.setState({ loading: false, error: "Credenziali errate" });
-        })
-        .catch(e => {
-          console.log(e);
-          errorHandler.clientError();
-        });
-    }
+      .catch(e => {
+        console.log(e);
+        errorHandler.clientError();
+      });
   };
 
   render() {
@@ -74,9 +87,15 @@ export class UserLogin extends Component {
         onSubmit={this.handleSubmit}
       >
         <p className="form-header">login</p>
+        <select id="type" onChange={this.handleChange}>
+          <option value="user">contagiato</option>
+          <option value="shop">focolaio</option>
+        </select>
         <input
           type="text"
-          placeholder="email o username"
+          placeholder={
+            "email" + (this.state.type === "user" ? " o username" : "")
+          }
           autoComplete="off"
           id="login"
           onChange={this.handleChange}

@@ -6,11 +6,12 @@
   margin: 0 auto;
   box-sizing: border-box;
   padding: 10px 0;
-  height: 250px;
+  height: 300px;
   margin-bottom: 40px;
 }
 
-.log-form input {
+.log-form input,
+select {
   width: 80%;
   box-sizing: border-box;
   margin: 10px;

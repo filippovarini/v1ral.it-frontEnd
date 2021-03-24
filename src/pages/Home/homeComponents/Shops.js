@@ -52,7 +52,6 @@ export class Shops extends Component {
   };
 
   render() {
-    console.log(this.state.info);
     return (
       <div id="shops-container" className={this.props.class}>
         {!this.state.loading && this.state.info ? (
