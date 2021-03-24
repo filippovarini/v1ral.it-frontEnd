@@ -116,7 +116,6 @@ export class UserSettings extends Component {
     formData.append("image", e.target.files[0]);
     this.setState({ multerOperating: true });
     const url = await postImage(formData);
-    console.log(url);
     this.setState({ profileurl: url, multerOperating: false });
   };
 
@@ -171,16 +170,24 @@ export class UserSettings extends Component {
    * previous ones
    */
   filterUpdate = update => {
-    console.log(Object.keys(update));
+    const filteredUpdate = {};
+    Object.keys(update).forEach(key => {
+      if (update[key] !== this.state.user[key]) {
+        filteredUpdate[key] = update[key];
+      }
+    });
+    return filteredUpdate;
   };
 
-  /** Checks what should be updated */
+  /** Checks what should be updated
+   * Send request
+   * Refresh page to update stuff
+   */
   handleSubmit = () => {
     const update = {};
     const body = {};
     if (this.placeValid() && this.credentialsValid()) {
-      if (this.state.bioEditing && this.state.bio !== this.state.user.reason)
-        update.reason = this.state.bio;
+      if (this.state.bioEditing) update.reason = this.state.bio;
       if (this.state.pswEditing) {
         update.email = this.state.email;
         body.oldPsw = this.state.oldPsw;
@@ -195,8 +202,40 @@ export class UserSettings extends Component {
       if (this.state.imageEditing) {
         update.profileurl = this.state.profileurl;
       }
-      body.update = update;
-      this.filterUpdate(update);
+      body.update = this.filterUpdate(update);
+      if (Object.keys(body.update).length !== 0 || body.oldPsw) {
+        // can send stuff
+        this.setState({ loading: true });
+        fetch("/user/updateInfo", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify(body)
+        })
+          .then(res => res.json())
+          .then(jsonRes => {
+            console.log(jsonRes);
+            if (jsonRes.success) {
+              window.location = window.location.pathname;
+            } else if (jsonRes.unauthorized) {
+              this.setState({
+                error: "Non sei autorizzato ad effettuare questa modifica"
+              });
+            } else if (jsonRes.pswInvalid) {
+              this.setState({
+                error: "La vecchia password fornita non è corretta"
+              });
+            } else {
+              errorHandler.serverError(jsonRes);
+            }
+          })
+          .catch(e => {
+            console.log(e);
+            errorHandler.clientError();
+          });
+      } else window.location = window.location.pathname;
     }
   };
 
