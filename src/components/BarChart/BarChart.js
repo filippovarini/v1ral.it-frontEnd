@@ -1,8 +1,3 @@
-/* props:
-cases: [{date, number}]
-statisticsDimentions
-*/
-
 import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import "./barChart.css";
@@ -26,6 +21,10 @@ const getMovingAverage = cases => {
   return movingAverage;
 };
 
+/** Returns a barchart to display info
+ * @param cases [{date, number}]
+ * @param statisticsDimentions dimensions of the chart
+ */
 export class BarChart extends Component {
   render() {
     return (
@@ -35,7 +34,14 @@ export class BarChart extends Component {
           this.props.statisticsDimensions.height ? "statistics-box" : ""
         }`}
       >
-        {/* <p id="bar-chart-title">Positivi Giornalieri</p> */}
+        <div
+          id="bar-chart-resize"
+          className="flex-line"
+          onClick={() => (window.location = window.location.pathname)}
+        >
+          <i className="fas fa-sync-alt"></i>
+          <p id="resize-text">resize</p>
+        </div>
         <Bar
           height={this.props.statisticsDimensions.height}
           width={this.props.statisticsDimensions.width}

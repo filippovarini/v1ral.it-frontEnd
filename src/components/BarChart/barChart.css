@@ -3,9 +3,17 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
-#bar-chart-title {
-  text-align: center;
-  font-weight: bold;
+#bar-chart-resize {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+#resize-text {
+  text-decoration: underline;
+  margin-left: 5px;
 }
