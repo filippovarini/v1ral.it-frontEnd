@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import PlaceForm from "../../../components/PlaceForm/PlaceForm";
+import PlaceForm from "../../../components/Forms/PlaceForm";
 
 export class Form extends Component {
   handleSubmit = e => {

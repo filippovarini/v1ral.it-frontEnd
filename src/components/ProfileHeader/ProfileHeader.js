@@ -10,7 +10,10 @@ import ProfileInfoBar from "./ProfileInfoBar";
  * @param description
  * @param city, province
  * @param buttonText
- * @param handleSubmit function to fire if clicked button. If none, set button to disabled
+ * @param handleSubmit function to fire if clicked button. If none, set button
+ * to disabled
+ * @param shopProfile boolean representing whether the profile header is for
+ * a shop profile
  * @param dashboard whether we are in a dashboard
  */
 export class ProfileHeader extends Component {
@@ -21,7 +24,10 @@ export class ProfileHeader extends Component {
         id="profile-header-settings"
         className="fas fa-cog box box-hover"
         onClick={() => {
-          this.props.history.push("/settings");
+          const redirection = this.props.shopProfile
+            ? "/shop/settings"
+            : "/user/settings";
+          this.props.history.push(redirection);
         }}
       ></i>
     ) : null;

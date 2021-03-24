@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./placeForm.css";
+import "./forms.css";
 
 /** Form for place
  * @param city, province, street, postcode (for static form)
@@ -9,17 +9,17 @@ export class PlaceForm extends Component {
   render() {
     return (
       <div>
-        <div className="placeForm-input-container">
+        <div className="form-input-container">
           <input
             type="text"
             className="short-width"
             value="Italia"
             autoComplete="off"
             disabled={true}
-            readOnly={true}
+            readOnly
           />
         </div>
-        <div className="flex-line placeForm-input-container">
+        <div className="flex-line form-input-container">
           <input
             type="text"
             id="city"
@@ -28,6 +28,7 @@ export class PlaceForm extends Component {
             value={this.props.city || ""}
             onChange={this.props.handleChange}
             className="long-width"
+            disabled={this.props.readOnly}
           />
           <input
             type="text"
@@ -36,10 +37,11 @@ export class PlaceForm extends Component {
             placeholder="provincia"
             value={this.props.province || ""}
             onChange={this.props.handleChange}
+            disabled={this.props.readOnly}
             className="short-width"
           />
         </div>
-        <div className="flex-line placeForm-input-container">
+        <div className="flex-line form-input-container">
           <input
             type="text"
             id="street"
@@ -48,6 +50,7 @@ export class PlaceForm extends Component {
             placeholder="indirizzo"
             onChange={this.props.handleChange}
             className="long-width"
+            disabled={this.props.readOnly}
           />
           <input
             type="number"
@@ -57,6 +60,7 @@ export class PlaceForm extends Component {
             placeholder="CAP"
             onChange={this.props.handleChange}
             className="short-width"
+            disabled={this.props.readOnly}
           />
         </div>
       </div>

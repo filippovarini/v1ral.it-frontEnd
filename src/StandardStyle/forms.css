@@ -86,11 +86,3 @@ select {
   text-align: center;
   margin: 10px;
 }
-
-.long-width {
-  width: 70%;
-}
-
-.short-width {
-  width: 20%;
-}

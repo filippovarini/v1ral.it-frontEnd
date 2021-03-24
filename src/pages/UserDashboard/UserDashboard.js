@@ -29,6 +29,7 @@ export class UserDashboard extends Component {
       })
       .catch(e => {
         console.log(e);
+        errorHandler.clientError();
       });
   };
 

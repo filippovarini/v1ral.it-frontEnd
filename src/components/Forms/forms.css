@@ -1,0 +1,18 @@
+.form-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.long-width {
+  width: 70%;
+}
+
+.short-width {
+  width: 20%;
+}
