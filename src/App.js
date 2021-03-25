@@ -56,7 +56,7 @@ export class App extends Component {
       })
       .catch(e => {
         console.log(e);
-        errorHandler.clientError();
+        alert("no connection");
       });
   };
 

@@ -49,23 +49,28 @@ export class EditPassword extends Component {
   handleSubmit = () => {
     if (this.validCredentials()) {
       this.setState({ loading: true });
-      if (this.props.isUser) this.editUser();
-      else this.editShop();
+      if (this.props.isUser)
+        this.postUpdate("/user/updateInfo", {
+          update: {},
+          oldPsw: this.state.oldPsw,
+          newPsw: this.state.newPsw
+        });
+      else
+        this.postUpdate("/shop/updatePsw", {
+          oldPsw: this.state.oldPsw,
+          newPsw: this.state.newPsw
+        });
     }
   };
 
-  editUser = () => {
-    fetch("/user/updateInfo", {
+  postUpdate = (url, body) => {
+    fetch(url, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({
-        update: {},
-        oldPsw: this.state.oldPsw,
-        newPsw: this.state.newPsw
-      })
+      body: JSON.stringify(body)
     })
       .then(res => res.json())
       .then(jsonRes => {

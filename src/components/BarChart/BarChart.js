@@ -36,7 +36,6 @@ export class BarChart extends Component {
   componentDidMount = () => this.updateGraphSize();
 
   updateGraphSize = () => {
-    console.log("updating");
     this.setState({
       width: window.innerWidth - totalMargin - quickFactsWidth - 200,
       height: Math.round((window.screen.height * 4) / 10)
@@ -44,7 +43,6 @@ export class BarChart extends Component {
   };
 
   render() {
-    console.log(this.props.cases);
     return (
       <div
         id="bar-chart-container"

@@ -7,6 +7,7 @@ import EditPassword from "./EditPassword";
 /** Handles shop settings with a slidebar
  * @param hide
  * @param hidden
+ * @param isUser
  */
 export class UserSettings extends Component {
   state = {
@@ -22,6 +23,7 @@ export class UserSettings extends Component {
   };
 
   render() {
+    console.log(this.props.isUser);
     return (
       <div
         className="settings-slidebar slidebar"
@@ -49,17 +51,17 @@ export class UserSettings extends Component {
         <EditBio
           hidden={!this.state.bioEditing}
           hide={() => this.toggleEditing("bioEditing")}
-          isUser={true}
+          isUser={this.props.isUser}
         />
         <EditPlace
           hidden={!this.state.placeEditing}
           hide={() => this.toggleEditing("placeEditing")}
-          isUser={true}
+          isUser={this.props.isUser}
         />
         <EditPassword
           hidden={!this.state.credentialsEditing}
           hide={() => this.toggleEditing("credentialsEditing")}
-          isUser={true}
+          isUser={this.props.isUser}
         />
       </div>
     );

@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./profileHeader.css";
 
 import ProfileInfoBar from "./ProfileInfoBar";
-import UserSettings from "../Settings/UserSettings";
+import Settings from "../Settings/Settings";
 import ShopSettings from "../Settings/ShopSettings";
 
 /** Returns the header of the profile with all the info
@@ -35,17 +35,11 @@ export class ProfileHeader extends Component {
           className="fas fa-cog box box-hover"
           onClick={this.toggleSettings}
         ></i>
-        {this.props.shopProfile ? (
-          <ShopSettings
-            hidden={this.state.settingsHidden}
-            hide={this.toggleSettings}
-          />
-        ) : (
-          <UserSettings
-            hidden={this.state.settingsHidden}
-            hide={this.toggleSettings}
-          />
-        )}
+        <Settings
+          hidden={this.state.settingsHidden}
+          hide={this.toggleSettings}
+          isUser={!this.props.shopProfile}
+        />
       </div>
     ) : null;
 

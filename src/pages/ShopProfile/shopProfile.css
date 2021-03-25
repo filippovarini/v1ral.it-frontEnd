@@ -28,23 +28,19 @@
 }
 
 #boxes-container {
-  display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   height: 400px;
   margin-bottom: 200px;
 }
 
-/* SHOP STATS */
-#shop-stats-container {
-  margin-top: 40px;
-  margin-bottom: 100px;
-  display: flex;
-  justify-content: space-around;
-  height: 40vh;
-}
-
-#shop-stats-quickfacts {
-  margin-right: 40px;
+#service-explanaiton {
+  width: 80%;
+  min-width: 350px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  margin-top: 10px;
 }

@@ -11,12 +11,11 @@ import "./shopProfile.css";
 import Header from "../../components/Header/Header";
 import ShopProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
-import Services from "../../components/Services/Services";
-import Goals from "../../components/Goals/Goals";
-import ShopStats from "./ShopStats";
 import Loading from "../../components/Loading/Loading";
 import InsertChallenger from "../../components/InsertChallenger/Challenger";
 import ShopImages from "../../components/ShopImages/ShopImages";
+import ShopStats from "../../components/ShopStats/ShopStats";
+import ServiceExplanaiton from "../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
 
 export class ShopProfile extends Component {
   state = {
@@ -111,7 +110,19 @@ export class ShopProfile extends Component {
   };
 
   render() {
-    console.log(this.state.shop);
+    /** Dynamic button props based on whether the user is logged,
+     * as bought or added the shop to the cart */
+    let profileHeaderButtonStyle = null;
+    let profileHeaderButtonText = "contagiati qui";
+    let profileHeaderButtonClickHandler = this.handleSubmit;
+    if (this.state.added || this.state.alreadyBought) {
+      profileHeaderButtonClickHandler = null;
+      profileHeaderButtonStyle = { background: "green" };
+      profileHeaderButtonText = this.state.added
+        ? "contagiandoti..."
+        : "già contagiato";
+    }
+
     let bodyComponent = null;
     if (this.state.shop) {
       bodyComponent =
@@ -133,22 +144,11 @@ export class ShopProfile extends Component {
             cases={this.state.cases || {}}
           />
         ) : (
-          <div id="boxes-container">
-            <Services services={this.state.services || []} />
-            <Goals goals={this.state.goals || []} />
-          </div>
+          <ServiceExplanaiton
+            goals={this.state.goals}
+            services={this.state.services}
+          />
         );
-    }
-
-    let profileHeaderButtonStyle = null;
-    let profileHeaderButtonText = "contagiati qui";
-    let profileHeaderButtonClickHandler = this.handleSubmit;
-    if (this.state.added || this.state.alreadyBought) {
-      profileHeaderButtonClickHandler = null;
-      profileHeaderButtonStyle = { background: "green" };
-      profileHeaderButtonText = this.state.added
-        ? "contagiandoti..."
-        : "già contagiato";
     }
 
     const body = this.state.shop ? (

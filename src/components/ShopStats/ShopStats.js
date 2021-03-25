@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import "./shopStats.css";
 
 // functions
 import printIncrement from "../../functions/printIncrement";
 import classFromIncrement from "../../functions/classFromIncrement";
-import BarChart from "../../components/BarChart/BarChart";
+import BarChart from "../BarChart/BarChart";
 
 /** Show shop stats and chart
  * @param disruptionIndex

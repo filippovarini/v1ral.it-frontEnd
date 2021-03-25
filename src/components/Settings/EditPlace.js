@@ -49,26 +49,36 @@ export class EditPlace extends Component {
   handleSubmit = () => {
     if (this.validPlace()) {
       this.setState({ loading: true });
-      if (this.props.isUser) this.editUser();
-      else this.editShop();
+      if (this.props.isUser)
+        this.postUpdate("/user/updateInfo", {
+          update: {
+            city: this.state.city,
+            province: this.state.province,
+            street: this.state.street,
+            postcode: this.state.postcode
+          }
+        });
+      else
+        this.postUpdate("/shop/updateInfo", {
+          update: {
+            city: this.state.city,
+            province: this.state.province,
+            street: this.state.street,
+            postcode: this.state.postcode
+          }
+        });
     }
   };
 
-  editUser = () => {
-    fetch("/user/updateInfo", {
+  /** Updates for both user and shop */
+  postUpdate = (url, body) => {
+    fetch(url, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({
-        update: {
-          city: this.state.city,
-          province: this.state.province,
-          street: this.state.street,
-          postcode: this.state.postcode
-        }
-      })
+      body: JSON.stringify(body)
     })
       .then(res => res.json())
       .then(jsonRes => {

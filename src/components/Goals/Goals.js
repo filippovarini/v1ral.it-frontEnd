@@ -19,14 +19,14 @@ export class Goals extends Component {
 
     return (
       <div className="statistics-box box quick-facts quick-facts-wide quick-facts-margin">
-        <p className="facts-header">ripresa</p>
+        <p className="facts-header">obbiettivi</p>
         <div className="facts-container">
           {this.props.goals
             ? this.props.goals.map((goal, i) => {
                 return (
                   <div className="fact fact-align fact-align-between" key={i}>
                     <p className="fact-title-small">{goal.name}</p>
-                    <p className="fact-data-small">
+                    <p className="fact-data-small" style={{ minWidth: "40px" }}>
                       {amountToString(goal.amount)} €
                     </p>
                   </div>
