@@ -4,6 +4,9 @@ import "./barChart.css";
 
 import colors from "../../style/colors";
 
+const totalMargin = 40;
+const quickFactsWidth = 250;
+
 const getMovingAverage = cases => {
   const movingAverage = [];
   for (let i = 0; i < cases.length; i++) {
@@ -23,28 +26,42 @@ const getMovingAverage = cases => {
 
 /** Returns a barchart to display info
  * @param cases [{date, number}]
- * @param statisticsDimentions dimensions of the chart
  */
 export class BarChart extends Component {
+  state = {
+    width: 0,
+    height: 0
+  };
+
+  componentDidMount = () => this.updateGraphSize();
+
+  updateGraphSize = () => {
+    console.log("updating");
+    this.setState({
+      width: window.innerWidth - totalMargin - quickFactsWidth - 200,
+      height: Math.round((window.screen.height * 4) / 10)
+    });
+  };
+
   render() {
+    console.log(this.props.cases);
     return (
       <div
         id="bar-chart-container"
-        className={`${
-          this.props.statisticsDimensions.height ? "statistics-box" : ""
-        }`}
+        className="statistics-box"
+        style={{ width: this.state.width }}
       >
         <div
           id="bar-chart-resize"
           className="flex-line"
-          onClick={() => (window.location = window.location.pathname)}
+          onClick={this.updateGraphSize}
         >
           <i className="fas fa-sync-alt"></i>
           <p id="resize-text">resize</p>
         </div>
         <Bar
-          height={this.props.statisticsDimensions.height}
-          width={this.props.statisticsDimensions.width}
+          height={this.state.height}
+          width={this.state.width}
           data={{
             labels: this.props.cases.map(dailyReport => dailyReport.date),
             datasets: [

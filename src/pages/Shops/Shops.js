@@ -5,7 +5,6 @@ import "./shops.css";
 import ShopBox from "../../components/ShopBox/ShopBox";
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
-import Cart from "../../components/Cart/Cart";
 
 export class Shops extends Component {
   state = {
@@ -28,14 +27,6 @@ export class Shops extends Component {
           errorHandler.clientError();
         });
     }
-  };
-
-  showCart = () => {
-    this.setState({ cartHidden: false });
-  };
-
-  cartContainerClick = e => {
-    if (e.target.id === "cart-container") this.setState({ cartHidden: true });
   };
 
   render() {
@@ -65,13 +56,6 @@ export class Shops extends Component {
     return (
       <div>
         <Header />
-        <div
-          id="cart-container"
-          onClick={this.cartContainerClick}
-          style={this.state.cartHidden ? { height: "0px" } : null}
-        >
-          <Cart />
-        </div>
         {this.state.loading ? (
           <div className="page-wrapper">
             <Loading />

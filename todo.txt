@@ -6,3 +6,4 @@ multer completion that image gets put
 - make bio longer (256 is not enough)
 - REMEMBER THAT WITH FUTURE PURCHASES, THE CARD DOES NOT GET SHIPPED AGAIN (no 
 need to change shipment address on checkout)!
+- Rimandami la carta

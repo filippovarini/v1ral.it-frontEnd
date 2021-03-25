@@ -1,6 +1,6 @@
 #profile-header {
+  min-width: 400px;
   max-width: 600px;
-  min-width: 600px;
   margin-left: 50px;
   display: flex;
   flex-direction: column;

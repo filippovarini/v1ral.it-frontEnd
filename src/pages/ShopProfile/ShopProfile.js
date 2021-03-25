@@ -11,18 +11,19 @@ import "./shopProfile.css";
 import Header from "../../components/Header/Header";
 import ShopProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
-// import ServiceBoxes from "../../components/ServiceBoxes/ServiceBoxes";
 import Services from "../../components/Services/Services";
 import Goals from "../../components/Goals/Goals";
-import Info from "./components/Info/Info";
+import ShopStats from "./ShopStats";
 import Loading from "../../components/Loading/Loading";
 import InsertChallenger from "../../components/InsertChallenger/Challenger";
+import ShopImages from "../../components/ShopImages/ShopImages";
 
 export class ShopProfile extends Component {
   state = {
     loading: true,
     navState: 0,
     shop: null,
+    cases: null,
     added: false,
     alreadyBought: false,
     insertChallengerHidden: true
@@ -47,6 +48,7 @@ export class ShopProfile extends Component {
             alreadyBought: jsonRes.alreadyBought,
             services: jsonRes.services,
             goals: jsonRes.goals,
+            cases: jsonRes.cases,
             loading: false
           });
         } else if (jsonRes.invalidShopId) {
@@ -92,6 +94,12 @@ export class ShopProfile extends Component {
 
   updateNav = i => this.setState({ navState: i });
 
+  getDisruptionIndex = () => {
+    return this.state.goals
+      ? this.state.goals.reduce((acc, goal) => acc + goal.amount, 0)
+      : 0;
+  };
+
   getGoalsDone = () => {
     const totalGoals = this.state.goals.reduce(
       (acc, goal) => acc + goal.amount,
@@ -103,15 +111,34 @@ export class ShopProfile extends Component {
   };
 
   render() {
-    let bodyComponent =
-      this.state.navState === 0 ? (
-        <div id="boxes-container">
-          <Services services={this.state.services || []} />
-          <Goals goals={this.state.goals || []} />
-        </div>
-      ) : (
-        <Info />
-      );
+    console.log(this.state.shop);
+    let bodyComponent = null;
+    if (this.state.shop) {
+      bodyComponent =
+        this.state.navState === 0 ? (
+          <ShopStats
+            disruptionIndex={this.getDisruptionIndex()}
+            priceIncrement={(
+              (parseFloat(this.state.shop.currentprice) * 100) /
+                this.state.shop.initialprice -
+              100
+            ).toFixed(2)}
+            placesLeft={
+              this.state.shop.maxpremiums - this.state.shop.total_premiums
+            }
+            goalsDone={(
+              parseFloat(this.state.shop.financed_so_far) /
+              this.getDisruptionIndex()
+            ).toFixed(2)}
+            cases={this.state.cases || {}}
+          />
+        ) : (
+          <div id="boxes-container">
+            <Services services={this.state.services || []} />
+            <Goals goals={this.state.goals || []} />
+          </div>
+        );
+    }
 
     let profileHeaderButtonStyle = null;
     let profileHeaderButtonText = "contagiati qui";
@@ -135,9 +162,10 @@ export class ShopProfile extends Component {
             }
             successRedirection={this.props.history.location.pathname}
           />
-          <div id="shopProfile-logo" className="box">
-            <img src={this.state.shop.logourl} alt="logo dell'impresa" />
-          </div>
+          <ShopImages
+            logourl={this.state.shop.logourl}
+            backgroundurl={this.state.shop.backgroundurl}
+          />
           <ShopProfileHeader
             dashboard={this.props.dashboard}
             name={this.state.shop.name}
@@ -158,7 +186,7 @@ export class ShopProfile extends Component {
           <Navigator
             active={this.state.navState}
             updateNav={this.updateNav}
-            titles={["Servizi Premium", "Info Focolaio"]}
+            titles={["Statistiche epidemiologiche", "Dove vanno i soldi?"]}
           />
         </div>
         {bodyComponent}

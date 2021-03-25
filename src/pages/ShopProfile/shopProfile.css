@@ -2,7 +2,8 @@
   margin-top: 20px;
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 #shopProfile-logo {
@@ -21,7 +22,7 @@
 
 #shopProfile-nav {
   display: flex;
-  width: 250px;
+  width: 350px;
   justify-content: space-between;
   margin: 0 auto;
 }
@@ -33,4 +34,17 @@
   flex-wrap: wrap;
   height: 400px;
   margin-bottom: 200px;
+}
+
+/* SHOP STATS */
+#shop-stats-container {
+  margin-top: 40px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: space-around;
+  height: 40vh;
+}
+
+#shop-stats-quickfacts {
+  margin-right: 40px;
 }

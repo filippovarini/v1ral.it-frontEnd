@@ -10,20 +10,9 @@
 import React, { Component } from "react";
 import "./statistics.css";
 
-const classFromIncrement = increment => {
-  if (increment > 0) {
-    return "positive";
-  } else if (increment === 0) {
-    return "neutral";
-  } else {
-    return "negative";
-  }
-};
-
-const printIncrement = (increment, perc) => {
-  const sign = Math.sign(increment) < 0 ? "-" : "+";
-  return `${sign}${Math.abs(increment)}${perc ? "%" : ""} rispetto a ieri`;
-};
+// functions
+import printIncrement from "../../../../functions/printIncrement";
+import classFromIncrement from "../../../../functions/classFromIncrement";
 
 export class QuickFacts extends Component {
   state = {

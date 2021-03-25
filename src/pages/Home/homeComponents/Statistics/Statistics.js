@@ -7,9 +7,6 @@ import QuickFacts from "./QuickFacts";
 import BarChart from "../../../../components/BarChart/BarChart";
 import Loading from "../../../../components/Loading/Loading";
 
-const totalMargin = 40;
-const quickFactsWidth = 250;
-
 const getDailyIncrement = totalCases => {
   const [predDay, currDay] = totalCases.slice(-2);
   return (
@@ -20,8 +17,7 @@ const getDailyIncrement = totalCases => {
 export class Statistics extends Component {
   state = {
     loading: true,
-    info: null,
-    graphDimensions: { width: 0, height: 0 }
+    info: null
   };
 
   componentDidMount = () => {
@@ -31,7 +27,6 @@ export class Statistics extends Component {
         .then(jsonRes => {
           if (jsonRes.success) {
             this.setState({ info: jsonRes.info });
-            this.updateGraphSize();
           } else errorHandler.serverError(jsonRes);
           this.setState({ loading: false });
         })
@@ -40,15 +35,6 @@ export class Statistics extends Component {
           errorHandler.clientError();
         });
     }
-  };
-
-  updateGraphSize = () => {
-    this.setState({
-      graphDimensions: {
-        width: window.innerWidth - totalMargin - quickFactsWidth - 200,
-        height: Math.round((window.screen.height * 4) / 10)
-      }
-    });
   };
 
   render() {
@@ -67,10 +53,7 @@ export class Statistics extends Component {
           supportedShops={info.financedShops}
           supportIncrement={info.dailyFinancedShops}
         />
-        <BarChart
-          cases={this.state.info.totalCases}
-          statisticsDimensions={this.state.graphDimensions}
-        />
+        <BarChart cases={this.state.info.totalCases} />
       </div>
     ) : null;
     return (
