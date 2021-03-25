@@ -12,6 +12,9 @@
   position: absolute;
   top: 0px;
   right: 20px;
+}
+
+#profile-header-settings i {
   font-size: 1.8rem;
   height: 50px;
   line-height: 50px;

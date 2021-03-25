@@ -1,0 +1,44 @@
+.settings-wrapper {
+  width: 50%;
+  min-width: 350px;
+  background: #ebebeb;
+  padding: 30px 0;
+  position: relative;
+  height: 250px;
+}
+
+.settings-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.settings-name {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.setting-error {
+  margin-top: 80px;
+}
+
+.settings-confirm {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.settings-slidebar {
+  width: 150px;
+  height: 150px;
+  box-sizing: border-box;
+  padding: 10px;
+  position: absolute;
+}
+
+.settings-option {
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+.settings-option:hover {
+  font-weight: bold;
+}

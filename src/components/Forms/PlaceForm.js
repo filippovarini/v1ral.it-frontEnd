@@ -4,6 +4,7 @@ import "./forms.css";
 /** Form for place
  * @param city, province, street, postcode (for static form)
  * @param handleChange
+ * @param readOnly?
  */
 export class PlaceForm extends Component {
   render() {

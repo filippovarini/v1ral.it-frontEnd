@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./forms.css";
 
 /** Form to edit the bio info
- * @param bio default value
  * @param handleChange
- * @param readOnly
+ * @param bio
+ * @param readOnly?
  */
 export class BioForm extends Component {
   render() {

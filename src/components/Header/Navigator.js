@@ -115,6 +115,7 @@ export class Navigator extends Component {
       <div id="header-nav">
         <div
           id="cart-container"
+          className="slidebar-background-click"
           onClick={this.cartContainerClick}
           style={this.state.cartHidden ? { height: "0px" } : null}
         >

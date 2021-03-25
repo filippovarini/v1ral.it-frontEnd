@@ -21,7 +21,6 @@ import ShopProfile from "./pages/ShopProfile/ShopProfile";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import ShopDashboard from "./pages/ShopDashboard/ShopDashboard";
-import UserSettings from "./pages/Settings/UserSettings";
 
 // transaction
 import Checkout from "./pages/Checkout/Checkout";
@@ -71,7 +70,6 @@ export class App extends Component {
           <Route exact path="/user/profile/:username" component={UserProfile} />
           <Route exact path="/shop/dashboard" component={ShopDashboard} />
           <Route exact path="/user/dashboard" component={UserDashboard} />
-          <Route exact path="/user/settings" component={UserSettings} />
           <Route exact path="/shop/register/bio" component={BioInfo} />
           <Route
             exact

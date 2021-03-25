@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import "./profileHeader.css";
 
 import ProfileInfoBar from "./ProfileInfoBar";
+import UserSettings from "../Settings/UserSettings";
+import ShopSettings from "../Settings/ShopSettings";
 
 /** Returns the header of the profile with all the info
  * @param name
@@ -17,19 +19,34 @@ import ProfileInfoBar from "./ProfileInfoBar";
  * @param dashboard whether we are in a dashboard
  */
 export class ProfileHeader extends Component {
+  state = {
+    settingsHidden: true
+  };
+
+  toggleSettings = () => {
+    this.setState({ settingsHidden: !this.state.settingsHidden });
+  };
+
   render() {
     const buttonClassSuffix = this.props.handleSubmit ? "" : "button-disabled";
     const settingsButton = this.props.dashboard ? (
-      <i
-        id="profile-header-settings"
-        className="fas fa-cog box box-hover"
-        onClick={() => {
-          const redirection = this.props.shopProfile
-            ? "/shop/settings"
-            : "/user/settings";
-          this.props.history.push(redirection);
-        }}
-      ></i>
+      <div id="profile-header-settings">
+        <i
+          className="fas fa-cog box box-hover"
+          onClick={this.toggleSettings}
+        ></i>
+        {this.props.shopProfile ? (
+          <ShopSettings
+            hidden={this.state.settingsHidden}
+            hide={this.toggleSettings}
+          />
+        ) : (
+          <UserSettings
+            hidden={this.state.settingsHidden}
+            hide={this.toggleSettings}
+          />
+        )}
+      </div>
     ) : null;
 
     return (
