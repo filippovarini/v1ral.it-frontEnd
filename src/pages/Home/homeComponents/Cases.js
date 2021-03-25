@@ -11,7 +11,8 @@ import Loading from "../../../components/Loading/Loading";
 export class Shops extends Component {
   state = {
     loading: true,
-    info: null
+    info: null,
+    userSearchSI: null
   };
 
   componentDidMount = () => {
@@ -44,9 +45,35 @@ export class Shops extends Component {
       });
   };
 
+  handleChange = e => {
+    this.setState({ userSearchSI: e.target.value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    alert(this.state.userSearchSI);
+  };
+
   render() {
     return (
       <div id="shops-container" className={this.props.class}>
+        <form
+          className="flex-line home-search-bar"
+          onSubmit={this.handleSubmit}
+        >
+          <input
+            type="text"
+            onChange={this.handleChange}
+            className="home-search-input"
+            placeholder="cerca contagiato"
+          />
+          <input
+            className="button-small home-search-submit "
+            type="submit"
+            value="CERCA"
+            style={!this.state.userSearchSI ? { display: "none" } : null}
+          />
+        </form>
         {!this.state.loading && this.state.info ? (
           <Table data={this.formatDataForTable()} />
         ) : (

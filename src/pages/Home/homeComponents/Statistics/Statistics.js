@@ -9,8 +9,9 @@ import Loading from "../../../../components/Loading/Loading";
 
 const getDailyIncrement = totalCases => {
   const [predDay, currDay] = totalCases.slice(-2);
-  return (
-    Math.round((100 * (currDay.number - predDay.number)) / predDay.number) || 0
+  return Math.min(
+    Math.round((100 * (currDay.number - predDay.number)) / predDay.number) || 0,
+    999999
   );
 };
 

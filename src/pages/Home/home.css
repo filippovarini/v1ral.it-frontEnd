@@ -5,6 +5,23 @@
   height: 5000px;
 }
 
+.home-search-bar {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.home-search-input {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.home-search-submit {
+  width: 80px;
+  font-size: 0.8rem;
+}
+
 /* Navigator */
 #bottomHalf-nav-container {
   max-width: 500px;

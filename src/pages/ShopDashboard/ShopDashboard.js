@@ -123,7 +123,7 @@ export class ShopDashboard extends Component {
             backgroundurl={this.state.shop.backgroundurl}
           />
           <ShopProfileHeader
-            dashboard={this.props.dashboard}
+            dashboard={true}
             name={this.state.shop.name}
             info={[
               { title: "privilegi offerti", data: this.state.services.length },
@@ -136,7 +136,6 @@ export class ShopDashboard extends Component {
             handleSubmit={profileHeaderButtonClickHandler}
             buttonText={profileHeaderButtonText}
             style={profileHeaderButtonStyle}
-            dashboard={true}
             shopProfile={true}
           />
         </div>

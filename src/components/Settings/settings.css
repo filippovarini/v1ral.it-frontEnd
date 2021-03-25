@@ -28,7 +28,7 @@
 
 .settings-slidebar {
   width: 150px;
-  height: 150px;
+  height: 200px;
   box-sizing: border-box;
   padding: 10px;
   position: absolute;
@@ -37,6 +37,7 @@
 .settings-option {
   margin: 10px 5px;
   cursor: pointer;
+  display: block;
 }
 
 .settings-option:hover {

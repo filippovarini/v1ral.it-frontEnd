@@ -4,7 +4,6 @@ import "./profileHeader.css";
 
 import ProfileInfoBar from "./ProfileInfoBar";
 import Settings from "../Settings/Settings";
-import ShopSettings from "../Settings/ShopSettings";
 
 /** Returns the header of the profile with all the info
  * @param name

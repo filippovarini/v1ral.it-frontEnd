@@ -5,6 +5,7 @@
 */
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import errorHandler from "../../functions/errorHandler";
 import "./shopProfile.css";
 
@@ -123,6 +124,13 @@ export class ShopProfile extends Component {
         : "già contagiato";
     }
 
+    if (this.props.user.name && this.props.user.name[0] === "#") {
+      // a shop is logged
+      profileHeaderButtonText = "per selezionare, esci dall'account focolaio";
+      profileHeaderButtonClickHandler = null;
+      profileHeaderButtonStyle = { fontSize: ".8rem" };
+    }
+
     let bodyComponent = null;
     if (this.state.shop) {
       bodyComponent =
@@ -203,4 +211,8 @@ export class ShopProfile extends Component {
   }
 }
 
-export default withRouter(ShopProfile);
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps)(withRouter(ShopProfile));

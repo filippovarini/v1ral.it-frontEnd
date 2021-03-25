@@ -1,7 +1,7 @@
 #userProfile-header-container {
   margin-top: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom: 100px;
 }
 

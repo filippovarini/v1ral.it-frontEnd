@@ -12,7 +12,8 @@ import errorHandler from "../../../functions/errorHandler";
 export class Shops extends Component {
   state = {
     loading: true,
-    info: null
+    info: null,
+    shopSearchSI: null
   };
 
   componentDidMount = () => {
@@ -29,6 +30,15 @@ export class Shops extends Component {
           errorHandler.clientError();
         });
     }
+  };
+
+  handleChange = e => {
+    this.setState({ shopSearchSI: e.target.value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    alert(this.state.shopSearchSI);
   };
 
   /** Formats data for the table */
@@ -54,6 +64,23 @@ export class Shops extends Component {
   render() {
     return (
       <div id="shops-container" className={this.props.class}>
+        <form
+          className="flex-line home-search-bar"
+          onSubmit={this.handleSubmit}
+        >
+          <input
+            type="text"
+            onChange={this.handleChange}
+            className="home-search-input"
+            placeholder="cerca focolaio"
+          />
+          <input
+            className="button-small home-search-submit "
+            type="submit"
+            value="CERCA"
+            style={!this.state.shopSearchSI ? { display: "none" } : null}
+          />
+        </form>
         {!this.state.loading && this.state.info ? (
           <Table data={this.formatDataForTable()} />
         ) : (
