@@ -24,3 +24,31 @@
 .shops-order-button {
   cursor: pointer;
 }
+
+.shops-filter-container {
+  width: 250px;
+  height: 250px;
+  margin-left: -125px;
+  margin-top: -125px;
+  box-sizing: border-box;
+  padding: 25px;
+}
+
+.shops-filter {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.shops-filter:hover {
+  font-weight: bold;
+}
+
+.shop-filter-default {
+  text-decoration: underline;
+}
+
+.shops-filter-reset {
+  width: 80%;
+  position: absolute;
+  bottom: 20px;
+}

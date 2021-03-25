@@ -36,9 +36,35 @@ export class Shops extends Component {
     this.setState({ shopSearchSI: e.target.value });
   };
 
+  /** Submit shop search */
   handleSubmit = e => {
     e.preventDefault();
-    alert(this.state.shopSearchSI);
+    this.setState({ loading: true });
+    fetch("/shop/updateSI", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({ shopSI: { name: this.state.shopSearchSI } })
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        console.log(jsonRes);
+        if (jsonRes.success) {
+          window.location = "/shops";
+        } else {
+          errorHandler.serverError(jsonRes);
+        }
+      })
+      .catch(e => {
+        console.log(e);
+        errorHandler.clientError();
+      });
+  };
+
+  handleClick = id => {
+    this.props.history.push("/shop/profile/" + id);
   };
 
   /** Formats data for the table */
@@ -47,6 +73,7 @@ export class Shops extends Component {
     else
       return this.state.info.map(infoObj => {
         return {
+          id: infoObj.id,
           logo: infoObj.logourl,
           nome: infoObj.name,
           categoria: infoObj.category,
@@ -82,7 +109,11 @@ export class Shops extends Component {
           />
         </form>
         {!this.state.loading && this.state.info ? (
-          <Table data={this.formatDataForTable()} />
+          <Table
+            data={this.formatDataForTable()}
+            firstId={true}
+            handleClick={this.handleClick}
+          />
         ) : (
           <Loading />
         )}

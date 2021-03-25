@@ -11,16 +11,21 @@ import Loading from "../../../components/Loading/Loading";
 export class Shops extends Component {
   state = {
     loading: true,
-    info: null,
+    originalUsers: null,
+    displayingUsers: null,
     userSearchSI: null
   };
 
   componentDidMount = () => {
-    if (!this.state.info) {
+    if (!this.state.displayingUsers) {
       fetch("page/home/users")
         .then(res => res.json())
         .then(jsonRes => {
-          if (jsonRes.success) this.setState({ info: jsonRes.userList });
+          if (jsonRes.success)
+            this.setState({
+              displayingUsers: jsonRes.userList,
+              originalUsers: jsonRes.userList
+            });
           else errorHandler.serverError(jsonRes);
           this.setState({ loading: false });
         })
@@ -33,10 +38,11 @@ export class Shops extends Component {
 
   /** Formats data for the table */
   formatDataForTable = () => {
-    if (!this.state.info) return null;
+    if (!this.state.displayingUsers) return null;
     else
-      return this.state.info.map(infoObj => {
+      return this.state.displayingUsers.map(infoObj => {
         return {
+          id: infoObj.username,
           profilo: infoObj.profileurl,
           username: infoObj.username,
           "indice Rt": infoObj.rt,
@@ -46,6 +52,19 @@ export class Shops extends Component {
   };
 
   handleChange = e => {
+    const searchWords = e.target.value.split(" ");
+    const filteredUsers = this.state.originalUsers.filter(userObj => {
+      let matchAllSearchWords = true;
+      searchWords.forEach(word => {
+        if (!userObj.username.toLowerCase().includes(word.toLowerCase())) {
+          matchAllSearchWords = false;
+        }
+      });
+      return matchAllSearchWords;
+    });
+    this.setState({
+      displayingUsers: filteredUsers
+    });
     this.setState({ userSearchSI: e.target.value });
   };
 
@@ -54,12 +73,17 @@ export class Shops extends Component {
     alert(this.state.userSearchSI);
   };
 
+  /** Click a table row (user) to see a user */
+  handleClick = username => {
+    this.props.history.push("/user/profile/" + username);
+  };
+
   render() {
     return (
       <div id="shops-container" className={this.props.class}>
         <form
           className="flex-line home-search-bar"
-          onSubmit={this.handleSubmit}
+          // onSubmit={this.handleSubmit}
         >
           <input
             type="text"
@@ -67,15 +91,19 @@ export class Shops extends Component {
             className="home-search-input"
             placeholder="cerca contagiato"
           />
-          <input
+          {/* <input
             className="button-small home-search-submit "
             type="submit"
             value="CERCA"
             style={!this.state.userSearchSI ? { display: "none" } : null}
-          />
+          /> */}
         </form>
-        {!this.state.loading && this.state.info ? (
-          <Table data={this.formatDataForTable()} />
+        {!this.state.loading && this.state.displayingUsers ? (
+          <Table
+            data={this.formatDataForTable()}
+            firstId={true}
+            handleClick={this.handleClick}
+          />
         ) : (
           <Loading />
         )}
