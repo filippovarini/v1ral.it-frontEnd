@@ -3,11 +3,14 @@ import postImage from "../../../functions/postImage";
 import "./components.css";
 
 import CardPreview from "../../../components/CardPreview/CardPreview";
-import FormInput from "./ShipmentForm";
+import PlaceForm from "../../../components/Forms/PlaceForm";
+import CredentialsForm from "../../../components/Forms/CredentialsForm";
+import Bill from "../../../components/Bill/Bill";
 
 /** Insert new user info
  * @param challenger
  * @param handleSubmit
+ * @param shopsPrice total shop price
  */
 export class InsertUser extends Component {
   state = {
@@ -47,9 +50,8 @@ export class InsertUser extends Component {
       reader.onload = function(event) {
         this.setState({
           profileUrl: event.target.result,
-          imageLoading: false
-          // submitting: false,
-          // loading: false
+          imageLoading: false,
+          error: null
         });
       }.bind(this);
       reader.readAsDataURL(e.target.files[0]);
@@ -74,6 +76,10 @@ export class InsertUser extends Component {
       this.setState({
         error:
           "L'username non può contenere caratteri speciali come spazio e '@'"
+      });
+    } else if (this.state.psw.length < 8) {
+      this.setState({
+        error: "La password deve essere lunga almeno 8 caratteri"
       });
     } else return true;
     return false;
@@ -131,33 +137,24 @@ export class InsertUser extends Component {
           url={this.state.profileUrl}
           imageLoading={this.state.imageLoading}
         />
-        <form
-          id="credentials-form"
-          className="log-form"
-          style={{ marginBottom: "0px" }}
-        >
-          <p className="log-form-subtext">CREDENZIALI</p>
-          <input
-            type="text"
-            placeholder="username"
-            id="username"
-            onChange={this.handleChange}
+        <div className="form-container">
+          <CredentialsForm
+            handleChange={this.handleChange}
+            header="credenziali"
           />
-          <input
-            type="text"
-            placeholder="email"
-            id="email"
-            onChange={this.handleChange}
+        </div>
+        <div className="form-container">
+          <PlaceForm
+            handleChange={this.handleChange}
+            header="Luogo di spedizione"
+            city={this.state.city}
+            province={this.state.province}
+            street={this.state.street}
+            postcode={this.state.postcode}
           />
-          <input
-            type="password"
-            placeholder="password"
-            id="psw"
-            onChange={this.handleChange}
-          />
-        </form>
-        <FormInput handleChange={this.handleChange} />
+        </div>
         <p className="form-error">{this.state.error}</p>
+        <Bill items={[{ name: "Contagio", price: this.props.shopsPrice }]} />
         {this.state.multerOperating ? (
           <div id="checkout-confirm" className="button button-disabled">
             caricando l'immagine...

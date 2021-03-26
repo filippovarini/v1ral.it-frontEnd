@@ -88,7 +88,7 @@ export class App extends Component {
           />
           <Route exact path="/workplace" component={Workplace} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/user/checkout" component={Checkout} />
           <Route
             path="/success/:transactionId"
             component={TransactionSuccess}

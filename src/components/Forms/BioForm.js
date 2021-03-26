@@ -4,12 +4,14 @@ import "./forms.css";
 /** Form to edit the bio info
  * @param handleChange
  * @param bio
+ * @param header?
  * @param readOnly?
  */
 export class BioForm extends Component {
   render() {
     return (
       <div>
+        <p className="form-header">{this.props.header}</p>
         <textarea
           id="bio"
           className="form-input form-input-container"

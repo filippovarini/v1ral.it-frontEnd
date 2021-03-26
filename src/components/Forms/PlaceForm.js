@@ -4,12 +4,14 @@ import "./forms.css";
 /** Form for place
  * @param city, province, street, postcode (for static form)
  * @param handleChange
+ * @param header?
  * @param readOnly?
  */
 export class PlaceForm extends Component {
   render() {
     return (
       <div>
+        <p className="form-header">{this.props.header}</p>
         <div className="form-input-container">
           <input
             type="text"

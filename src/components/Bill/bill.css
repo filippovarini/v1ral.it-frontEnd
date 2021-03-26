@@ -1,0 +1,30 @@
+#bill {
+  width: 350px;
+  background: rgb(200, 200, 200);
+  margin: 0 auto;
+  margin-top: 50px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+#bill-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+#bill-items-container {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.bill-item {
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+#bill-total {
+  margin-top: 10px;
+  font-weight: bold;
+}

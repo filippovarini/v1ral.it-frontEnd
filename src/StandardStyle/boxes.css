@@ -61,6 +61,10 @@
   align-items: center;
 }
 
+.flex-line.center {
+  justify-content: center;
+}
+
 .icon {
   border: 1px solid black;
   display: flex;

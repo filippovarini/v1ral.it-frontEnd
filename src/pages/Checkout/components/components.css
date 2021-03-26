@@ -1,5 +1,8 @@
 #insertUser-container {
-  margin-top: 100px;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 80px;
 }
 
 #insertUser-header {
@@ -14,5 +17,9 @@
   margin: 0 auto;
   box-sizing: border-box;
   margin-bottom: 100px;
+  margin-top: 40px;
+}
+
+.form-container {
   margin-top: 40px;
 }

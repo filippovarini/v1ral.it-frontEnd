@@ -48,7 +48,7 @@ export class Cart extends Component {
         <p
           id="cart-button"
           className="button"
-          onClick={() => this.props.history.push("/checkout")}
+          onClick={() => this.props.history.push("/user/checkout")}
         >
           checkout
         </p>

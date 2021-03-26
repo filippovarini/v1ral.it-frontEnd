@@ -4,6 +4,7 @@ import React, { Component } from "react";
  * @param handleChange
  * @param oldPsw
  * @param newPsw
+ * @param header?
  */
 export class PasswordForm extends Component {
   render() {

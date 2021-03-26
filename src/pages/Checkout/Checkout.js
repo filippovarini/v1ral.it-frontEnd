@@ -118,6 +118,12 @@ export class Checkout extends Component {
       });
   };
 
+  getShopsPrice = () => {
+    if (this.state.shops.length !== 0) {
+      return this.state.shops.reduce((acc, shop) => acc + shop.currentprice, 0);
+    } else return 0;
+  };
+
   render() {
     const body =
       this.state.shops.length > 0 ? (
@@ -132,11 +138,13 @@ export class Checkout extends Component {
               <UserLoggedInfo
                 defaultInfo={this.state.user}
                 handleSubmit={this.handleSubmit}
+                shopsPrice={this.getShopsPrice()}
               />
             ) : (
               <InsertUser
                 challenger={this.state.challenger}
                 handleSubmit={this.handleSubmit}
+                shopsPrice={this.getShopsPrice()}
               />
             )}
           </div>
