@@ -96,6 +96,10 @@ select {
   box-shadow: none;
   cursor: default;
 }
+.button-small.button-disabled:hover {
+  box-shadow: none;
+  cursor: default;
+}
 
 .input-header {
   font-weight: bold;

@@ -31,6 +31,7 @@ import ShopCredentials from "./pages/ShopRegister/ShopCredentials/ShopCredential
 import ServicesOffered from "./pages/ShopRegister/ServiceOffered/ServicesOffered";
 import ShopGoals from "./pages/ShopRegister/ShopGoals/ShopGoals";
 import ShopRegisterDone from "./pages/ShopRegister/ShopRegisterDone";
+import Spread from "./pages/Spread/Spread";
 
 import Login from "./pages/Login/Login";
 
@@ -75,17 +76,10 @@ export class App extends Component {
             path="/shop/register/credentials"
             component={ShopCredentials}
           />
-          <Route
-            exact
-            path="/shop/register/services"
-            component={ServicesOffered}
-          />
-          <Route exact path="/shop/register/goals" component={ShopGoals} />
-          <Route
-            exact
-            path="/shop/register/done"
-            component={ShopRegisterDone}
-          />
+          <Route path="/shop/register/services" component={ServicesOffered} />
+          <Route path="/shop/register/goals" component={ShopGoals} />
+          <Route path="/shop/register/done" component={ShopRegisterDone} />
+          <Route exact path="/spread" component={Spread} />
           <Route exact path="/workplace" component={Workplace} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/user/checkout" component={Checkout} />

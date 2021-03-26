@@ -1,0 +1,14 @@
+#spread-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+#spread-products-container {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 60%;
+  min-width: 290px;
+}

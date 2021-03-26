@@ -93,7 +93,7 @@ export class Navigator extends Component {
   };
 
   render() {
-    const titles = this.props.user.name
+    let titles = this.props.user.name
       ? [
           { name: "carrello", handleClick: this.showCart },
           { name: "vision", handleClick: () => alert("vision") },
@@ -111,6 +111,8 @@ export class Navigator extends Component {
             handleClick: () => this.props.history.push("/login")
           }
         ];
+    if (this.props.user.name && this.props.user.name[0] === "#")
+      titles = titles.filter(title => title.name !== "carrello");
     return (
       <div id="header-nav">
         <div
