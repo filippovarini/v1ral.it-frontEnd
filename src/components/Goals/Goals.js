@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import it from "../../locales/it.json";
+
 // functions
 import amountToString from "../../functions/amountToString";
 
@@ -19,7 +21,7 @@ export class Goals extends Component {
 
     return (
       <div className="statistics-box box quick-facts quick-facts-wide quick-facts-margin">
-        <p className="facts-header">obbiettivi</p>
+        <p className="facts-header">{it.shop_goals}</p>
         <div className="facts-container">
           {this.props.goals
             ? this.props.goals.map((goal, i) => {

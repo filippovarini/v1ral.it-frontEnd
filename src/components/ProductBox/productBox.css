@@ -1,6 +1,7 @@
 #product-box {
   border: 1px solid black;
   width: 250px;
+  height: 400px;
   box-sizing: border-box;
   margin: 20px;
 }

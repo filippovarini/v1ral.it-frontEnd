@@ -48,6 +48,7 @@ select {
   border-radius: 8px;
   cursor: pointer;
   border: none;
+  text-transform: uppercase;
 }
 
 .button-small {
@@ -62,6 +63,7 @@ select {
   border-radius: 5px;
   cursor: pointer;
   border: none;
+  text-transform: uppercase;
 }
 
 .new-button {
@@ -73,6 +75,7 @@ select {
   width: 250px;
   border-radius: 8px;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .new-button:hover {

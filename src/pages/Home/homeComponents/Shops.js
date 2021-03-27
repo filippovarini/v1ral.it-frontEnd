@@ -4,10 +4,15 @@ shops: [{logo, name, category, goalsDone (correct format), cases}] */
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
+// language
+import it from "../../../locales/it.json";
+
+// function
+import errorHandler from "../../../functions/errorHandler";
+
+// components
 import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
-
-import errorHandler from "../../../functions/errorHandler";
 
 export class Shops extends Component {
   state = {
@@ -74,12 +79,12 @@ export class Shops extends Component {
       return this.state.info.map(infoObj => {
         return {
           id: infoObj.id,
-          logo: infoObj.logourl,
-          nome: infoObj.name,
-          categoria: infoObj.category,
-          città: `${infoObj.city}, ${infoObj.province}`,
-          positivi: infoObj.premiums,
-          "indice di ripresa":
+          [it.shop_logo]: infoObj.logourl,
+          [it.shop_name]: infoObj.name,
+          [it.shop_category]: infoObj.category,
+          [it.shop_place]: `${infoObj.city}, ${infoObj.province}`,
+          [it.shop_donations]: infoObj.premiums,
+          [it.shop_goals_achieved]:
             (
               parseFloat(infoObj.financed_so_far) /
                 parseFloat(infoObj.disruption_index) || 0

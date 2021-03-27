@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import it from "../../locales/it.json";
+
 /** Box showing services
  * @param services [{image, name, type}]
  * @param adding Boolean for whether user is editing
@@ -16,7 +18,7 @@ export class Services extends Component {
 
     return (
       <div className="statistics-box box quick-facts quick-facts-wide quick-facts-margin">
-        <p className="facts-header">privilegi</p>
+        <p className="facts-header">{it.shop_priviledges_offered}</p>
         <div className="facts-container">
           {this.props.services
             ? this.props.services.map((service, i) => {

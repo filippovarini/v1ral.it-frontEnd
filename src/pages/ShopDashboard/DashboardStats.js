@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+// language
+import it from "../../locales/it.json";
+
 const boxesHeight = "350px";
 
 /** Display key dashboard info
@@ -23,24 +26,24 @@ export class DashboardStats extends Component {
           className="statistics-box box quick-facts quick-facts-flex"
           style={{ height: boxesHeight }}
         >
-          <p className="facts-header">Transato</p>
+          <p className="facts-header">{it.shop_clicks_and_earned}</p>
           <div className="facts-container">
             <div className="fact">
-              <p className="fact-title">Visualizzazioni</p>
+              <p className="fact-title">{it.shop_clicks}</p>
               <div className="fact-data">
                 <p>{this.props.clicks}</p>
               </div>
             </div>
             <div className="fact">
-              <p className="fact-title">Fatturato</p>
+              <p className="fact-title">{it.shop_earned_so_far}</p>
               <div className="fact-data">
-                <p>{this.props.totalEarned}</p>
+                <p>{this.props.totalEarned} €</p>
               </div>
             </div>
             <div className="fact">
-              <p className="fact-title">Spese di publicità</p>
+              <p className="fact-title">{it.shop_spent_so_far}</p>
               <div className="fact-data">
-                <p>{this.props.totalSpent}</p>
+                <p>{this.props.totalSpent} €</p>
               </div>
             </div>
           </div>
@@ -50,7 +53,7 @@ export class DashboardStats extends Component {
           className="statistics-box box quick-facts quick-facts-flex"
           style={{ height: boxesHeight }}
         >
-          <p className="facts-header">Dati personali</p>
+          <p className="facts-header">{it.shop_email_place_container}</p>
           <div className="facts-container">
             <div className="fact">
               <p className="fact-title">Email</p>

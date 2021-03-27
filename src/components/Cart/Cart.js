@@ -3,38 +3,38 @@ import { withRouter } from "react-router-dom";
 import "./cart.css";
 
 import Loading from "../Loading/Loading";
+import UserCartItem from "./UserCartItem";
+import ShopCartItem from "./ShopCartItem";
 
 /** Cart info, with button for checkout
- * @param: shops: info of all shops
- * @param: loading
- * @param: removeItem()
+ * @param items
+ * @param loading
+ * @param removeItem function to remove item from cart
+ * @param isShop boolean representing whether the logged user is a shop or a
+ * normal user
  */
 
 export class Cart extends Component {
   render() {
+    const redirectPage = this.props.isShop
+      ? "/shop/checkout"
+      : "/user/checkout";
     const body =
-      this.props.shops && this.props.shops.length > 0 ? (
+      this.props.items && this.props.items.length > 0 ? (
         <div id="cart-items">
-          {this.props.shops.map((shop, i) => {
-            return (
-              <div className="cart-item-container" key={i}>
-                <div className="cart-item-image">
-                  <img alt="Imagine del negozio" src={shop.logourl} />
-                </div>
-                <div className="cart-item-info">
-                  <p className="cart-item-name">{shop.name}</p>
-                  <p className="cart-item-place">
-                    {shop.city}, {shop.province}
-                  </p>
-                  <p
-                    className="cart-item-remove"
-                    onClick={() => this.props.removeItem(shop.id)}
-                  >
-                    rimuovi
-                  </p>
-                  <p className="cart-item-price">€{shop.currentprice}</p>
-                </div>
-              </div>
+          {this.props.items.map((item, i) => {
+            return this.props.isShop ? (
+              <ShopCartItem
+                product={item}
+                key={i}
+                removeItem={this.props.removeItem}
+              />
+            ) : (
+              <UserCartItem
+                shop={item}
+                key={i}
+                removeItem={this.props.removeItem}
+              />
             );
           })}
         </div>
@@ -48,7 +48,7 @@ export class Cart extends Component {
         <p
           id="cart-button"
           className="button"
-          onClick={() => this.props.history.push("/user/checkout")}
+          onClick={() => this.props.history.push(redirectPage)}
         >
           checkout
         </p>

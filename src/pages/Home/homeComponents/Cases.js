@@ -5,6 +5,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import errorHandler from "../../../functions/errorHandler";
 
+// language
+import it from "../../../locales/it.json";
+
 import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
 
@@ -43,10 +46,10 @@ export class Shops extends Component {
       return this.state.displayingUsers.map(infoObj => {
         return {
           id: infoObj.username,
-          profilo: infoObj.profileurl,
-          username: infoObj.username,
-          "indice Rt": infoObj.rt,
-          "focolai supportati": infoObj.number
+          [it.user_profile_image]: infoObj.profileurl,
+          [it.user_username]: infoObj.username,
+          [it.rt_index]: infoObj.rt,
+          [it.user_shops_supported]: infoObj.number
         };
       });
   };

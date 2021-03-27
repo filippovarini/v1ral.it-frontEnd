@@ -18,10 +18,9 @@ export class Navigator extends Component {
     this.props.history.push(path + "/dashboard");
   };
 
-  /** Reguests the cart info (validating cart ids) */
   showCart = () => {
     this.setState({ cartHidden: false });
-    fetch("/page/checkout")
+    fetch("/transaction/cart")
       .then(res => res.json())
       .then(jsonRes => {
         if (!jsonRes.success) {
@@ -30,7 +29,7 @@ export class Navigator extends Component {
           else errorHandler.serverError();
         } else
           this.setState({
-            cart: jsonRes.shops,
+            cart: jsonRes.items,
             cartLoading: false,
             cartHidden: false
           });
@@ -43,16 +42,17 @@ export class Navigator extends Component {
 
   /** Sends request to remove from cart and then calls showCart
    * @todo optimize (single query)
+   * @param id of cart item to be removed
    */
   removeCartItem = id => {
     this.setState({ cartLoading: true });
-    fetch("/shop/removeFromCart", {
-      method: "PUT",
+    fetch("/transaction/cart", {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({ shopId: id })
+      body: JSON.stringify({ item: id })
     })
       .then(res => res.json())
       .then(jsonRes => {
@@ -111,8 +111,6 @@ export class Navigator extends Component {
             handleClick: () => this.props.history.push("/login")
           }
         ];
-    if (this.props.user.name && this.props.user.name[0] === "#")
-      titles = titles.filter(title => title.name !== "carrello");
     return (
       <div id="header-nav">
         <div
@@ -122,10 +120,24 @@ export class Navigator extends Component {
           style={this.state.cartHidden ? { height: "0px" } : null}
         >
           <Cart
+            isShop={this.props.user.name && this.props.user.name[0] === "#"}
+            items={this.state.cart}
             loading={this.state.cartLoading}
-            shops={this.state.cart}
             removeItem={this.removeCartItem}
           />
+          {/* {this.props.user.name && this.props.user.name[0] === "#" ? (
+            <ShopCart
+              products={this.state.cart}
+              loading={this.state.cartLoading}
+              removeItem={this.removeCartItem}
+            />
+          ) : (
+            <UserCart
+              loading={this.state.cartLoading}
+              shops={this.state.cart}
+              removeItem={this.removeCartItem}
+            />
+          )} */}
         </div>
         {titles.map((title, i) => {
           return (

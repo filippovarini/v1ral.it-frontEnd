@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import errorHandler from "../../functions/errorHandler";
 
+// language
+import it from "../../locales/it.json";
+
 import Header from "../../components/Header/Header";
 import ShopProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
@@ -64,8 +67,9 @@ export class ShopDashboard extends Component {
   render() {
     // button of header component
     let profileHeaderButtonStyle = { background: "green" };
-    let profileHeaderButtonText = "diffondi il contagio";
-    let profileHeaderButtonClickHandler = () => alert("spread the virus");
+    let profileHeaderButtonText = it.shop_buy_our_marketing_products;
+    let profileHeaderButtonClickHandler = () =>
+      this.props.history.push("/spread");
 
     let bodyComponent = null;
     if (this.state.shop) {
@@ -126,9 +130,18 @@ export class ShopDashboard extends Component {
             dashboard={true}
             name={this.state.shop.name}
             info={[
-              { title: "privilegi offerti", data: this.state.services.length },
-              { title: "contagi", data: this.state.shop.total_premiums },
-              { title: "di cui virali", data: this.state.shop.viral_premiums }
+              {
+                title: it.shop_priviledges_offered,
+                data: this.state.services.length
+              },
+              {
+                title: it.shop_donations_received,
+                data: this.state.shop.total_premiums
+              },
+              {
+                title: it.shop_viral_donation_received,
+                data: this.state.shop.viral_premiums
+              }
             ]}
             description={this.state.shop.bio}
             city={this.state.shop.city}
@@ -144,9 +157,9 @@ export class ShopDashboard extends Component {
             active={this.state.navState}
             updateNav={this.updateNav}
             titles={[
-              "Dati e transati",
-              "Statistiche epidemiologiche",
-              "Dove vanno i soldi?"
+              it.shop_dashboard_stats,
+              it.shop_profile_stats,
+              it.shop_profile_priviledges_goals
             ]}
           />
         </div>

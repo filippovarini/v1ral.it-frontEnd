@@ -4,11 +4,17 @@
 }
 
 #spread-products-container {
-  border: 1px solid black;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   width: 60%;
   min-width: 290px;
+}
+
+#spread-button {
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 90%;
+  box-sizing: border-box;
 }

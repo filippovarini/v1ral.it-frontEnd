@@ -8,41 +8,32 @@ import "./checkout.css";
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import Table from "../../components/Table/Table";
-import InsertUser from "./components/InsertUser";
-import UserLoggedInfo from "./components/UserLoggedInfo";
+import Bill from "../../components/Bill/Bill";
 
 export class Checkout extends Component {
   state = {
     loading: true,
-    shops: [],
-    isLogged: false,
-    challenger: false,
-    user: null
+    products: []
   };
 
   componentDidMount = async () => {
-    fetch("/page/checkout")
+    fetch("/page/checkout/shop")
       .then(res => res.json())
       .then(jsonRes => {
-        if (jsonRes.serverError) errorHandler.serverError(jsonRes);
-        else {
-          if (jsonRes.success) {
-            if (!jsonRes.challenger && !jsonRes.isLogged) {
-              alert(
-                "Per accedere al checkout devi essere stato sfidato o aver effettuato il login"
-              );
-              window.location = "/";
-            } else {
-              this.setState({
-                shops: jsonRes.shops,
-                isLogged: jsonRes.isLogged,
-                challenger: jsonRes.challenger,
-                user: jsonRes.user
-              });
-            }
+        if (jsonRes.success) {
+          this.setState({
+            products: jsonRes.products,
+            loading: false
+          });
+        } else if (jsonRes.cartEmpty) {
+          this.setState({ loading: false, products: [] });
+        } else {
+          if (jsonRes.serverError) errorHandler.serverError(jsonRes);
+          else {
+            // some other error
+            alert(jsonRes.message);
+            this.props.history.push("/");
           }
-          //   loading false even if unauthorized (cart empty)
-          this.setState({ loading: false });
         }
       })
       .catch(e => {
@@ -52,13 +43,13 @@ export class Checkout extends Component {
   };
 
   removeItem = id => {
-    fetch("/shop/removeFromCart", {
-      method: "PUT",
+    fetch("/transaction/cart", {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({ shopId: id })
+      body: JSON.stringify({ item: id })
     })
       .then(res => res.json())
       .then(jsonRes => {
@@ -71,36 +62,34 @@ export class Checkout extends Component {
       });
   };
 
-  formatDateForTable = shopsArray => {
-    return shopsArray.map(shop => {
+  formatDateForTable = productsArray => {
+    return productsArray.map(product => {
       return {
-        logo: shop.logourl,
-        nome: shop.name,
-        categoria: shop.category,
-        totale: shop.currentprice,
+        imagine: product.images[0],
+        nome: product.name,
+        totale: product.price,
         rimuovi: (
           <i
             className="fas fa-times pointer"
-            onClick={() => this.removeItem(shop.id)}
+            onClick={() => this.removeItem(product.id)}
           ></i>
         )
       };
     });
   };
 
-  handleSubmit = newUser => {
+  handleSubmit = () => {
     this.setState({ loading: true });
-    fetch("/transaction/challengerCheckout", {
+    fetch("/transaction/shopCheckout", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: newUser ? JSON.stringify({ newUser }) : JSON.stringify({})
+      body: JSON.stringify({})
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.unauthorized) {
           alert(
             "Errore con il carrello! Carrello vuoto o contenente items non validi"
@@ -118,45 +107,40 @@ export class Checkout extends Component {
       });
   };
 
-  getShopsPrice = () => {
-    if (this.state.shops.length !== 0) {
-      return this.state.shops.reduce((acc, shop) => acc + shop.currentprice, 0);
+  getTotalPrice = () => {
+    if (this.state.products.length !== 0) {
+      return this.state.products.reduce(
+        (acc, product) => acc + product.price,
+        0
+      );
     } else return 0;
   };
 
   render() {
     const body =
-      this.state.shops.length > 0 ? (
+      this.state.products.length > 0 ? (
         <div>
           <p id="checkout-header">Checkout</p>
           <div id="checkout-cart">
             <p id="checkout-cart-header">carrello</p>
-            <Table data={this.formatDateForTable(this.state.shops)} />
+            <Table data={this.formatDateForTable(this.state.products)} />
           </div>
-          <div id="checkout-user">
-            {this.state.isLogged ? (
-              <UserLoggedInfo
-                defaultInfo={this.state.user}
-                handleSubmit={this.handleSubmit}
-                shopsPrice={this.getShopsPrice()}
-              />
-            ) : (
-              <InsertUser
-                challenger={this.state.challenger}
-                handleSubmit={this.handleSubmit}
-                shopsPrice={this.getShopsPrice()}
-              />
-            )}
-          </div>
+          <Bill items={[{ name: "Marketing", price: this.getTotalPrice() }]} />
+          <p className="button checkout-button" onClick={this.handleSubmit}>
+            CHECKOUT
+          </p>
         </div>
       ) : (
         <div id="checkout-empty-cart" className="communication-panel">
           <p className="communication-panel-header">Il carrello è vuoto!</p>
           <p className="communication-panel-text">
-            Seleziona dei focolai in cui contagiarti per continuare
+            Seleziona i prodotti prima di procedere
           </p>
-          <Link to="/shops" className="communication-panel-button button-small">
-            focolai
+          <Link
+            to="/spread"
+            className="communication-panel-button button-small"
+          >
+            prodotti
           </Link>
         </div>
       );

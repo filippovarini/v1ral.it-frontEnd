@@ -70,18 +70,19 @@ export class ShopProfile extends Component {
    */
   handleSubmit = () => {
     this.setState({ loading: true });
-    fetch("/shop/updateCart", {
+    fetch("/transaction/cart", {
       method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ shopId: this.state.shop.id })
+      body: JSON.stringify({ item: this.state.shop.id })
     })
       .then(res => res.json())
       .then(jsonRes => {
         if (!jsonRes.success) {
           if (jsonRes.insertChallenger) this.toggleChallenger();
+          else if (jsonRes.cartDuplicate) alert(jsonRes.message);
           else this.props.history.push("/login");
         } else this.setState({ added: true });
         this.setState({ loading: false });

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./bill.css";
 
 /** Show checkout bill
- * @param header
  * @param items [{name, price}]
  */
 export class Bill extends Component {

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+// language
+import it from "../../locales/it.json";
+
 import Services from "../Services/Services";
 import Goals from "../Goals/Goals";
 
@@ -11,16 +14,16 @@ export class ShopServiceExplanaiton extends Component {
   render() {
     return (
       <div>
-        {" "}
         <p id="service-explanaiton" className="box">
-          Contagiandoti in questo focolaio, aiuti questa impresa a rialzarsi
+          {it.shop_profile_what_happens_with_money}
+          {/* Contagiandoti in questo focolaio, aiuti questa impresa a rialzarsi
           dall'impatto del Covid-19 e acquisisci uno status di{" "}
           <b>cliente elite</b>. I clienti elite hanno diritto ai{" "}
           <b>privilegi</b> specificati.
           <br />I soldi saranno utilizzati per raggiungere gli <b>
             obbiettivi
           </b>{" "}
-          specificati.
+          specificati. */}
         </p>
         <div id="boxes-container" className="flex-line">
           <Services services={this.props.services || []} />

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./shopStats.css";
 
+// language
+import it from "../../locales/it.json";
+
 // functions
 import printIncrement from "../../functions/printIncrement";
 import classFromIncrement from "../../functions/classFromIncrement";
@@ -23,13 +26,13 @@ export class ShopStats extends Component {
         >
           <div className="facts-container">
             <div className="fact">
-              <p className="fact-title">Posti rimasti</p>
+              <p className="fact-title">{it.shop_places_left}</p>
               <div className="fact-data">
                 <p>{this.props.placesLeft}</p>
               </div>
             </div>
             <div className="fact">
-              <p className="fact-title">Aumento valore</p>
+              <p className="fact-title">{it.shop_price_increase}</p>
               <div className="fact-data">
                 <p>{this.props.priceIncrement}</p>
                 <p
@@ -42,13 +45,13 @@ export class ShopStats extends Component {
               </div>
             </div>
             <div className="fact">
-              <p className="fact-title">Disruption Index</p>
+              <p className="fact-title">{it.shop_disruption_index}</p>
               <div className="fact-data">
                 <p>{this.props.disruptionIndex}</p>
               </div>
             </div>
             <div className="fact">
-              <p className="fact-title">Indice di ripartenza</p>
+              <p className="fact-title">{it.shop_goals_achieved}</p>
               <div className="fact-data">
                 <p>{this.props.goalsDone}%</p>
               </div>

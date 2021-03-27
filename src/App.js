@@ -22,7 +22,8 @@ import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import ShopDashboard from "./pages/ShopDashboard/ShopDashboard";
 
 // transaction
-import Checkout from "./pages/Checkout/Checkout";
+import UserCheckout from "./pages/Checkout/UserCheckout";
+import ShopCheckout from "./pages/Checkout/ShopCheckout";
 import TransactionSuccess from "./pages/TransactionSuccess/TransactionSuccess";
 
 // shop register
@@ -82,7 +83,8 @@ export class App extends Component {
           <Route exact path="/spread" component={Spread} />
           <Route exact path="/workplace" component={Workplace} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/user/checkout" component={Checkout} />
+          <Route exact path="/user/checkout" component={UserCheckout} />
+          <Route exact path="/shop/checkout" component={ShopCheckout} />
           <Route
             path="/success/:transactionId"
             component={TransactionSuccess}

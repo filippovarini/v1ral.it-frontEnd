@@ -6,6 +6,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // components
 import App from "./App";
+// import Maintenance from "./pages/Maintenance/Maintenance";
 
 // reducers
 import UserReducer from "./reducers/UserReducer";
