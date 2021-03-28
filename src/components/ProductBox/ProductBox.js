@@ -7,6 +7,7 @@ import Loading from "../Loading/Loading";
 
 /** Display shop marketing product
  * @param product
+ * @param disabled whether the 'add to cart' should be disabled
  */
 export class ProductBox extends Component {
   state = {
@@ -76,7 +77,8 @@ export class ProductBox extends Component {
                 {this.props.product.description.slice(0, 100)}
               </p>
             </div>
-            {this.props.product.added || this.state.added ? (
+            {this.props.disabled ? null : this.props.product.added ||
+              this.state.added ? (
               <p
                 className="button-small button-disabled"
                 id="product-box-addToCart"

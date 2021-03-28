@@ -34,6 +34,10 @@ import ShopGoals from "./pages/ShopRegister/ShopGoals/ShopGoals";
 import ShopRegisterDone from "./pages/ShopRegister/ShopRegisterDone";
 import Spread from "./pages/Spread/Spread";
 
+// admin
+import AdminLogin from "./pages/Admin/Login";
+import AdminDashboard from "./pages/Admin/Admin";
+
 import Login from "./pages/Login/Login";
 
 // error
@@ -89,6 +93,8 @@ export class App extends Component {
             path="/success/:transactionId"
             component={TransactionSuccess}
           />
+          <Route exact path="/admin/login" component={AdminLogin} />
+          <Route exact path="/admin" component={AdminDashboard} />
           <Route exact path="/error" component={Error} />
         </div>
       </BrowserRouter>

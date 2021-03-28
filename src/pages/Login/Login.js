@@ -20,6 +20,10 @@ export class UserLogin extends Component {
       .then(jsonRes => {
         if (!jsonRes.success) this.props.history.push("/");
         else this.setState({ loading: false });
+      })
+      .catch(e => {
+        console.log(e);
+        errorHandler.clientError();
       });
   };
 
