@@ -6,6 +6,7 @@ import Loading from "../../components/Loading/Loading";
 import Navigator from "./privateComponents/Navigator";
 import Dashboard from "./privateComponents/Dashboard";
 import Products from "./privateComponents/Products";
+import AdminList from "./privateComponents/AdminList";
 
 export class Admin extends Component {
   state = {
@@ -15,7 +16,9 @@ export class Admin extends Component {
     userStats: null,
     shopOrders: null,
     challengerOrders: null,
-    products: null
+    products: null,
+    admins: null,
+    maintenanceStatus: null
   };
 
   updateNav = i => {
@@ -33,7 +36,9 @@ export class Admin extends Component {
             userStats: jsonRes.userStats,
             shopOrders: jsonRes.shopOrders,
             challengerOrders: jsonRes.challengerOrders,
-            products: jsonRes.products
+            products: jsonRes.products,
+            admins: jsonRes.admins,
+            maintenanceStatus: jsonRes.maintenanceStatus
           });
         } else {
           if (jsonRes.serverError) errorHandler.serverError();
@@ -82,6 +87,9 @@ export class Admin extends Component {
       case 1:
         bodyComponent = <Products products={this.state.products} />;
         break;
+      case 4:
+        bodyComponent = <AdminList admins={this.state.admins} />;
+        break;
       default:
         bodyComponent = null;
     }
@@ -92,6 +100,7 @@ export class Admin extends Component {
           navState={this.state.navState}
           updateNav={this.updateNav}
           superAdmin={this.state.superAdmin}
+          maintenanceStatus={this.state.maintenanceStatus}
         />
         <div id="admin-dashboard-wrapper">
           <div id="remember-logout" className="flex-line">

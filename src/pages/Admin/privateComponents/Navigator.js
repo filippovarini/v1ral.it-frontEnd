@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import "./privateComponents.css";
 
+import ToggleMaintenance from "./ToggleMaintenance/ToggleMaintenance";
+
 /** Admin navigator
  * @param updateNav()
  * @param navState
+ * @param maintenanceStatus whether the website is on maintenance or not
  */
 export class Navigator extends Component {
   render() {
@@ -56,6 +59,9 @@ export class Navigator extends Component {
             <p className="admin-nav-item-text">Admins</p>
           </div>
         ) : null}
+        <ToggleMaintenance
+          alreadyMaintenance={this.props.maintenanceStatus === "on"}
+        />
       </div>
     );
   }

@@ -38,14 +38,21 @@ import Spread from "./pages/Spread/Spread";
 import AdminLogin from "./pages/Admin/Login";
 import AdminDashboard from "./pages/Admin/Admin";
 
+import Maintenance from "./pages/Maintenance/Maintenance";
+
 import Login from "./pages/Login/Login";
 
 // error
 import Error from "./pages/Error/Error";
 
 export class App extends Component {
+  state = {
+    maintenance: null
+  };
+
   componentDidMount = () => {
     // fetch user profile and name
+    this.getMaintenance();
     fetch("/page/header")
       .then(res => res.json())
       .then(jsonRes => {
@@ -65,34 +72,57 @@ export class App extends Component {
       });
   };
 
+  getMaintenance = async () => {
+    const maintenance = await fetch("/maintenance");
+    const parsedMaintenance = await maintenance.json();
+    this.setState({ maintenance: parsedMaintenance.maintenance });
+  };
+
   render() {
+    console.log(window.location.pathname);
     return (
       <BrowserRouter>
         <div>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/shops" component={Shops} />
-          <Route exact path="/shop/profile/:id" component={ShopProfile} />
-          <Route exact path="/user/profile/:username" component={UserProfile} />
-          <Route exact path="/shop/dashboard" component={ShopDashboard} />
-          <Route exact path="/user/dashboard" component={UserDashboard} />
-          <Route exact path="/shop/register/bio" component={BioInfo} />
-          <Route
-            exact
-            path="/shop/register/credentials"
-            component={ShopCredentials}
-          />
-          <Route path="/shop/register/services" component={ServicesOffered} />
-          <Route path="/shop/register/goals" component={ShopGoals} />
-          <Route path="/shop/register/done" component={ShopRegisterDone} />
-          <Route exact path="/spread" component={Spread} />
-          <Route exact path="/workplace" component={Workplace} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/user/checkout" component={UserCheckout} />
-          <Route exact path="/shop/checkout" component={ShopCheckout} />
-          <Route
-            path="/success/:transactionId"
-            component={TransactionSuccess}
-          />
+          {this.state.maintenance &&
+          window.location.pathname !== "/admin/login" &&
+          window.location.pathname !== "/admin" ? (
+            <Route path="*" component={Maintenance} />
+          ) : (
+            <div>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/shops" component={Shops} />
+              <Route exact path="/shop/profile/:id" component={ShopProfile} />
+              <Route
+                exact
+                path="/user/profile/:username"
+                component={UserProfile}
+              />
+              <Route exact path="/shop/dashboard" component={ShopDashboard} />
+              <Route exact path="/user/dashboard" component={UserDashboard} />
+              <Route exact path="/shop/register/bio" component={BioInfo} />
+              <Route
+                exact
+                path="/shop/register/credentials"
+                component={ShopCredentials}
+              />
+              <Route
+                path="/shop/register/services"
+                component={ServicesOffered}
+              />
+              <Route path="/shop/register/goals" component={ShopGoals} />
+              <Route path="/shop/register/done" component={ShopRegisterDone} />
+              <Route exact path="/spread" component={Spread} />
+              <Route exact path="/workplace" component={Workplace} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/user/checkout" component={UserCheckout} />
+              <Route exact path="/shop/checkout" component={ShopCheckout} />
+              <Route
+                path="/success/:transactionId"
+                component={TransactionSuccess}
+              />
+            </div>
+          )}
+
           <Route exact path="/admin/login" component={AdminLogin} />
           <Route exact path="/admin" component={AdminDashboard} />
           <Route exact path="/error" component={Error} />
