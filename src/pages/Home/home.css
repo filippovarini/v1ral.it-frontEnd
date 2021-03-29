@@ -38,3 +38,20 @@
   background-size: cover;
   overflow: hidden;
 }
+
+.topHalf-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 30px;
+  font-size: 1.5rem;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#topHalf-banner-container {
+  position: absolute;
+  height: 150px;
+  top: 100px;
+}

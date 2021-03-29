@@ -6,6 +6,7 @@ import ChallengeButton from "./homeComponents/Button/HomeButton";
 import Header from "../../components/Header/Header";
 import Countdown from "./homeComponents/CountDown/CountDown";
 import Challenged from "../../components/InsertChallenger/Challenger";
+import ValueIncrease from "./homeComponents/ValueIncrease/ValueIncrease";
 
 export class HomeTopHalf extends Component {
   state = {
@@ -39,7 +40,10 @@ export class HomeTopHalf extends Component {
           successRedirection="/shops"
         />
         <Header class={this.props.class} />
-        <Countdown />
+        <div id="topHalf-banner-container">
+          <Countdown />
+          <ValueIncrease />
+        </div>
         <ChallengeButton
           loading={this.state.challengeLoading}
           click={this.clickChallengeButton}

@@ -31,7 +31,7 @@ export class CountDown extends Component {
   render() {
     setInterval(this.updateCountDown, sec);
     return (
-      <div id="countdown">
+      <div id="countdown" className="topHalf-banner">
         <p id="countdown-header" className=" ">
           {it.countdown}
         </p>

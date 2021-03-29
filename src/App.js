@@ -79,7 +79,6 @@ export class App extends Component {
   };
 
   render() {
-    console.log(window.location.pathname);
     return (
       <BrowserRouter>
         <div>
