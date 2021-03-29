@@ -4,7 +4,7 @@
 }
 
 .shop-register-button {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   margin-top: 80px;
 }
@@ -13,6 +13,23 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+
+.shop-register-body {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.register-warning {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* BIOINFO */
+#bio-forms-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* FORMS */
@@ -28,19 +45,30 @@
   display: grid;
 }
 
-/* COMPONENTS */
-#service-header-container {
+/* HEADER */
+#shopRegister-header-container {
   background: white;
-  height: 150px;
+  height: 100px;
+  margin-bottom: 50px;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
 }
 
-#service-header {
-  font-weight: bold;
-  font-size: 2rem;
+.header-step-container {
+  cursor: pointer;
 }
+
+.header-step-container.active {
+  background: lightblue;
+}
+
+.header-step-icon {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* COMPONENTS */
 
 #indexer-container {
   width: 70px;

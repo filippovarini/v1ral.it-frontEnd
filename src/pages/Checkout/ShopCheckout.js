@@ -138,7 +138,7 @@ export class Checkout extends Component {
           </p>
           <Link
             to="/spread"
-            className="communication-panel-button button-small"
+            className="communication-panel-button button small"
           >
             prodotti
           </Link>

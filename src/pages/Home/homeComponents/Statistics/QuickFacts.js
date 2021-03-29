@@ -24,7 +24,7 @@ export class QuickFacts extends Component {
 
   render() {
     const body = (
-      <div className="statistics-box box quick-facts quick-facts-flex">
+      <div className="box quick-facts quick-facts-flex">
         <div className="facts-container">
           <div className="fact">
             <p className="fact-title">{it.quickFacts_total_cases}</p>

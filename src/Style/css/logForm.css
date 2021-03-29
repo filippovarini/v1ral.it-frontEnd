@@ -1,0 +1,47 @@
+.log-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 10px 0;
+  height: 300px;
+  margin-bottom: 40px;
+}
+
+.log-form input,
+select {
+  width: 80%;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.log-form-subtext {
+  text-align: center;
+  margin: 20px;
+  font-weight: bold;
+  display: block;
+}
+
+.log-form-link {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.form-header {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 20px;
+}
+
+.input-header {
+  font-weight: bold;
+}
+
+.form-error {
+  color: red;
+  text-align: center;
+  margin: 10px;
+}

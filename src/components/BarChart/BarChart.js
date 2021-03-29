@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import "./barChart.css";
 
-import colors from "../../style/colors";
+import graphColors from "../../Style/graphColors";
 
 const totalMargin = 40;
 const quickFactsWidth = 250;
@@ -46,7 +46,7 @@ export class BarChart extends Component {
     return (
       <div
         id="bar-chart-container"
-        className="statistics-box"
+        className=""
         style={{ width: this.state.width }}
       >
         <div
@@ -66,9 +66,9 @@ export class BarChart extends Component {
               {
                 label: "Casi giornalieri",
                 data: this.props.cases.map(dailyReport => dailyReport.number),
-                backgroundColor: colors.graph.background,
-                hoverBackgroundColor: colors.graph.hover,
-                borderColor: colors.graph.border,
+                backgroundColor: graphColors.background,
+                hoverBackgroundColor: graphColors.hover,
+                borderColor: graphColors.border,
                 borderWidth: 1,
                 barPercentage: 1
               },
@@ -78,8 +78,8 @@ export class BarChart extends Component {
                 fill: false,
                 pointBackgroundColor: "rgba(0,0,0,0)",
                 pointBorderColor: "rgba(0,0,0,0)",
-                pointHoverBorderColor: colors.graph.pointBorder,
-                pointHoverBackgroundColor: colors.graph.pointBackground,
+                pointHoverBorderColor: graphColors.pointBorder,
+                pointHoverBackgroundColor: graphColors.pointBackground,
                 borderColor: ["rgba(255, 99, 132, 1)"],
                 borderWidth: 3,
                 type: "line"

@@ -37,5 +37,11 @@
   "shop_spent_so_far": "Spese di marketing",
   "shop_profile_stats": "Statistiche epidemiologiche",
   "shop_profile_priviledges_goals": "Dove vanno i soldi?",
-  "shop_profile_what_happens_with_money": "Contagiandoti in questo focolaio, aiuti questa impresa a rialzarsi dall'impatto del Covid-19 e acquisisci uno status di cliente elite. I clienti elite hanno diritto ai privilegi specificati. I soldi saranno utilizzati per raggiungere gli obbiettivi specificati."
+  "shop_profile_what_happens_with_money": "Contagiandoti in questo focolaio, aiuti questa impresa a rialzarsi dall'impatto del Covid-19 e acquisisci uno status di cliente elite. I clienti elite hanno diritto ai privilegi specificati. I soldi saranno utilizzati per raggiungere gli obbiettivi specificati.",
+  "shop_register_prompt": "Rendi l'Italia più bella con la tua impresa?",
+  "shop_register_prompt_button": "Registrati",
+  "shop_register_first_step": "Profilo",
+  "shop_register_second_step": "Credenziali",
+  "shop_register_third_step": "Privilegi del privè",
+  "shop_register_fourth_step": "Come userai i soldi?"
 }

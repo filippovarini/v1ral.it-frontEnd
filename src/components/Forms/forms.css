@@ -1,3 +1,4 @@
+/* div containing the input */
 .form-input-container {
   width: 100%;
   display: flex;
@@ -12,6 +13,7 @@
   text-transform: uppercase;
 }
 
+/* input */
 .form-input {
   width: 100%;
   margin: 5px 0px;

@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+import it from "../../locales/it.json";
 
 // components
 import TopHalf from "./TopHalf";
@@ -25,6 +28,17 @@ export class Home extends Component {
       <div id="home-container" onWheel={this.handleScroll}>
         <TopHalf class={this.state.headerTopHalf ? "topHalf" : null} />
         <BottomHalf />
+        <div id="howItWorks-container"></div>
+        <div id="shop-prompt-container" className="flex-line">
+          <p id="shop-prompt-title">{it.shop_register_prompt}</p>
+          <Link
+            to="/shop/register/bio"
+            id="shop-prompt-button"
+            className="button"
+          >
+            {it.shop_register_prompt_button}
+          </Link>
+        </div>
       </div>
     );
   }

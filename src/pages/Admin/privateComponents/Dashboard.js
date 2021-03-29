@@ -9,7 +9,7 @@ export class Dashboard extends Component {
   render() {
     return this.props.userStats ? (
       <div id="dashboard">
-        <div className="statistics-box box quick-facts quick-facts-wide quick-facts-margin">
+        <div className=" box quick-facts wide quick-facts-margin">
           <p className="facts-header">Utenti</p>
           <div className="facts-container">
             <div className="fact fact-align-between">
@@ -37,7 +37,7 @@ export class Dashboard extends Component {
             </div>
           </div>
         </div>
-        <div className="statistics-box box quick-facts quick-facts-wide quick-facts-margin">
+        <div className=" box quick-facts wide quick-facts-margin">
           <p className="facts-header">Sessioni</p>
           <div className="facts-container">
             <div className="fact fact-align-between">
@@ -58,7 +58,7 @@ export class Dashboard extends Component {
             </div>
           </div>
         </div>
-        <div className="statistics-box box quick-facts quick-facts-wide quick-facts-margin">
+        <div className=" box quick-facts wide quick-facts-margin">
           <p className="facts-header">Fatturato</p>
           <div className="facts-container">
             <div className="fact fact-align-between">

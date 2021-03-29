@@ -12,16 +12,8 @@ export class ShopIncreaseBox extends Component {
           <p id="shop-increase-box-name">{this.props.shop.name}</p>
         </div>
         <div id="shop-increase-prices" className="flex-line">
-          <p id="shop-increase-box-current">€ {this.props.shop.currentprice}</p>
-          <p id="shop-increase-box-increase">
-            +{" "}
-            {Math.ceil(
-              (this.props.shop.currentprice / this.props.shop.initialprice -
-                1) *
-                100
-            )}
-            %
-          </p>
+          <p id="shop-increase-box-current">€ {this.props.shop.current}</p>
+          <p id="shop-increase-box-increase">+ {this.props.shop.increase}%</p>
         </div>
       </div>
     ) : null;

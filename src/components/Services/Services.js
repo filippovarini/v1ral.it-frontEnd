@@ -17,7 +17,7 @@ export class Services extends Component {
     ) : null;
 
     return (
-      <div className="statistics-box box quick-facts quick-facts-wide quick-facts-margin">
+      <div className=" box quick-facts wide quick-facts-margin">
         <p className="facts-header">{it.shop_priviledges_offered}</p>
         <div className="facts-container">
           {this.props.services

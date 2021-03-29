@@ -1,8 +1,11 @@
 /* Root Component */
+#home-container {
+  height: 5000px;
+}
 
 #bottomHalf {
   margin: 20px;
-  height: 5000px;
+  height: 50vh;
 }
 
 .home-search-bar {
@@ -54,4 +57,26 @@
   position: absolute;
   height: 150px;
   top: 100px;
+}
+
+#shop-prompt-container {
+  background: var(--coloredBackground);
+  height: 200px;
+  justify-content: space-around;
+}
+
+#shop-prompt-title {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  width: 60%;
+  line-height: 25px;
+}
+
+#shop-prompt-button {
+  width: 30%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4rem;
+  max-width: 250px;
 }

@@ -94,12 +94,6 @@ export class Shops extends Component {
             className="home-search-input"
             placeholder="cerca contagiato"
           />
-          {/* <input
-            className="button-small home-search-submit "
-            type="submit"
-            value="CERCA"
-            style={!this.state.userSearchSI ? { display: "none" } : null}
-          /> */}
         </form>
         {!this.state.loading && this.state.displayingUsers ? (
           <Table

@@ -79,7 +79,7 @@ export class AddGoal extends Component {
           />
           <p
             id="addInfo-submit"
-            className="button-small"
+            className="button small"
             onClick={this.handleSubmit}
           >
             AGGIUNGI

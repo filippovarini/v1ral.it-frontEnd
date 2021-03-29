@@ -15,8 +15,9 @@
   justify-content: space-around;
 }
 
-.quick-facts.quick-facts-wide {
+.quick-facts.wide {
   width: 300px;
+  min-width: 300px;
 }
 
 .facts-header {

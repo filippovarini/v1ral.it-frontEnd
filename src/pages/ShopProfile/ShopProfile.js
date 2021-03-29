@@ -138,11 +138,11 @@ export class ShopProfile extends Component {
         this.state.navState === 0 ? (
           <ShopStats
             disruptionIndex={this.getDisruptionIndex()}
-            priceIncrement={(
+            priceIncrement={Math.ceil(
               (parseFloat(this.state.shop.currentprice) * 100) /
                 this.state.shop.initialprice -
-              100
-            ).toFixed(2)}
+                100
+            )}
             placesLeft={
               this.state.shop.maxpremiums - this.state.shop.total_premiums
             }

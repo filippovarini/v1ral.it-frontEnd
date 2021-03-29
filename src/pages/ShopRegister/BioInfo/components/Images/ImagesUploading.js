@@ -23,7 +23,7 @@ export class ImagesUploading extends Component {
     );
 
     const backgroundInput = (
-      <div className="bioInfo-bacground bioInfo-image-input">
+      <div className="bioInfo-bacground">
         <label
           id="background-input-label"
           className="box "

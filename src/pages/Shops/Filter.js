@@ -75,7 +75,7 @@ export class Filter extends Component {
               )}
               {this.props.default ? (
                 <p
-                  className="button-small shops-filter-reset"
+                  className="button small shops-filter-reset"
                   onClick={() => this.postUpdate(null)}
                 >
                   annulla filtri

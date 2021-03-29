@@ -22,7 +22,7 @@ export class ShopStats extends Component {
       <div id="shop-stats-container">
         <div
           id="shop-stats-quickfacts"
-          className="statistics-box box quick-facts quick-facts-flex"
+          className=" box quick-facts quick-facts-flex"
         >
           <div className="facts-container">
             <div className="fact">

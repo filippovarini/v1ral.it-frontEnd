@@ -112,7 +112,7 @@ export class UserLogin extends Component {
           onChange={this.handleChange}
         />
         <p className="form-error">{this.state.error}</p>
-        <input type="submit" className="button-small" />
+        <input type="submit" className="button small" />
       </form>
     );
 

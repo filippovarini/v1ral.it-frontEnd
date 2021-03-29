@@ -1,0 +1,70 @@
+body {
+  background: rgb(230, 230, 230);
+}
+
+p {
+  margin: 0px;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+label {
+  margin: 0px;
+  cursor: pointer;
+}
+
+.page-wrapper {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.hidden {
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.page-header {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.hide-cross {
+  color: black;
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.hide-cross.bottomright {
+  top: 100px;
+  right: 0px;
+}
+
+.slidebar {
+  background: white;
+  border-radius: 10px;
+}
+
+.slidebar-background-click {
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.centering {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

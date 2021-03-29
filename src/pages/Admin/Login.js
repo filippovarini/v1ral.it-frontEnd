@@ -84,7 +84,7 @@ export class AdminLogin extends Component {
   render() {
     const body = (
       <form
-        className="log-form box box-background"
+        className="log-form box background"
         onSubmit={this.handleSubmit}
         style={{ height: "250px" }}
       >
@@ -104,7 +104,7 @@ export class AdminLogin extends Component {
           onChange={this.handleChange}
         />
         <p className="form-error">{this.state.error}</p>
-        <input type="submit" className="button-small" />
+        <input type="submit" className="button small" />
       </form>
     );
 
@@ -113,7 +113,7 @@ export class AdminLogin extends Component {
         <Header />
         <div className="page-wrapper">
           {this.state.loading ? (
-            <div className="log-form box box-background">
+            <div className="log-form box background">
               <Loading />
             </div>
           ) : (

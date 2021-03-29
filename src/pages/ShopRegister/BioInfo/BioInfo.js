@@ -5,9 +5,9 @@ import "../shopRegister.css";
 import postImage from "../../../functions/postImage";
 
 import Header from "../../../components/Header/Header";
-import Images from "./components/Images/ImagesUploading";
 import Form from "./components/BioInfoForm";
-import Indexer from "../components/Indexer";
+import ShopImages from "../../../components/ShopImages/ShopImages";
+import RegisterHeader from "../ShopRegisterHeader";
 
 export class BioInfo extends Component {
   state = {
@@ -22,6 +22,7 @@ export class BioInfo extends Component {
   };
 
   componentDidMount = () => {
+    if (this.props.user && this.props.user.name) window.location = "/";
     if (
       this.props.shopRegister &&
       this.props.shopRegister.bio &&
@@ -125,35 +126,42 @@ export class BioInfo extends Component {
     return (
       <div>
         <Header />
-        <div className="page-wrapper box shop-register-container">
-          <Images
-            logourl={this.state.logourl}
-            backgroundurl={this.state.backgroundurl}
-            resetUrl={this.resetImage}
-            handleImageChange={this.handleImageChange}
-          />
-          <Form
-            handleChange={this.handleChange}
-            error={this.state.error}
-            handleSubmit={this.handleSubmit}
-            name={this.state.name}
-            category={this.state.category}
-            bio={this.state.bio}
-          />
-
-          {this.multerOperating() ? (
-            <p className="button shop-register-button button-disabled">
-              caricando le immagini...
+        <div className="page-wrapper">
+          <RegisterHeader navState={0} />
+          <div className="shop-register-body">
+            <p className="register-warning">
+              Inserisci le immagini della tua impresa e parlaci di te
             </p>
-          ) : (
-            <p
-              className="button shop-register-button"
-              onClick={this.handleSubmit}
-            >
-              PROSEGUI
-            </p>
-          )}
-          <Indexer index={0} />
+            <div id="bio-forms-container">
+              <ShopImages
+                logourl={this.state.logourl}
+                backgroundurl={this.state.backgroundurl}
+                resetUrl={this.resetImage}
+                handleImageChange={this.handleImageChange}
+                input={true}
+              />
+              <Form
+                handleChange={this.handleChange}
+                error={this.state.error}
+                handleSubmit={this.handleSubmit}
+                name={this.state.name}
+                category={this.state.category}
+                bio={this.state.bio}
+              />
+            </div>
+            {this.multerOperating() ? (
+              <p className="button shop-register-button disabled">
+                caricando le immagini...
+              </p>
+            ) : (
+              <p
+                className="button shop-register-button"
+                onClick={this.handleSubmit}
+              >
+                PROSEGUI
+              </p>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -162,7 +170,8 @@ export class BioInfo extends Component {
 
 const mapStateToProps = state => {
   return {
-    shopRegister: state.shopRegister
+    shopRegister: state.shopRegister,
+    user: state.user
   };
 };
 

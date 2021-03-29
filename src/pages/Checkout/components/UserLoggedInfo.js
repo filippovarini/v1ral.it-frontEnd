@@ -40,7 +40,7 @@ export class UserLoggedInfo extends Component {
         />
         <div className="flex-line center">
           <p
-            className={`new-button ${this.state.shipAgain ? "clicked" : ""}`}
+            className={`button ${this.state.shipAgain ? "clicked" : ""}`}
             onClick={this.toggleShipAgain}
           >
             spediscimi la nuova carta (+ 5€)

@@ -155,7 +155,7 @@ export class UserCheckout extends Component {
           <p className="communication-panel-text">
             Seleziona dei focolai in cui contagiarti per continuare
           </p>
-          <Link to="/shops" className="communication-panel-button button-small">
+          <Link to="/shops" className="communication-panel-button button small">
             focolai
           </Link>
         </div>

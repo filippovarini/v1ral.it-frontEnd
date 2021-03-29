@@ -32,6 +32,17 @@ export class ValueIncrease extends Component {
       });
   };
 
+  formatShopPriceIncrease = () => {
+    return this.state.shops.map(shop => {
+      return {
+        current: shop.currentprice,
+        name: shop.name,
+        logourl: shop.logourl,
+        increase: Math.ceil((shop.currentprice / shop.initialprice - 1) * 100)
+      };
+    });
+  };
+
   render() {
     return (
       <div id="value-increase-general" className="topHalf-banner">
@@ -41,9 +52,11 @@ export class ValueIncrease extends Component {
             id="value-increase"
             className={`flex-line ${this.state.wrapperStart ? "start" : "end"}`}
           >
-            {this.state.shops.map((shop, i) => (
-              <ShopIncreaseBox key={i} shop={shop} />
-            ))}
+            {this.formatShopPriceIncrease(this.state.shops)
+              .sort((a, b) => b.increase - a.increase)
+              .map((shop, i) => (
+                <ShopIncreaseBox key={i} shop={shop} />
+              ))}
           </div>
         </div>
       </div>

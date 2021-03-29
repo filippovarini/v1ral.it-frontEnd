@@ -108,7 +108,7 @@ export class Admin extends Component {
               Effettua il logout prima di chiudere il browser!
             </p>
             <p
-              className="button-small"
+              className="button small"
               id="logout-button"
               onClick={this.handleLogout}
             >

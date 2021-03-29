@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import "./serviceOffered.css";
 
 import Header from "../../../components/Header/Header";
-import Indexer from "../components/Indexer";
-import ServiceHeader from "../components/ShopRegisterHeader";
 import ServiceForm from "./privateComponents/ServicePriceForm";
+import RegisterHeader from "../ShopRegisterHeader";
 import AddService from "./privateComponents/AddService";
 import Services from "../../../components/Services/Services";
 
@@ -89,45 +88,50 @@ export class ServicesOffered extends Component {
     return (
       <div>
         <Header />
-        <div className="box page-wrapper shop-register-container">
-          <ServiceHeader title="SCEGLI I PRIVILEGI DA OFFRIRE" />
-          <p id="services-warning">
-            Attenzione:
-            <br />È fondamentale offrire servizi <b>
-              utili
-            </b> <b>tangibili</b> e <b>utilizzabili</b>
-          </p>
+        <div className="page-wrapper">
+          <RegisterHeader navState={2} />
           <div className="shop-register-body">
-            <div id="serviceOffered-body" className="flex-line">
-              <Services
-                services={this.state.services}
-                adding={true}
-                handleAddClick={this.toggleAddService}
-              />
-              <ServiceForm
-                handleChange={this.handleChange}
-                error={this.state.error}
-                handleSubmit={this.handleSubmit}
-                maxPremiums={this.state.maxPremiums}
-                initialPrice={this.state.initialPrice}
-              />
-              <AddService
-                headerText="Aggiungi un privilegio"
-                hidden={this.state.addInfoHidden}
-                hide={this.toggleAddService}
-                type={this.state.typeAdding}
-                handleAdd={this.addInfo}
-                bestSellings={["Salta Fila", "Targhetta sul muro", "Scono 10%"]}
-              />
-            </div>
-            <p
-              className="button shop-register-button"
-              onClick={this.handleSubmit}
-            >
-              PROSEGUI
+            <p className="register-warning">
+              Attenzione:
+              <br />È fondamentale offrire servizi <b>
+                utili
+              </b> <b>tangibili</b> e <b>utilizzabili</b>
             </p>
+            <div className="shop-register-body">
+              <div id="serviceOffered-body" className="flex-line">
+                <Services
+                  services={this.state.services}
+                  adding={true}
+                  handleAddClick={this.toggleAddService}
+                />
+                <ServiceForm
+                  handleChange={this.handleChange}
+                  error={this.state.error}
+                  handleSubmit={this.handleSubmit}
+                  maxPremiums={this.state.maxPremiums}
+                  initialPrice={this.state.initialPrice}
+                />
+                <AddService
+                  headerText="Aggiungi un privilegio"
+                  hidden={this.state.addInfoHidden}
+                  hide={this.toggleAddService}
+                  type={this.state.typeAdding}
+                  handleAdd={this.addInfo}
+                  bestSellings={[
+                    "Salta Fila",
+                    "Targhetta sul muro",
+                    "Scono 10%"
+                  ]}
+                />
+              </div>
+              <p
+                className="button shop-register-button"
+                onClick={this.handleSubmit}
+              >
+                PROSEGUI
+              </p>
+            </div>
           </div>
-          <Indexer index={2} />
         </div>
       </div>
     );

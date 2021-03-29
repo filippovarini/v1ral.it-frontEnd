@@ -3,12 +3,15 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 // style
-import "./StandardStyle/tags.css";
-import "./StandardStyle/forms.css";
-import "./StandardStyle/boxes.css";
-import "./StandardStyle/text.css";
-import "./StandardStyle/quickFacts.css";
-import "./StandardStyle/communicationPanel.css";
+import "./Style/css/tags.css";
+import "./Style/css/logForm.css";
+import "./Style/css/boxes.css";
+import "./Style/css/text.css";
+import "./Style/css/quickFacts.css";
+import "./Style/css/communicationPanel.css";
+import "./Style/css/buttons.css";
+import "./Style/css/table.css";
+import "./Style/css/colors.css";
 
 import Workplace from "./workplace/workplace";
 

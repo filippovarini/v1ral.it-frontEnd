@@ -81,7 +81,7 @@ export class ProductBox extends Component {
             </div>
             {this.props.dashboard ? (
               <p
-                className="button-small button-disabled"
+                className="button small disabled"
                 id="product-box-addToCart"
                 style={{ background: "green" }}
               >
@@ -89,7 +89,7 @@ export class ProductBox extends Component {
               </p>
             ) : this.props.product.added || this.state.added ? (
               <p
-                className="button-small button-disabled"
+                className="button small disabled"
                 id="product-box-addToCart"
                 style={{ background: "green" }}
               >
@@ -97,7 +97,7 @@ export class ProductBox extends Component {
               </p>
             ) : (
               <p
-                className="button-small"
+                className="button small"
                 id="product-box-addToCart"
                 onClick={this.addToCart}
               >

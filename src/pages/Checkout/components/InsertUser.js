@@ -156,7 +156,7 @@ export class InsertUser extends Component {
         <p className="form-error">{this.state.error}</p>
         <Bill items={[{ name: "Contagio", price: this.props.shopsPrice }]} />
         {this.state.multerOperating ? (
-          <div id="checkout-confirm" className="button button-disabled">
+          <div id="checkout-confirm" className="button disabled">
             caricando l'immagine...
           </div>
         ) : (

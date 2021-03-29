@@ -99,7 +99,7 @@ export class ShopRegisterDone extends Component {
           aumenteranno le interactions con gli utenti, danto alla tua impresa
           anche publicità
         </p>
-        <Link to="/spread" className="communication-panel-button button-small">
+        <Link to="/spread" className="communication-panel-button button small">
           DIFFONDI IL CONTAGIO
         </Link>
       </div>

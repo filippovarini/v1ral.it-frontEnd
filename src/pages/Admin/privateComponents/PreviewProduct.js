@@ -17,7 +17,7 @@ export class PreviewProduct extends Component {
           <ProductBox dashboard={true} product={this.props.product} />
           <p
             id="preview-confirm"
-            className="button-small"
+            className="button small"
             onClick={this.props.handleSubmit}
           >
             salva

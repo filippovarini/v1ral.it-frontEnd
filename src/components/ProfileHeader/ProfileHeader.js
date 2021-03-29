@@ -27,7 +27,7 @@ export class ProfileHeader extends Component {
   };
 
   render() {
-    const buttonClassSuffix = this.props.handleSubmit ? "" : "button-disabled";
+    const buttonClassSuffix = this.props.handleSubmit ? "" : "disabled";
     const settingsButton = this.props.dashboard ? (
       <div id="profile-header-settings">
         <i

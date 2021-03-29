@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Header from "../../../components/Header/Header";
-import Indexer from "../components/Indexer";
-import CredentialsHeader from "../components/ShopRegisterHeader";
 import Form from "./ShopCredentialsForm";
+import RegisterHeader from "../ShopRegisterHeader";
 
 export class ShopCredentials extends Component {
   state = {
@@ -91,26 +90,27 @@ export class ShopCredentials extends Component {
     return (
       <div>
         <Header />
-        <div className="page-wrapper box shop-register-container">
-          <CredentialsHeader title="INSERISCI LE TUE CREDENZIALI" />
-          <Form
-            handleChange={this.handleChange}
-            error={this.state.error}
-            handleSubmit={this.handleSubmit}
-            email={this.state.email}
-            psw={this.state.psw}
-            city={this.state.city}
-            street={this.state.street}
-            province={this.state.province}
-            postcode={this.state.postcode}
-          />
-          <p
-            className="button shop-register-button"
-            onClick={this.handleSubmit}
-          >
-            PROSEGUI
-          </p>
-          <Indexer index={1} />
+        <div className="page-wrapper">
+          <RegisterHeader navState={1} />
+          <div className="shop-register-body">
+            <Form
+              handleChange={this.handleChange}
+              error={this.state.error}
+              handleSubmit={this.handleSubmit}
+              email={this.state.email}
+              psw={this.state.psw}
+              city={this.state.city}
+              street={this.state.street}
+              province={this.state.province}
+              postcode={this.state.postcode}
+            />
+            <p
+              className="button shop-register-button"
+              onClick={this.handleSubmit}
+            >
+              PROSEGUI
+            </p>
+          </div>
         </div>
       </div>
     );

@@ -107,7 +107,7 @@ export class Shops extends Component {
             placeholder="cerca focolaio"
           />
           <input
-            className="button-small home-search-submit "
+            className="button small home-search-submit "
             type="submit"
             value="CERCA"
             style={!this.state.shopSearchSI ? { display: "none" } : null}

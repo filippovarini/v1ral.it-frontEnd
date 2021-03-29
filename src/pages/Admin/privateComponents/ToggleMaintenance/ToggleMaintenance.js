@@ -3,8 +3,6 @@ import "./toggleMaintenance.css";
 
 import errorHandler from "../../../../functions/errorHandler";
 
-import Loading from "../../../../components/Loading/Loading";
-
 /** Button to toggle maintenance
  * @param alreadyMaintenance
  */
