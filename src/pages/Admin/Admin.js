@@ -67,7 +67,6 @@ export class Admin extends Component {
   };
 
   render() {
-    console.log(this.state);
     let bodyComponent = null;
 
     switch (this.state.navState) {
@@ -83,6 +82,8 @@ export class Admin extends Component {
       case 1:
         bodyComponent = <Products products={this.state.products} />;
         break;
+      default:
+        bodyComponent = null;
     }
 
     const body = (

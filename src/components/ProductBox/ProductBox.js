@@ -7,7 +7,9 @@ import Loading from "../Loading/Loading";
 
 /** Display shop marketing product
  * @param product
- * @param disabled whether the 'add to cart' should be disabled
+ * @param dashbaord If the product is rendered in the dashboard (the 'add to
+ * cart' should be disabled)
+ * @param handleDelete() Function to delete the product
  */
 export class ProductBox extends Component {
   state = {
@@ -77,8 +79,15 @@ export class ProductBox extends Component {
                 {this.props.product.description.slice(0, 100)}
               </p>
             </div>
-            {this.props.disabled ? null : this.props.product.added ||
-              this.state.added ? (
+            {this.props.dashboard ? (
+              <p
+                className="button-small button-disabled"
+                id="product-box-addToCart"
+                style={{ background: "green" }}
+              >
+                {this.props.product.price} €
+              </p>
+            ) : this.props.product.added || this.state.added ? (
               <p
                 className="button-small button-disabled"
                 id="product-box-addToCart"
@@ -95,6 +104,13 @@ export class ProductBox extends Component {
                 {this.props.product.price} €
               </p>
             )}
+            {this.props.handleDelete ? (
+              <i
+                id="delete-product"
+                className="fas fa-trash-alt hide-cross"
+                onClick={() => this.props.handleDelete(this.props.product.id)}
+              ></i>
+            ) : null}
           </div>
         ) : null}
       </div>

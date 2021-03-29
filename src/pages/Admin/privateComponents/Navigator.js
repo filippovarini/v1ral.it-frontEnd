@@ -48,9 +48,9 @@ export class Navigator extends Component {
         {this.props.superAdmin ? (
           <div
             className={`admin-nav-item flex-line ${
-              this.props.navState === 3 ? "clicked" : ""
+              this.props.navState === 4 ? "clicked" : ""
             }`}
-            onClick={() => this.props.updateNav(3)}
+            onClick={() => this.props.updateNav(4)}
           >
             <i className="fas fa-user-shield"></i>
             <p className="admin-nav-item-text">Admins</p>

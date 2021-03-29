@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
 
 import Header from "../../components/Header/Header";
@@ -119,9 +119,6 @@ export class AdminLogin extends Component {
           ) : (
             body
           )}
-          <Link to="/recover" className="log-form-subtext log-form-link">
-            Credenziali dimenticate?
-          </Link>
         </div>
       </div>
     );

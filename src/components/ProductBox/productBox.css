@@ -2,6 +2,7 @@
   border: 1px solid black;
   width: 250px;
   height: 400px;
+  position: relative;
   box-sizing: border-box;
   margin: 20px;
 }
@@ -47,4 +48,21 @@
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+#delete-product {
+  color: red;
+  background: rgba(255, 255, 255, 0.5);
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  top: -15px;
+  right: -15px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#delete-product:hover {
+  background: white;
 }
