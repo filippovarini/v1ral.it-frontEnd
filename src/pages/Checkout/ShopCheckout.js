@@ -9,11 +9,17 @@ import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import Table from "../../components/Table/Table";
 import Bill from "../../components/Bill/Bill";
+import CheckoutForm from "../../components/Checkout/CheckoutForm";
 
 export class Checkout extends Component {
   state = {
     loading: true,
-    products: []
+    products: [],
+    buttonLoading: false,
+    cardElementShowing: false,
+    client_secret: null,
+    intentId: null,
+    transactionLoading: false // pop up with loading
   };
 
   componentDidMount = async () => {
@@ -40,6 +46,15 @@ export class Checkout extends Component {
         console.log(e);
         errorHandler.clientError();
       });
+  };
+
+  getTotalPrice = () => {
+    if (this.state.products.length !== 0) {
+      return this.state.products.reduce(
+        (acc, product) => acc + product.price,
+        0
+      );
+    } else return 0;
   };
 
   removeItem = id => {
@@ -79,8 +94,8 @@ export class Checkout extends Component {
   };
 
   handleSubmit = () => {
-    this.setState({ loading: true });
-    fetch("/transaction/shopCheckout", {
+    this.setState({ buttonLoading: true });
+    fetch("/transaction/paymentIntent/shop", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -90,13 +105,17 @@ export class Checkout extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
+        console.log(jsonRes);
         if (jsonRes.unauthorized) {
-          alert(
-            "Errore con il carrello! Carrello vuoto o contenente items non validi"
-          );
+          alert(jsonRes.message);
           window.location = window.location.pathname;
         } else if (jsonRes.success) {
-          window.location = "/success/" + jsonRes.transactionId;
+          this.setState({
+            cardElementShowing: true,
+            buttonLoading: false,
+            client_secret: jsonRes.client_secret,
+            intentId: jsonRes.intentId
+          });
         } else {
           errorHandler.serverError(jsonRes);
         }
@@ -107,43 +126,104 @@ export class Checkout extends Component {
       });
   };
 
-  getTotalPrice = () => {
-    if (this.state.products.length !== 0) {
-      return this.state.products.reduce(
-        (acc, product) => acc + product.price,
-        0
-      );
-    } else return 0;
+  saveTransaction = () => {
+    console.log(this.state.client_secret);
+    console.log(this.state.intentId);
+    fetch("/transaction/paymentSuccess/shop", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ intentId: this.state.intentId })
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        if (jsonRes.success)
+          window.location = "/success/" + jsonRes.transactionId;
+        else if (jsonRes.intentIdInvalid) {
+          alert(
+            "Pagamento invalido. Ti consigliamo di riprovare. Se il problema persiste non esitare a contattarci."
+          );
+        } else {
+          // server error
+          errorHandler.serverError(jsonRes);
+        }
+      })
+      .catch(e => {
+        console.log(e);
+        errorHandler.clientError();
+      });
   };
 
   render() {
-    const body =
-      this.state.products.length > 0 ? (
-        <div>
-          <p id="checkout-header">Checkout</p>
-          <div id="checkout-cart">
-            <p id="checkout-cart-header">carrello</p>
-            <Table data={this.formatDateForTable(this.state.products)} />
+    const checkoutBody = (
+      <div>
+        <p id="checkout-header">Checkout</p>
+        <div id="checkout-cart">
+          <p id="checkout-cart-header">carrello</p>
+          <Table data={this.formatDateForTable(this.state.products)} />
+        </div>
+        <Bill items={[{ name: "Marketing", price: this.getTotalPrice() }]} />
+        <div className="checkout-buttons-container">
+          {this.state.cardElementShowing ? (
+            <CheckoutForm
+              client_secret={this.state.client_secret}
+              billing_details={
+                this.props.user
+                  ? {
+                      email: this.props.user.email,
+                      address: this.props.user.address,
+                      name: this.props.user.name.slice(1)
+                    }
+                  : null
+              }
+              saveTransaction={this.saveTransaction}
+              toggleLoading={() =>
+                this.setState({
+                  transactionLoading: !this.state.transactionLoading
+                })
+              }
+            />
+          ) : this.state.buttonLoading ? (
+            <p
+              className="button checkout-button lowercase"
+              style={{ cursor: "not-allowed" }}
+            >
+              processando la richiesta...
+            </p>
+          ) : (
+            <p className="button checkout-button" onClick={this.handleSubmit}>
+              CHECKOUT
+            </p>
+          )}
+        </div>
+        <div
+          className="transaction-loading centering"
+          style={this.state.transactionLoading ? {} : { display: "none" }}
+        >
+          <div className="transaction-loading-contained">
+            <p className="transaction-loading-header">
+              Attendi il completamento della transazione...
+            </p>
+            <Loading />
           </div>
-          <Bill items={[{ name: "Marketing", price: this.getTotalPrice() }]} />
-          <p className="button checkout-button" onClick={this.handleSubmit}>
-            CHECKOUT
-          </p>
         </div>
-      ) : (
-        <div id="checkout-empty-cart" className="communication-panel">
-          <p className="communication-panel-header">Il carrello è vuoto!</p>
-          <p className="communication-panel-text">
-            Seleziona i prodotti prima di procedere
-          </p>
-          <Link
-            to="/spread"
-            className="communication-panel-button button small"
-          >
-            prodotti
-          </Link>
-        </div>
-      );
+      </div>
+    );
+
+    const emptyBody = (
+      <div id="checkout-empty-cart" className="communication-panel">
+        <p className="communication-panel-header">Il carrello è vuoto!</p>
+        <p className="communication-panel-text">
+          Seleziona i prodotti prima di procedere
+        </p>
+        <Link to="/spread" className="communication-panel-button button small">
+          prodotti
+        </Link>
+      </div>
+    );
+    const body = this.state.products.length > 0 ? checkoutBody : emptyBody;
     return (
       <div>
         <Header />

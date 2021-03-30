@@ -17,7 +17,10 @@ export class UserCheckout extends Component {
     shops: [],
     isLogged: false,
     challenger: false,
-    user: null
+    user: null,
+    cardElementShown: false,
+    client_secret: null,
+    buttonLoading: true
   };
 
   componentDidMount = async () => {
@@ -89,8 +92,8 @@ export class UserCheckout extends Component {
   };
 
   handleSubmit = newUser => {
-    this.setState({ loading: true });
-    fetch("/transaction/challengerCheckout", {
+    this.setState({ buttonLoading: true });
+    fetch("/transaction/paymentIntent/user", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -100,14 +103,16 @@ export class UserCheckout extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.unauthorized) {
-          alert(
-            "Errore con il carrello! Carrello vuoto o contenente items non validi"
-          );
+          alert(jsonRes.message);
           window.location = window.location.pathname;
         } else if (jsonRes.success) {
-          window.location = "/success/" + jsonRes.transactionId;
+          this.setState({
+            buttonLoading: false,
+            client_secret: jsonRes.client_secret,
+            cardElementShown: true,
+            intentId: jsonRes.intentId
+          });
         } else {
           errorHandler.serverError(jsonRes);
         }

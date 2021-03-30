@@ -26,6 +26,10 @@
   cursor: default;
 }
 
+.button.lowercase {
+  text-transform: lowercase;
+}
+
 .button:hover {
   box-shadow: 0px 0px 2px var(--darkBlue);
 }
