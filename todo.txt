@@ -8,6 +8,8 @@ multer completion that image gets put
 need to change shipment address on checkout)!
 - Rimandami la carta
 - implement "Spese di marketing"
+- shop register prompts ("invogli ad andare" / "ti fai pubblicità")
+- check that it has not exceeded the max premiums
 
 ADMIN PAGE
 - show for each product how many times it has been bought

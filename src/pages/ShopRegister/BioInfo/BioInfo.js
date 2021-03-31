@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../shopRegister.css";
 
+import it from "../../../locales/it.json";
+
 import postImage from "../../../functions/postImage";
 
 import Header from "../../../components/Header/Header";
@@ -130,7 +132,7 @@ export class BioInfo extends Component {
           <RegisterHeader navState={0} />
           <div className="shop-register-body">
             <p className="register-warning">
-              Inserisci le immagini della tua impresa e parlaci di te
+              {it.shop_register_complete_profile}
             </p>
             <div id="bio-forms-container">
               <ShopImages

@@ -9,3 +9,18 @@
 .negative {
   color: red;
 }
+
+.payment-secure {
+  justify-content: center;
+  font-size: 0.8rem;
+  color: green;
+}
+
+.payment-secure p {
+  margin: 5px;
+}
+
+.payment-secure .fa-stripe {
+  font-size: 1.7rem;
+  color: #5433ff;
+}

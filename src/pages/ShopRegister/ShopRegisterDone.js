@@ -4,104 +4,137 @@ import { connect } from "react-redux";
 
 import errorHandler from "../../functions/errorHandler";
 
+import it from "../../locales/it.json";
+
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
+import ShopRegisterHeader from "./ShopRegisterHeader";
 
 export class ShopRegisterDone extends Component {
   state = {
-    loading: true,
-    name: null
+    loading: false,
+    name: null,
+    chargesEnabled: false
   };
 
   componentDidMount = () => {
-    if (!this.props.shopRegister) this.props.history.push("/");
-    else if (!this.props.shopRegister.bio) this.props.history.push("/");
-    else if (!this.props.shopRegister.credentials)
-      this.props.history.push("/shop/register/credentials");
-    else if (!this.props.shopRegister.services)
-      this.props.history.push("/shop/register/services");
-    else if (!this.props.shopRegister.goals)
-      this.props.history.push("/shop/register/goals");
-    else {
-      // all info complete
-      const {
-        name,
-        category,
-        bio,
-        backgroundurl,
-        logourl
-      } = this.props.shopRegister.bio;
-      const {
-        city,
-        province,
-        street,
-        postcode,
-        email,
-        psw
-      } = this.props.shopRegister.credentials;
-      const {
-        initialPrice,
-        maxPremiums,
-        services
-      } = this.props.shopRegister.services;
-      const goals = this.props.shopRegister.goals;
-      const shop = {
-        name,
-        category,
-        bio,
-        backgroundurl,
-        logourl,
-        city,
-        province,
-        street,
-        postcode,
-        email,
-        psw,
-        initialPrice,
-        maxPremiums,
-        currentPrice: initialPrice,
-        clicks: 0,
-        connectedId: "still to implement"
-      };
-      fetch("/shop/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({ shop, goals, services })
-      })
-        .then(res => res.json())
-        .then(jsonRes => {
-          if (jsonRes.success) {
-            this.setState({ loading: false, name: jsonRes.name });
-          } else {
-            errorHandler.serverError(jsonRes);
+    const connectedId = this.props.match.params.connectedId;
+    // send request
+    fetch("/shop/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({ connectedId })
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        console.log(jsonRes);
+        if (jsonRes.success) {
+          this.setState({
+            loading: false,
+            name: jsonRes.name,
+            chargesEnabled: jsonRes.chargesEnabled
+          });
+          if (!jsonRes.alreadyPresent) {
+            this.props.dispatch({
+              type: "SET-USER",
+              user: {
+                name: jsonRes.name,
+                userProfile: jsonRes.userProfile,
+                id: jsonRes.id,
+                email: jsonRes.email,
+                address: jsonRes.address
+              }
+            });
           }
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    }
+        } else {
+          alert(jsonRes.message);
+          if (jsonRes.unauthorized) {
+            this.props.history.push("/shop/register/getPayed");
+          }
+          if (jsonRes.serverError) errorHandler.serverError(jsonRes);
+        }
+      })
+      .catch(e => {
+        console.log(e);
+        errorHandler.clientError();
+      });
+  };
+
+  goToDashboard = () => {
+    this.setState({ loading: true });
+    const connectedId = this.props.match.params.connectedId;
+    console.log(connectedId);
+    fetch("/transaction/dashboard", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        redirectPath: `shop/register/done/${connectedId}`,
+        connectedId
+      })
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        console.log(jsonRes);
+        if (jsonRes.success) window.location = jsonRes.url;
+        else {
+          alert(jsonRes.message);
+          errorHandler.serverError(jsonRes);
+        }
+      })
+      .catch(e => {
+        console.log(e);
+        errorHandler.clientError();
+      });
   };
 
   render() {
     const body = (
-      <div className="communication-panel big">
-        <p className="communication-panel-header">Successo</p>
-        <p className="communication-panel-text">
-          La registrazione è avvenuta con successo, e sei pronto a vendere i
-          tuoi contagi agli utenti della nostra piattaforma.
-        </p>
-        <p className="communication-panel-text">
-          Per ottenere il maggior numero di ordini possibile, ti consigliamo di
-          utilizzare i nostri metodi di <i>diffusione del contagio</i>, che
-          aumenteranno le interactions con gli utenti, danto alla tua impresa
-          anche publicità
-        </p>
-        <Link to="/spread" className="communication-panel-button button small">
-          DIFFONDI IL CONTAGIO
-        </Link>
+      <div>
+        <ShopRegisterHeader navState={5} />
+        {this.state.chargesEnabled ? null : (
+          <div id="shopRegister-charges-not-enabled" className="flex-line">
+            <p id="shopRegister-charges-not-enabled-text">
+              {it.shop_charges_not_enabled_text}
+            </p>
+            <p
+              id="shopRegister-charges-not-enabled-button"
+              className="button"
+              onClick={this.goToDashboard}
+            >
+              {it.shop_charges_not_enabled_button}
+            </p>
+          </div>
+        )}
+
+        <div className="shop-register-body">
+          <div
+            id="shop-register-done-panel"
+            className="communication-panel big"
+          >
+            <p className="communication-panel-header">
+              {it.shop_register_completed_header}
+            </p>
+            <p className="communication-panel-text">
+              {it.shop_register_completed_text}
+            </p>
+            <p className="communication-panel-text">
+              {it.shop_register_completed_buy_marketing_products_header}
+            </p>
+            <Link
+              to="/spread"
+              id="shop-register-done-marketing-button"
+              className="communication-panel-button button small"
+            >
+              {it.buy_marketing_products_button}
+            </Link>
+          </div>
+        </div>
       </div>
     );
     return (

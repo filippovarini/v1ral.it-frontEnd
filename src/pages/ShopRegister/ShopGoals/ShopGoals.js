@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./shopGoals.css";
 
+import it from "../../../locales/it.json";
+
 import Header from "../../../components/Header/Header";
 import AddGoal from "./privateComponents/AddGoal";
 import RegisterHeader from "../ShopRegisterHeader";
@@ -54,7 +56,7 @@ export class ShopGoals extends Component {
         type: "SET-GOALS",
         goals: this.state.goals
       });
-      this.props.history.push("/shop/register/done");
+      this.props.history.push("/shop/register/getPayed");
     }
   };
 
@@ -65,10 +67,7 @@ export class ShopGoals extends Component {
         <div className="page-wrapper">
           <RegisterHeader navState={3} />
           <div className="shop-register-body">
-            <p className="register-warning">
-              Seleziona obbiettivi che vuoi raggiungere con i finanziamenti che
-              riceverai
-            </p>
+            <p className="register-warning">{it.shop_register_insert_goals}</p>
             <div className="shop-register-body">
               <div id="shop-register-goals-container">
                 <Goals
