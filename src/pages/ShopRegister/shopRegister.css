@@ -33,22 +33,6 @@
   margin: 20px 0;
 }
 
-/* CHARGES NOT ENABLED */
-#shopRegister-charges-not-enabled {
-  border: 1px solid black;
-  background: var(--coloredBackground);
-  color: red;
-  box-sizing: border-box;
-  padding: 10px 30px;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-#shopRegister-charges-not-enabled-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
 /* BIOINFO */
 #bio-forms-container {
   display: flex;

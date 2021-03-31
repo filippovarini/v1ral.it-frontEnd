@@ -9,6 +9,7 @@ import it from "../../locales/it.json";
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
 import ShopRegisterHeader from "./ShopRegisterHeader";
+import ValidateStripeAccount from "../../components/ValidateStripeAccount/ValidateStripeAccount";
 
 export class ShopRegisterDone extends Component {
   state = {
@@ -94,22 +95,18 @@ export class ShopRegisterDone extends Component {
   };
 
   render() {
+    const connectedId = this.props.match.params.connectedId;
     const body = (
       <div>
         <ShopRegisterHeader navState={5} />
         {this.state.chargesEnabled ? null : (
-          <div id="shopRegister-charges-not-enabled" className="flex-line">
-            <p id="shopRegister-charges-not-enabled-text">
-              {it.shop_charges_not_enabled_text}
-            </p>
-            <p
-              id="shopRegister-charges-not-enabled-button"
-              className="button"
-              onClick={this.goToDashboard}
-            >
-              {it.shop_charges_not_enabled_button}
-            </p>
-          </div>
+          <ValidateStripeAccount
+            toggleLoading={() =>
+              this.setState({ loading: !this.state.loading })
+            }
+            redirectPath={`shop/register/done/${connectedId}`}
+            connectedId={connectedId}
+          />
         )}
 
         <div className="shop-register-body">

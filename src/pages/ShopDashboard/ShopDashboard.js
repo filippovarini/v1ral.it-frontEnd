@@ -12,6 +12,7 @@ import ShopImages from "../../components/ShopImages/ShopImages";
 import ShopStats from "../../components/ShopStats/ShopStats";
 import ServiceExplanaiton from "../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
 import DashboardStats from "./DashboardStats";
+import ValidateStripeAccount from "../../components/ValidateStripeAccount/ValidateStripeAccount";
 
 export class ShopDashboard extends Component {
   state = {
@@ -20,7 +21,8 @@ export class ShopDashboard extends Component {
     cases: null,
     services: null,
     loading: true,
-    navState: 0
+    navState: 0,
+    chargesEnabled: false
   };
 
   componentDidMount = () => {
@@ -33,7 +35,8 @@ export class ShopDashboard extends Component {
             shop: jsonRes.shop,
             services: jsonRes.services,
             goals: jsonRes.goals,
-            cases: jsonRes.cases
+            cases: jsonRes.cases,
+            chargesEnabled: jsonRes.chargesEnabled
           });
         } else {
           if (jsonRes.serverError) errorHandler.serverError(jsonRes);
@@ -121,6 +124,16 @@ export class ShopDashboard extends Component {
 
     const body = this.state.shop ? (
       <div className="page-wrapper">
+        {this.state.chargesEnabled ? null : (
+          <ValidateStripeAccount
+            toggleLoading={() =>
+              this.setState({ loading: !this.state.loading })
+            }
+            redirectPath="shop/dashboard"
+            connectedId={this.state.shop.connectedid}
+          />
+        )}
+
         <div id="shopProfile-header-container">
           <ShopImages
             logourl={this.state.shop.logourl}
@@ -152,6 +165,7 @@ export class ShopDashboard extends Component {
             shopProfile={true}
           />
         </div>
+
         <div id="shopProfile-nav" style={{ minWidth: "450px" }}>
           <Navigator
             active={this.state.navState}

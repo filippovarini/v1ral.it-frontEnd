@@ -1,0 +1,14 @@
+#validate-stripe-account {
+  border: 1px solid black;
+  background: var(--coloredBackground);
+  color: red;
+  box-sizing: border-box;
+  padding: 10px 30px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#validate-stripe-account {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
