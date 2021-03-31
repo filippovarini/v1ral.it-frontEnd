@@ -93,6 +93,7 @@ export class Checkout extends Component {
     });
   };
 
+  // submit order intent
   handleSubmit = () => {
     this.setState({ buttonLoading: true });
     fetch("/transaction/paymentIntent/shop", {
@@ -105,7 +106,6 @@ export class Checkout extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.unauthorized) {
           alert(jsonRes.message);
           window.location = window.location.pathname;
@@ -126,9 +126,8 @@ export class Checkout extends Component {
       });
   };
 
+  // save transaction and data associated with it
   saveTransaction = () => {
-    console.log(this.state.client_secret);
-    console.log(this.state.intentId);
     fetch("/transaction/paymentSuccess/shop", {
       method: "POST",
       headers: {
@@ -141,13 +140,14 @@ export class Checkout extends Component {
       .then(jsonRes => {
         if (jsonRes.success)
           window.location = "/success/" + jsonRes.transactionId;
-        else if (jsonRes.intentIdInvalid) {
+        else {
+          this.setState({ transactionLoading: false });
           alert(
             "Pagamento invalido. Ti consigliamo di riprovare. Se il problema persiste non esitare a contattarci."
           );
-        } else {
-          // server error
-          errorHandler.serverError(jsonRes);
+          if (jsonRes.serverError) {
+            errorHandler.serverError(jsonRes);
+          }
         }
       })
       .catch(e => {

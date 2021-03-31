@@ -55,7 +55,6 @@ export class Shops extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.success) {
           window.location = "/shops";
         } else {

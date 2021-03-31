@@ -7,6 +7,7 @@ multer completion that image gets put
 - REMEMBER THAT WITH FUTURE PURCHASES, THE CARD DOES NOT GET SHIPPED AGAIN (no 
 need to change shipment address on checkout)!
 - Rimandami la carta
+- implement "Spese di marketing"
 
 ADMIN PAGE
 - show for each product how many times it has been bought

@@ -10,7 +10,6 @@ import CardSection from "./CardElement";
  * @param toggleLoading
  */
 export default function CheckoutForm(props) {
-  console.log(props.client_secret);
   const stripe = useStripe();
   const elements = useElements();
   const [errorDisplay, setErrorDisplay] = useState(null);
@@ -30,15 +29,12 @@ export default function CheckoutForm(props) {
       return;
     }
 
-    console.log("sending confirmation");
     const result = await stripe.confirmCardPayment(props.client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: props.billing_details
       }
     });
-
-    console.log(result);
 
     if (result.error) {
       setErrorDisplay(result.error.message);
