@@ -12,6 +12,8 @@ import EditPassword from "./EditPassword";
  * @param hide
  * @param hidden
  * @param isUser
+ * @param handleDashboardClick? function firing when a shop in the dashboard
+ * wants to go to the stripe dashboard
  */
 export class UserSettings extends Component {
   state = {
@@ -151,7 +153,13 @@ export class UserSettings extends Component {
         >
           Modifica password
         </p>
-
+        <p
+          className="settings-option"
+          style={{ fontWeight: "bold" }}
+          onClick={this.props.handleDashboardClick}
+        >
+          Dashboard Pagamenti
+        </p>
         <EditBio
           hidden={!this.state.bioEditing}
           hide={() => this.toggleEditing("bioEditing")}

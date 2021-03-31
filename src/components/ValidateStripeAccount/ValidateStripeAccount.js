@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./validateStripeAccount.css";
 
 import errorHandler from "../../functions/errorHandler";
+import goToDashboard from "../../functions/goToDashboard";
 
 import it from "../../locales/it.json";
 
@@ -13,29 +14,7 @@ import it from "../../locales/it.json";
 export class ValidateStripeAccount extends Component {
   goToDashboard = () => {
     this.props.toggleLoading();
-    fetch("/transaction/dashboard", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        redirectPath: this.props.redirectPath,
-        connectedId: this.props.connectedId
-      })
-    })
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.success) window.location = jsonRes.url;
-        else {
-          alert(jsonRes.message);
-          errorHandler.serverError(jsonRes);
-        }
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
-      });
+    goToDashboard(this.props.redirectPath, this.props.connectedId);
   };
 
   render() {

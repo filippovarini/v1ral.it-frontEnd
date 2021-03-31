@@ -16,6 +16,7 @@ import Settings from "../Settings/Settings";
  * @param shopProfile boolean representing whether the profile header is for
  * a shop profile
  * @param dashboard whether we are in a dashboard
+ * @param goToDashboard()? function to call to go to stripe dashboard
  */
 export class ProfileHeader extends Component {
   state = {
@@ -38,6 +39,7 @@ export class ProfileHeader extends Component {
           hidden={this.state.settingsHidden}
           hide={this.toggleSettings}
           isUser={!this.props.shopProfile}
+          handleDashboardClick={this.props.handleDashboardClick}
         />
       </div>
     ) : null;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import errorHandler from "../../functions/errorHandler";
+import goToDashboard from "../../functions/goToDashboard";
 
 // language
 import it from "../../locales/it.json";
@@ -65,6 +66,11 @@ export class ShopDashboard extends Component {
     return (parseFloat(this.state.shop.financed_so_far) / totalGoals).toFixed(
       2
     );
+  };
+
+  goToDashboard = () => {
+    this.setState({ loading: true });
+    goToDashboard("shop/dashboard", this.state.shop.connectedid);
   };
 
   render() {
@@ -163,6 +169,7 @@ export class ShopDashboard extends Component {
             buttonText={profileHeaderButtonText}
             style={profileHeaderButtonStyle}
             shopProfile={true}
+            handleDashboardClick={this.goToDashboard}
           />
         </div>
 
