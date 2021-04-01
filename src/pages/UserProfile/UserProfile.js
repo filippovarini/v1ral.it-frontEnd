@@ -4,7 +4,6 @@ import errorHandler from "../../functions/errorHandler";
 import "./userProfile.css";
 
 import Header from "../../components/Header/Header";
-import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import Loading from "../../components/Loading/Loading";
 import ShopBox from "../../components/ShopBox/ShopBox";
 import UserProfileHeader from "../../components/ProfileHeaders/UserProfileHeader";

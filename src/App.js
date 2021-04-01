@@ -44,6 +44,7 @@ import AdminDashboard from "./pages/Admin/Admin";
 import Maintenance from "./pages/Maintenance/Maintenance";
 
 import Login from "./pages/Login/Login";
+import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
 
 // error
 import Error from "./pages/Error/Error";
@@ -122,6 +123,7 @@ export class App extends Component {
               <Route exact path="/spread" component={Spread} />
               <Route exact path="/workplace" component={Workplace} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/recover" component={RecoverPassword} />
               <Route
                 exact
                 path="/user/checkout"

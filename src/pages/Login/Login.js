@@ -34,14 +34,18 @@ export class UserLogin extends Component {
     });
   };
 
-  notEmpty = () => {
+  validFields = () => {
     const { login, psw } = this.state;
     if (!login || !psw) {
       this.setState({ error: "Inserisci tutti i campi" });
       return false;
-    } else {
-      return true;
+    } else if (this.state.psw.length < 8) {
+      this.setState({
+        error: "La password deve essere lunga almeno 8 caratteri"
+      });
+      return false;
     }
+    return true;
   };
 
   handleSubmit = e => {
@@ -50,7 +54,7 @@ export class UserLogin extends Component {
       this.state.type === "user"
         ? { login: this.state.login, psw: this.state.psw }
         : { email: this.state.login, psw: this.state.psw };
-    if (this.notEmpty()) this.login(body);
+    if (this.validFields()) this.login(body);
   };
 
   login = body => {

@@ -5,8 +5,6 @@ import "./shopStats.css";
 import it from "../../locales/it.json";
 
 // functions
-import printIncrement from "../../functions/printIncrement";
-import classFromIncrement from "../../functions/classFromIncrement";
 import BarChart from "../BarChart/BarChart";
 
 /** Show shop stats and chart

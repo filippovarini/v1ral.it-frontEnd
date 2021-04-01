@@ -13,7 +13,6 @@
   text-transform: uppercase;
   text-decoration: none;
 }
-
 .button.style2 {
   background: var(--light);
   color: var(--dark);

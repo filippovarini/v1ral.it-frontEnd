@@ -7,10 +7,10 @@
   "financed_shops": "Focolai finanziati",
   "rt_index": "Indice Rt",
   "quickFacts": "Statistiche",
-  "shop": "Focolaio",
-  "shops": "Focolai",
-  "user": "Positivo",
-  "users": "Positivi",
+  "shop": "Impresa",
+  "shops": "Imprese",
+  "user": "Utente",
+  "users": "Utenti",
   "shop_disruption_index": "Disruption index",
   "shop_price_increase": "Aumento valore",
   "shop_places_left": "Contagi rimasti",
@@ -72,5 +72,8 @@
   "standard_profile_disabledButton": "investimenti / contagi per diventare virale",
   "shop_button_already_added_cart": "nel carrello",
   "shop_button": "supporta",
-  "shop_button_already_bought": "già comprato"
+  "shop_button_already_bought": "già comprato",
+  "reset_password_title": "Resetta la password",
+  "reset_password_success": "Password resettata con successo!",
+  "reset_password_success_title": "Ti abbiamo appena mandato un'email all'indirizzo da te fornito con la nuova password"
 }
