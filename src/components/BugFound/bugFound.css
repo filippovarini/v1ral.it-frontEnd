@@ -1,0 +1,66 @@
+.bug-found-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--yellow);
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  justify-content: center;
+  color: var(--dark);
+  cursor: pointer;
+  transition: border-radius 0.3s;
+}
+
+.bug-found-container.small:hover {
+  border-radius: 20px;
+}
+
+.bug-found-container.big {
+  height: 180px;
+  width: 180px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#bug-input-label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+#bug-input {
+  font-size: 0.8rem;
+  height: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+#bug-submit {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  font-size: 0.8rem;
+}
+
+#bug-found-icon {
+  margin-right: 5px;
+  font-size: 1.5rem;
+}
+
+#bug-found-header {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+#bug-saved-header {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#bug-saved-text {
+  font-size: 0.9rem;
+  margin-right: 10px;
+}

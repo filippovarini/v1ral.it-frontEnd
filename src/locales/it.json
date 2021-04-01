@@ -75,5 +75,11 @@
   "shop_button_already_bought": "già comprato",
   "reset_password_title": "Resetta la password",
   "reset_password_success": "Password resettata con successo!",
-  "reset_password_success_title": "Ti abbiamo appena mandato un'email all'indirizzo da te fornito con la nuova password"
+  "reset_password_success_title": "Ti abbiamo appena mandato un'email all'indirizzo da te fornito con la nuova password",
+  "bug_found_button_header": "Buggato!",
+  "bug_found_input_placeholder": "Aiutaci a migliorarci per fornire un servizio sempre migliore",
+  "bug_found_save": "salva",
+  "bug_input_label": "Descrivici il bug",
+  "bug_saved_header": "Bug salvato!",
+  "bug_saved_text": "Grazie per l'aiuto, proveremo a schiacciarlo il prima possibile :)"
 }

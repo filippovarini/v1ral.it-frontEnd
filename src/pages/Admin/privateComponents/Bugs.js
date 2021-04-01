@@ -6,23 +6,24 @@ import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
 
 /** Renders a list of admins with ability to delete an admin
- * @param admins
+ * @param bugs
  */
-export class AdminList extends Component {
+export class Bugs extends Component {
   state = { loading: false };
 
-  removeAdmin = username => {
+  checkBug = id => {
     this.setState({ loading: true });
-    fetch("/admin/admins", {
+    fetch("/admin/bug", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({ admin: username })
+      body: JSON.stringify({ id })
     })
       .then(res => res.json())
       .then(jsonRes => {
+        console.log(jsonRes);
         if (jsonRes.success) window.location = window.location.pathname;
         else {
           if (jsonRes.serverError) errorHandler.serverError(jsonRes);
@@ -37,18 +38,17 @@ export class AdminList extends Component {
 
   formatDataForTable = () => {
     let data = [];
-    if (this.props.admins) {
-      data = this.props.admins.map(admin => {
+    if (this.props.bugs) {
+      data = this.props.bugs.map(bug => {
         return {
-          username: admin.username,
-          type: admin.type,
-          rimuovi:
-            admin.type === "super-user" ? null : (
-              <i
-                className="fas fa-times pointer"
-                onClick={() => this.removeAdmin(admin.username)}
-              ></i>
-            )
+          data: bug.date,
+          messagio: bug.message,
+          rimuovi: (
+            <i
+              className="fas fa-check pointer"
+              onClick={() => this.checkBug(bug.id)}
+            ></i>
+          )
         };
       });
     }
@@ -60,10 +60,10 @@ export class AdminList extends Component {
       <Loading />
     ) : (
       <div className="admin-table-container">
-        <Table data={this.formatDataForTable(this.props.admins)} />
+        <Table data={this.formatDataForTable(this.props.bugs)} />
       </div>
     );
   }
 }
 
-export default AdminList;
+export default Bugs;

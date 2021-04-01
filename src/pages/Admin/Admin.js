@@ -7,6 +7,7 @@ import Navigator from "./privateComponents/Navigator";
 import Dashboard from "./privateComponents/Dashboard";
 import Products from "./privateComponents/Products";
 import AdminList from "./privateComponents/AdminList";
+import Bugs from "./privateComponents/Bugs";
 
 export class Admin extends Component {
   state = {
@@ -18,7 +19,8 @@ export class Admin extends Component {
     challengerOrders: null,
     products: null,
     admins: null,
-    maintenanceStatus: null
+    maintenanceStatus: null,
+    bugs: []
   };
 
   updateNav = i => {
@@ -38,7 +40,8 @@ export class Admin extends Component {
             challengerOrders: jsonRes.challengerOrders,
             products: jsonRes.products,
             admins: jsonRes.admins,
-            maintenanceStatus: jsonRes.maintenanceStatus
+            maintenanceStatus: jsonRes.maintenanceStatus,
+            bugs: jsonRes.bugs
           });
         } else {
           if (jsonRes.serverError) errorHandler.serverError();
@@ -86,6 +89,9 @@ export class Admin extends Component {
         break;
       case 1:
         bodyComponent = <Products products={this.state.products} />;
+        break;
+      case 3:
+        bodyComponent = <Bugs bugs={this.state.bugs} />;
         break;
       case 4:
         bodyComponent = <AdminList admins={this.state.admins} />;

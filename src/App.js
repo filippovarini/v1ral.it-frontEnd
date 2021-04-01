@@ -13,7 +13,7 @@ import "./Style/css/buttons.css";
 import "./Style/css/table.css";
 import "./Style/css/colors.css";
 
-import Workplace from "./workplace/workplace";
+import BugFound from "./components/BugFound/BugFound";
 
 import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
@@ -121,7 +121,6 @@ export class App extends Component {
                 component={ShopRegisterDone}
               />
               <Route exact path="/spread" component={Spread} />
-              <Route exact path="/workplace" component={Workplace} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/recover" component={RecoverPassword} />
               <Route
@@ -144,6 +143,7 @@ export class App extends Component {
           <Route exact path="/admin/login" component={AdminLogin} />
           <Route exact path="/admin" component={AdminDashboard} />
           <Route exact path="/error" component={Error} />
+          <BugFound />
         </div>
       </BrowserRouter>
     );
