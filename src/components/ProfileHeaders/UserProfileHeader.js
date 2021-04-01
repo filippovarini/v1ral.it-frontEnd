@@ -23,7 +23,7 @@ export class UserProfileHeader extends Component {
     const settingsButton = this.props.dashboard ? (
       <div className="profile-header-settings">
         <i
-          className="fas fa-cog box box-hover"
+          className="fas fa-cog settings-button"
           onClick={this.toggleSettings}
         ></i>
         <Settings

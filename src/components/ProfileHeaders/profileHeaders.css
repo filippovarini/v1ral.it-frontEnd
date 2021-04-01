@@ -15,7 +15,7 @@
   right: 20px;
 }
 
-.profile-header-settings i {
+.settings-button {
   font-size: 1.8rem;
   height: 50px;
   line-height: 50px;
@@ -23,6 +23,7 @@
   border-radius: 25px;
   text-align: center;
   display: block;
+  cursor: pointer;
 }
 
 .profile-name {

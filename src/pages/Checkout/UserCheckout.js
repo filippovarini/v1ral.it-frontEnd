@@ -32,7 +32,8 @@ export class UserCheckout extends Component {
     buttonLoading: false,
     intentId: null,
     newUser: null,
-    transactionLoading: false
+    transactionLoading: false,
+    transferGroupId: null
   };
 
   /** Fetch user and shops selected */
@@ -126,6 +127,7 @@ export class UserCheckout extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
+        console.log(jsonRes);
         if (jsonRes.unauthorized) {
           alert(jsonRes.message);
           window.location = window.location.pathname;
@@ -134,6 +136,7 @@ export class UserCheckout extends Component {
             buttonLoading: false,
             client_secret: jsonRes.client_secret,
             cardElementShown: true,
+            transferGroupId: jsonRes.transferGroupId,
             intentId: jsonRes.intentId
           });
         } else {
@@ -148,7 +151,10 @@ export class UserCheckout extends Component {
 
   // save transaction and data associated with it
   saveTransaction = () => {
-    let body = { intentId: this.state.intentId };
+    let body = {
+      intentId: this.state.intentId,
+      transferGroupId: this.state.transferGroupId
+    };
     if (this.state.newUser && this.state.newUser.username)
       body = { ...body, newUser: this.state.newUser };
 

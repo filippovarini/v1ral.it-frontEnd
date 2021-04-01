@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
 
+import it from "../../locales/it.json";
+
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 
@@ -96,8 +98,8 @@ export class UserLogin extends Component {
       >
         <p className="form-header">login</p>
         <select id="type" onChange={this.handleChange}>
-          <option value="user">contagiato</option>
-          <option value="shop">focolaio</option>
+          <option value="user">{it.user}</option>
+          <option value="shop">{it.shop}</option>
         </select>
         <input
           type="text"

@@ -16,6 +16,7 @@ export class ShopProfileHeader extends Component {
   state = { settingsHidden: true };
 
   toggleSettings = () => {
+    console.log("toggling");
     this.setState({ settingsHidden: !this.state.settingsHidden });
   };
 
@@ -23,9 +24,9 @@ export class ShopProfileHeader extends Component {
     const buttonClassSuffix = this.props.handleSubmit ? "" : "disabled";
 
     const settingsButton = this.props.dashboard ? (
-      <div id="profile-header-settings">
+      <div className="profile-header-settings">
         <i
-          className="fas fa-cog box box-hover"
+          className="fas fa-cog settings-button"
           onClick={this.toggleSettings}
         ></i>
         <Settings
@@ -37,19 +38,20 @@ export class ShopProfileHeader extends Component {
     ) : null;
 
     return (
-      <div id="profile-header">
+      <div className="profile-header">
         {settingsButton}
-        <p id="profile-name">{this.props.profile.name}</p>
+        <p className="profile-name">{this.props.profile.name}</p>
         <ProfileInfoBar info={this.props.info} />
         <div>
-          <p id="profile-place">
+          <p className="profile-place">
             {this.props.profile.city}, {this.props.profile.province}
           </p>
-          <p id="profile-description">{this.props.profile.description}</p>
+          <p className="profile-description">
+            {this.props.profile.description}
+          </p>
         </div>
         <p
-          id="profile-button"
-          className={"button " + buttonClassSuffix}
+          className={"button profile-button " + buttonClassSuffix}
           onClick={this.props.handleSubmit}
           style={this.props.style}
         >

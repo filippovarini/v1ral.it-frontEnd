@@ -95,7 +95,11 @@ export class BugFound extends Component {
     );
 
     const bugSuccess = (
-      <div className="popUp-background" onClick={this.hideInput}>
+      <div
+        id="bug-found-wrapper"
+        className="popUp-background"
+        onClick={this.hideInput}
+      >
         <div className="bug-found-container big">
           <p id="bug-saved-header">{it.bug_saved_header}</p>
           <p id="bug-saved-text">{it.bug_saved_text}</p>
