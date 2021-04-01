@@ -1,0 +1,23 @@
+#viral-tick {
+  background: var(--lightBlue);
+  color: white;
+  text-align: center;
+  position: relative;
+  bottom: 5px;
+  border-radius: 15px;
+  left: 5px;
+}
+
+#viral-tick.small {
+  font-size: 0.5rem;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+}
+
+#viral-tick.big {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 1rem;
+}

@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import postImage from "../../../functions/postImage";
 import "./components.css";
 
+import it from "../../../locales/it.json";
+
 import CardPreview from "../../../components/CardPreview/CardPreview";
 import PlaceForm from "../../../components/Forms/PlaceForm";
 import CredentialsForm from "../../../components/Forms/CredentialsForm";
-import Bill from "../../../components/Bill/Bill";
 
-/** Insert new user info
+/** Insert new user info. Button here to handle newUser checkout. On submit,
+ * save new user to state and show user logged
  * @param challenger
  * @param handleSubmit
- * @param shopsPrice total shop price
  */
 export class InsertUser extends Component {
   state = {
@@ -128,7 +129,7 @@ export class InsertUser extends Component {
   render() {
     return (
       <div id="insertUser-container">
-        <p id="insertUser-header">Inserisci le informazioni di contagio</p>
+        <p id="insertUser-header">{it.user_checkout_insert_newUser_info}</p>
         <CardPreview
           challenger={this.props.challenger}
           username={this.state.username}
@@ -154,7 +155,6 @@ export class InsertUser extends Component {
           />
         </div>
         <p className="form-error">{this.state.error}</p>
-        <Bill items={[{ name: "Contagio", price: this.props.shopsPrice }]} />
         {this.state.multerOperating ? (
           <div id="checkout-confirm" className="button disabled">
             caricando l'immagine...
@@ -165,7 +165,7 @@ export class InsertUser extends Component {
             className="button"
             onClick={this.handleSubmit}
           >
-            SALVA E PROCEDI
+            {it.user_checkout_save_newUser}
           </p>
         )}
       </div>

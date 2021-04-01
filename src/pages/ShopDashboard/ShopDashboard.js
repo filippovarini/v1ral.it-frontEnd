@@ -6,7 +6,7 @@ import goToDashboard from "../../functions/goToDashboard";
 import it from "../../locales/it.json";
 
 import Header from "../../components/Header/Header";
-import ShopProfileHeader from "../../components/ProfileHeader/ProfileHeader";
+import ShopProfileHeader from "../../components/ProfileHeaders/ShopProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
 import Loading from "../../components/Loading/Loading";
 import ShopImages from "../../components/ShopImages/ShopImages";
@@ -22,6 +22,7 @@ export class ShopDashboard extends Component {
     cases: null,
     services: null,
     loading: true,
+    totalSpent: 0,
     navState: 0,
     chargesEnabled: false
   };
@@ -37,7 +38,8 @@ export class ShopDashboard extends Component {
             services: jsonRes.services,
             goals: jsonRes.goals,
             cases: jsonRes.cases,
-            chargesEnabled: jsonRes.chargesEnabled
+            chargesEnabled: jsonRes.chargesEnabled,
+            totalSpent: jsonRes.totalSpent
           });
         } else {
           if (jsonRes.serverError) errorHandler.serverError(jsonRes);
@@ -74,12 +76,6 @@ export class ShopDashboard extends Component {
   };
 
   render() {
-    // button of header component
-    let profileHeaderButtonStyle = { background: "green" };
-    let profileHeaderButtonText = it.shop_buy_our_marketing_products;
-    let profileHeaderButtonClickHandler = () =>
-      this.props.history.push("/spread");
-
     let bodyComponent = null;
     if (this.state.shop) {
       switch (this.state.navState) {
@@ -87,7 +83,7 @@ export class ShopDashboard extends Component {
           bodyComponent = (
             <DashboardStats
               clicks={this.state.shop.clicks}
-              totalSpent={10}
+              totalSpent={this.state.totalSpent}
               totalEarned={this.state.shop.financed_so_far}
               email={this.state.shop.email}
               postcode={this.state.shop.postcode}
@@ -147,6 +143,33 @@ export class ShopDashboard extends Component {
           />
           <ShopProfileHeader
             dashboard={true}
+            profile={{
+              name: this.state.shop.name,
+              description: this.state.shop.bio,
+              city: this.state.shop.city,
+              province: this.state.shop.province
+            }}
+            info={[
+              {
+                title: it.shop_priviledges_offered,
+                data: this.state.services.length
+              },
+              {
+                title: it.shop_donations_received,
+                data: this.state.shop.total_premiums
+              },
+              {
+                title: it.shop_viral_donation_received,
+                data: this.state.shop.viral_premiums
+              }
+            ]}
+            handleSubmit={() => this.props.history.push("/spread")}
+            buttonText={it.shop_buy_our_marketing_products}
+            style={{ background: "green" }}
+            handleDashboardClick={this.goToDashboard}
+          />
+          {/* <ShopProfileHeader
+            dashboard={true}
             name={this.state.shop.name}
             info={[
               {
@@ -168,9 +191,9 @@ export class ShopDashboard extends Component {
             handleSubmit={profileHeaderButtonClickHandler}
             buttonText={profileHeaderButtonText}
             style={profileHeaderButtonStyle}
-            shopProfile={true}
             handleDashboardClick={this.goToDashboard}
-          />
+            shopProfile={true}
+          /> */}
         </div>
 
         <div id="shopProfile-nav" style={{ minWidth: "450px" }}>

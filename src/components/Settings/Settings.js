@@ -153,13 +153,16 @@ export class UserSettings extends Component {
         >
           Modifica password
         </p>
-        <p
-          className="settings-option"
-          style={{ fontWeight: "bold" }}
-          onClick={this.props.handleDashboardClick}
-        >
-          Dashboard Pagamenti
-        </p>
+        {this.props.isUser ? null : (
+          <p
+            className="settings-option"
+            style={{ fontWeight: "bold" }}
+            onClick={this.props.handleDashboardClick}
+          >
+            Dashboard Pagamenti
+          </p>
+        )}
+
         <EditBio
           hidden={!this.state.bioEditing}
           hide={() => this.toggleEditing("bioEditing")}

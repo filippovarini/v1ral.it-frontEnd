@@ -10,6 +10,7 @@ import it from "../../../locales/it.json";
 
 import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
+import ViralTick from "../../../components/ViralUserTick/ViralUserTick";
 
 export class Shops extends Component {
   state = {
@@ -47,7 +48,12 @@ export class Shops extends Component {
         return {
           id: infoObj.username,
           [it.user_profile_image]: infoObj.profileurl,
-          [it.user_username]: infoObj.username,
+          [it.user_username]: (
+            <p>
+              {infoObj.username}
+              {infoObj.type === "viral" ? <ViralTick class="small" /> : null}
+            </p>
+          ),
           [it.rt_index]: infoObj.rt,
           [it.user_shops_supported]: infoObj.number
         };

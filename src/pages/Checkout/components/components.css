@@ -23,3 +23,7 @@
 .form-container {
   margin-top: 40px;
 }
+
+#ship-again-button {
+  width: 350px;
+}

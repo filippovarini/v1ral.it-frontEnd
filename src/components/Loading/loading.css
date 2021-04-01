@@ -45,3 +45,18 @@
 .ldio-8aeouegdt7b div {
   box-sizing: content-box;
 }
+
+.transaction-loading {
+  background: rgba(255, 255, 255, 0.7);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+}
+
+.transaction-loading-header {
+  font-weight: bold;
+  font-size: 1.5rem;
+}

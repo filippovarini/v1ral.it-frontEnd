@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
 import "./checkout.css";
 
+import it from "../../locales/it.json";
+
 // loading
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
@@ -190,11 +192,11 @@ export class Checkout extends Component {
               className="button checkout-button lowercase"
               style={{ cursor: "not-allowed" }}
             >
-              processando la richiesta...
+              {it.checkout_session_loading}
             </p>
           ) : (
             <p className="button checkout-button" onClick={this.handleSubmit}>
-              CHECKOUT
+              {it.checkout_confirm_button}
             </p>
           )}
         </div>

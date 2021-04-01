@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./validateStripeAccount.css";
 
-import errorHandler from "../../functions/errorHandler";
 import goToDashboard from "../../functions/goToDashboard";
 
 import it from "../../locales/it.json";

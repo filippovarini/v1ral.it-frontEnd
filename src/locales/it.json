@@ -56,5 +56,21 @@
   "shop_register_completed_buy_marketing_products_header": "Per ottenere il maggior numero di ordini possibile, ti consigliamo di utilizzare i nostri metodi di diffusione del contagio, che aumenteranno le interactions con gli utenti, danto alla tua impresa anche publicità",
   "buy_marketing_products_button": "diffondi la voce",
   "shop_charges_not_enabled_text": "Verifica l'account per ricevere i soldi!",
-  "shop_charges_not_enabled_button": "Verifica"
+  "shop_charges_not_enabled_button": "Verifica",
+  "transaction_loading": "Attendi il completamento della transazione...",
+  "checkout_page_header": "Checkout",
+  "checkout_empty_cart": "Il carrello è vuoto",
+  "user_checkout_empty_cart_text": "Seleziona delle imprese da finanziare per continuare",
+  "cart": "carrello",
+  "checkout_new_card_preview": "Preview della carta",
+  "resend_me_the_card": "spediscimi la nuova carta (+ 5€)",
+  "checkout_session_loading": "processando la richiesta...",
+  "checkout_confirm_button": "conferma",
+  "user_checkout_save_newUser": "salva utente",
+  "user_checkout_insert_newUser_info": "Crea il tuo profilo v1ral!",
+  "viral_profile_disabledButton": "Profilo virale",
+  "standard_profile_disabledButton": "investimenti / contagi per diventare virale",
+  "shop_button_already_added_cart": "nel carrello",
+  "shop_button": "supporta",
+  "shop_button_already_bought": "già comprato"
 }

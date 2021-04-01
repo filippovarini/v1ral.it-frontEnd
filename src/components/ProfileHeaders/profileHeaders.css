@@ -1,0 +1,63 @@
+.profile-header {
+  min-width: 400px;
+  width: 60%;
+  max-width: 600px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.profile-header-settings {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+}
+
+.profile-header-settings i {
+  font-size: 1.8rem;
+  height: 50px;
+  line-height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  text-align: center;
+  display: block;
+}
+
+.profile-name {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.profile-place {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.profile-description {
+  font-size: 1.3rem;
+  line-height: 18px;
+}
+
+.profile-button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+#profile-info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-info-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

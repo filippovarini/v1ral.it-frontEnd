@@ -9,14 +9,16 @@ import { connect } from "react-redux";
 import errorHandler from "../../functions/errorHandler";
 import "./shopProfile.css";
 
+import it from "../../locales/it.json";
+
 import Header from "../../components/Header/Header";
-import ShopProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
 import Loading from "../../components/Loading/Loading";
 import InsertChallenger from "../../components/InsertChallenger/Challenger";
 import ShopImages from "../../components/ShopImages/ShopImages";
 import ShopStats from "../../components/ShopStats/ShopStats";
 import ServiceExplanaiton from "../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
+import ProfileHeader from "../../components/ProfileHeaders/ShopProfileHeader";
 
 export class ShopProfile extends Component {
   state = {
@@ -115,14 +117,14 @@ export class ShopProfile extends Component {
     /** Dynamic button props based on whether the user is logged,
      * as bought or added the shop to the cart */
     let profileHeaderButtonStyle = null;
-    let profileHeaderButtonText = "contagiati qui";
+    let profileHeaderButtonText = it.shop_button;
     let profileHeaderButtonClickHandler = this.handleSubmit;
     if (this.state.added || this.state.alreadyBought) {
       profileHeaderButtonClickHandler = null;
       profileHeaderButtonStyle = { background: "green" };
       profileHeaderButtonText = this.state.added
-        ? "contagiandoti..."
-        : "già contagiato";
+        ? it.shop_button_already_added_cart
+        : it.shop_button_already_bought;
     }
 
     if (this.props.user.name && this.props.user.name[0] === "#") {
@@ -175,17 +177,27 @@ export class ShopProfile extends Component {
             logourl={this.state.shop.logourl}
             backgroundurl={this.state.shop.backgroundurl}
           />
-          <ShopProfileHeader
-            dashboard={this.props.dashboard}
-            name={this.state.shop.name}
+          <ProfileHeader
+            profile={{
+              name: this.state.shop.name,
+              description: this.state.shop.bio,
+              city: this.state.shop.city,
+              province: this.state.shop.province
+            }}
             info={[
-              { title: "privilegi offerti", data: this.state.services.length },
-              { title: "contagi", data: this.state.shop.total_premiums },
-              { title: "di cui virali", data: this.state.shop.viral_premiums }
+              {
+                title: it.shop_priviledges_offered,
+                data: this.state.services.length
+              },
+              {
+                title: it.shop_donations_received,
+                data: this.state.shop.total_premiums
+              },
+              {
+                title: it.shop_viral_donation_received,
+                data: this.state.shop.viral_premiums
+              }
             ]}
-            description={this.state.shop.bio}
-            city={this.state.shop.city}
-            province={this.state.shop.province}
             handleSubmit={profileHeaderButtonClickHandler}
             buttonText={profileHeaderButtonText}
             style={profileHeaderButtonStyle}

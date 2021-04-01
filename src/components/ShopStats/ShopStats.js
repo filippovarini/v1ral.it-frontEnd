@@ -34,14 +34,7 @@ export class ShopStats extends Component {
             <div className="fact">
               <p className="fact-title">{it.shop_price_increase}</p>
               <div className="fact-data">
-                <p>{this.props.priceIncrement}</p>
-                <p
-                  className={`fact-aside ${classFromIncrement(
-                    this.props.priceIncrement
-                  )}`}
-                >
-                  {printIncrement(this.props.priceIncrement, true)}
-                </p>
+                <p className="positive">+ {this.props.priceIncrement}%</p>
               </div>
             </div>
             <div className="fact">
