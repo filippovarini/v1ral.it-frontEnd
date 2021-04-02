@@ -1,17 +1,106 @@
-#shopBox-image-container {
-  height: 150px;
-  overflow: hidden;
+#shopBox-container {
+  margin-top: 40px;
+  min-width: 350px;
   position: relative;
-  margin: 0px;
+}
+
+#shopBox-header {
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px 20px;
 }
 
 #shopBox-logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+}
+
+#shopBox-title {
+  font-weight: bold;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#shopBox-settings {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  height: 50px;
-  width: 50px;
+  right: 10px;
+  width: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#shopBox-background {
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  position: relative;
+  margin: 0px;
+  background-size: cover;
+}
+
+#shopBox-body-container {
+  box-sizing: border-box;
+  padding: 10px 20px;
+}
+
+#shopBox-place {
+  margin-top: 5px;
+  color: var(--green);
+  font-weight: bold;
+}
+
+#shopBox-goalsdone {
+  position: relative;
+}
+
+#shopBox-restart-perc {
+  margin-left: 10px;
+}
+
+#shopBox-price {
+  /* margin-top: 10px; */
+  align-items: flex-end;
+}
+
+#shopBox-current {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#shopBox-price-increment {
+  color: var(--green);
+  margin-left: 10px;
+}
+
+.shopBox-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 120px;
+}
+
+.shopBox-button.disabled {
+  background: var(--green);
+}
+
+#shop-menu {
+  border: 1px solid var(--gray);
+  border-radius: 2px;
+  position: absolute;
+  right: 0px;
+  z-index: 999;
   background: white;
-  border-radius: 35px;
-  padding: 10px;
+  width: 100px;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.shop-menu-item:hover {
+  cursor: pointer;
+  font-weight: bold;
 }

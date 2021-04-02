@@ -1,0 +1,25 @@
+#percentage-loader-wrapper {
+  background: var(--lightBlue);
+  height: 8px;
+  border-radius: 8px;
+  width: 100px;
+  overflow: hidden;
+}
+
+#percentage-loader {
+  background: var(--darkBlue);
+  height: 100%;
+  position: relative;
+}
+
+/* #percentage-loader:after {
+  content: "";
+  width: 10px;
+  height: 100%;
+  position: absolute;
+  transform: skewX(25deg);
+  border: 1px solid transparent;
+  top: -1px;
+  right: -10px;
+  background: var(--lightBlue);
+} */

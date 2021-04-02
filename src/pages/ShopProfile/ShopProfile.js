@@ -117,7 +117,7 @@ export class ShopProfile extends Component {
     /** Dynamic button props based on whether the user is logged,
      * as bought or added the shop to the cart */
     let profileHeaderButtonStyle = null;
-    let profileHeaderButtonText = it.shop_button;
+    let profileHeaderButtonText = it.shop_button_add_to_cart;
     let profileHeaderButtonClickHandler = this.handleSubmit;
     if (this.state.added || this.state.alreadyBought) {
       profileHeaderButtonClickHandler = null;

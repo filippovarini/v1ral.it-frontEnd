@@ -25,10 +25,12 @@
   "shops": "Imprese",
   "user": "Utente",
   "users": "Utenti",
+  "number_users_sold_header": "Scelto da",
   "shop_disruption_index": "Disruption index",
   "shop_price_increase": "Aumento valore",
   "shop_places_left": "Contagi rimasti",
   "shop_goals_achieved": "Indice di ripartenza",
+  "shop_goals_achieved_number": "Ripartito al",
   "shop_donations": "Positivi",
   "shop_category": "Categoria",
   "shop_place": "Luogo",
@@ -86,7 +88,7 @@
   "viral_profile_disabledButton": "Profilo virale",
   "standard_profile_disabledButton": "investimenti / contagi per diventare virale",
   "shop_button_already_added_cart": "nel carrello",
-  "shop_button": "supporta",
+  "shop_button_add_to_cart": "supporta",
   "shop_button_already_bought": "già comprato",
   "reset_password_title": "Resetta la password",
   "reset_password_success": "Password resettata con successo!",
@@ -99,5 +101,7 @@
   "bug_saved_text": "Grazie per l'aiuto, proveremo a schiacciarlo il prima possibile :)",
   "insert_challenger_header": "Chi ti ha sfidato?",
   "insert_challenger_text": "Inserisci l'username del v1ral che ti ha sfidato",
-  "insert_challenger_already_account": "Ho già un account"
+  "insert_challenger_already_account": "Ho già un account",
+  "report_spam": "Segnala spam",
+  "spam_saved_message": "Spam salvato. Grazie per aiutarci a migliorare il nostro servizio!"
 }

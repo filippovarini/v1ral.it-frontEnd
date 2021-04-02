@@ -1,5 +1,6 @@
 body {
   background: var(--light);
+  color: var(--dark);
 }
 
 p {
@@ -20,6 +21,7 @@ label {
   width: 95%;
   margin: 0 auto;
   margin-top: 100px;
+  min-height: 1000px;
 }
 
 .hidden {

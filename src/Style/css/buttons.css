@@ -36,6 +36,13 @@
   border-radius: 5px;
 }
 
+.button.super-small {
+  font-size: 0.7rem;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 3px;
+}
+
 .button.disabled:hover {
   box-shadow: none;
   cursor: default;
