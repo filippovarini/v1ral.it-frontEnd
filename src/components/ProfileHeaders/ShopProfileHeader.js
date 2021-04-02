@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
+import it from "../../locales/it.json";
+
 import Settings from "../Settings/Settings";
 import ProfileInfoBar from "./ProfileInfoBar";
 
 /** Renders shop profile header
- * @param profile: {name, city, province, description}
+ * @param profile: {name, city, province, description, currentprice}
  * @param info list of three info to show on the instagram-like header
  * @param dashboard?
  * @param handleSubmit?
@@ -49,6 +51,10 @@ export class ShopProfileHeader extends Component {
           <p className="profile-description">
             {this.props.profile.description}
           </p>
+        </div>
+        <div id="shop-price" className="flex-line">
+          <p id="shop-price-header">{it.shop_profile_currentprice}:</p>
+          <p id="shop-price-value">{this.props.profile.currentprice} €</p>
         </div>
         <p
           className={"button profile-button " + buttonClassSuffix}

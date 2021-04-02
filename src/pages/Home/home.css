@@ -1,7 +1,4 @@
 /* Root Component */
-#home-container {
-  height: 5000px;
-}
 
 #bottomHalf {
   margin: 20px;
@@ -66,7 +63,7 @@
 }
 
 #shop-prompt-title {
-  color: white;
+  color: var(--white);
   font-weight: bold;
   font-size: 2rem;
   width: 60%;

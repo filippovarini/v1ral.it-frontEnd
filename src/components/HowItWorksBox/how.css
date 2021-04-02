@@ -1,0 +1,37 @@
+.how-wrapper {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+}
+
+.how-wrapper.nav2 {
+  justify-content: flex-end;
+}
+
+.how-container {
+  width: 100%;
+  max-width: 500px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  padding-bottom: 20px;
+}
+
+.how-image {
+  width: 60%;
+  margin-right: 20px;
+}
+
+.how-title-container {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.how-nav {
+  font-size: 3.5rem;
+}
+
+.how-description {
+  box-sizing: border-box;
+  padding: 10px 20px;
+}

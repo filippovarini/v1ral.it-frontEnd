@@ -1,7 +1,7 @@
 .popUp {
   position: absolute;
-  box-shadow: 0px 0px 5px gray;
-  background: white;
+  background: var(--light);
+  border-radius: 10px;
   top: 50%;
   left: 50%;
 }

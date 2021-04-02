@@ -147,7 +147,8 @@ export class ShopDashboard extends Component {
               name: this.state.shop.name,
               description: this.state.shop.bio,
               city: this.state.shop.city,
-              province: this.state.shop.province
+              province: this.state.shop.province,
+              currentprice: this.state.shop.currentprice
             }}
             info={[
               {

@@ -41,7 +41,7 @@ select {
 }
 
 .form-error {
-  color: red;
+  color: var(--pink);
   text-align: center;
   margin: 10px;
 }

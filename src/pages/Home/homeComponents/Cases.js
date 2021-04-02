@@ -54,7 +54,7 @@ export class Shops extends Component {
               {infoObj.type === "viral" ? <ViralTick class="small" /> : null}
             </p>
           ),
-          [it.rt_index]: infoObj.rt,
+          [it.rt_index_contracted]: infoObj.rt,
           [it.user_shops_supported]: infoObj.number
         };
       });
@@ -106,6 +106,7 @@ export class Shops extends Component {
             data={this.formatDataForTable()}
             firstId={true}
             handleClick={this.handleClick}
+            class="overflow"
           />
         ) : (
           <Loading />

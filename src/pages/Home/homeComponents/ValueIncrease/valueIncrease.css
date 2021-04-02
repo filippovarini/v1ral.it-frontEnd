@@ -1,6 +1,6 @@
 #value-increase-general {
-  margin-top: 20px;
   height: 80px;
+  box-shadow: 0 4px 2px -2px gray;
 }
 
 #value-increase-wrapper {

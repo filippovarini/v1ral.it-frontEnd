@@ -5,7 +5,7 @@ import "./logo.css";
 export class Logo extends Component {
   render() {
     return (
-      <div>
+      <div className={this.props.class}>
         <p id="logo" onClick={() => this.props.history.push("/")}>
           [logo here]
         </p>

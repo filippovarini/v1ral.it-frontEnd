@@ -10,10 +10,10 @@ import "./Style/css/text.css";
 import "./Style/css/quickFacts.css";
 import "./Style/css/communicationPanel.css";
 import "./Style/css/buttons.css";
-import "./Style/css/table.css";
-import "./Style/css/colors.css";
+import "./Style/css/vars.css";
 
 import BugFound from "./components/BugFound/BugFound";
+import Footer from "./components/Footer/Footer";
 
 import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
@@ -144,6 +144,7 @@ export class App extends Component {
           <Route exact path="/admin" component={AdminDashboard} />
           <Route exact path="/error" component={Error} />
           <BugFound />
+          <Footer />
         </div>
       </BrowserRouter>
     );

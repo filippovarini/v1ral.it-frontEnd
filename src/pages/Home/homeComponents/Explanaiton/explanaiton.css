@@ -1,0 +1,38 @@
+#home-explanaiton {
+  width: 90%;
+  margin: 0 auto;
+  min-width: 350px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+#home-explanaiton-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.exp-nav-item {
+  width: 100px;
+  margin-right: 20px;
+}
+
+#exp-nav-user {
+  border: 3px solid var(--pink);
+  color: var(--pink);
+}
+
+#exp-nav-user.clicked {
+  background: var(--pink);
+  color: var(--white);
+}
+
+#exp-nav-shop {
+  border: 3px solid var(--green);
+  color: var(--green);
+}
+
+#exp-nav-shop.clicked {
+  background: var(--green);
+  color: var(--white);
+}

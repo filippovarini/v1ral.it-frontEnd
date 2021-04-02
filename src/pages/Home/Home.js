@@ -6,6 +6,7 @@ import it from "../../locales/it.json";
 // components
 import TopHalf from "./TopHalf";
 import BottomHalf from "./BottomHalf";
+import Explanaiton from "./homeComponents/Explanaiton/Explanaiton";
 
 // for scrolling header
 const offset = 40;
@@ -39,6 +40,7 @@ export class Home extends Component {
             {it.shop_register_prompt_button}
           </Link>
         </div>
+        <Explanaiton />
       </div>
     );
   }

@@ -34,13 +34,11 @@
 }
 
 .profile-place {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .profile-description {
-  font-size: 1.3rem;
-  line-height: 18px;
+  font-size: 1rem;
 }
 
 .profile-button {
@@ -51,7 +49,7 @@
 #profile-info-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .profile-info {
@@ -61,4 +59,16 @@
 .profile-info-number {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+#shop-price {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#shop-price-value {
+  margin-left: 5px;
+  font-size: 1.2rem;
 }

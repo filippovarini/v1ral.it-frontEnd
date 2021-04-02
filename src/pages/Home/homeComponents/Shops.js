@@ -117,6 +117,7 @@ export class Shops extends Component {
             data={this.formatDataForTable()}
             firstId={true}
             handleClick={this.handleClick}
+            class="overflow"
           />
         ) : (
           <Loading />

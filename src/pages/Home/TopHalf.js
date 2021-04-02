@@ -41,8 +41,8 @@ export class HomeTopHalf extends Component {
         />
         <Header class={this.props.class} />
         <div id="topHalf-banner-container">
-          <Countdown />
           <ValueIncrease />
+          <Countdown />
         </div>
         <ChallengeButton
           loading={this.state.challengeLoading}

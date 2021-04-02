@@ -3,6 +3,8 @@ import { withRouter, Link } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
 import "./challenger.css";
 
+import it from "../../locales/it.json";
+
 import HideCross from "../HideCross/HideCross";
 import Loading from "../Loading/Loading";
 
@@ -60,11 +62,10 @@ export class Challenged extends Component {
         className="popUp-background"
         style={this.props.hidden ? { display: "none" } : null}
       >
-        <div id="challenged-container" className="box">
+        <div id="challenged-container" className="popUp">
           <HideCross hide={this.props.hide} />
-          <p id="challenged-title" className="input-header">
-            Chi ti ha sfidato?
-          </p>
+          <p id="challenged-title">{it.insert_challenger_header}</p>
+          <p id="challenged-text">{it.insert_challenger_text}</p>
           <form onSubmit={this.handleSubmit}>
             <input
               id="challengerInput"
@@ -74,9 +75,14 @@ export class Challenged extends Component {
               autoComplete="off"
               placeholder="username"
             />
-            <p className="form-error">{this.state.error}</p>
-            <Link to={this.props.alreadyAccountRedirection}>
-              ho già un account
+            <p id="challenged-error" className="form-error">
+              {this.state.error}
+            </p>
+            <Link
+              id="already-account"
+              to={this.props.alreadyAccountRedirection}
+            >
+              {it.insert_challenger_already_account}
             </Link>
             <input type="submit" style={{ display: "none" }} />
           </form>
@@ -89,7 +95,7 @@ export class Challenged extends Component {
         className="popUp-background"
         style={this.props.hidden ? { display: "none" } : null}
       >
-        <div id="challenged-container" className="box">
+        <div id="challenged-container" className="popUp">
           <HideCross hide={this.props.hide} />
           <Loading />
         </div>

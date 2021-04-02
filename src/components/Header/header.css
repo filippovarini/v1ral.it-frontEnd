@@ -8,10 +8,10 @@
   box-sizing: border-box;
   padding: 0px 20px;
   top: 0px;
-  background: black;
-  height: 60px;
+  background: var(--white);
+  height: 80px;
+  box-shadow: 0 2px 5px 0 var(--shadowColor);
 }
-
 #header-nav {
   display: flex;
   max-width: 800px;
@@ -22,15 +22,19 @@
 
 .header-nav-item {
   font-weight: bold;
-  color: white;
+  color: var(--dark);
   cursor: pointer;
   text-transform: uppercase;
   margin: 0 20px;
 }
 
 #header.topHalf {
-  margin-top: 20px;
   background: transparent;
+  box-shadow: none;
+}
+
+#header.topHalf .header-nav-item {
+  color: var(--white);
 }
 
 .header-nav-image {
