@@ -8,3 +8,9 @@
 .topHalf #logo {
   color: var(--white);
 }
+
+@media only screen and (max-width: 800px) {
+  #logo {
+    font-size: 2rem;
+  }
+}

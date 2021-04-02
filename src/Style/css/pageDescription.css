@@ -1,0 +1,23 @@
+.page-description {
+  box-sizing: border-box;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.page-description-textes {
+  width: 70%;
+}
+
+.page-description-header {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.page-description-text {
+  font-size: 0.9rem;
+}
+
+.page-description-img {
+  height: 100px;
+  width: auto;
+}

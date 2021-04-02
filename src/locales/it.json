@@ -1,5 +1,7 @@
 {
   "explanaiton_header": "Come funziona?",
+  "shops_page_description_header": "Scegli i locali in cui comprare il privè",
+  "shops_page_description_text": "Comprando il privè supporti il locale nella ripresa dell'impatto Covid-19. Inoltre, il privè ti da accesso a privilegi speciali di cui puoi godere in quel locale.",
   "user_step_1_title": "Seleziona",
   "user_step_1_description": "Scegli i posti da supportare, comprando il privè. Il privè ti da accesso a privilegi speciali di cui puoi godere in quel locale.",
   "user_step_2_title": "v1ral card",
@@ -36,6 +38,7 @@
   "shop_place": "Luogo",
   "shop_name": "Nome",
   "shop_logo": "Logo",
+  "shop_city": "Città",
   "shop_background": "Sfondo",
   "user_username": "Username",
   "user_profile_image": "Profilo",
@@ -103,5 +106,10 @@
   "insert_challenger_text": "Inserisci l'username del v1ral che ti ha sfidato",
   "insert_challenger_already_account": "Ho già un account",
   "report_spam": "Segnala spam",
-  "spam_saved_message": "Spam salvato. Grazie per aiutarci a migliorare il nostro servizio!"
+  "spam_saved_message": "Spam salvato. Grazie per aiutarci a migliorare il nostro servizio!",
+  "shops_results_for": "Risultati per:",
+  "filter_for": "Filtra per:",
+  "reset_filters": "Ripristina filtri",
+  "cities_available": "Città disponibili:",
+  "categories_available": "Categorie disponibili"
 }

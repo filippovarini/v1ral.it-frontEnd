@@ -55,6 +55,7 @@ export class Explanaiton extends Component {
           {this.state.numberOfBoxes.map(n => {
             return (
               <HowItWorksBox
+                key={n}
                 explanaiton={{
                   nav: n,
                   title: it[`${this.state.type}_step_${n}_title`],

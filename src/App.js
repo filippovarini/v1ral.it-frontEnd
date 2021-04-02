@@ -11,6 +11,7 @@ import "./Style/css/quickFacts.css";
 import "./Style/css/communicationPanel.css";
 import "./Style/css/buttons.css";
 import "./Style/css/vars.css";
+import "./Style/css/pageDescription.css";
 
 import BugFound from "./components/BugFound/BugFound";
 import Footer from "./components/Footer/Footer";

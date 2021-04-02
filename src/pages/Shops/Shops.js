@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import "./shops.css";
 
 import errorHandler from "../../functions/errorHandler";
+import it from "../../locales/it.json";
 
 import ShopBox from "../../components/ShopBox/ShopBox";
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
 import Filter from "./Filter";
+import ShopPageDescription from "../../components/PageDescriptions/ShopPageDescription";
+import ViralUserTick from "../../components/ViralUserTick/ViralUserTick";
+import InsertedFilters from "./InsertedFilters";
 
 export class Shops extends Component {
   state = {
@@ -16,7 +20,9 @@ export class Shops extends Component {
     cityFilterHidden: true,
     categoryFilterHidden: true,
     cities: null,
-    categories: null
+    categories: null,
+    challenger: null,
+    challengerViral: null
   };
 
   toggleFilter = id => {
@@ -33,7 +39,9 @@ export class Shops extends Component {
               shops: jsonRes.shops,
               shopSI: jsonRes.shopSI,
               cities: jsonRes.cities,
-              categories: jsonRes.categories
+              categories: jsonRes.categories,
+              challenger: jsonRes.challenger,
+              challengerViral: jsonRes.challengerViral
             });
           else errorHandler.serverError(jsonRes);
           this.setState({ loading: false });
@@ -45,48 +53,71 @@ export class Shops extends Component {
     }
   };
 
+  resetShopSI = () => {
+    this.setState({ loading: true });
+    fetch("/shop/shopSI", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: null
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        if (jsonRes.success) {
+          window.location = window.location.pathname;
+        } else {
+          errorHandler.serverError(jsonRes);
+        }
+      })
+      .catch(e => {
+        console.log(e);
+        errorHandler.clientError();
+      });
+  };
+
   render() {
-    const insertedFilters = this.state.shopSI ? (
-      <div>
-        <p className="inserted-filters-header">Risultati per:</p>
-        {this.state.shopSI.name ? (
-          <p className="inserted-filters-text">
-            Titolo: {this.state.shopSI.name}
-          </p>
-        ) : null}
-        {this.state.shopSI.city ? (
-          <p className="inserted-filters-text">
-            Città: {this.state.shopSI.city}
-          </p>
-        ) : null}
-        {this.state.shopSI.category ? (
-          <p className="inserted-filters-text">
-            Categoria: {this.state.shopSI.category}
-          </p>
-        ) : null}
-      </div>
-    ) : null;
     const body = this.state.shops ? (
       <div className="page-wrapper">
-        <p id="shops-description">
-          Scegli uno o più imprese nel quale diventare premium client e poter
-          godere dei vantaggi offerti.
-        </p>
-        {insertedFilters}
-        <div className="shops-container">
-          <p className="shops-text">FILTRA PER:</p>
-          <p
-            className="shops-filter button"
-            onClick={() => this.setState({ cityFilterHidden: false })}
-          >
-            CITTÀ
-          </p>
-          <p
-            className="shops-filter button"
-            onClick={() => this.setState({ categoryFilterHidden: false })}
-          >
-            CATEGORIA
-          </p>
+        <ShopPageDescription />
+        <div id="shops-page-sub-header">
+          {this.state.challenger ? (
+            <p id="shops-challenger">
+              Challenger:{" "}
+              <span id="shops-challenger-name">{this.state.challenger}</span>
+              {this.state.challengerViral ? (
+                <ViralUserTick class="small" />
+              ) : null}
+            </p>
+          ) : null}
+
+          <div id="shops-filter-settings" className="flex-line">
+            {this.state.shopSI ? (
+              <InsertedFilters shopSI={this.state.shopSI} />
+            ) : null}
+
+            <div id="shops-filter-input" className="filter-header">
+              <p>{it.filter_for}</p>
+              <div id="shops-filter-input-wrapper" className="flex-line">
+                <p
+                  className="shops-filter button super-small style3"
+                  onClick={() => this.setState({ cityFilterHidden: false })}
+                >
+                  {it.shop_city}
+                </p>
+                <p
+                  className="shops-filter button super-small style3"
+                  onClick={() => this.setState({ categoryFilterHidden: false })}
+                >
+                  {it.shop_category}
+                </p>
+              </div>
+              <p id="shops-filter-reset" onClick={this.resetShopSI}>
+                {it.reset_filters}
+              </p>
+            </div>
+          </div>
         </div>
         <Filter
           data={this.state.cities}
@@ -102,11 +133,6 @@ export class Shops extends Component {
           isCity={false}
           default={this.state.shopSI ? this.state.shopSI.category : null}
         />
-        <div className="shops-container">
-          <p className="shops-text">ORDINA PER:</p>
-          <p className=" shops-order-button">CASI</p>
-          <p className=" shops-order-button">BISOGNO</p>
-        </div>
         <div className="shopBoxes-container">
           {this.state.shops.map((shop, i) => (
             <ShopBox key={i} shop={shop} />

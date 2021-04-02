@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import errorHandler from "../../functions/errorHandler";
+import it from "../../locales/it.json";
 
 import Loading from "../../components/Loading/Loading";
 
@@ -50,6 +51,9 @@ export class Filter extends Component {
           style={this.props.hidden ? { display: "none" } : null}
           className="shops-filter-container popUp"
         >
+          <p className="shops-filter-form-header">
+            {this.props.isCity ? it.cities_available : it.categories_available}
+          </p>
           {this.state.loading ? (
             <Loading />
           ) : (
@@ -66,7 +70,7 @@ export class Filter extends Component {
                 ) : (
                   <p
                     key={i}
-                    className="shops-filter"
+                    className="shops-filter-text"
                     onClick={() => this.postUpdate(data)}
                   >
                     {data}
@@ -75,7 +79,7 @@ export class Filter extends Component {
               )}
               {this.props.default ? (
                 <p
-                  className="button small shops-filter-reset"
+                  className="button super-small style4 shops-filter-reset"
                   onClick={() => this.postUpdate(null)}
                 >
                   annulla filtri
