@@ -22,6 +22,7 @@ label {
   margin: 0 auto;
   margin-top: 100px;
   min-height: 1000px;
+  position: relative;
 }
 
 .hidden {
@@ -50,11 +51,6 @@ label {
   right: 0px;
 }
 
-.slidebar {
-  background: white;
-  border-radius: 10px;
-}
-
 .slidebar-background-click {
   height: 100vh;
   width: 100vw;
@@ -69,4 +65,9 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.shop-profile {
+  max-width: 1000px;
+  margin: 0 auto;
 }

@@ -1,22 +1,21 @@
 .profile-header {
   min-width: 400px;
-  width: 60%;
-  max-width: 600px;
-  margin-left: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+  padding: 10px;
 }
 
 .profile-header-settings {
   position: absolute;
   top: 0px;
-  right: 20px;
+  right: 0px;
+  z-index: 1000;
 }
 
 .settings-button {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   height: 50px;
   line-height: 50px;
   width: 50px;
@@ -31,6 +30,18 @@
   font-size: 2rem;
   margin-bottom: 20px;
   position: relative;
+  height: 50px;
+  margin-top: 10px;
+}
+
+#profile-shop-logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+  margin-right: 20px;
+  font-size: 0.8rem;
 }
 
 .profile-place {

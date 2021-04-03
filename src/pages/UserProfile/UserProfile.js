@@ -85,25 +85,6 @@ export class UserProfile extends Component {
             numberToViral={this.numberToGetViral()}
             dashboard={this.state.dashboard}
           />
-          {/* <ProfileHeader
-            dashboard={this.state.dashboard}
-            name={this.state.user.username}
-            info={[
-              { title: "focolai supportati", data: this.state.user.number },
-              { title: "indice rt", data: this.state.user.rt },
-              { title: "contagiatore", data: this.state.user.challenger }
-            ]}
-            description={this.state.user.reason}
-            city={this.state.user.city}
-            province={this.state.user.province}
-            buttonText={
-              this.state.user.type === "viral"
-                ? "profilo virale"
-                : this.numberToGetViral() +
-                  " contagi / investimenti per diventare virale"
-            }
-            style={this.state.user.type === "viral" ? {} : { fontSize: "1rem" }}
-          /> */}
         </div>
         <p id="userProfile-shops-header">Focolai supportati:</p>
         {this.state.shops.length === 0 ? (
@@ -128,7 +109,7 @@ export class UserProfile extends Component {
       <div>
         <Header />
         <div className="page-wrapper">
-          {this.state.loading ? <Loading /> : body}
+          {this.state.loading ? <Loading class="page-loading" /> : body}
         </div>
       </div>
     );

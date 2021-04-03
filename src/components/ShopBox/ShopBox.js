@@ -18,6 +18,7 @@ import it from "../../locales/it.json";
 
 import Loading from "../Loading/Loading";
 import PercentageLoader from "../PercentageLoader/PercentaceLoader";
+import ShopBackground from "../ShopBackgroundImage/ShopBackground";
 
 /** Render shop box with add to cart functionalities */
 export class ShopBox extends Component {
@@ -131,10 +132,7 @@ export class ShopBox extends Component {
             </div>
           </div>
         </div>
-        <div
-          id="shopBox-background"
-          style={{ backgroundImage: `url(${this.props.shop.backgroundurl})` }}
-        ></div>
+        <ShopBackground url={this.props.shop.backgroundurl} />
         <div id="shopBox-body-container">
           <p id="shopBox-premiums">
             {it.number_users_sold_header}{" "}

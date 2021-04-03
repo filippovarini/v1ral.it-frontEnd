@@ -101,13 +101,13 @@ export class Shops extends Component {
               <p>{it.filter_for}</p>
               <div id="shops-filter-input-wrapper" className="flex-line">
                 <p
-                  className="shops-filter button super-small style3"
+                  className="shops-filter button super-small style4"
                   onClick={() => this.setState({ cityFilterHidden: false })}
                 >
                   {it.shop_city}
                 </p>
                 <p
-                  className="shops-filter button super-small style3"
+                  className="shops-filter button super-small style4"
                   onClick={() => this.setState({ categoryFilterHidden: false })}
                 >
                   {it.shop_category}
@@ -145,7 +145,7 @@ export class Shops extends Component {
         <Header />
         {this.state.loading ? (
           <div className="page-wrapper">
-            <Loading />
+            <Loading class="page-loading" />
           </div>
         ) : (
           body

@@ -3,6 +3,11 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
+}
+
+#loading-container.page-loading {
+  position: absolute;
 }
 
 @keyframes ldio-8aeouegdt7b {

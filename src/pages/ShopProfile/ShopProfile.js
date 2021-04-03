@@ -15,10 +15,10 @@ import Header from "../../components/Header/Header";
 import Navigator from "../../components/Navigator/Navigator";
 import Loading from "../../components/Loading/Loading";
 import InsertChallenger from "../../components/InsertChallenger/Challenger";
-import ShopImages from "../../components/ShopImages/ShopImages";
 import ShopStats from "../../components/ShopStats/ShopStats";
 import ServiceExplanaiton from "../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
 import ProfileHeader from "../../components/ProfileHeaders/ShopProfileHeader";
+import ShopBackground from "../../components/ShopBackgroundImage/ShopBackground";
 
 export class ShopProfile extends Component {
   state = {
@@ -164,61 +164,65 @@ export class ShopProfile extends Component {
 
     const body = this.state.shop ? (
       <div className="page-wrapper">
-        <div id="shopProfile-header-container">
-          <InsertChallenger
-            hidden={this.state.insertChallengerHidden}
-            hide={this.toggleChallenger}
-            alreadyAccountRedirection={
-              "/login/?onSuccess=" + window.location.pathname
-            }
-            successRedirection={this.props.history.location.pathname}
-          />
-          <ShopImages
+        <div className="shop-profile">
+          <div id="shopProfile-header-container">
+            <InsertChallenger
+              hidden={this.state.insertChallengerHidden}
+              hide={this.toggleChallenger}
+              alreadyAccountRedirection={
+                "/login/?onSuccess=" + window.location.pathname
+              }
+              successRedirection={this.props.history.location.pathname}
+            />
+            {/* <ShopImages
             logourl={this.state.shop.logourl}
             backgroundurl={this.state.shop.backgroundurl}
-          />
-          <ProfileHeader
-            profile={{
-              name: this.state.shop.name,
-              description: this.state.shop.bio,
-              city: this.state.shop.city,
-              province: this.state.shop.province,
-              currentprice: this.state.shop.currentprice
-            }}
-            info={[
-              {
-                title: it.shop_priviledges_offered,
-                data: this.state.services.length
-              },
-              {
-                title: it.shop_donations_received,
-                data: this.state.shop.total_premiums
-              },
-              {
-                title: it.shop_viral_donation_received,
-                data: this.state.shop.viral_premiums
-              }
-            ]}
-            handleSubmit={profileHeaderButtonClickHandler}
-            buttonText={profileHeaderButtonText}
-            style={profileHeaderButtonStyle}
-          />
+          /> */}
+            <ShopBackground url={this.state.shop.backgroundurl} />
+            <ProfileHeader
+              profile={{
+                name: this.state.shop.name,
+                description: this.state.shop.bio,
+                city: this.state.shop.city,
+                province: this.state.shop.province,
+                currentprice: this.state.shop.currentprice,
+                logourl: this.state.shop.logourl
+              }}
+              info={[
+                {
+                  title: it.shop_priviledges_offered,
+                  data: this.state.services.length
+                },
+                {
+                  title: it.shop_donations_received,
+                  data: this.state.shop.total_premiums
+                },
+                {
+                  title: it.shop_viral_donation_received,
+                  data: this.state.shop.viral_premiums
+                }
+              ]}
+              handleSubmit={profileHeaderButtonClickHandler}
+              buttonText={profileHeaderButtonText}
+              style={profileHeaderButtonStyle}
+            />
+          </div>
+          <div id="shopProfile-nav">
+            <Navigator
+              active={this.state.navState}
+              updateNav={this.updateNav}
+              titles={["Statistiche epidemiologiche", "Dove vanno i soldi?"]}
+            />
+          </div>
+          {bodyComponent}
         </div>
-        <div id="shopProfile-nav">
-          <Navigator
-            active={this.state.navState}
-            updateNav={this.updateNav}
-            titles={["Statistiche epidemiologiche", "Dove vanno i soldi?"]}
-          />
-        </div>
-        {bodyComponent}
       </div>
     ) : null;
     return (
       <div>
         <Header />
         <div className="page-wrapper">
-          {this.state.loading ? <Loading /> : body}
+          {this.state.loading ? <Loading class="page-loading" /> : body}
         </div>
       </div>
     );

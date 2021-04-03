@@ -6,7 +6,7 @@ import Settings from "../Settings/Settings";
 import ProfileInfoBar from "./ProfileInfoBar";
 
 /** Renders shop profile header
- * @param profile: {name, city, province, description, currentprice}
+ * @param profile: {name, city, province, description, currentprice, logourl}
  * @param info list of three info to show on the instagram-like header
  * @param dashboard?
  * @param handleSubmit?
@@ -42,7 +42,15 @@ export class ShopProfileHeader extends Component {
     return (
       <div className="profile-header">
         {settingsButton}
-        <p className="profile-name">{this.props.profile.name}</p>
+        <div className="profile-name flex-line">
+          <img
+            src={this.props.profile.logourl}
+            alt="logo dell'impresa"
+            id="profile-shop-logo"
+          />
+          <p>{this.props.profile.name}</p>
+        </div>
+
         <ProfileInfoBar info={this.props.info} />
         <div>
           <p className="profile-place">

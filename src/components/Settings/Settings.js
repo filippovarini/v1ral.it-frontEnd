@@ -124,12 +124,12 @@ export class UserSettings extends Component {
       : shopImageSetting;
 
     return this.state.loading ? (
-      <div className="settings-slidebar slidebar">
+      <div className="settings-slidebar ">
         <Loading />
       </div>
     ) : (
       <div
-        className="settings-slidebar slidebar"
+        className="settings-slidebar "
         onMouseLeave={this.props.hide}
         style={this.props.hidden ? { display: "none" } : null}
       >

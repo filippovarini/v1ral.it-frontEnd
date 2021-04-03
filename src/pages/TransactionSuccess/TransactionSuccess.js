@@ -37,7 +37,7 @@ export class TransactionSuccess extends Component {
       <div>
         <Header />
         <div className="page-wrapper">
-          {this.state.loading ? <Loading /> : body}
+          {this.state.loading ? <Loading class="page-loading" /> : body}
         </div>
       </div>
     );

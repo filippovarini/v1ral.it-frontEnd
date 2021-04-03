@@ -41,7 +41,7 @@ export class UserDashboard extends Component {
       <div>
         <Header />
         <div className="page-wrapper">
-          <Loading />
+          <Loading class="page-loading" />
         </div>
       </div>
     ) : (

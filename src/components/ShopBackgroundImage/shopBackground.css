@@ -1,0 +1,8 @@
+#shop-background-image {
+  width: 100%;
+  padding-top: 50%;
+  overflow: hidden;
+  position: relative;
+  margin: 0px;
+  background-size: cover;
+}

@@ -9,11 +9,11 @@ import Header from "../../components/Header/Header";
 import ShopProfileHeader from "../../components/ProfileHeaders/ShopProfileHeader";
 import Navigator from "../../components/Navigator/Navigator";
 import Loading from "../../components/Loading/Loading";
-import ShopImages from "../../components/ShopImages/ShopImages";
 import ShopStats from "../../components/ShopStats/ShopStats";
 import ServiceExplanaiton from "../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
 import DashboardStats from "./DashboardStats";
 import ValidateStripeAccount from "../../components/ValidateStripeAccount/ValidateStripeAccount";
+import ShopBackground from "../../components/ShopBackgroundImage/ShopBackground";
 
 export class ShopDashboard extends Component {
   state = {
@@ -126,96 +126,73 @@ export class ShopDashboard extends Component {
 
     const body = this.state.shop ? (
       <div className="page-wrapper">
-        {this.state.chargesEnabled ? null : (
-          <ValidateStripeAccount
-            toggleLoading={() =>
-              this.setState({ loading: !this.state.loading })
-            }
-            redirectPath="shop/dashboard"
-            connectedId={this.state.shop.connectedid}
-          />
-        )}
+        <div className="shop-profile">
+          {this.state.chargesEnabled ? null : (
+            <ValidateStripeAccount
+              toggleLoading={() =>
+                this.setState({ loading: !this.state.loading })
+              }
+              redirectPath="shop/dashboard"
+              connectedId={this.state.shop.connectedid}
+            />
+          )}
 
-        <div id="shopProfile-header-container">
-          <ShopImages
+          <div id="shopProfile-header-container">
+            {/* <ShopImages
             logourl={this.state.shop.logourl}
             backgroundurl={this.state.shop.backgroundurl}
-          />
-          <ShopProfileHeader
-            dashboard={true}
-            profile={{
-              name: this.state.shop.name,
-              description: this.state.shop.bio,
-              city: this.state.shop.city,
-              province: this.state.shop.province,
-              currentprice: this.state.shop.currentprice
-            }}
-            info={[
-              {
-                title: it.shop_priviledges_offered,
-                data: this.state.services.length
-              },
-              {
-                title: it.shop_donations_received,
-                data: this.state.shop.total_premiums
-              },
-              {
-                title: it.shop_viral_donation_received,
-                data: this.state.shop.viral_premiums
-              }
-            ]}
-            handleSubmit={() => this.props.history.push("/spread")}
-            buttonText={it.shop_buy_our_marketing_products}
-            style={{ background: "green" }}
-            handleDashboardClick={this.goToDashboard}
-          />
-          {/* <ShopProfileHeader
-            dashboard={true}
-            name={this.state.shop.name}
-            info={[
-              {
-                title: it.shop_priviledges_offered,
-                data: this.state.services.length
-              },
-              {
-                title: it.shop_donations_received,
-                data: this.state.shop.total_premiums
-              },
-              {
-                title: it.shop_viral_donation_received,
-                data: this.state.shop.viral_premiums
-              }
-            ]}
-            description={this.state.shop.bio}
-            city={this.state.shop.city}
-            province={this.state.shop.province}
-            handleSubmit={profileHeaderButtonClickHandler}
-            buttonText={profileHeaderButtonText}
-            style={profileHeaderButtonStyle}
-            handleDashboardClick={this.goToDashboard}
-            shopProfile={true}
           /> */}
+            <ShopBackground url={this.state.shop.backgroundurl} />
+            <ShopProfileHeader
+              dashboard={true}
+              profile={{
+                name: this.state.shop.name,
+                description: this.state.shop.bio,
+                city: this.state.shop.city,
+                province: this.state.shop.province,
+                currentprice: this.state.shop.currentprice,
+                logourl: this.state.shop.logourl
+              }}
+              info={[
+                {
+                  title: it.shop_priviledges_offered,
+                  data: this.state.services.length
+                },
+                {
+                  title: it.shop_donations_received,
+                  data: this.state.shop.total_premiums
+                },
+                {
+                  title: it.shop_viral_donation_received,
+                  data: this.state.shop.viral_premiums
+                }
+              ]}
+              handleSubmit={() => this.props.history.push("/spread")}
+              buttonText={it.shop_buy_our_marketing_products}
+              style={{ background: "green" }}
+              handleDashboardClick={this.goToDashboard}
+            />
+          </div>
+          <div id="shopProfile-nav" style={{ minWidth: "450px" }}>
+            <Navigator
+              active={this.state.navState}
+              updateNav={this.updateNav}
+              titles={[
+                it.shop_dashboard_stats,
+                it.shop_profile_stats,
+                it.shop_profile_priviledges_goals
+              ]}
+            />
+          </div>
+          {bodyComponent}
         </div>
-
-        <div id="shopProfile-nav" style={{ minWidth: "450px" }}>
-          <Navigator
-            active={this.state.navState}
-            updateNav={this.updateNav}
-            titles={[
-              it.shop_dashboard_stats,
-              it.shop_profile_stats,
-              it.shop_profile_priviledges_goals
-            ]}
-          />
-        </div>
-        {bodyComponent}
       </div>
     ) : null;
     return (
       <div>
         <Header />
         <div className="page-wrapper">
-          {this.state.loading ? <Loading /> : body}
+          {this.state.loading ? <Loading class="page-loading" /> : body}
         </div>
       </div>
     );
