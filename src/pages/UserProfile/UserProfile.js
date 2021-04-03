@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import ShopBox from "../../components/ShopBox/ShopBox";
 import UserProfileHeader from "../../components/ProfileHeaders/UserProfileHeader";
+import UserProfileLogo from "../../components/UserProfileLogo/UserProfileLogo";
 
 export class UserProfile extends Component {
   state = {
@@ -65,26 +66,28 @@ export class UserProfile extends Component {
   render() {
     const body = this.state.user ? (
       <div className="page-wrapper">
-        <div id="userProfile-header-container">
-          <div id="userProfile-logo" className="box">
-            <img src={this.state.user.profileurl} alt="logo dell'impresa" />
+        <div id="userProfile-header-container" className="box">
+          <div id="userProfile-logo">
+            <UserProfileLogo url={this.state.user.profileurl} />
           </div>
-          <UserProfileHeader
-            profile={{
-              name: this.state.user.username,
-              description: this.state.user.reason,
-              city: this.state.user.city,
-              province: this.state.user.province,
-              type: this.state.user.type
-            }}
-            info={[
-              { title: "focolai supportati", data: this.state.user.number },
-              { title: "indice rt", data: this.state.user.rt },
-              { title: "contagiatore", data: this.state.user.challenger }
-            ]}
-            numberToViral={this.numberToGetViral()}
-            dashboard={this.state.dashboard}
-          />
+          <div id="profile-header-container">
+            <UserProfileHeader
+              profile={{
+                name: this.state.user.username,
+                description: this.state.user.reason,
+                city: this.state.user.city,
+                province: this.state.user.province,
+                type: this.state.user.type
+              }}
+              info={[
+                { title: "focolai supportati", data: this.state.user.number },
+                { title: "indice rt", data: this.state.user.rt },
+                { title: "contagiatore", data: this.state.user.challenger }
+              ]}
+              numberToViral={this.numberToGetViral()}
+              dashboard={this.state.dashboard}
+            />
+          </div>
         </div>
         <p id="userProfile-shops-header">Focolai supportati:</p>
         {this.state.shops.length === 0 ? (

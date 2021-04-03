@@ -125,19 +125,6 @@ export class Navigator extends Component {
             loading={this.state.cartLoading}
             removeItem={this.removeCartItem}
           />
-          {/* {this.props.user.name && this.props.user.name[0] === "#" ? (
-            <ShopCart
-              products={this.state.cart}
-              loading={this.state.cartLoading}
-              removeItem={this.removeCartItem}
-            />
-          ) : (
-            <UserCart
-              loading={this.state.cartLoading}
-              shops={this.state.cart}
-              removeItem={this.removeCartItem}
-            />
-          )} */}
         </div>
         {titles.map((title, i) => {
           return (

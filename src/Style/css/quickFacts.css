@@ -3,6 +3,7 @@
   min-width: 250px;
   height: 100%;
   border-radius: 8px;
+  margin-top: 10px;
 }
 
 .quick-facts-margin {
@@ -103,4 +104,43 @@
 
 .sg-add-title {
   margin-right: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+  .quick-facts.beside-chart {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .beside-chart .facts-container {
+    /* fact beside bar chart */
+    display: flex;
+    padding: 0;
+  }
+
+  .fact {
+    margin: 10px;
+  }
+
+  .fact-title {
+    font-size: 1rem;
+  }
+
+  .fact-data {
+    font-size: 1.2rem;
+  }
+
+  .fact-aside {
+    font-size: 0.4rem;
+    width: 40px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .fact-title {
+    font-size: 0.8rem;
+  }
+
+  .fact-data {
+    font-size: 0.9rem;
+  }
 }

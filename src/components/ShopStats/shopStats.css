@@ -4,8 +4,24 @@
   display: flex;
   justify-content: space-around;
   height: 40vh;
+  align-items: center;
 }
 
 #shop-stats-quickfacts {
   margin-right: 40px;
+}
+
+@media only screen and (max-width: 700px) {
+  #shop-stats-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #shop-stats-barChart {
+    margin-top: 20px;
+  }
+
+  #stats-bar-chart {
+    margin-top: 20px;
+  }
 }

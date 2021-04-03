@@ -17,10 +17,7 @@ const boxesHeight = "350px";
 export class DashboardStats extends Component {
   render() {
     return (
-      <div
-        className="flex-line"
-        style={{ marginTop: "40px", justifyContent: "center" }}
-      >
+      <div id="shop-dashboard-stats" className="flex-line">
         <div
           id="shop-stats-quickfacts"
           className=" box quick-facts quick-facts-flex"

@@ -1,5 +1,5 @@
 .profile-header {
-  min-width: 400px;
+  min-width: var(--boxMinWidth);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,4 +82,25 @@
 #shop-price-value {
   margin-left: 5px;
   font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .profile-name {
+    font-size: 1.3rem;
+    margin-bottom: 0px;
+  }
+
+  .profile-description {
+    font-size: 0.8rem;
+  }
+
+  .profile-button {
+    font-size: 1.1rem;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .profile-info-number {
+    font-size: 1.2rem;
+  }
 }

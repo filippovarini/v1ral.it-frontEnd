@@ -54,7 +54,9 @@ export class Statistics extends Component {
           supportedShops={info.financedShops}
           supportIncrement={info.dailyFinancedShops}
         />
-        <BarChart cases={this.state.info.totalCases} />
+        <div id="stats-bar-chart">
+          <BarChart cases={this.state.info.totalCases} short={true} />
+        </div>
       </div>
     ) : null;
     return (

@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import "./serviceExplanaiton.css";
 
 // language
 import it from "../../locales/it.json";
 
 import Services from "../Services/Services";
 import Goals from "../Goals/Goals";
+
+import serviceExplanaitonImg from "../../images/shop-support.png";
 
 /** Returns the body of "where does the money go?" showing services and goals
  * @param services
@@ -13,18 +16,17 @@ import Goals from "../Goals/Goals";
 export class ShopServiceExplanaiton extends Component {
   render() {
     return (
-      <div>
-        <p id="service-explanaiton" className="box">
-          {it.shop_profile_what_happens_with_money}
-          {/* Contagiandoti in questo focolaio, aiuti questa impresa a rialzarsi
-          dall'impatto del Covid-19 e acquisisci uno status di{" "}
-          <b>cliente elite</b>. I clienti elite hanno diritto ai{" "}
-          <b>privilegi</b> specificati.
-          <br />I soldi saranno utilizzati per raggiungere gli <b>
-            obbiettivi
-          </b>{" "}
-          specificati. */}
-        </p>
+      <div id="service-explanaiton-wrapper" className="box">
+        <div id="service-explanaiton-container" className="flex-line">
+          <p id="service-explanaiton-text">
+            {it.shop_profile_what_happens_with_money}
+          </p>
+          <img
+            id="service-explanaiton-img"
+            src={serviceExplanaitonImg}
+            alt="Aiuta il locale"
+          />
+        </div>
         <div id="boxes-container" className="flex-line">
           <Services services={this.props.services || []} />
           <Goals goals={this.props.goals || []} />

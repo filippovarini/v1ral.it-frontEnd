@@ -10,7 +10,7 @@
   top: 0px;
   background: var(--white);
   height: 80px;
-  box-shadow: 0 2px 5px 0 var(--shadowColor);
+  box-shadow: var(--shadowBottom);
 }
 #header-nav {
   display: flex;

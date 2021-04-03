@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./shopDashboard.css";
 import errorHandler from "../../functions/errorHandler";
 import goToDashboard from "../../functions/goToDashboard";
 
@@ -138,10 +139,6 @@ export class ShopDashboard extends Component {
           )}
 
           <div id="shopProfile-header-container">
-            {/* <ShopImages
-            logourl={this.state.shop.logourl}
-            backgroundurl={this.state.shop.backgroundurl}
-          /> */}
             <ShopBackground url={this.state.shop.backgroundurl} />
             <ShopProfileHeader
               dashboard={true}
@@ -169,7 +166,6 @@ export class ShopDashboard extends Component {
               ]}
               handleSubmit={() => this.props.history.push("/spread")}
               buttonText={it.shop_buy_our_marketing_products}
-              style={{ background: "green" }}
               handleDashboardClick={this.goToDashboard}
             />
           </div>

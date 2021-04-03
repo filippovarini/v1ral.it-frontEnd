@@ -1,22 +1,15 @@
 #userProfile-header-container {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
-  margin-bottom: 100px;
+  justify-content: space-around;
+  margin-bottom: 50px;
+  padding: 20px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 #userProfile-logo {
   width: 300px;
-  height: 300px;
-  min-width: 300px;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 150px;
-  padding: 30px;
-  box-sizing: border-box;
   margin-right: 50px;
 }
 
@@ -35,4 +28,12 @@
 
 #userProfile-empty-shops {
   margin-top: 100px;
+}
+
+@media only screen and (max-width: 800px) {
+  #userProfile-logo {
+    width: 200px;
+    min-width: 200px;
+    margin: 0px;
+  }
 }

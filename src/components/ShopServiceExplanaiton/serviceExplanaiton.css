@@ -1,0 +1,32 @@
+#service-explanaiton-container {
+  box-sizing: border-box;
+  margin-top: 10px;
+  height: 100px;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-shadow: var(--shadowBottomLight);
+}
+
+#service-explanaiton-text {
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+#service-explanaiton-img {
+  height: 100%;
+  width: auto;
+}
+
+#boxes-container {
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-height: 400px;
+}
+
+@media only screen and (max-width: 500px) {
+  #service-explanaiton-text {
+    padding: 0px;
+    font-size: 0.6rem;
+  }
+}

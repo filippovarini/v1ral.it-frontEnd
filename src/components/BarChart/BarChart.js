@@ -4,8 +4,11 @@ import "./barChart.css";
 
 import graphColors from "../../Style/graphColors";
 
-const totalMargin = 40;
+const totalMargin = 100;
 const quickFactsWidth = 250;
+const screenHeight = 300;
+const screenShortHeight = 250;
+const pageMargin = 200;
 
 const getMovingAverage = cases => {
   const movingAverage = [];
@@ -36,10 +39,16 @@ export class BarChart extends Component {
   componentDidMount = () => this.updateGraphSize();
 
   updateGraphSize = () => {
-    this.setState({
-      width: window.innerWidth - totalMargin - quickFactsWidth - 200,
-      height: Math.round((window.screen.height * 4) / 10)
-    });
+    if (window.innerWidth <= 700) {
+      this.setState({
+        width: window.innerWidth - totalMargin,
+        height: 300
+      });
+    } else
+      this.setState({
+        width: window.innerWidth - totalMargin - quickFactsWidth - pageMargin,
+        height: Math.round((window.innerHeight * 4) / 10)
+      });
   };
 
   render() {
@@ -58,7 +67,11 @@ export class BarChart extends Component {
           <p id="resize-text">resize</p>
         </div>
         <Bar
-          height={this.state.height}
+          height={
+            window.innerWidth <= 700 && this.props.short
+              ? screenShortHeight
+              : screenHeight
+          }
           width={this.state.width}
           data={{
             labels: this.props.cases.map(dailyReport => dailyReport.date),
