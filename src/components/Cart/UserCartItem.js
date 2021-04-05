@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./cart.css";
 
+import ShopBackground from "../ShopBackgroundImage/ShopBackground";
+
 /** Cart info, with button for checkout
  * @param: shop
  * @param: removeItem()
@@ -12,7 +14,7 @@ export class UserCartItem extends Component {
     return (
       <div className="cart-item-container">
         <div className="cart-item-image">
-          <img alt="Imagine del negozio" src={this.props.shop.logourl} />
+          <ShopBackground url={this.props.shop.logourl} />
         </div>
         <div className="cart-item-info">
           <p className="cart-item-name">{this.props.shop.name}</p>

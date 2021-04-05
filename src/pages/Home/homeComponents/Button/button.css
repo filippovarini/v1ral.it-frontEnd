@@ -17,3 +17,17 @@
 #home-button {
   margin-top: 30px;
 }
+
+@media only screen and (max-width: 500px) {
+  #challgne-text {
+    font-size: 1.2rem;
+    width: 200px;
+  }
+
+  #home-button {
+    width: 180px;
+    font-size: 0.9rem;
+    height: 30px;
+    line-height: 30px;
+  }
+}

@@ -55,3 +55,10 @@ td {
   width: 30px;
   border-radius: 30px;
 }
+
+@media only screen and (max-width: 500px) {
+  table {
+    font-size: 0.8rem;
+    line-height: 15px;
+  }
+}

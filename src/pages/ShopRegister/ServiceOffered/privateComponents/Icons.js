@@ -5,7 +5,7 @@ import React, { Component } from "react";
  */
 import HideCross from "../../../../components/HideCross/HideCross";
 
-import icons from "../../../../faqData/icons";
+import icons from "../../../../locales/serviceIcons";
 
 /** List of icons for services
  * @param addIcon function to fire on click

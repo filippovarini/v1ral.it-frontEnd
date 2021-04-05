@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./cart.css";
 
+import emptyCartImage from "../../images/empty-cart.png";
+import it from "../../locales/it.json";
+
 import Loading from "../Loading/Loading";
 import UserCartItem from "./UserCartItem";
 import ShopCartItem from "./ShopCartItem";
@@ -16,6 +19,7 @@ import ShopCartItem from "./ShopCartItem";
 
 export class Cart extends Component {
   render() {
+    console.log(this.props.items);
     const redirectPage = this.props.isShop
       ? "/shop/checkout"
       : "/user/checkout";
@@ -39,19 +43,24 @@ export class Cart extends Component {
           })}
         </div>
       ) : (
-        <div>Il carrello è vuoto</div>
+        <div id="empty-cart">
+          <img src={emptyCartImage} alt="carrello vuoto" />
+          <p>{it.checkout_empty_cart}</p>
+        </div>
       );
     return (
       <div id="cart" className="box">
         <p id="cart-header">carrello</p>
         {this.props.loading ? <Loading /> : body}
-        <p
-          id="cart-button"
-          className="button"
-          onClick={() => this.props.history.push(redirectPage)}
-        >
-          checkout
-        </p>
+        {this.props.items && this.props.items.length > 0 ? (
+          <p
+            id="cart-button"
+            className="button"
+            onClick={() => this.props.history.push(redirectPage)}
+          >
+            checkout
+          </p>
+        ) : null}
       </div>
     );
   }

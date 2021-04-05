@@ -1,15 +1,27 @@
 #countdown-container {
   display: flex;
-  width: 200px;
+  width: 150px;
   justify-content: space-between;
   text-align: center;
   margin-right: 20px;
 }
 
+#countdown-header {
+  line-height: 15px;
+  font-weight: bold;
+}
+
 .countdown-description {
-  font-size: 1rem;
+  font-size: 0.8rem;
+  margin-top: -5px;
 }
 
 #countdown {
   width: 100vw;
+}
+
+@media only screen and (max-width: 500px) {
+  #countdown-header {
+    width: 100px;
+  }
 }

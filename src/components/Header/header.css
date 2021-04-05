@@ -12,10 +12,24 @@
   height: 80px;
   box-shadow: var(--shadowBottom);
 }
+
+.nav-renderer {
+  font-size: 1.2rem;
+}
+
+.topHalf .nav-renderer {
+  color: var(--white);
+}
+
+#nav-cart {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
 #header-nav {
   display: flex;
-  max-width: 800px;
-  justify-content: flex-end;
+  width: 350px;
+  justify-content: space-around;
   align-items: center;
   margin-right: 20px;
 }
@@ -25,7 +39,10 @@
   color: var(--dark);
   cursor: pointer;
   text-transform: uppercase;
-  margin: 0 20px;
+}
+
+.topHalf .header-nav-item {
+  color: var(--white);
 }
 
 #header.topHalf {
@@ -33,16 +50,80 @@
   box-shadow: none;
 }
 
-#header.topHalf .header-nav-item {
-  color: var(--white);
-}
-
 .header-nav-image {
   height: 50px;
   width: 50px;
-  border-radius: 25px;
+  border-radius: 50%;
 }
 
 #cart-container {
-  transition: height 0.5s;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#nav-menu-wrapper {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#nav-menu {
+  margin-right: 20px;
+  font-size: 1.3rem;
+}
+
+@media only screen and (max-width: 800px) {
+  #header {
+    height: 60px;
+  }
+
+  #header-nav {
+    background: var(--white);
+    flex-direction: column;
+    width: 120px;
+    align-items: flex-start;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    font-size: 0.8rem;
+    box-shadow: var(--shadow);
+    border-radius: 4px;
+  }
+
+  #header-nav-image-contaienr {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    background: var(--pink);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 3px 5px;
+    cursor: pointer;
+  }
+
+  #profile-link {
+    color: var(--white);
+    font-weight: bold;
+  }
+
+  .header-nav-image {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    box-shadow: 0px 0px 4px var(--white);
+  }
+
+  .topHalf .header-nav-item {
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .header-nav-item:hover {
+    font-weight: 700;
+  }
 }

@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./header.css";
 
-import Navigator from "./Navigator";
+import Navigator from "./NavigatorRenderer";
 import Logo from "../Logo/Logo";
 
 export class Header extends Component {
