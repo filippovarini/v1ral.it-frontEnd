@@ -1,12 +1,12 @@
 #logo {
-  font-weight: bold;
-  font-size: 3rem;
-  color: var(--dark);
+  width: 200px;
   cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
   #logo {
-    font-size: 2rem;
+    width: 150px;
+    position: relative;
+    top: 5px;
   }
 }
