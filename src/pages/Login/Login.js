@@ -17,6 +17,7 @@ export class UserLogin extends Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     fetch("/page/login")
       .then(res => res.json())
       .then(jsonRes => {

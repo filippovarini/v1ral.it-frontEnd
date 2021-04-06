@@ -4,11 +4,11 @@ import "./barChart.css";
 
 import graphColors from "../../Style/graphColors";
 
-const totalMargin = 100;
+const totalMargin = 50;
 const quickFactsWidth = 250;
 const screenHeight = 300;
-const screenShortHeight = 250;
-const pageMargin = 200;
+const screenShortHeight = 220;
+const pageMargin = 250;
 
 const getMovingAverage = cases => {
   const movingAverage = [];

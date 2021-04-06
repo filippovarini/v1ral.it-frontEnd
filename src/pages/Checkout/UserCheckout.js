@@ -38,6 +38,7 @@ export class UserCheckout extends Component {
 
   /** Fetch user and shops selected */
   componentDidMount = async () => {
+    window.scrollTo(0, 0);
     fetch("/page/checkout/user")
       .then(res => res.json())
       .then(jsonRes => {

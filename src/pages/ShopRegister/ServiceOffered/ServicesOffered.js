@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./serviceOffered.css";
 
+import it from "../../../locales/it.json";
+
 import Header from "../../../components/Header/Header";
 import ServiceForm from "./privateComponents/ServicePriceForm";
 import RegisterHeader from "../ShopRegisterHeader";
@@ -14,10 +16,12 @@ export class ServicesOffered extends Component {
     initialPrice: null,
     services: [],
     addInfoHidden: true,
-    error: null
+    error: null,
+    check1: false
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     if (!this.props.shopRegister) this.props.history.push("/shop/register/bio");
     else if (!this.props.shopRegister.bio)
       this.props.history.push("/shop/register/bio");
@@ -58,6 +62,14 @@ export class ServicesOffered extends Component {
     return true;
   };
 
+  validCheckboxes = () => {
+    if (!this.state.check1) {
+      this.setState({ error: "Spunta la casella" });
+      return false;
+    }
+    return true;
+  };
+
   toggleAddService = () => {
     this.setState({
       addInfoHidden: !this.state.addInfoHidden
@@ -71,7 +83,7 @@ export class ServicesOffered extends Component {
   };
 
   handleSubmit = () => {
-    if (this.validFields() && this.validServices()) {
+    if (this.validCheckboxes() && this.validFields() && this.validServices()) {
       this.props.dispatch({
         type: "SET-SERVICES",
         services: {
@@ -92,10 +104,7 @@ export class ServicesOffered extends Component {
           <RegisterHeader navState={2} />
           <div className="shop-register-body">
             <p className="register-warning">
-              Attenzione:
-              <br />È fondamentale offrire servizi <b>
-                utili
-              </b> <b>tangibili</b> e <b>utilizzabili</b>
+              {it.shop_register_choose_priviledges}
             </p>
             <div className="shop-register-body">
               <div id="serviceOffered-body" className="flex-line">
@@ -110,6 +119,9 @@ export class ServicesOffered extends Component {
                   handleSubmit={this.handleSubmit}
                   maxPremiums={this.state.maxPremiums}
                   initialPrice={this.state.initialPrice}
+                  toggleCheck1={() =>
+                    this.setState({ check1: !this.state.check1, error: null })
+                  }
                 />
                 <AddService
                   headerText="Aggiungi un privilegio"

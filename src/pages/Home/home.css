@@ -3,6 +3,7 @@
 #bottomHalf {
   margin: 20px;
   height: 50vh;
+  min-height: 370px;
 }
 
 .home-search-bar {

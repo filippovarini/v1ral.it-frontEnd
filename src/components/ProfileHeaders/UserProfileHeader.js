@@ -34,7 +34,7 @@ export class UserProfileHeader extends Component {
       </div>
     ) : null;
     return (
-      <div className="profile-header">
+      <div id="user-profile-header" className="profile-header">
         {settingsButton}
         <div className="flex-line" style={{ alignItems: "flex-start" }}>
           <p className="profile-name">{this.props.profile.name}</p>
@@ -61,8 +61,8 @@ export class UserProfileHeader extends Component {
           </p>
         ) : (
           <p
+            id="number-to-viral-button"
             className="profile-button button disabled"
-            style={{ fontSize: "1rem" }}
           >
             {`${this.props.numberToViral} ${it.standard_profile_disabledButton}`}
           </p>

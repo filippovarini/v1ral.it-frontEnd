@@ -12,6 +12,7 @@ export class TransactionSuccess extends Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     fetch("/page/success/" + this.props.match.params.transactionId)
       .then(res => res.json())
       .then(jsonRes => {

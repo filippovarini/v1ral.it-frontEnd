@@ -19,6 +19,7 @@ export class ShopRegisterDone extends Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     const connectedId = this.props.match.params.connectedId;
     // send request
     fetch("/shop/register", {

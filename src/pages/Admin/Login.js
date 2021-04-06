@@ -15,6 +15,7 @@ export class AdminLogin extends Component {
 
   /** Check that there  */
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     fetch("/admin/logged")
       .then(res => res.json())
       .then(jsonRes => {

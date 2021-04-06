@@ -30,6 +30,7 @@ export class Shops extends Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     if (!this.state.shops) {
       fetch("page/shops")
         .then(res => res.json())

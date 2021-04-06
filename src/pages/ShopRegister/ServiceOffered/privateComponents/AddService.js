@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import it from "../../../../locales/it.json";
+
 import HideCross from "../../../../components/HideCross/HideCross";
 import Icons from "./Icons";
 import ServiceForm from "./AddServiceForm";
@@ -47,7 +49,7 @@ export class AddService extends Component {
     e.preventDefault();
     if (this.validFields()) {
       this.props.hide();
-      this.setState({ image: null });
+      this.setState({ image: null, viral: false });
       document.getElementById("addService-form").reset();
       this.props.handleAdd({
         image: this.state.image,
@@ -74,24 +76,24 @@ export class AddService extends Component {
             hidden={this.state.iconsHidden}
             hideIcons={this.toggleIcons}
           />
-          <p id="addInfo-header">Aggiungi un privilegio</p>
-          <p id="bestSelling-header">Best selling:</p>
-          <div id="bestSelling-container" className="flex-col">
+          <p id="addInfo-header">{it.add_service}</p>
+          <p id="addInfo-description">{it.add_service_description}</p>
+          <p id="bestSelling-header">{it.add_service_best_selling}</p>
+          <ul id="bestSelling-container" className="flex-col">
             {bestSellingServices.map((service, i) => {
               return (
-                <p key={i} className="bestSelling-title">
+                <li key={i} className="bestSelling-title">
                   {service}
-                </p>
+                </li>
               );
             })}
-          </div>
+          </ul>
           <ServiceForm
             handleSubmit={this.handleSubmit}
             toggleIcons={this.toggleIcons}
             url={this.state.image}
             handleChange={this.handleChange}
             handleImageChange={this.handleImageChange}
-            // title={this.state.title}
           />
           <p
             id="addInfo-submit"

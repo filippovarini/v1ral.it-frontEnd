@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import it from "../../../../locales/it.json";
+
 export class ServiceForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
@@ -14,24 +16,37 @@ export class ServiceForm extends Component {
         onSubmit={this.handleSubmit}
       >
         <div className="shopRegister-input-container">
-          <label htmlFor="email">Numero massimo contagiati</label>
+          <label htmlFor="email">{it.max_premiums}</label>
           <input
             type="number"
             id="maxPremiums"
             value={this.props.maxPremiums || ""}
-            placeholder="max contagiati"
+            placeholder="e.g. 500"
             onChange={this.props.handleChange}
           />
         </div>
         <div className="shopRegister-input-container">
-          <label htmlFor="password">Prezzo di Partenza</label>
+          <label htmlFor="password">{it.initial_price}</label>
           <input
             type="number"
             id="initialPrice"
-            placeholder="prezzo"
+            placeholder="e.g. 20"
             value={this.props.initialPrice || ""}
             onChange={this.props.handleChange}
           />
+        </div>
+        <div id="shop-credentials-checkboxes">
+          <div className="shop-credentials-checkbox flex-line">
+            <input
+              type="checkbox"
+              className="check-input"
+              id="termsAndPrivacyCheck"
+              onChange={this.props.toggleCheck1}
+            />
+            <label htmlFor="termsAndPrivacyCheck" className="check-label">
+              {it.shop_register_priviledges_checkboxes}
+            </label>
+          </div>
         </div>
         <p className="form-error">{this.props.error}</p>
         <input type="submit" className="hidden" />

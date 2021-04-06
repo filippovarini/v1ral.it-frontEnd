@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import it from "../../../../locales/it.json";
+
 import HideCross from "../../../../components/HideCross/HideCross";
 import Form from "./AddGoalForm";
 
@@ -62,17 +64,18 @@ export class AddGoal extends Component {
       >
         <div id="addInfo-container" className="box popUp">
           <HideCross hide={() => this.props.hide()} />
-          <p id="addInfo-header">Aggiungi un privilegio</p>
-          <p id="bestSelling-header">Best selling:</p>
-          <div id="bestSelling-container" className="flex-col">
+          <p id="addInfo-header">{it.shop_register_insert_goal}</p>
+          <p id="addInfo-description">{it.goals_restart_index}</p>
+          <p id="bestSelling-header">{it.add_service_best_selling}</p>
+          <ul id="bestSelling-container" className="flex-col">
             {bestSellingGoals.map((goal, i) => {
               return (
-                <p key={i} className="bestSelling-title">
+                <li key={i} className="bestSelling-title">
                   {goal}
-                </p>
+                </li>
               );
             })}
-          </div>
+          </ul>
           <Form
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange}

@@ -5,6 +5,8 @@ import Header from "../../../components/Header/Header";
 import Form from "./ShopCredentialsForm";
 import RegisterHeader from "../ShopRegisterHeader";
 
+import it from "../../../locales/it.json";
+
 export class ShopCredentials extends Component {
   state = {
     city: null,
@@ -13,10 +15,13 @@ export class ShopCredentials extends Component {
     postcode: null,
     email: null,
     psw: null,
-    error: null
+    error: null,
+    check1: false,
+    check2: false
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     if (!this.props.shopRegister || !this.props.shopRegister.bio) {
       this.props.history.push("/shop/register/bio");
     } else if (
@@ -69,8 +74,20 @@ export class ShopCredentials extends Component {
     return true;
   };
 
+  checkboxesValid = () => {
+    if (!this.state.check1 || !this.state.check2) {
+      this.setState({ error: it.tick_all_checkboxes });
+      return false;
+    }
+    return true;
+  };
+
   handleSubmit = () => {
-    if (this.credentialsValid() && this.placeValid()) {
+    if (
+      this.credentialsValid() &&
+      this.placeValid() &&
+      this.checkboxesValid()
+    ) {
       this.props.dispatch({
         type: "SET-CREDENTIALS",
         credentials: {
@@ -103,6 +120,12 @@ export class ShopCredentials extends Component {
               street={this.state.street}
               province={this.state.province}
               postcode={this.state.postcode}
+              toggleCheck1={() =>
+                this.setState({ error: null, check1: !this.state.check1 })
+              }
+              toggleCheck2={() =>
+                this.setState({ error: null, check2: !this.state.check2 })
+              }
             />
             <p
               className="button shop-register-button"

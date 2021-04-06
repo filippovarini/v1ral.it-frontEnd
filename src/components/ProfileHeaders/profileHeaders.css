@@ -7,6 +7,12 @@
   padding: 10px;
 }
 
+#user-profile-header {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .profile-header-settings {
   position: absolute;
   top: 0px;
@@ -28,9 +34,8 @@
 .profile-name {
   font-weight: bold;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   position: relative;
-  height: 50px;
   margin-top: 10px;
 }
 
@@ -84,14 +89,28 @@
   font-size: 1.2rem;
 }
 
+#number-to-viral-button {
+  font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 800px) {
+  #number-to-viral-button {
+    font-size: 0.6rem;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   .profile-name {
     font-size: 1.3rem;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
   }
 
   .profile-description {
     font-size: 0.8rem;
+  }
+
+  .profile-place {
+    font-size: 0.9rem;
   }
 
   .profile-button {
@@ -101,6 +120,14 @@
   }
 
   .profile-info-number {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .profile-info-description {
+    font-size: 0.8rem;
+  }
+
+  #number-to-viral-button {
+    font-size: 0.5rem;
   }
 }

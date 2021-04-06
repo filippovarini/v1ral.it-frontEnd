@@ -10,23 +10,6 @@ import "./shopImages.css";
  */
 export class ShopImages extends Component {
   render() {
-    const backgroundSubmitted = (
-      <div className="shop-background-container">
-        <img
-          id="shop-background"
-          className="shop-image"
-          src={this.props.backgroundurl}
-          alt="imagine sfondo dell'impresa"
-        />
-        {this.props.input ? (
-          <i
-            className="fas fa-times hide-cross centering"
-            onClick={() => this.props.resetUrl("backgroundurl")}
-          ></i>
-        ) : null}
-      </div>
-    );
-
     const backgroundInput = (
       <div
         id="background-input"
@@ -87,18 +70,34 @@ export class ShopImages extends Component {
       </div>
     );
 
-    const backgroundBody = this.props.backgroundurl
-      ? backgroundSubmitted
-      : backgroundInput;
-
     const logoBody = this.props.logourl ? logoSubmitted : logoInput;
 
-    return (
-      <div id="shop-images" className="box">
-        {backgroundBody}
+    const backgroundSubmitted = (
+      <div
+        id="background-submitted"
+        className="shop-images"
+        style={{ backgroundImage: `url(${this.props.backgroundurl})` }}
+      >
+        <i
+          className="fas fa-times hide-cross centering"
+          onClick={() => this.props.resetUrl("backgroundurl")}
+        ></i>
         {logoBody}
       </div>
     );
+
+    const backgroundSubmitting = (
+      <div id="background-submitting" className="box shop-images">
+        {backgroundInput}
+        {logoBody}
+      </div>
+    );
+
+    const body = this.props.backgroundurl
+      ? backgroundSubmitted
+      : backgroundSubmitting;
+
+    return body;
   }
 }
 

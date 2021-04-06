@@ -10,6 +10,7 @@ import Header from "../../../components/Header/Header";
 import Form from "./components/BioInfoForm";
 import ShopImages from "../../../components/ShopImages/ShopImages";
 import RegisterHeader from "../ShopRegisterHeader";
+import ImageLoading from "../../../components/Loading/ImageLoading";
 
 export class BioInfo extends Component {
   state = {
@@ -24,6 +25,7 @@ export class BioInfo extends Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     if (this.props.user && this.props.user.name) window.location = "/";
     if (
       this.props.shopRegister &&
@@ -135,13 +137,15 @@ export class BioInfo extends Component {
               {it.shop_register_complete_profile}
             </p>
             <div id="bio-forms-container">
-              <ShopImages
-                logourl={this.state.logourl}
-                backgroundurl={this.state.backgroundurl}
-                resetUrl={this.resetImage}
-                handleImageChange={this.handleImageChange}
-                input={true}
-              />
+              <div id="bioInfo-background-container">
+                <ShopImages
+                  logourl={this.state.logourl}
+                  backgroundurl={this.state.backgroundurl}
+                  resetUrl={this.resetImage}
+                  handleImageChange={this.handleImageChange}
+                  input={true}
+                />
+              </div>
               <Form
                 handleChange={this.handleChange}
                 error={this.state.error}
@@ -152,9 +156,9 @@ export class BioInfo extends Component {
               />
             </div>
             {this.multerOperating() ? (
-              <p className="button shop-register-button disabled">
-                caricando le immagini...
-              </p>
+              <div className="shop-register-button">
+                <ImageLoading />
+              </div>
             ) : (
               <p
                 className="button shop-register-button"

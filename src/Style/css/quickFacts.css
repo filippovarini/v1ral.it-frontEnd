@@ -51,10 +51,21 @@
 }
 
 .fact-align-image {
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
   margin-right: 20px;
+}
+
+#fact-align-image-wrapper {
+  position: relative;
+}
+
+.fact-image-viral {
+  position: absolute;
+  top: 0px;
+  right: 20px;
 }
 
 .fact-align-image.viral {
@@ -100,6 +111,7 @@
   align-items: center;
   justify-content: center;
   background: transparent;
+  box-shadow: none;
 }
 
 .sg-add-title {

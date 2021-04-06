@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
 import "./userProfile.css";
 
+import it from "../../locales/it.json";
+
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import ShopBox from "../../components/ShopBox/ShopBox";
@@ -19,6 +21,7 @@ export class UserProfile extends Component {
 
   /** Get info from database and session or from props if it is a dashboard */
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     if (
       window.location.pathname === "/user/dashboard" &&
       this.props.user &&
@@ -80,9 +83,9 @@ export class UserProfile extends Component {
                 type: this.state.user.type
               }}
               info={[
-                { title: "focolai supportati", data: this.state.user.number },
-                { title: "indice rt", data: this.state.user.rt },
-                { title: "contagiatore", data: this.state.user.challenger }
+                { title: it.tokens, data: this.state.user.number },
+                { title: it.rt_index, data: this.state.user.rt },
+                { title: it.challenger, data: this.state.user.challenger }
               ]}
               numberToViral={this.numberToGetViral()}
               dashboard={this.state.dashboard}

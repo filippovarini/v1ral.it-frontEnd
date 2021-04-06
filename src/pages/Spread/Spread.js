@@ -16,6 +16,7 @@ export class Spread extends Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     fetch("/page/spread")
       .then(res => res.json())
       .then(jsonRes => {

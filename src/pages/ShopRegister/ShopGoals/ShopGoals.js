@@ -17,6 +17,7 @@ export class ShopGoals extends Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     if (!this.props.shopRegister) this.props.history.push("/shop/register/bio");
     else if (!this.props.shopRegister.bio)
       this.props.history.push("/shop/register/bio");

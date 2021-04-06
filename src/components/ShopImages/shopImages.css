@@ -1,11 +1,14 @@
-#shop-images {
-  /* height: 300px; */
+#background-submitting {
+  display: flex;
+  align-items: center;
+}
+
+.shop-images {
   width: 100%;
-  max-width: 600px;
-  min-width: 500px;
+  padding-top: 50%;
   position: relative;
-  margin-bottom: 30px;
-  height: 300px;
+  border-radius: 5px;
+  background-size: cover;
 }
 
 #shop-background {
@@ -22,19 +25,22 @@
 
 #background-input {
   cursor: pointer;
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  border-radius: 5px;
 }
 
 .shop-logo {
   position: absolute;
-  bottom: 50px;
-  left: 50px;
-  height: 200px;
-  width: 200px;
-  border-radius: 125px;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
   box-sizing: border-box;
   padding: 10px;
-  background: white;
   overflow: hidden;
+  bottom: -30px;
+  left: -30px;
 }
 
 .shop-logo img {
@@ -47,6 +53,7 @@
 .input-label {
   width: 100%;
   height: 100%;
+  color: var(--lightBlue);
 }
 
 .input-label span {
@@ -63,10 +70,10 @@
 }
 
 .input-label:hover {
-  color: var(--iconHover);
+  color: var(--darkBlue);
 }
 
-#shop-images .hide-cross {
+.shop-images .hide-cross {
   background: rgba(255, 255, 255, 0.5);
   width: 30px;
   height: 30px;
@@ -81,10 +88,18 @@
 #logo-hide {
   margin-left: 50%;
   left: -15px;
-  top: 170px;
+  top: 10px;
 }
 
 .image-input {
   background: white;
-  border: 1px solid black;
+  box-shadow: var(--shadow);
+}
+
+@media only screen and (max-width: 700px) {
+  .shop-logo {
+    width: 120px;
+    height: 120px;
+    left: -10px;
+  }
 }

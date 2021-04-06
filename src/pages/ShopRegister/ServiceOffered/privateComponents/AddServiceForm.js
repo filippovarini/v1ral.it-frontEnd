@@ -11,16 +11,18 @@ import React, { Component } from "react";
 export class ServiceForm extends Component {
   render() {
     const imageSubmitted = (
-      <div className="icon service-icon">
-        <div
-          id="hideCross-container"
+      <div
+        className="service-icon"
+        style={{ backgroundImage: `url(${this.props.url})` }}
+      >
+        <i
+          id="hide-service-icon"
+          className="fas fa-times hide-cross"
           onClick={() => {
             this.props.handleImageChange(null);
           }}
-        >
-          <i className="fas fa-times"></i>
-        </div>
-        <img src={this.props.url} alt="Icona servizio offerto" />
+        ></i>
+        {/* <img src={this.props.url} alt="Icona servizio offerto" /> */}
       </div>
     );
 
@@ -52,8 +54,15 @@ export class ServiceForm extends Component {
           id="viral-service-checkbox"
           className="addService-form-line flex-line"
         >
-          <input id="type" type="checkbox" onChange={this.props.handleChange} />
-          <label htmlFor="type">privilegio solo per utenti virali</label>
+          <input
+            id="type"
+            type="checkbox"
+            className="check-input"
+            onChange={this.props.handleChange}
+          />
+          <label className="check-label" htmlFor="type">
+            privilegio solo per utenti virali
+          </label>
         </div>
       </form>
     );

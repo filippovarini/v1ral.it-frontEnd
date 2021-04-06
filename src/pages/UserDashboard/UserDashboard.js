@@ -13,6 +13,7 @@ export class UserDashboard extends Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     fetch("/page/dashboard/user")
       .then(res => res.json())
       .then(jsonRes => {

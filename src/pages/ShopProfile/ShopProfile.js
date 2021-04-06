@@ -39,6 +39,7 @@ export class ShopProfile extends Component {
 
   /** Get info from database and session */
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     const id = this.props.match.params.id;
     fetch(`/page/shopProfile/${id}`)
       .then(res => res.json())
