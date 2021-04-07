@@ -69,7 +69,7 @@ export class ShopProfileHeader extends Component {
           onClick={this.props.handleSubmit}
           style={this.props.style}
         >
-          {this.props.buttonText.toUpperCase()}
+          {this.props.buttonText}
         </p>
       </div>
     );
