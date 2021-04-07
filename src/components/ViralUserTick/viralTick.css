@@ -21,3 +21,13 @@
   line-height: 30px;
   font-size: 1rem;
 }
+
+@media only screen and (max-width: 500px) {
+  #viral-tick.big {
+    font-size: 0.5rem;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    bottom: -10px;
+  }
+}

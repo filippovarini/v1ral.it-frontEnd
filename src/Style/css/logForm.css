@@ -10,8 +10,7 @@
   margin-bottom: 40px;
 }
 
-.log-form input,
-select {
+.log-form-input {
   width: 80%;
   box-sizing: border-box;
   margin: 10px;

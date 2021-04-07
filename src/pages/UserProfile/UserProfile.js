@@ -105,7 +105,7 @@ export class UserProfile extends Component {
         ) : (
           <div className="shopBoxes-container">
             {this.state.shops.map((shop, i) => (
-              <ShopBox key={i} shop={shop} />
+              <ShopBox key={i} shop={{ ...shop, alreadybought: true }} />
             ))}
           </div>
         )}

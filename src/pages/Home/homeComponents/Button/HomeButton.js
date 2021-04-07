@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./button.css";
 
 import it from "../../../../locales/it.json";
@@ -8,9 +9,9 @@ export class HomeButton extends Component {
     return (
       <div id="home-button-container">
         <p id="challgne-text">{it.home_description_above_button}</p>
-        <p id="home-button" className="button" onClick={this.props.click}>
+        <Link to="/shops" id="home-button" className="button">
           {this.props.loading ? "loading..." : it.take_part_in_the_challenge}
-        </p>
+        </Link>
       </div>
     );
   }

@@ -98,12 +98,17 @@ export class UserLogin extends Component {
         onSubmit={this.handleSubmit}
       >
         <p className="form-header">login</p>
-        <select id="type" onChange={this.handleChange}>
+        <select
+          id="type"
+          onChange={this.handleChange}
+          className="log-form-input"
+        >
           <option value="user">{it.user}</option>
           <option value="shop">{it.shop}</option>
         </select>
         <input
           type="text"
+          className="log-form-input"
           placeholder={
             "email" + (this.state.type === "user" ? " o username" : "")
           }
@@ -114,6 +119,7 @@ export class UserLogin extends Component {
         <input
           type="password"
           placeholder="password"
+          className="log-form-input"
           id="psw"
           autoComplete="off"
           onChange={this.handleChange}

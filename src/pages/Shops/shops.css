@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+#empty-shops {
+  margin-top: 0px;
+}
+
 #shops-page-sub-header {
   margin: 10px;
 }

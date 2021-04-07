@@ -4,44 +4,14 @@ import "./home.css";
 
 import ChallengeButton from "./homeComponents/Button/HomeButton";
 import Header from "../../components/Header/Header";
-import Challenged from "../../components/InsertChallenger/Challenger";
 
+/** Home top half. Can see shops even without challenger */
 export class HomeTopHalf extends Component {
-  state = {
-    challengerHidden: true,
-    challengeLoading: false
-  };
-
-  toggleChallenger = () => {
-    this.setState({ challengerHidden: !this.state.challengerHidden });
-  };
-
-  clickChallengeButton = () => {
-    this.setState({ challengeLoading: true });
-    fetch("/session")
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (!jsonRes.session.loginId) {
-          this.setState({ challengeLoading: false });
-          this.toggleChallenger();
-        } else this.props.history.push("/shops");
-      });
-  };
-
   render() {
     return (
       <div id="topHalf">
-        <Challenged
-          hidden={this.state.challengerHidden}
-          hide={this.toggleChallenger}
-          alreadyAccountRedirection="/shops"
-          successRedirection="/shops"
-        />
         <Header class="topHalf" />
-        <ChallengeButton
-          loading={this.state.challengeLoading}
-          click={this.clickChallengeButton}
-        />
+        <ChallengeButton />
       </div>
     );
   }

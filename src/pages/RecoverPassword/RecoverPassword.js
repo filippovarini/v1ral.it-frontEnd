@@ -86,12 +86,17 @@ export class RecoverPassword extends Component {
         onSubmit={this.handleSubmit}
       >
         <p className="form-header">{it.reset_password_title}</p>
-        <select id="type" onChange={this.handleChange}>
+        <select
+          id="type"
+          onChange={this.handleChange}
+          className="log-form-input"
+        >
           <option value="user">{it.user}</option>
           <option value="shop">{it.shop}</option>
         </select>
         <input
           type="text"
+          className="log-form-input"
           placeholder="email"
           id="email"
           autoComplete="off"

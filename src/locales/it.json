@@ -1,4 +1,6 @@
 {
+  "no_shops_found_header": "Nessun risultato",
+  "no_shops_found_description": "Nessuno shop trovato con questi paremtri. Prova a ripristinaere i filtri",
   "loading_image": "Caricando l'immagine, attengi qualche secondo...",
   "tick_all_checkboxes": "Spunta tutte le caselle",
   "explanaiton_header": "Come funziona?",

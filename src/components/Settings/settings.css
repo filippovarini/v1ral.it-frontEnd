@@ -11,9 +11,21 @@
   border-radius: 5px;
 }
 
+.settings-wrapper {
+  background: var(--white);
+  width: 350px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
 .settings-name {
   margin-bottom: 20px;
   font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--darkBlue);
 }
 
 .setting-error {

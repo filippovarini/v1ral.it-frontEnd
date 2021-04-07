@@ -6,4 +6,4 @@ profileHeader-settings 1000
 shopBox-menu 999
 product-preview = 1
 shopRegister-icons container = 1 
-popUp-background = 999
+popUp-background = 10001

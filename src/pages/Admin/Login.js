@@ -95,6 +95,7 @@ export class AdminLogin extends Component {
           placeholder="username"
           autoComplete="off"
           id="username"
+          className="log-form-input"
           onChange={this.handleChange}
         />
         <input
@@ -102,6 +103,7 @@ export class AdminLogin extends Component {
           placeholder="password"
           id="psw"
           autoComplete="off"
+          className="log-form-input"
           onChange={this.handleChange}
         />
         <p className="form-error">{this.state.error}</p>

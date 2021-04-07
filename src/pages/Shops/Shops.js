@@ -135,9 +135,24 @@ export class Shops extends Component {
           default={this.state.shopSI ? this.state.shopSI.category : null}
         />
         <div className="shopBoxes-container">
-          {this.state.shops.map((shop, i) => (
-            <ShopBox key={i} shop={shop} />
-          ))}
+          {this.state.shops.length > 0 ? (
+            this.state.shops.map((shop, i) => <ShopBox key={i} shop={shop} />)
+          ) : (
+            <div id="empty-shops" className="communication-panel">
+              <p className="communication-panel-header">
+                {it.no_shops_found_header}
+              </p>
+              <p className="communication-panel-text">
+                {it.no_shops_found_description}
+              </p>
+              <p
+                className="button communication-panel-button"
+                onClick={this.resetShopSI}
+              >
+                {it.reset_filters}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     ) : null;
