@@ -28,7 +28,7 @@ export class ShopBox extends Component {
   };
 
   handleClick = () => {
-    this.props.history.push(`/shop/profile/${this.props.shop.id}`);
+    this.props.history.push(`/shop/${this.props.shop.id}`);
   };
 
   getPercentage = () => {

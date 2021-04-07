@@ -20,15 +20,11 @@ import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
 
 // profiles
-import ShopProfile from "./pages/ShopProfile/ShopProfile";
-import UserProfile from "./pages/UserProfile/UserProfile";
-import UserDashboard from "./pages/UserDashboard/UserDashboard";
-import ShopDashboard from "./pages/ShopDashboard/ShopDashboard";
-
+import Shop from "./pages/Shop/ShopRenderer";
+import User from "./pages/User/UserRenderer";
 // transaction
 import Checkout from "./pages/Checkout/CheckoutRenderer";
 import TransactionSuccess from "./pages/TransactionSuccess/TransactionSuccess";
-
 // shop register
 import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
 import ShopCredentials from "./pages/ShopRegister/ShopCredentials/ShopCredentials";
@@ -37,7 +33,6 @@ import ShopGoals from "./pages/ShopRegister/ShopGoals/ShopGoals";
 import ShopRegisterDone from "./pages/ShopRegister/ShopRegisterDone";
 import GetPayed from "./pages/ShopRegister/GetPayed/GetPayed";
 import Spread from "./pages/Spread/Spread";
-
 // admin
 import AdminLogin from "./pages/Admin/Login";
 import AdminDashboard from "./pages/Admin/Admin";
@@ -48,6 +43,7 @@ import Login from "./pages/Login/Login";
 import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
 
 // error
+import NotFound from "./pages/NotFound/NotFound";
 import Error from "./pages/Error/Error";
 
 export class App extends Component {
@@ -97,14 +93,6 @@ export class App extends Component {
             <div>
               <Route exact path="/" component={Home} />
               <Route exact path="/shops" component={Shops} />
-              <Route exact path="/shop/profile/:id" component={ShopProfile} />
-              <Route
-                exact
-                path="/user/profile/:username"
-                component={UserProfile}
-              />
-              <Route exact path="/shop/dashboard" component={ShopDashboard} />
-              <Route exact path="/user/dashboard" component={UserDashboard} />
               <Route exact path="/shop/register/bio" component={BioInfo} />
               <Route
                 exact
@@ -134,6 +122,8 @@ export class App extends Component {
                 path="/shop/checkout"
                 render={() => <Checkout type="shop" />}
               />
+              <Route exact path="/user/:username" component={User} />
+              <Route exact path="/shop/:id" component={Shop} />
               <Route
                 path="/success/:transactionId"
                 component={TransactionSuccess}
@@ -144,6 +134,7 @@ export class App extends Component {
           <Route exact path="/admin/login" component={AdminLogin} />
           <Route exact path="/admin" component={AdminDashboard} />
           <Route exact path="/error" component={Error} />
+
           <BugFound />
           <Footer />
         </div>

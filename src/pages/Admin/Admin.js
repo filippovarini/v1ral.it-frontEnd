@@ -45,7 +45,7 @@ export class Admin extends Component {
           });
         } else {
           if (jsonRes.serverError) errorHandler.serverError();
-          window.location = "/";
+          this.props.history.push("/");
         }
       })
       .catch(e => {

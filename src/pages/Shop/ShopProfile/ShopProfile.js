@@ -6,28 +6,31 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import errorHandler from "../../functions/errorHandler";
+import errorHandler from "../../../functions/errorHandler";
 import "./shopProfile.css";
 
-import it from "../../locales/it.json";
+import it from "../../../locales/it.json";
 
-import Header from "../../components/Header/Header";
-import Navigator from "../../components/Navigator/Navigator";
-import Loading from "../../components/Loading/Loading";
-import InsertChallenger from "../../components/InsertChallenger/Challenger";
-import ShopStats from "../../components/ShopStats/ShopStats";
-import ServiceExplanaiton from "../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
-import ProfileHeader from "../../components/ProfileHeaders/ShopProfileHeader";
-import ShopBackground from "../../components/ShopBackgroundImage/ShopBackground";
+import Navigator from "../../../components/Navigator/Navigator";
+import InsertChallenger from "../../../components/InsertChallenger/Challenger";
+import ShopStats from "../../../components/ShopStats/ShopStats";
+import ServiceExplanaiton from "../../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
+import ProfileHeader from "../../../components/ProfileHeaders/ShopProfileHeader";
+import ShopBackground from "../../../components/ShopBackgroundImage/ShopBackground";
 
+/**
+ * @param toggleLoading
+ * @param setAdded set shop as added
+ * @param loading
+ * @param shop
+ * @param services
+ * @param goals
+ * @param added
+ * @param alreadyBought
+ */
 export class ShopProfile extends Component {
   state = {
-    loading: true,
     navState: 0,
-    shop: null,
-    cases: null,
-    added: false,
-    alreadyBought: false,
     insertChallengerHidden: true
   };
 
@@ -37,49 +40,18 @@ export class ShopProfile extends Component {
     });
   };
 
-  /** Get info from database and session */
-  componentDidMount = () => {
-    window.scrollTo(0, 0);
-    const id = this.props.match.params.id;
-    fetch(`/page/shopProfile/${id}`)
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.success) {
-          this.setState({
-            shop: jsonRes.shop,
-            added: jsonRes.added,
-            alreadyBought: jsonRes.alreadyBought,
-            services: jsonRes.services,
-            goals: jsonRes.goals,
-            cases: jsonRes.cases,
-            loading: false
-          });
-        } else if (jsonRes.invalidShopId) {
-          alert(jsonRes.message);
-          window.location = "/shops";
-        } else {
-          errorHandler.serverError(jsonRes);
-          this.setState({ loading: false });
-        }
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
-      });
-  };
-
   /** Adds shop to the cart
    * If not validated, lets the user insert the challenger or login
    */
   handleSubmit = () => {
-    this.setState({ loading: true });
+    this.props.toggleLoading();
     fetch("/transaction/cart", {
       method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ item: this.state.shop.id })
+      body: JSON.stringify({ item: this.props.shop.id })
     })
       .then(res => res.json())
       .then(jsonRes => {
@@ -87,8 +59,8 @@ export class ShopProfile extends Component {
           if (jsonRes.insertChallenger) this.toggleChallenger();
           else if (jsonRes.cartDuplicate) alert(jsonRes.message);
           else this.props.history.push("/login");
-        } else this.setState({ added: true });
-        this.setState({ loading: false });
+        } else this.props.setAdded();
+        this.props.toggleLoading();
       })
       .catch(e => {
         console.log(e);
@@ -99,17 +71,17 @@ export class ShopProfile extends Component {
   updateNav = i => this.setState({ navState: i });
 
   getDisruptionIndex = () => {
-    return this.state.goals
-      ? this.state.goals.reduce((acc, goal) => acc + goal.amount, 0)
+    return this.props.goals
+      ? this.props.goals.reduce((acc, goal) => acc + goal.amount, 0)
       : 0;
   };
 
   getGoalsDone = () => {
-    const totalGoals = this.state.goals.reduce(
+    const totalGoals = this.props.goals.reduce(
       (acc, goal) => acc + goal.amount,
       0
     );
-    return (parseFloat(this.state.shop.financed_so_far) / totalGoals).toFixed(
+    return (parseFloat(this.props.shop.financed_so_far) / totalGoals).toFixed(
       2
     );
   };
@@ -120,10 +92,10 @@ export class ShopProfile extends Component {
     let profileHeaderButtonStyle = null;
     let profileHeaderButtonText = it.shop_button_add_to_cart;
     let profileHeaderButtonClickHandler = this.handleSubmit;
-    if (this.state.added || this.state.alreadyBought) {
+    if (this.props.added || this.props.alreadyBought) {
       profileHeaderButtonClickHandler = null;
       profileHeaderButtonStyle = { background: "green" };
-      profileHeaderButtonText = this.state.added
+      profileHeaderButtonText = this.props.added
         ? it.shop_button_already_added_cart
         : it.shop_button_already_bought;
     }
@@ -136,34 +108,34 @@ export class ShopProfile extends Component {
     }
 
     let bodyComponent = null;
-    if (this.state.shop) {
+    if (this.props.shop) {
       bodyComponent =
         this.state.navState === 0 ? (
           <ShopStats
             disruptionIndex={this.getDisruptionIndex()}
             priceIncrement={Math.ceil(
-              (parseFloat(this.state.shop.currentprice) * 100) /
-                this.state.shop.initialprice -
+              (parseFloat(this.props.shop.currentprice) * 100) /
+                this.props.shop.initialprice -
                 100
             )}
             placesLeft={
-              this.state.shop.maxpremiums - this.state.shop.total_premiums
+              this.props.shop.maxpremiums - this.props.shop.total_premiums
             }
             goalsDone={(
-              parseFloat(this.state.shop.financed_so_far) /
+              parseFloat(this.props.shop.financed_so_far) /
               this.getDisruptionIndex()
             ).toFixed(2)}
-            cases={this.state.cases || {}}
+            cases={this.props.cases || {}}
           />
         ) : (
           <ServiceExplanaiton
-            goals={this.state.goals}
-            services={this.state.services}
+            goals={this.props.goals}
+            services={this.props.services}
           />
         );
     }
 
-    const body = this.state.shop ? (
+    const body = this.props.shop ? (
       <div className="page-wrapper">
         <div className="shop-profile">
           <div id="shopProfile-header-container">
@@ -175,32 +147,28 @@ export class ShopProfile extends Component {
               }
               successRedirection={this.props.history.location.pathname}
             />
-            {/* <ShopImages
-            logourl={this.state.shop.logourl}
-            backgroundurl={this.state.shop.backgroundurl}
-          /> */}
-            <ShopBackground url={this.state.shop.backgroundurl} />
+            <ShopBackground url={this.props.shop.backgroundurl} />
             <ProfileHeader
               profile={{
-                name: this.state.shop.name,
-                description: this.state.shop.bio,
-                city: this.state.shop.city,
-                province: this.state.shop.province,
-                currentprice: this.state.shop.currentprice,
-                logourl: this.state.shop.logourl
+                name: this.props.shop.name,
+                description: this.props.shop.bio,
+                city: this.props.shop.city,
+                province: this.props.shop.province,
+                currentprice: this.props.shop.currentprice,
+                logourl: this.props.shop.logourl
               }}
               info={[
                 {
                   title: it.shop_priviledges_offered,
-                  data: this.state.services.length
+                  data: this.props.services.length
                 },
                 {
                   title: it.shop_donations_received,
-                  data: this.state.shop.total_premiums
+                  data: this.props.shop.total_premiums
                 },
                 {
                   title: it.shop_viral_donation_received,
-                  data: this.state.shop.viral_premiums
+                  data: this.props.shop.viral_premiums
                 }
               ]}
               handleSubmit={profileHeaderButtonClickHandler}
@@ -219,14 +187,8 @@ export class ShopProfile extends Component {
         </div>
       </div>
     ) : null;
-    return (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? <Loading class="page-loading" /> : body}
-        </div>
-      </div>
-    );
+
+    return body;
   }
 }
 

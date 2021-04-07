@@ -84,7 +84,7 @@ export class Shops extends Component {
 
   /** Click a table row (user) to see a user */
   handleClick = username => {
-    this.props.history.push("/user/profile/" + username);
+    this.props.history.push("/user/" + username);
   };
 
   render() {

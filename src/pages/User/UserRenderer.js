@@ -1,31 +1,39 @@
 import React, { Component } from "react";
 import errorHandler from "../../functions/errorHandler";
 
+import UserProfile from "./UserProfile";
 import Loading from "../../components/Loading/Loading";
 import Header from "../../components/Header/Header";
-import UserProfile from "../UserProfile/UserProfile";
 
-export class UserDashboard extends Component {
+export class UserRenderer extends Component {
   state = {
     loading: true,
     user: null,
-    shops: null
+    shops: null,
+    dashboard: false
   };
 
+  /** Get info from database and session or from props if it is a dashboard */
   componentDidMount = () => {
     window.scrollTo(0, 0);
-    fetch("/page/dashboard/user")
+    const id = this.props.match.params.username;
+    fetch(`/page/user/${id}`)
       .then(res => res.json())
       .then(jsonRes => {
+        console.log(jsonRes);
         if (jsonRes.success) {
           this.setState({
             shops: jsonRes.shops,
             user: jsonRes.user,
-            loading: false
+            loading: false,
+            dashboard: jsonRes.dashboard
           });
-        } else {
-          if (jsonRes.serverError) errorHandler.serverError(jsonRes);
+        } else if (jsonRes.invalidUsername) {
+          alert(jsonRes.message);
           window.location = "/";
+        } else {
+          errorHandler.serverError(jsonRes);
+          this.setState({ loading: false });
         }
       })
       .catch(e => {
@@ -35,9 +43,13 @@ export class UserDashboard extends Component {
   };
 
   render() {
-    const body = this.state.user ? (
-      <UserProfile user={this.state.user} shops={this.state.shops} />
-    ) : null;
+    const body = (
+      <UserProfile
+        user={this.state.user}
+        shops={this.state.shops}
+        dashboard={this.state.dashboard}
+      />
+    );
     return this.state.loading ? (
       <div>
         <Header />
@@ -51,4 +63,4 @@ export class UserDashboard extends Component {
   }
 }
 
-export default UserDashboard;
+export default UserRenderer;

@@ -56,6 +56,10 @@
   color: var(--lightBlue);
 }
 
+.shop-register-body label.input-label {
+  color: var(--lightBlue);
+}
+
 .input-label span {
   font-size: 1rem;
   margin-left: 5px;

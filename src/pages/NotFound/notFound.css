@@ -1,0 +1,18 @@
+#not-found-header {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+#not-found-description {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#not-found-img {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: block;
+}

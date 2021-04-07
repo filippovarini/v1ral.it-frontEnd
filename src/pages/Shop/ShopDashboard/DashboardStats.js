@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // language
-import it from "../../locales/it.json";
+import it from "../../../locales/it.json";
 
 const boxesHeight = "350px";
 

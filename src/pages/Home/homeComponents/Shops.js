@@ -68,7 +68,7 @@ export class Shops extends Component {
   };
 
   handleClick = id => {
-    this.props.history.push("/shop/profile/" + id);
+    this.props.history.push("/shop/" + id);
   };
 
   /** Formats data for the table */
