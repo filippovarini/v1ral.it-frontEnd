@@ -36,10 +36,10 @@
   height: 40vh;
   background-image: url("../../images/card-preview.jpg");
   background-size: cover;
-  background-position: right 0px;
   background-repeat: no-repeat;
   overflow: hidden;
   background-color: var(--pink);
+  background-position: right 0px;
 }
 
 /* BANNERS */
@@ -95,7 +95,7 @@
   max-width: 250px;
 }
 
-@media only screen and (max-width: 9000px) {
+@media only screen and (max-width: 900px) {
   #topHalf {
     background-position-x: -400px;
   }
