@@ -136,5 +136,6 @@
   "cities_available": "Città disponibili:",
   "categories_available": "Categorie disponibili",
   "not_found_header": "Oops!",
-  "not_found_description": "Nessuna pagina trovata a questo indirizzo"
+  "not_found_description": "Nessuna pagina trovata a questo indirizzo",
+  "maintenance_description": "Ci stiamo migliorando. Ripartiremo tra poco, insieme :)"
 }

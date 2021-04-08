@@ -47,7 +47,7 @@ export class ToggleMaintenance extends Component {
 
   render() {
     return (
-      <div id="maintenance-wrapper" className="admin-nav-item">
+      <div id="admin-maintenance-wrapper" className="admin-nav-item">
         {this.state.loading ? (
           <p id="maintenance-header">loading...</p>
         ) : (

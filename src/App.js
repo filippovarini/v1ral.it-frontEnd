@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 // style
@@ -88,52 +88,59 @@ export class App extends Component {
           {this.state.maintenance &&
           window.location.pathname !== "/admin/login" &&
           window.location.pathname !== "/admin" ? (
-            <Route path="*" component={Maintenance} />
+            <Switch>
+              <Route exact path="/admin/login" component={AdminLogin} />
+              <Route exact path="/admin" component={AdminDashboard} />
+              <Route exact path="/error" component={Error} />
+              <Route path="*" component={Maintenance} />
+            </Switch>
           ) : (
             <div>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/shops" component={Shops} />
-              <Route exact path="/shop/register/bio" component={BioInfo} />
-              <Route
-                exact
-                path="/shop/register/credentials"
-                component={ShopCredentials}
-              />
-              <Route
-                path="/shop/register/services"
-                component={ServicesOffered}
-              />
-              <Route path="/shop/register/goals" component={ShopGoals} />
-              <Route path="/shop/register/getPayed" component={GetPayed} />
-              <Route
-                path="/shop/register/done/:connectedId"
-                component={ShopRegisterDone}
-              />
-              <Route exact path="/spread" component={Spread} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/recover" component={RecoverPassword} />
-              <Route
-                exact
-                path="/user/checkout"
-                render={() => <Checkout type="user" />}
-              />
-              <Route
-                exact
-                path="/shop/checkout"
-                render={() => <Checkout type="shop" />}
-              />
-              <Route exact path="/user/:username" component={User} />
-              <Route exact path="/shop/:id" component={Shop} />
-              <Route
-                path="/success/:transactionId"
-                component={TransactionSuccess}
-              />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/shops" component={Shops} />
+                <Route exact path="/shop/register/bio" component={BioInfo} />
+                <Route
+                  exact
+                  path="/shop/register/credentials"
+                  component={ShopCredentials}
+                />
+                <Route
+                  path="/shop/register/services"
+                  component={ServicesOffered}
+                />
+                <Route path="/shop/register/goals" component={ShopGoals} />
+                <Route path="/shop/register/getPayed" component={GetPayed} />
+                <Route
+                  path="/shop/register/done/:connectedId"
+                  component={ShopRegisterDone}
+                />
+                <Route exact path="/spread" component={Spread} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/recover" component={RecoverPassword} />
+                <Route
+                  exact
+                  path="/user/checkout"
+                  render={() => <Checkout type="user" />}
+                />
+                <Route
+                  exact
+                  path="/shop/checkout"
+                  render={() => <Checkout type="shop" />}
+                />
+                <Route exact path="/user/:username" component={User} />
+                <Route exact path="/shop/:id" component={Shop} />
+                <Route
+                  path="/success/:transactionId"
+                  component={TransactionSuccess}
+                />
+                <Route exact path="/admin/login" component={AdminLogin} />
+                <Route exact path="/admin" component={AdminDashboard} />
+                <Route exact path="/error" component={Error} />
+                <Route exact path="*" component={NotFound} />
+              </Switch>
             </div>
           )}
-
-          <Route exact path="/admin/login" component={AdminLogin} />
-          <Route exact path="/admin" component={AdminDashboard} />
-          <Route exact path="/error" component={Error} />
 
           <BugFound />
           <Footer />

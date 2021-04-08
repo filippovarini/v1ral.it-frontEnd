@@ -1,8 +1,8 @@
-#maintenance-wrapper {
+#admin-maintenance-wrapper {
   margin-top: 50px;
 }
 
-#maintenance-wrapper:hover {
+#admin-maintenance-wrapper:hover {
   cursor: default;
   background: rgb(80, 80, 80);
 }
