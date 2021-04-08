@@ -20,6 +20,7 @@ import ShopBackground from "../../../components/ShopBackgroundImage/ShopBackgrou
 
 /**
  * @param toggleLoading
+ * @param setLoading
  * @param setAdded set shop as added
  * @param loading
  * @param shop
@@ -31,12 +32,15 @@ import ShopBackground from "../../../components/ShopBackgroundImage/ShopBackgrou
 export class ShopProfile extends Component {
   state = {
     navState: 0,
-    insertChallengerHidden: true
+    insertChallengerHidden: true,
+    buttonLoading: false
   };
 
   toggleChallenger = () => {
+    console.log("inserting");
     this.setState({
-      insertChallengerHidden: !this.state.insertChallengerHidden
+      insertChallengerHidden: !this.state.insertChallengerHidden,
+      shit: "la"
     });
   };
 
@@ -44,7 +48,7 @@ export class ShopProfile extends Component {
    * If not validated, lets the user insert the challenger or login
    */
   handleSubmit = () => {
-    this.props.toggleLoading();
+    this.setState({ buttonLoading: true });
     fetch("/transaction/cart", {
       method: "PUT",
       headers: {
@@ -55,12 +59,13 @@ export class ShopProfile extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
+        console.log(jsonRes);
         if (!jsonRes.success) {
           if (jsonRes.insertChallenger) this.toggleChallenger();
           else if (jsonRes.cartDuplicate) alert(jsonRes.message);
           else this.props.history.push("/login");
         } else this.props.setAdded();
-        this.props.toggleLoading();
+        this.setState({ buttonLoading: false });
       })
       .catch(e => {
         console.log(e);
@@ -87,6 +92,7 @@ export class ShopProfile extends Component {
   };
 
   render() {
+    console.log(this.props);
     /** Dynamic button props based on whether the user is logged,
      * as bought or added the shop to the cart */
     let profileHeaderButtonStyle = null;
@@ -105,6 +111,12 @@ export class ShopProfile extends Component {
       profileHeaderButtonText = "per selezionare, esci dall'account focolaio";
       profileHeaderButtonClickHandler = null;
       profileHeaderButtonStyle = { fontSize: ".8rem" };
+    }
+
+    if (this.state.buttonLoading) {
+      profileHeaderButtonClickHandler = null;
+      profileHeaderButtonText = "loading...";
+      profileHeaderButtonStyle = { background: "var(--gray)" };
     }
 
     let bodyComponent = null;
