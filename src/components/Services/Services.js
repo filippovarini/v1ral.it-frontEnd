@@ -6,17 +6,12 @@ import ViralTick from "../ViralUserTick/ViralUserTick";
 
 /** Box showing services
  * @param services [{image, name, type}]
- * @param adding Boolean for whether user is editing
+ * @param adding? Boolean for whether user is editing
+ * @param deleteService()? delete priviledge (only when adding)
  * @param handleAddClick Function to fire if clicked add
  */
 export class Services extends Component {
   render() {
-    console.log(this.props.services);
-    console.log(
-      this.props.services.sort((a, b) => {
-        return a.type.localeCompare(b.type);
-      })
-    );
     const adding = this.props.adding ? (
       <div
         className=" button fact-align small style4"
@@ -52,6 +47,12 @@ export class Services extends Component {
                         ) : null}
                       </div>
                       <p className="fact-title-small">{service.name}</p>
+                      {this.props.adding ? (
+                        <i
+                          className="fas fa-times hide-cross"
+                          onClick={() => this.props.deleteService(i)}
+                        ></i>
+                      ) : null}
                     </div>
                   );
                 })

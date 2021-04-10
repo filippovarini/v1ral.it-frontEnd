@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import it from "../../../../locales/it.json";
+import categories from "../../../../locales/categories";
+
 export class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
@@ -14,7 +17,7 @@ export class Form extends Component {
         onSubmit={this.handleSubmit}
       >
         <div className="shopRegister-input-container">
-          <label htmlFor="name">Nome impresa</label>
+          <label htmlFor="name">{it.shop_name}</label>
           <input
             type="text"
             id="name"
@@ -25,7 +28,7 @@ export class Form extends Component {
           />
         </div>
         <div className="shopRegister-input-container">
-          <label htmlFor="name">Categoria</label>
+          <label htmlFor="name">{it.shop_category}</label>
           <select
             id="category"
             onChange={this.props.handleChange}
@@ -34,14 +37,11 @@ export class Form extends Component {
             <option value="" disabled selected hidden>
               seleziona
             </option>
-            <option value="Bar">Bar</option>
-            <option value="Cocktail Bar">Cocktail Bar</option>
-            <option value="Discoteca">Discoteca</option>
-            <option value="Cultura">Cultura</option>
-            <option value="Sexy Shop">Sexy Shop</option>
-            <option value="Ristorante">Ristorante</option>
-            <option value="Take Away">Take Away</option>
-            <option value="Abbigliamento">Abbigliamento</option>
+            {categories.map((category, i) => (
+              <option key={i} value={category}>
+                {category}
+              </option>
+            ))}
           </select>
         </div>
         <div className="shopRegister-input-container">

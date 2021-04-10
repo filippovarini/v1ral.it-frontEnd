@@ -1,3 +1,7 @@
 #addGoal-form {
   width: 300px;
 }
+
+#addGoal-form #name {
+  width: 70%;
+}

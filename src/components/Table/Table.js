@@ -8,7 +8,7 @@ const isLink = value => {
 };
 
 /** Renders a table of data
- * @param data [{name_of_column, value}]
+ * @param data [{name_of_column, value, type {centered / start}}]
  * @param handleClick? function to call on click by passing id as a parameter
  * @param firstId? whether the value in the objects is the id that
  * should be hidden

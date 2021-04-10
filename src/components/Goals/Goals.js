@@ -6,8 +6,9 @@ import it from "../../locales/it.json";
 import amountToString from "../../functions/amountToString";
 
 /** Box showing services
- * @param: goals: [{name, amount}]
- * @param adding Boolean for whether user is editing
+ * @param goals: [{name, amount}]
+ * @param adding? Boolean for whether user is editing
+ * @param deleteGoal? function to delete goal
  * @param handleAddClick Function to fire if clicked add
  */
 export class Goals extends Component {
@@ -34,6 +35,12 @@ export class Goals extends Component {
                     <p className="fact-data-small" style={{ minWidth: "40px" }}>
                       {amountToString(goal.amount)} €
                     </p>
+                    {this.props.adding ? (
+                      <i
+                        className="fas fa-times hide-cross righter"
+                        onClick={() => this.props.deleteGoal(i)}
+                      ></i>
+                    ) : null}
                   </div>
                 );
               })

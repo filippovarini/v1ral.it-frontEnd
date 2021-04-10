@@ -8,7 +8,7 @@ import postImage from "../../../functions/postImage";
 
 import Header from "../../../components/Header/Header";
 import Form from "./components/BioInfoForm";
-import ShopImages from "../../../components/ShopImages/ShopImages";
+import ShopImages from "./components/ShopImagesInput/ShopImages";
 import RegisterHeader from "../ShopRegisterHeader";
 import ImageLoading from "../../../components/Loading/ImageLoading";
 

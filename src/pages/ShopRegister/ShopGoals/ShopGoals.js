@@ -42,6 +42,13 @@ export class ShopGoals extends Component {
     });
   };
 
+  /** Removes goal by position in array */
+  removeGoal = position => {
+    this.setState({
+      goals: this.state.goals.filter((_, i) => i !== position)
+    });
+  };
+
   validGoals = () => {
     if (this.state.goals.length === 0) {
       this.setState({ error: "Inserisci almeno un obbiettivo" });
@@ -75,6 +82,7 @@ export class ShopGoals extends Component {
                   goals={this.state.goals}
                   adding={true}
                   handleAddClick={this.toggleAddGoal}
+                  deleteGoal={this.removeGoal}
                 />
                 <AddGoal
                   handleAdd={this.addGoal}

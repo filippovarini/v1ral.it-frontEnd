@@ -76,9 +76,17 @@ export class ServicesOffered extends Component {
     });
   };
 
+  /** Adds service to state */
   addInfo = service => {
     this.setState({
       services: [...this.state.services, service]
+    });
+  };
+
+  /** Removes service by position in array */
+  removeService = position => {
+    this.setState({
+      services: this.state.services.filter((_, i) => i !== position)
     });
   };
 
@@ -112,6 +120,7 @@ export class ServicesOffered extends Component {
                   services={this.state.services}
                   adding={true}
                   handleAddClick={this.toggleAddService}
+                  deleteService={this.removeService}
                 />
                 <ServiceForm
                   handleChange={this.handleChange}

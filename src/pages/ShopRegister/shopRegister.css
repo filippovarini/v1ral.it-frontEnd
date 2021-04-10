@@ -48,18 +48,6 @@
 }
 
 /* SHOP CREDENTIALS */
-.check-label {
-  font-size: 1rem;
-  font-weight: normal;
-  color: var(--dark);
-  line-height: 15px;
-}
-
-.check-input {
-  width: auto;
-  margin-right: 10px;
-}
-
 #shop-credentials-checkboxes {
   margin-top: 20px;
 }
@@ -89,6 +77,18 @@ select {
 select,
 textarea:focus {
   outline-width: 0;
+}
+
+.shop-register-body input.check-input {
+  width: auto;
+  margin-right: 10px;
+}
+
+.shop-register-body label.check-label {
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--dark);
+  line-height: 15px;
 }
 
 .shop-register-body label {
