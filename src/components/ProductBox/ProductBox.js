@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./productBox.css";
-
-import errorHandler from "../../functions/errorHandler";
-
+import addToCart from "../../functions/cart/add";
 import Loading from "../Loading/Loading";
 
 /** Display shop marketing product
@@ -18,30 +16,15 @@ export class ProductBox extends Component {
     added: false
   };
 
-  addToCart = () => {
+  addToCart = async () => {
     this.setState({ boxLoading: true });
-    fetch("/transaction/cart", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ item: this.props.product.id })
-    })
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.success) {
-          this.setState({ added: true });
-        } else {
-          alert(jsonRes.message);
-          if (jsonRes.serverError) errorHandler.serverError(jsonRes);
-        }
-        this.setState({ boxLoading: false });
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
-      });
+    const jsonRes = await addToCart(this.props.product.id, "product");
+    if (jsonRes.success) {
+      this.setState({ added: true });
+    } else {
+      alert(jsonRes.message);
+    }
+    this.setState({ boxLoading: false });
   };
 
   render() {

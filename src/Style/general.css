@@ -1,0 +1,32 @@
+/* background for small data such as category, place filters etc */
+.small-data-box {
+  background: var(--light);
+  display: inline-block;
+  padding: 0px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.small-data-box.width-fixed {
+  width: 60px;
+  text-align: center;
+}
+
+.small-data-box.dark {
+  background: var(--dark);
+}
+
+.small-data-box.pass {
+  color: var(--darkBlue);
+}
+
+.small-data-box.renewal {
+  color: var(--green);
+}
+
+@media only screen and (max-width: 500px) {
+  .small-data-box.width-fixed {
+    font-size: 0.6rem;
+    width: 35px;
+  }
+}

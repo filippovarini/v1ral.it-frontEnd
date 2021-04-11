@@ -19,7 +19,6 @@ import ShopCartItem from "./ShopCartItem";
 
 export class Cart extends Component {
   render() {
-    console.log(this.props.items);
     const redirectPage = this.props.isShop
       ? "/shop/checkout"
       : "/user/checkout";
@@ -31,13 +30,13 @@ export class Cart extends Component {
               <ShopCartItem
                 product={item}
                 key={i}
-                removeItem={this.props.removeItem}
+                removeItem={() => this.props.removeItem(item.id, item.cartType)}
               />
             ) : (
               <UserCartItem
                 shop={item}
                 key={i}
-                removeItem={this.props.removeItem}
+                removeItem={() => this.props.removeItem(item.id, item.cartType)}
               />
             );
           })}

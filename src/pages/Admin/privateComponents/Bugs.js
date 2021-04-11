@@ -23,7 +23,6 @@ export class Bugs extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.success) window.location = window.location.pathname;
         else {
           if (jsonRes.serverError) errorHandler.serverError(jsonRes);

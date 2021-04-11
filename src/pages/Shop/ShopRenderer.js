@@ -18,7 +18,6 @@ export class ShopRenderer extends Component {
     chargesEnabled: false,
     added: false,
     alreadyBought: null
-    // navState: 0,
   };
 
   toggleLoading = () => {
@@ -80,7 +79,7 @@ export class ShopRenderer extends Component {
         services={this.state.services}
         goals={this.state.goals}
         added={this.state.added}
-        alreadyBought={this.setState.alreadyBought}
+        alreadyBought={this.state.alreadyBought}
         cases={this.state.cases}
       />
     );

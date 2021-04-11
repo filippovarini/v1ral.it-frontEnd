@@ -1,13 +1,3 @@
-/* PROPS:
-- logourl
-- backgroundurl
-- name
-- place
-- goalsCompleted
-- cases
-- category 
-*/
-
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./shopBox.css";
@@ -19,8 +9,12 @@ import it from "../../locales/it.json";
 import Loading from "../Loading/Loading";
 import PercentageLoader from "../PercentageLoader/PercentaceLoader";
 import ShopBackground from "../ShopBackgroundImage/ShopBackground";
+import PrivExpireButton from "../PassExpireButton/PassExpireButton";
 
-/** Render shop box with add to cart functionalities */
+/** Render shop box with add to cart functionalities
+ * @param shop
+ * @param dashboard whether we are in the dashboard
+ */
 export class ShopBox extends Component {
   state = {
     shopMenuHidden: true,
@@ -60,7 +54,6 @@ export class ShopBox extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.serverError) errorHandler.serverError(jsonRes);
         this.setState({ loading: false, shopMenuHidden: true });
         alert(it.spam_saved_message);
@@ -73,6 +66,12 @@ export class ShopBox extends Component {
 
   render() {
     let button = null;
+
+    const isInCartButton = (
+      <p className="button super-small shopBox-button disabled">
+        {it.shop_button_already_added_cart}
+      </p>
+    );
     if (this.props.shop.alreadybought || this.props.shop.inCart) {
       // button disabled
       button = this.props.shop.alreadybought ? (
@@ -80,9 +79,7 @@ export class ShopBox extends Component {
           {it.shop_button_already_bought}
         </p>
       ) : (
-        <p className="button super-small shopBox-button disabled">
-          {it.shop_button_already_added_cart}
-        </p>
+        isInCartButton
       );
     } else {
       // active button
@@ -93,6 +90,19 @@ export class ShopBox extends Component {
         >
           {it.shop_button_add_to_cart}
         </p>
+      );
+    }
+
+    if (this.props.dashboard) {
+      // show how much time left
+      button = this.props.shop.isInCart ? (
+        isInCartButton
+      ) : (
+        <PrivExpireButton
+          daysLeft={this.props.shop.daysLeft}
+          pricePayed={this.props.shop.price_payed}
+          shopId={this.props.shop.id}
+        />
       );
     }
 
@@ -136,7 +146,7 @@ export class ShopBox extends Component {
         <div id="shopBox-body-container">
           <p id="shopBox-premiums">
             {it.number_users_sold_header}{" "}
-            <span className="bold">{this.props.shop.premiums}</span>{" "}
+            <span className="bold">{this.props.shop.premiums} </span>
             <span className="lowercase bold">
               {this.props.shop.premiums === "1" ? it.user : it.users}
             </span>
@@ -144,7 +154,7 @@ export class ShopBox extends Component {
           <p id="shopBox-place">
             {this.props.shop.city}, {this.props.shop.province}
           </p>
-          <p id="shopBox-category">{this.props.shop.category}</p>
+          <p className="small-data-box">{this.props.shop.category}</p>
           <div id="shopBox-goalsdone" className="flex-line">
             <PercentageLoader percentage={this.getPercentage()} />
             <p id="shopBox-restart-perc">

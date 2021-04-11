@@ -62,7 +62,12 @@ export class UserProfile extends Component {
         ) : (
           <div className="shopBoxes-container">
             {this.props.shops.map((shop, i) => (
-              <ShopBox key={i} shop={shop} />
+              <ShopBox
+                key={i}
+                shop={shop}
+                dashboard={this.props.dashboard}
+                daysLeft={shop.daysLeft}
+              />
             ))}
           </div>
         )}

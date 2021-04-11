@@ -49,8 +49,6 @@
 
 #shopBox-place {
   margin-top: 5px;
-  color: var(--green);
-  font-weight: bold;
 }
 
 #shopBox-goalsdone {
@@ -62,7 +60,6 @@
 }
 
 #shopBox-price {
-  /* margin-top: 10px; */
   align-items: flex-end;
 }
 
@@ -83,6 +80,7 @@
   width: 120px;
 }
 
+/* Disabled for priviledge already bought */
 .shopBox-button.disabled {
   background: var(--green);
 }

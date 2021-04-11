@@ -8,7 +8,7 @@ export class Navigator extends Component {
   // redirects the user to the relative dashboard page
   redirect = username => {
     const path = username[0] === "@" ? "/user" : "/shop";
-    this.props.history.push(path + "/" + this.props.user.id);
+    window.location = path + "/" + this.props.user.id;
   };
 
   handleLogout = () => {

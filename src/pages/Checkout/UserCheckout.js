@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
+import removeCartItem from "../../functions/cart/remove";
 import "./checkout.css";
 
 import it from "../../locales/it.json";
@@ -52,7 +53,7 @@ export class UserCheckout extends Component {
               window.location = "/";
             } else {
               this.setState({
-                shops: jsonRes.shops,
+                shops: jsonRes.items,
                 isLogged: jsonRes.isLogged,
                 challenger: jsonRes.challenger,
                 user: jsonRes.user
@@ -70,38 +71,31 @@ export class UserCheckout extends Component {
   };
 
   /** Removes item from the cart */
-  removeItem = id => {
-    fetch("/transaction/cart", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ item: id })
-    })
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.cartEmpty) alert("Carrello vuoto");
-        if (jsonRes.success) window.location = window.location.pathname;
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
-      });
+  removeItem = async (id, type) => {
+    this.setState({ loading: true });
+    const jsonRes = await removeCartItem(id, type);
+    if (jsonRes.cartEmpty) alert("Carrello vuoto");
+    if (jsonRes.success) window.location = window.location.pathname;
   };
 
   /** Show cart items as table */
   formatDateForTable = shopsArray => {
-    return shopsArray.map(shop => {
+    return shopsArray.map((shop, i) => {
       return {
         logo: shop.logourl,
         nome: shop.name,
-        categoria: shop.category,
-        totale: shop.currentprice,
+        prodotto: (
+          <p
+            className={`small-data-box dark green width-fixed ${shop.cartType}`}
+          >
+            {shop.cartType}
+          </p>
+        ),
+        totale: shop.renewalPrice || shop.currentprice,
         rimuovi: (
           <i
             className="fas fa-times pointer"
-            onClick={() => this.removeItem(shop.id)}
+            onClick={() => this.removeItem(shop.id, shop.cartType)}
           ></i>
         )
       };
@@ -111,7 +105,10 @@ export class UserCheckout extends Component {
   /** Get total cart price of shops */
   getShopsPrice = () => {
     if (this.state.shops.length !== 0) {
-      return this.state.shops.reduce((acc, shop) => acc + shop.currentprice, 0);
+      return this.state.shops.reduce(
+        (acc, shop) => (shop.renewalPrice || shop.currentprice) + acc,
+        0
+      );
     } else return 0;
   };
 
@@ -128,7 +125,6 @@ export class UserCheckout extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.unauthorized) {
           alert(jsonRes.message);
           window.location = window.location.pathname;

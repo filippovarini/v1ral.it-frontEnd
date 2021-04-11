@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import removeCartItem from "../../functions/cart/remove";
 import errorHandler from "../../functions/errorHandler";
 import Navigator from "./Navigator";
 import Cart from "../Cart/Cart";
@@ -47,29 +47,15 @@ export class NavigatorRenderer extends Component {
    * @todo optimize (single query)
    * @param id of cart item to be removed
    */
-  removeCartItem = id => {
+  removeCartItem = async (id, type) => {
     this.setState({ cartLoading: true });
-    fetch("/transaction/cart", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ item: id })
-    })
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.success) {
-          this.showCart();
-        } else if (jsonRes.cartEmpty) {
-          alert("Il carrello è già vuoto!");
-          this.setState({ cartHidden: true, cartLoading: false });
-        } else errorHandler.serverError(jsonRes);
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
-      });
+    const jsonRes = await removeCartItem(id, type);
+    if (jsonRes.success) {
+      this.showCart();
+    } else if (jsonRes.cartEmpty) {
+      alert("Il carrello è già vuoto!");
+      this.setState({ cartHidden: true, cartLoading: false });
+    } else errorHandler.serverError(jsonRes);
   };
 
   cartContainerClick = e => {

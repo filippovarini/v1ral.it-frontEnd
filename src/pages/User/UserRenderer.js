@@ -20,7 +20,6 @@ export class UserRenderer extends Component {
     fetch(`/page/user/${id}`)
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.success) {
           this.setState({
             shops: jsonRes.shops,

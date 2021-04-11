@@ -11,6 +11,7 @@ need to change shipment address on checkout)!
 - shop register prompts ("invogli ad andare" / "ti fai pubblicità")
 - check that it has not exceeded the max premiums
 - fix settings button bug
+- check that the username is no loger than 32 chars
 
 ADMIN PAGE
 - show for each product how many times it has been bought

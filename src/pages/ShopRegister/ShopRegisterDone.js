@@ -32,7 +32,6 @@ export class ShopRegisterDone extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.success) {
           this.setState({
             loading: false,
@@ -68,7 +67,6 @@ export class ShopRegisterDone extends Component {
   goToDashboard = () => {
     this.setState({ loading: true });
     const connectedId = this.props.match.params.connectedId;
-    console.log(connectedId);
     fetch("/transaction/dashboard", {
       method: "POST",
       headers: {
@@ -82,7 +80,6 @@ export class ShopRegisterDone extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.success) window.location = jsonRes.url;
         else {
           alert(jsonRes.message);

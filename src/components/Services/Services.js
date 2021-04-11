@@ -14,7 +14,7 @@ export class Services extends Component {
   render() {
     const adding = this.props.adding ? (
       <div
-        className=" button fact-align small style4"
+        className=" button fact-align small style3"
         onClick={this.props.handleAddClick}
       >
         <i className="fas fa-plus fact-align-image sg-add-icon fact-title-small"></i>

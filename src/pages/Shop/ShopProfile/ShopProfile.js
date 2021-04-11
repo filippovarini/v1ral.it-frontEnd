@@ -6,7 +6,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import errorHandler from "../../../functions/errorHandler";
+import addToCart from "../../../functions/cart/add";
 import "./shopProfile.css";
 
 import it from "../../../locales/it.json";
@@ -37,7 +37,6 @@ export class ShopProfile extends Component {
   };
 
   toggleChallenger = () => {
-    console.log("inserting");
     this.setState({
       insertChallengerHidden: !this.state.insertChallengerHidden,
       shit: "la"
@@ -47,30 +46,15 @@ export class ShopProfile extends Component {
   /** Adds shop to the cart
    * If not validated, lets the user insert the challenger or login
    */
-  handleSubmit = () => {
+  handleSubmit = async () => {
     this.setState({ buttonLoading: true });
-    fetch("/transaction/cart", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ item: this.props.shop.id })
-    })
-      .then(res => res.json())
-      .then(jsonRes => {
-        console.log(jsonRes);
-        if (!jsonRes.success) {
-          if (jsonRes.insertChallenger) this.toggleChallenger();
-          else if (jsonRes.cartDuplicate) alert(jsonRes.message);
-          else this.props.history.push("/login");
-        } else this.props.setAdded();
-        this.setState({ buttonLoading: false });
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
-      });
+    const jsonRes = await addToCart(this.props.shop.id, "pass");
+    if (!jsonRes.success) {
+      if (jsonRes.insertChallenger) this.toggleChallenger();
+      else if (jsonRes.cartDuplicate) alert(jsonRes.message);
+      else this.props.history.push("/login");
+    } else this.props.setAdded();
+    this.setState({ buttonLoading: false });
   };
 
   updateNav = i => this.setState({ navState: i });
@@ -92,7 +76,7 @@ export class ShopProfile extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.props.alreadyBought);
     /** Dynamic button props based on whether the user is logged,
      * as bought or added the shop to the cart */
     let profileHeaderButtonStyle = null;
@@ -124,7 +108,7 @@ export class ShopProfile extends Component {
       bodyComponent =
         this.state.navState === 0 ? (
           <ShopStats
-            disruptionIndex={this.getDisruptionIndex()}
+            pass_month_duration={this.props.shop.pass_month_duration}
             priceIncrement={Math.ceil(
               (parseFloat(this.props.shop.currentprice) * 100) /
                 this.props.shop.initialprice -

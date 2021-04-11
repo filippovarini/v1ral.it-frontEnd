@@ -68,7 +68,7 @@ export class GetPayed extends Component {
       clicks: 0,
       connectedId: "still to implement"
     };
-    console.log(shop);
+
     fetch("/transaction/connect", {
       method: "POST",
       headers: {

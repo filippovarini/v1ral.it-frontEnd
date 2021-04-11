@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
+import removeCartItem from "../../functions/cart/remove";
 import "./checkout.css";
 
 import it from "../../locales/it.json";
@@ -31,7 +32,7 @@ export class Checkout extends Component {
       .then(jsonRes => {
         if (jsonRes.success) {
           this.setState({
-            products: jsonRes.products,
+            products: jsonRes.items,
             loading: false
           });
         } else if (jsonRes.cartEmpty) {
@@ -60,24 +61,11 @@ export class Checkout extends Component {
     } else return 0;
   };
 
-  removeItem = id => {
-    fetch("/transaction/cart", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ item: id })
-    })
-      .then(res => res.json())
-      .then(jsonRes => {
-        if (jsonRes.cartEmpty) alert("Carrello vuoto");
-        if (jsonRes.success) window.location = window.location.pathname;
-      })
-      .catch(e => {
-        console.log(e);
-        errorHandler.clientError();
-      });
+  removeItem = async (id, type) => {
+    this.setState({ loading: true });
+    const jsonRes = await removeCartItem(id, type);
+    if (jsonRes.cartEmpty) alert("Carrello vuoto");
+    if (jsonRes.success) window.location = window.location.pathname;
   };
 
   formatDateForTable = productsArray => {
@@ -89,7 +77,7 @@ export class Checkout extends Component {
         rimuovi: (
           <i
             className="fas fa-times pointer"
-            onClick={() => this.removeItem(product.id)}
+            onClick={() => this.removeItem(product.id, product.cartType)}
           ></i>
         )
       };

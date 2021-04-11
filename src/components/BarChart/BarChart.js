@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import "./barChart.css";
 
-import graphColors from "../../Style/graphColors";
+import graphColors from "../../style/graphColors";
 
 const totalMargin = 50;
 const quickFactsWidth = 250;

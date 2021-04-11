@@ -2,12 +2,13 @@
   height: 400px;
   width: 300px;
   position: absolute;
-  right: 120px;
-  top: 60px;
+  right: 200px;
+  top: 80px;
   background: white;
   box-sizing: border-box;
   padding: 0 10px;
   z-index: 9999;
+  color: var(--dark);
 }
 
 #cart-header {
@@ -40,6 +41,7 @@
 
 .cart-item-info {
   width: 150px;
+  position: relative;
 }
 
 .cart-item-name {
@@ -53,7 +55,23 @@
   font-weight: bold;
   margin-right: 10px;
   font-size: 1rem;
-  margin-top: -20px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+#cart-item-renew {
+  display: block;
+  font-size: 0.7rem;
+  width: 70px;
+  text-align: center;
+  color: var(--green);
+}
+
+.cart-item-description {
+  font-size: 0.8rem;
+  line-height: 12px;
+  margin-top: 2px;
 }
 
 .cart-item-remove {

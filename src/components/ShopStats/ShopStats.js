@@ -8,7 +8,7 @@ import it from "../../locales/it.json";
 import BarChart from "../BarChart/BarChart";
 
 /** Show shop stats and chart
- * @param disruptionIndex
+ * @param pass_month_duration
  * @param priceIncrement
  * @param placesLeft
  * @param goalsDone
@@ -37,9 +37,9 @@ export class ShopStats extends Component {
             </div>
             <div className="fact">
               <div className="fact-data">
-                <p>{this.props.disruptionIndex}</p>
+                <p>{this.props.pass_month_duration} mesi</p>
               </div>
-              <p className="fact-title">{it.shop_disruption_index}</p>
+              <p className="fact-title">{it.pass_month_duration}</p>
             </div>
             <div className="fact">
               <div className="fact-data">

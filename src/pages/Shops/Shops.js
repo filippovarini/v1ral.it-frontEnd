@@ -102,13 +102,13 @@ export class Shops extends Component {
               <p>{it.filter_for}</p>
               <div id="shops-filter-input-wrapper" className="flex-line">
                 <p
-                  className="shops-filter button super-small style4"
+                  className="shops-filter button super-small style3"
                   onClick={() => this.setState({ cityFilterHidden: false })}
                 >
                   {it.shop_city}
                 </p>
                 <p
-                  className="shops-filter button super-small style4"
+                  className="shops-filter button super-small style3"
                   onClick={() => this.setState({ categoryFilterHidden: false })}
                 >
                   {it.shop_category}

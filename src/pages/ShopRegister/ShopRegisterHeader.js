@@ -106,14 +106,14 @@ export class ServicesHeader extends Component {
         <div className="header-button-container flex-line">
           <p
             id="shopRegister-how-it-works"
-            className="button super-small style4 header-button"
+            className="button super-small style3 header-button"
             onClick={this.toggleHowItWorks}
           >
             {it.shop_register_how_it_works}
           </p>
           <p
             id="shopRegister-why-register"
-            className="button super-small style4 header-button"
+            className="button super-small style3 header-button"
             onClick={this.toggleWhyShouldIDoIt}
           >
             {it.shop_register_why_register}

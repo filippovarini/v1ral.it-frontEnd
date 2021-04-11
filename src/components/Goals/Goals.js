@@ -15,7 +15,7 @@ export class Goals extends Component {
   render() {
     const adding = this.props.adding ? (
       <div
-        className="button small style4 fact-align small"
+        className="button small style3 fact-align small"
         onClick={this.props.handleAddClick}
       >
         <i className="fas fa-plus fact-align-image sg-add-icon fact-title-small"></i>

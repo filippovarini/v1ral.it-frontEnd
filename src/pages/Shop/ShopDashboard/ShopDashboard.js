@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./shopDashboard.css";
 import goToDashboard from "../../../functions/goToDashboard";
 
@@ -74,7 +75,7 @@ export class ShopDashboard extends Component {
         case 1:
           bodyComponent = (
             <ShopStats
-              disruptionIndex={this.getDisruptionIndex()}
+              pass_month_duration={this.props.shop.pass_month_duration}
               priceIncrement={(
                 (parseFloat(this.props.shop.currentprice) * 100) /
                   this.props.shop.initialprice -
@@ -165,4 +166,4 @@ export class ShopDashboard extends Component {
   }
 }
 
-export default ShopDashboard;
+export default withRouter(ShopDashboard);

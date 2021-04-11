@@ -1,5 +1,11 @@
 {
+  "days": "giorni",
   "no_shops_found_header": "Nessun risultato",
+  "pass_month_duration": "Durata pass",
+  "cart_item_renew": "rinnovo pass",
+  "pass_expired": "pass scaduto!",
+  "pass_expired_renew_button": "rinnova",
+  "pass_month_duration_button": "scade tra",
   "no_shops_found_description": "Nessuno shop trovato con questi paremtri. Prova a ripristinaere i filtri",
   "loading_image": "Caricando l'immagine, attengi qualche secondo...",
   "tick_all_checkboxes": "Spunta tutte le caselle",

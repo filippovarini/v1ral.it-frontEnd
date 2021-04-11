@@ -3,15 +3,16 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 // style
-import "./Style/css/tags.css";
-import "./Style/css/logForm.css";
-import "./Style/css/boxes.css";
-import "./Style/css/text.css";
-import "./Style/css/quickFacts.css";
-import "./Style/css/communicationPanel.css";
-import "./Style/css/buttons.css";
-import "./Style/css/vars.css";
-import "./Style/css/pageDescription.css";
+import "./style/tags.css";
+import "./style/logForm.css";
+import "./style/boxes.css";
+import "./style/text.css";
+import "./style/quickFacts.css";
+import "./style/communicationPanel.css";
+import "./style/buttons.css";
+import "./style/vars.css";
+import "./style/pageDescription.css";
+import "./style/general.css";
 
 import BugFound from "./components/BugFound/BugFound";
 import Footer from "./components/Footer/Footer";

@@ -17,7 +17,7 @@ export class ShopCartItem extends Component {
         <div className="cart-item-info">
           <p className="cart-item-name">{this.props.product.name}</p>
           <p className="cart-item-description">
-            {this.props.product.description.slice(0, 30)}...
+            {this.props.product.description.slice(0, 60)}...
           </p>
           <p
             className="cart-item-remove"
