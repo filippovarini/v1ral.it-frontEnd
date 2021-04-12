@@ -40,8 +40,8 @@ export class UserProfile extends Component {
                 type: this.props.user.type
               }}
               info={[
-                { title: it.tokens, data: this.props.user.number },
-                { title: it.rt_index, data: this.props.user.rt },
+                { title: it.pass, data: this.props.user.number },
+                { title: it.followers, data: this.props.user.rt },
                 { title: it.challenger, data: this.props.user.challenger }
               ]}
               numberToViral={this.numberToGetViral()}

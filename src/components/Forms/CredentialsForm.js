@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-/** form
+/** Used for the user to insert its private credentials and names
  * @param header
  * @param handleChange
  */

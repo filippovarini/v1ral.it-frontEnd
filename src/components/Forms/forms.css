@@ -30,3 +30,26 @@
 .short-width {
   width: 20%;
 }
+
+.image-input-label {
+  box-shadow: var(--shadow);
+  height: 100%;
+  width: 100%;
+  display: block;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 200px;
+  font-size: 2rem;
+  color: var(--lightBlue);
+}
+
+.image-input-label:hover {
+  color: var(--darkBlue);
+}
+
+.image-input-description {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  text-align: center;
+  color: var(--gray);
+}

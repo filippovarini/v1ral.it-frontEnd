@@ -79,21 +79,6 @@ export class UserSettings extends Component {
   };
 
   render() {
-    const userImageSetting = (
-      <form>
-        <label className="settings-option" htmlFor="profile">
-          Modifica imagine profilo
-        </label>
-        <input
-          id="profile"
-          type="file"
-          onChange={this.handleImageChange}
-          className="hidden"
-          accept="image/*"
-        />
-      </form>
-    );
-
     const shopImageSetting = (
       <form>
         <label className="settings-option" htmlFor="backgroundurl">
@@ -119,10 +104,6 @@ export class UserSettings extends Component {
       </form>
     );
 
-    const imageSettings = this.props.isUser
-      ? userImageSetting
-      : shopImageSetting;
-
     return this.state.loading ? (
       <div className="settings-slidebar ">
         <Loading />
@@ -133,7 +114,6 @@ export class UserSettings extends Component {
         onMouseLeave={this.props.hide}
         style={this.props.hidden ? { display: "none" } : null}
       >
-        {imageSettings}
         <p
           className="settings-option"
           onClick={() => this.toggleEditing("bioEditing")}
@@ -154,13 +134,16 @@ export class UserSettings extends Component {
           Modifica password
         </p>
         {this.props.isUser ? null : (
-          <p
-            className="settings-option"
-            style={{ fontWeight: "bold" }}
-            onClick={this.props.handleDashboardClick}
-          >
-            Dashboard Pagamenti
-          </p>
+          <div>
+            {shopImageSetting}
+            <p
+              className="settings-option"
+              style={{ fontWeight: "bold" }}
+              onClick={this.props.handleDashboardClick}
+            >
+              Dashboard Pagamenti
+            </p>
+          </div>
         )}
 
         <EditBio

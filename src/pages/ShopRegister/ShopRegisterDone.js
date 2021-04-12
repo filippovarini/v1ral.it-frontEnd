@@ -112,9 +112,7 @@ export class ShopRegisterDone extends Component {
             id="shop-register-done-panel"
             className="communication-panel big"
           >
-            <p className="communication-panel-header">
-              {it.shop_register_completed_header}
-            </p>
+            <p className="communication-panel-header">{it.success}</p>
             <p className="communication-panel-text">
               {it.shop_register_completed_text}
             </p>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import it from "../../locales/it.json";
 import errorHandler from "../../functions/errorHandler";
 
 import Loading from "../Loading/Loading";
@@ -117,7 +117,7 @@ export class EditPlace extends Component {
               onClick={this.props.hide}
             ></i>
             <div className="settings-container">
-              <p className="settings-name">Modifica il luogo da dove vieni</p>
+              <p className="settings-name">{it.edit_shipment_header}</p>
               <PlaceForm
                 handleChange={this.handleChange}
                 city={this.state.city}

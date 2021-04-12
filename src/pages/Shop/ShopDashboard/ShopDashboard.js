@@ -153,7 +153,7 @@ export class ShopDashboard extends Component {
               updateNav={this.updateNav}
               titles={[
                 it.shop_dashboard_stats,
-                it.shop_profile_stats,
+                it.stats,
                 it.shop_profile_priviledges_goals
               ]}
             />

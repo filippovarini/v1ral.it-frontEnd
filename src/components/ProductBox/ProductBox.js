@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./productBox.css";
-import addToCart from "../../functions/cart/add";
+import CartController from "../../functions/CartController";
 import Loading from "../Loading/Loading";
 
 /** Display shop marketing product
@@ -18,7 +18,7 @@ export class ProductBox extends Component {
 
   addToCart = async () => {
     this.setState({ boxLoading: true });
-    const jsonRes = await addToCart(this.props.product.id, "product");
+    const jsonRes = await CartController.post(this.props.product.id, "product");
     if (jsonRes.success) {
       this.setState({ added: true });
     } else {

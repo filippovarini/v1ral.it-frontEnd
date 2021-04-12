@@ -3,9 +3,6 @@ import "./components.css";
 
 import it from "../../../locales/it.json";
 
-// components
-import CardPreview from "../../../components/CardPreview/CardPreview";
-
 /** Handles card preview showing.
  * Button in userCheckout
  * @param defaultInfo user info
@@ -19,15 +16,7 @@ export class UserLoggedInfo extends Component {
         <p id="insertUser-header" style={{ marginTop: "50px" }}>
           {it.checkout_new_card_preview}
         </p>
-        <CardPreview
-          challenger={this.props.defaultInfo.challenger}
-          username={this.props.defaultInfo.username}
-          static={true}
-          url={
-            this.props.defaultInfo.profileurl ||
-            this.props.defaultInfo.profileUrl
-          }
-        />
+
         {this.props.shipAgainDisabled ? null : (
           <div className="flex-line center">
             <p
@@ -37,7 +26,7 @@ export class UserLoggedInfo extends Component {
               }`}
               onClick={this.props.toggleShipAgain}
             >
-              {it.resend_me_the_card}
+              {it.resend_me_the_cart}
             </p>
             {this.props.shipAgain ? (
               <i

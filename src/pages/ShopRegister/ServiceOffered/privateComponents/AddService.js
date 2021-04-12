@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
+import suggestedInfo from "../../../../locales/suggestedInfo";
 import it from "../../../../locales/it.json";
-
 import HideCross from "../../../../components/HideCross/HideCross";
 import Icons from "./Icons";
 import ServiceForm from "./AddServiceForm";
@@ -11,8 +10,6 @@ import ServiceForm from "./AddServiceForm";
  * @param hidden
  * @param hide function to hide component
  * */
-
-const bestSellingServices = ["Salta Fila", "Targhetta sul muro", "Scono 10%"];
 
 export class AddService extends Component {
   state = {
@@ -78,9 +75,11 @@ export class AddService extends Component {
           />
           <p id="addInfo-header">{it.add_service}</p>
           <p id="addInfo-description">{it.add_service_description}</p>
-          <p id="bestSelling-header">{it.add_service_best_selling}</p>
+          <p id="bestSelling-header">
+            {it.shop_register_add_product_suggestions}
+          </p>
           <ul id="bestSelling-container" className="flex-col">
-            {bestSellingServices.map((service, i) => {
+            {suggestedInfo.services.map((service, i) => {
               return (
                 <li key={i} className="bestSelling-title">
                   {service}

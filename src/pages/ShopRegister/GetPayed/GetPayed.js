@@ -47,6 +47,7 @@ export class GetPayed extends Component {
     const {
       initialPrice,
       maxPremiums,
+      passExpiry,
       services
     } = this.props.shopRegister.services;
     const goals = this.props.shopRegister.goals;
@@ -64,6 +65,7 @@ export class GetPayed extends Component {
       psw,
       initialPrice,
       maxPremiums,
+      passExpiry,
       currentPrice: initialPrice,
       clicks: 0,
       connectedId: "still to implement"
@@ -107,7 +109,13 @@ export class GetPayed extends Component {
                     {it.shop_register_get_payed_header}
                   </p>
                   <p className="communication-panel-text">
-                    {it.shop_register_get_payed_text}
+                    {it.shop_register_get_payed_text_line1}
+                    <br />
+                    <br />
+                    {it.shop_register_get_payed_text_line2}
+                    <br />
+
+                    {it.shop_register_get_payed_text_line3}
                   </p>
                   <p
                     id="get-payed-button"

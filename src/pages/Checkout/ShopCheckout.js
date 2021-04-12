@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import CartController from "../../functions/CartController";
 import errorHandler from "../../functions/errorHandler";
-import removeCartItem from "../../functions/cart/remove";
 import "./checkout.css";
 
 import it from "../../locales/it.json";
@@ -63,7 +63,7 @@ export class Checkout extends Component {
 
   removeItem = async (id, type) => {
     this.setState({ loading: true });
-    const jsonRes = await removeCartItem(id, type);
+    const jsonRes = await CartController.delete(id, type);
     if (jsonRes.cartEmpty) alert("Carrello vuoto");
     if (jsonRes.success) window.location = window.location.pathname;
   };

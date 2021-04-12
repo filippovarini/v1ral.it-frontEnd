@@ -145,7 +145,7 @@ export class ShopBox extends Component {
         <ShopBackground url={this.props.shop.backgroundurl} />
         <div id="shopBox-body-container">
           <p id="shopBox-premiums">
-            {it.number_users_sold_header}{" "}
+            {it.passes_sold_number}{" "}
             <span className="bold">{this.props.shop.premiums} </span>
             <span className="lowercase bold">
               {this.props.shop.premiums === "1" ? it.user : it.users}

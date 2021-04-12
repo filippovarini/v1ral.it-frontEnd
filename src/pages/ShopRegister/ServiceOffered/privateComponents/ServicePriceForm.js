@@ -2,6 +2,12 @@ import React, { Component } from "react";
 
 import it from "../../../../locales/it.json";
 
+/** Form for configuring the info of the pass
+ * @param handleChange
+ * @param handleSubmit
+ * @param defaultInfo default info to insert when pre-compiled
+ * @param error
+ */
 export class ServiceForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
@@ -10,11 +16,7 @@ export class ServiceForm extends Component {
 
   render() {
     return (
-      <form
-        id="service-form"
-        className="shop-register-body flex-col"
-        onSubmit={this.handleSubmit}
-      >
+      <form id="service-form" className="flex-col" onSubmit={this.handleSubmit}>
         <div className="shopRegister-input-container">
           <label htmlFor="email">{it.max_premiums}</label>
           <input
@@ -34,6 +36,22 @@ export class ServiceForm extends Component {
             value={this.props.initialPrice || ""}
             onChange={this.props.handleChange}
           />
+        </div>
+        <div className="shopRegister-input-container">
+          <label htmlFor="password">{it.pass_month_duration}</label>
+          <select
+            id="passExpiry"
+            onChange={this.props.handleChange}
+            value={this.props.passExpiry}
+          >
+            <option value="" disabled selected hidden>
+              seleziona
+            </option>
+            <option value={3}>3 mesi</option>
+            <option value={6}>6 mesi</option>
+            <option value={12}>1 anno</option>
+            <option value={24}>2 anni</option>
+          </select>
         </div>
         <div id="shop-credentials-checkboxes">
           <div className="shop-credentials-checkbox flex-line">

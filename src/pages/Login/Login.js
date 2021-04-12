@@ -55,8 +55,8 @@ export class UserLogin extends Component {
     e.preventDefault();
     const body =
       this.state.type === "user"
-        ? { login: this.state.login, psw: this.state.psw }
-        : { email: this.state.login, psw: this.state.psw };
+        ? { login: this.state.login.toLowerCase(), psw: this.state.psw }
+        : { email: this.state.login.toLowerCase(), psw: this.state.psw };
     if (this.validFields()) this.login(body);
   };
 

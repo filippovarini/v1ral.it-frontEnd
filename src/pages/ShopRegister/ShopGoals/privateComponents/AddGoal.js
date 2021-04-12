@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
+import suggestedInfo from "../../../../locales/suggestedInfo";
 import it from "../../../../locales/it.json";
-
 import HideCross from "../../../../components/HideCross/HideCross";
 import Form from "./AddGoalForm";
 
@@ -10,13 +9,6 @@ import Form from "./AddGoalForm";
  * @param hidden
  * @param hide function to hide component
  * */
-
-const bestSellingGoals = [
-  "Riassumere il 10% del personale",
-  "Riassumere il 50% del personale",
-  "Ristrutturare"
-];
-
 export class AddGoal extends Component {
   state = {
     name: null,
@@ -66,9 +58,11 @@ export class AddGoal extends Component {
           <HideCross hide={() => this.props.hide()} />
           <p id="addInfo-header">{it.shop_register_insert_goal}</p>
           <p id="addInfo-description">{it.goals_restart_index}</p>
-          <p id="bestSelling-header">{it.add_service_best_selling}</p>
+          <p id="bestSelling-header">
+            {it.shop_register_add_product_suggestions}
+          </p>
           <ul id="bestSelling-container" className="flex-col">
-            {bestSellingGoals.map((goal, i) => {
+            {suggestedInfo.goals.map((goal, i) => {
               return (
                 <li key={i} className="bestSelling-title">
                   {goal}

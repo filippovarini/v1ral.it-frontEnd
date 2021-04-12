@@ -10,6 +10,11 @@
   position: absolute;
 }
 
+#loading-header.small {
+  width: 50%;
+  font-size: 0.8rem;
+}
+
 @keyframes ldio-8aeouegdt7b {
   0% {
     transform: rotate(0deg);

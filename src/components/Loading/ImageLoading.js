@@ -3,6 +3,9 @@ import "./loading.css";
 
 import it from "../../locales/it.json";
 
+/** Loading animation for when inserting an image
+ * @param size
+ */
 export class ImageLoading extends Component {
   render() {
     return (
@@ -12,7 +15,9 @@ export class ImageLoading extends Component {
             <div></div>
           </div>
         </div>
-        <p>{it.loading_image}</p>
+        <p id="loading-header" className={this.props.size}>
+          {it.loading_image}
+        </p>
       </div>
     );
   }

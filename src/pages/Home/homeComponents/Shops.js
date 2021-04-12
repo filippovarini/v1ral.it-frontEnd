@@ -1,16 +1,7 @@
-/* requesrt for 
-shops: [{logo, name, category, goalsDone (correct format), cases}] */
-
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-
-// language
 import it from "../../../locales/it.json";
-
-// function
 import errorHandler from "../../../functions/errorHandler";
-
-// components
 import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
 

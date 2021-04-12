@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./serviceOffered.css";
-
 import it from "../../../locales/it.json";
-
 import Header from "../../../components/Header/Header";
 import ServiceForm from "./privateComponents/ServicePriceForm";
 import RegisterHeader from "../ShopRegisterHeader";
@@ -14,6 +12,7 @@ export class ServicesOffered extends Component {
   state = {
     maxPremiums: null,
     initialPrice: null,
+    passExpiry: null,
     services: [],
     addInfoHidden: true,
     error: null,
@@ -34,7 +33,8 @@ export class ServicesOffered extends Component {
       this.setState({
         services: this.props.shopRegister.services.services,
         maxPremiums: this.props.shopRegister.services.maxPremiums,
-        initialPrice: this.props.shopRegister.services.initialPrice
+        initialPrice: this.props.shopRegister.services.initialPrice,
+        passExpiry: this.props.shopRegister.services.passExpiry
       });
     }
   };
@@ -47,7 +47,11 @@ export class ServicesOffered extends Component {
   };
 
   validFields = () => {
-    if (!this.state.maxPremiums || !this.state.initialPrice) {
+    if (
+      !this.state.maxPremiums ||
+      !this.state.initialPrice ||
+      !this.state.passExpiry
+    ) {
       this.setState({ error: "Compila tutti i campi" });
       return false;
     }
@@ -97,7 +101,8 @@ export class ServicesOffered extends Component {
         services: {
           services: this.state.services,
           maxPremiums: this.state.maxPremiums,
-          initialPrice: this.state.initialPrice
+          initialPrice: this.state.initialPrice,
+          passExpiry: this.state.passExpiry
         }
       });
       this.props.history.push("/shop/register/goals");
@@ -128,21 +133,15 @@ export class ServicesOffered extends Component {
                   handleSubmit={this.handleSubmit}
                   maxPremiums={this.state.maxPremiums}
                   initialPrice={this.state.initialPrice}
+                  passExpiry={this.state.passExpiry}
                   toggleCheck1={() =>
                     this.setState({ check1: !this.state.check1, error: null })
                   }
                 />
                 <AddService
-                  headerText="Aggiungi un privilegio"
                   hidden={this.state.addInfoHidden}
                   hide={this.toggleAddService}
-                  type={this.state.typeAdding}
                   handleAdd={this.addInfo}
-                  bestSellings={[
-                    "Salta Fila",
-                    "Targhetta sul muro",
-                    "Scono 10%"
-                  ]}
                 />
               </div>
               <p

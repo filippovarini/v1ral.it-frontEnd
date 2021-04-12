@@ -22,7 +22,7 @@ export class BottomHalf extends Component {
           <Navigator
             updateNav={this.updateNav}
             active={this.state.navigatorIndex}
-            titles={[it.quickFacts, it.shops, it.users]}
+            titles={[it.stats, it.shops, it.users]}
           />
         </div>
         <Statistics class={this.state.navigatorIndex === 0 ? null : "hidden"} />

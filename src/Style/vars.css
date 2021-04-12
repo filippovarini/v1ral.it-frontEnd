@@ -16,4 +16,5 @@
   --shadowBottom: 0 2px 5px 0 var(--shadowColor);
   --shadowBottomLight: 0 1px 1px 0 var(--shadowColor);
   --boxMinWidth: 320px;
+  --profileMaxWidth: 800px;
 }

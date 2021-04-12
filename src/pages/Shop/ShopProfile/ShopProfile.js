@@ -6,7 +6,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import addToCart from "../../../functions/cart/add";
+import CartController from "../../../functions/CartController";
 import "./shopProfile.css";
 
 import it from "../../../locales/it.json";
@@ -48,7 +48,7 @@ export class ShopProfile extends Component {
    */
   handleSubmit = async () => {
     this.setState({ buttonLoading: true });
-    const jsonRes = await addToCart(this.props.shop.id, "pass");
+    const jsonRes = await CartController.post(this.props.shop.id, "pass");
     if (!jsonRes.success) {
       if (jsonRes.insertChallenger) this.toggleChallenger();
       else if (jsonRes.cartDuplicate) alert(jsonRes.message);
@@ -176,7 +176,7 @@ export class ShopProfile extends Component {
             <Navigator
               active={this.state.navState}
               updateNav={this.updateNav}
-              titles={["Statistiche epidemiologiche", "Dove vanno i soldi?"]}
+              titles={[it.stats, "Dove vanno i soldi?"]}
             />
           </div>
           {bodyComponent}

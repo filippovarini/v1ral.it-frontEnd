@@ -1,0 +1,35 @@
+#insertUser-container {
+  width: 320px;
+  height: 520px;
+  padding: 20px;
+}
+
+#insertUser-header {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.insertUser-button {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.user-profile-img {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#insertUser-success img {
+  margin-top: 80px;
+}
+
+#insertUser-success-description {
+  font-weight: bold;
+  color: var(--green);
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+}

@@ -21,7 +21,7 @@ const getShopsForBanner = shops => {
   while (sortedAndFormatted.length < bannerShopLength) {
     sortedAndFormatted = sortedAndFormatted.concat(sortedAndFormatted);
   }
-  return sortedAndFormatted;
+  return sortedAndFormatted.slice(0, bannerShopLength);
 };
 
 export default getShopsForBanner;

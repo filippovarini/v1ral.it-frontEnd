@@ -1,3 +1,63 @@
+.page-wrapper {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 120px;
+  min-height: 80vh;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.page-header {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.hide-cross {
+  color: black;
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.hide-cross.bottomright {
+  top: 100px;
+  right: 0px;
+}
+
+.hide-cross.righter {
+  right: -20px;
+  top: 4px;
+}
+
+.slidebar-background-click {
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.centering {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-profile {
+  max-width: var(--profileMaxWidth);
+  margin: 0 auto;
+}
+
 /* background for small data such as category, place filters etc */
 .small-data-box {
   background: var(--light);
@@ -22,6 +82,13 @@
 
 .small-data-box.renewal {
   color: var(--green);
+}
+
+@media only screen and (max-width: 800px) {
+  .page-wrapper {
+    margin-top: 80px;
+    width: 99%;
+  }
 }
 
 @media only screen and (max-width: 500px) {

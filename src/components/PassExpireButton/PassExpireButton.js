@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./passExpireButton.css";
 import it from "../../locales/it.json";
-import addToCart from "../../functions/cart/add";
+import CartController from "../../functions/CartController";
 import Loading from "../Loading/Loading";
 
 /** Renders button to show in ShopBox to say when the pass will expire
@@ -16,7 +16,7 @@ export class PrivExpireButton extends Component {
   /** Save shop id and type = 'renewal' to cart */
   handleRenew = async () => {
     this.setState({ loading: true });
-    const jsonRes = await addToCart(this.props.shopId, "renewal");
+    const jsonRes = await CartController.post(this.props.shopId, "renewal");
     if (!jsonRes.success) {
       alert(jsonRes.message);
     } else this.setState({ loading: false });

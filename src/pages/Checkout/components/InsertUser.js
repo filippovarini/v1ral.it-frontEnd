@@ -4,7 +4,6 @@ import "./components.css";
 
 import it from "../../../locales/it.json";
 
-import CardPreview from "../../../components/CardPreview/CardPreview";
 import PlaceForm from "../../../components/Forms/PlaceForm";
 import CredentialsForm from "../../../components/Forms/CredentialsForm";
 
@@ -130,14 +129,6 @@ export class InsertUser extends Component {
     return (
       <div id="insertUser-container">
         <p id="insertUser-header">{it.user_checkout_insert_newUser_info}</p>
-        <CardPreview
-          challenger={this.props.challenger}
-          username={this.state.username}
-          resetImage={this.resetImage}
-          handleImageChange={this.handleImageChange}
-          url={this.state.profileUrl}
-          imageLoading={this.state.imageLoading}
-        />
         <div className="form-container">
           <CredentialsForm
             handleChange={this.handleChange}

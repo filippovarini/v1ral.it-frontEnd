@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import removeCartItem from "../../functions/cart/remove";
+import CartController from "../../functions/CartController";
 import errorHandler from "../../functions/errorHandler";
 import Navigator from "./Navigator";
 import Cart from "../Cart/Cart";
@@ -49,7 +49,7 @@ export class NavigatorRenderer extends Component {
    */
   removeCartItem = async (id, type) => {
     this.setState({ cartLoading: true });
-    const jsonRes = await removeCartItem(id, type);
+    const jsonRes = await CartController.delete(id, type);
     if (jsonRes.success) {
       this.showCart();
     } else if (jsonRes.cartEmpty) {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
-import removeCartItem from "../../functions/cart/remove";
+import CartController from "../../functions/CartController";
 import "./checkout.css";
 
 import it from "../../locales/it.json";
@@ -11,7 +11,7 @@ import it from "../../locales/it.json";
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import Table from "../../components/Table/Table";
-import InsertUser from "./components/InsertUser";
+import InsertUser from "../../components/InsertUser/InsertUser";
 import UserLoggedInfo from "./components/StaticUser";
 import TransactionLoading from "../../components/Loading/TransactionLoading";
 import Bill from "../../components/Bill/Bill";
@@ -22,19 +22,19 @@ import CheckoutForm from "../../components/Checkout/CheckoutForm";
  */
 export class UserCheckout extends Component {
   state = {
+    insertUserHidden: false,
     loading: true,
+    user: null,
     shops: [],
     isLogged: false,
     challenger: false,
-    user: null,
-    shipAgain: false,
     client_secret: null,
     cardElementShown: false,
     buttonLoading: false,
     intentId: null,
-    newUser: null,
     transactionLoading: false,
-    transferGroupId: null
+    transferGroupId: null,
+    shipAgain: false
   };
 
   /** Fetch user and shops selected */
@@ -43,6 +43,7 @@ export class UserCheckout extends Component {
     fetch("/page/checkout/user")
       .then(res => res.json())
       .then(jsonRes => {
+        console.log(jsonRes);
         if (jsonRes.serverError) errorHandler.serverError(jsonRes);
         else {
           if (jsonRes.success) {
@@ -73,7 +74,7 @@ export class UserCheckout extends Component {
   /** Removes item from the cart */
   removeItem = async (id, type) => {
     this.setState({ loading: true });
-    const jsonRes = await removeCartItem(id, type);
+    const jsonRes = await CartController.delete(id, type);
     if (jsonRes.cartEmpty) alert("Carrello vuoto");
     if (jsonRes.success) window.location = window.location.pathname;
   };
@@ -184,10 +185,29 @@ export class UserCheckout extends Component {
   };
 
   render() {
-    const cart = [{ name: "Contagio", price: this.getShopsPrice() }];
+    const cart = [];
+
+    if (this.state.shops.some(shop => shop.cartType === "pass")) {
+      cart.push({
+        name: it.checkout_bill_renewalPasses,
+        price: this.state.shops
+          .filter(shop => shop.cartType === "pass")
+          .reduce((acc, shop) => shop.currentprice + acc, 0)
+      });
+    }
+
+    if (this.state.shops.some(shop => shop.cartType === "renewal")) {
+      cart.push({
+        name: it.checkout_bill_renewalPasses,
+        price: this.state.shops
+          .filter(shop => shop.cartType === "renewal")
+          .reduce((acc, shop) => shop.renewalPrice + acc, 0)
+      });
+    }
+
     if (this.state.shipAgain) cart.push({ name: "Spedizione carta", price: 5 });
 
-    let userBody = this.state.isLogged ? (
+    let userBody = this.state.user ? (
       <UserLoggedInfo
         defaultInfo={this.state.user}
         toggleShipAgain={() =>
@@ -195,21 +215,7 @@ export class UserCheckout extends Component {
         }
         shipAgain={this.state.shipAgain}
       />
-    ) : (
-      <InsertUser
-        challenger={this.state.challenger}
-        handleSubmit={newUser => this.setState({ newUser })}
-      />
-    );
-
-    // if new user has inserted all infos, show userlogged info
-    if (this.state.newUser)
-      userBody = (
-        <UserLoggedInfo
-          defaultInfo={this.state.newUser}
-          shipAgainDisabled={true}
-        />
-      );
+    ) : null;
 
     const button = this.state.cardElementShown ? (
       <CheckoutForm
@@ -263,18 +269,24 @@ export class UserCheckout extends Component {
     );
 
     //  hide button and bill if still have to insert user
-    const buttonAndBill =
-      this.state.isLogged || this.state.newUser ? (
-        <div>
-          <Bill items={cart} />
-          <div className="checkout-buttons-container">{button}</div>
-        </div>
-      ) : null;
+    const buttonAndBill = (
+      <div>
+        <Bill items={cart} />
+        <div className="checkout-buttons-container">{button}</div>
+      </div>
+    );
 
     const body =
       this.state.shops.length > 0 ? (
         <div>
           {this.state.transactionLoading ? <TransactionLoading /> : null}
+          <InsertUser
+            hide={() => {
+              window.location = window.location.pathname;
+            }}
+            hidden={this.state.user}
+            challenger={this.state.challenger}
+          />
           <p id="checkout-header">{it.checkout_page_header}</p>
           <div id="checkout-cart">
             <p id="checkout-cart-header">{it.cart}</p>
