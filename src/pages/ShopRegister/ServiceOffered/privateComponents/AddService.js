@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import suggestedInfo from "../../../../locales/suggestedInfo";
 import it from "../../../../locales/it.json";
-import HideCross from "../../../../components/HideCross/HideCross";
 import Icons from "./Icons";
 import ServiceForm from "./AddServiceForm";
 
@@ -67,7 +66,7 @@ export class AddService extends Component {
         style={this.props.hidden ? { display: "none" } : null}
       >
         <div id="addInfo-container" className="box popUp">
-          <HideCross hide={() => this.props.hide()} />
+          <i className="fas fa-times hide-cross" onClick={this.props.hide}></i>
           <Icons
             addIcon={this.handleImageChange}
             hidden={this.state.iconsHidden}

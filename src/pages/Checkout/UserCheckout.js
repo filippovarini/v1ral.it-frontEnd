@@ -7,34 +7,34 @@ import "./checkout.css";
 
 import it from "../../locales/it.json";
 
-// loading
-import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
-import Table from "../../components/Table/Table";
-import InsertUser from "../../components/InsertUser/InsertUser";
-import UserLoggedInfo from "./components/StaticUser";
 import TransactionLoading from "../../components/Loading/TransactionLoading";
+import Header from "../../components/Header/Header";
+import UserCheckoutProducts from "../../components/UserCheckoutProducts/UserCheckoutProducts";
+import Table from "../../components/Table/Table";
 import Bill from "../../components/Bill/Bill";
+import InsertUser from "../../components/InsertUser/InsertUser";
+import PlaceForm from "../../components/Forms/PlaceForm";
 import CheckoutForm from "../../components/Checkout/CheckoutForm";
 
-/** Class to handle both user checkouts (user already logged and user that is
- * registering)
+/** Class to handle both user checkout. If user is not already logged, show
+ * insertUser pop up where the user inserts its credentials. The inserted user
+ * will be saved in the session (backend).
  */
 export class UserCheckout extends Component {
   state = {
     insertUserHidden: false,
-    loading: true,
     user: null,
     shops: [],
-    isLogged: false,
     challenger: false,
     client_secret: null,
     cardElementShown: false,
-    buttonLoading: false,
     intentId: null,
-    transactionLoading: false,
     transferGroupId: null,
-    shipAgain: false
+
+    loading: true,
+    transactionLoading: false,
+    buttonLoading: false
   };
 
   /** Fetch user and shops selected */
@@ -55,7 +55,6 @@ export class UserCheckout extends Component {
             } else {
               this.setState({
                 shops: jsonRes.items,
-                isLogged: jsonRes.isLogged,
                 challenger: jsonRes.challenger,
                 user: jsonRes.user
               });
@@ -77,6 +76,30 @@ export class UserCheckout extends Component {
     const jsonRes = await CartController.delete(id, type);
     if (jsonRes.cartEmpty) alert("Carrello vuoto");
     if (jsonRes.success) window.location = window.location.pathname;
+  };
+
+  // computes cart based on items in the cart
+  computeCart = () => {
+    let cart = [];
+    if (this.state.shops.some(shop => shop.cartType === "pass")) {
+      cart.push({
+        name: it.checkout_bill_renewalPasses,
+        price: this.state.shops
+          .filter(shop => shop.cartType === "pass")
+          .reduce((acc, shop) => shop.currentprice + acc, 0)
+      });
+    }
+
+    if (this.state.shops.some(shop => shop.cartType === "renewal")) {
+      cart.push({
+        name: it.checkout_bill_renewalPasses,
+        price: this.state.shops
+          .filter(shop => shop.cartType === "renewal")
+          .reduce((acc, shop) => shop.renewalPrice + acc, 0)
+      });
+    }
+
+    return cart;
   };
 
   /** Show cart items as table */
@@ -122,7 +145,7 @@ export class UserCheckout extends Component {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ shipAgain: this.state.shipAgain })
+      body: JSON.stringify({ shipAgain: false })
     })
       .then(res => res.json())
       .then(jsonRes => {
@@ -185,36 +208,22 @@ export class UserCheckout extends Component {
   };
 
   render() {
-    const cart = [];
-
-    if (this.state.shops.some(shop => shop.cartType === "pass")) {
-      cart.push({
-        name: it.checkout_bill_renewalPasses,
-        price: this.state.shops
-          .filter(shop => shop.cartType === "pass")
-          .reduce((acc, shop) => shop.currentprice + acc, 0)
-      });
-    }
-
-    if (this.state.shops.some(shop => shop.cartType === "renewal")) {
-      cart.push({
-        name: it.checkout_bill_renewalPasses,
-        price: this.state.shops
-          .filter(shop => shop.cartType === "renewal")
-          .reduce((acc, shop) => shop.renewalPrice + acc, 0)
-      });
-    }
-
-    if (this.state.shipAgain) cart.push({ name: "Spedizione carta", price: 5 });
-
     let userBody = this.state.user ? (
-      <UserLoggedInfo
-        defaultInfo={this.state.user}
-        toggleShipAgain={() =>
-          this.setState({ shipAgain: !this.state.shipAgain })
-        }
-        shipAgain={this.state.shipAgain}
-      />
+      <div>
+        <div className="form-container">
+          <UserCheckoutProducts />
+        </div>
+        <div className="form-container">
+          <PlaceForm
+            city={this.state.user.city}
+            province={this.state.user.province}
+            street={this.state.user.street}
+            postcode={this.state.user.postcode}
+            readOnly={true}
+            header={it.where_to_ship}
+          />
+        </div>
+      </div>
     ) : null;
 
     const button = this.state.cardElementShown ? (
@@ -244,14 +253,13 @@ export class UserCheckout extends Component {
       />
     ) : this.state.buttonLoading ? (
       <p
-        id="checkout-confirm"
-        className="button lowercase"
+        className="button lowercase checkout-button"
         style={{ cursor: "not-allowed" }}
       >
         {it.checkout_session_loading}
       </p>
     ) : (
-      <p id="checkout-confirm" className="button" onClick={this.handleSubmit}>
+      <p className="button checkout-button" onClick={this.handleSubmit}>
         {it.checkout_confirm_button}
       </p>
     );
@@ -271,7 +279,7 @@ export class UserCheckout extends Component {
     //  hide button and bill if still have to insert user
     const buttonAndBill = (
       <div>
-        <Bill items={cart} />
+        <Bill items={this.computeCart()} />
         <div className="checkout-buttons-container">{button}</div>
       </div>
     );
@@ -289,7 +297,6 @@ export class UserCheckout extends Component {
           />
           <p id="checkout-header">{it.checkout_page_header}</p>
           <div id="checkout-cart">
-            <p id="checkout-cart-header">{it.cart}</p>
             <Table data={this.formatDateForTable(this.state.shops)} />
           </div>
           <div id="checkout-user">{userBody}</div>

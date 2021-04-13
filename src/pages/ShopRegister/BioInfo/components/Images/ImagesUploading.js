@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./imagesUploading.css";
 
-import HideCross from "../../../../../components/HideCross/HideCross";
-
 /** Displays images
  * @param logourl
  * @param backgroundurl
@@ -18,7 +16,10 @@ export class ImagesUploading extends Component {
           src={this.props.backgroundurl}
           alt="imagine di sfondo del focolaio"
         />
-        <HideCross hide={() => this.props.resetUrl("backgroundurl")} />
+        <i
+          className="fas fa-times hide-cross"
+          onClick={() => this.props.resetUrl("backgroundurl")}
+        ></i>
       </div>
     );
 
@@ -45,10 +46,10 @@ export class ImagesUploading extends Component {
       <div className="bioInfo-logo-container">
         <div className="bioInfo-image-input bioInfo-logo">
           <img id="logo" src={this.props.logourl} alt="logo focolaio" />
-          <HideCross
-            hide={() => this.props.resetUrl("logourl")}
-            class="bottomright"
-          />
+          <i
+            className="fas fa-times hide-cross"
+            onClick={() => this.props.resetUrl("logourl")}
+          ></i>
         </div>
       </div>
     );

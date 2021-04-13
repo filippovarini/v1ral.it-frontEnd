@@ -5,7 +5,6 @@ import "./challenger.css";
 
 import it from "../../locales/it.json";
 
-import HideCross from "../HideCross/HideCross";
 import Loading from "../Loading/Loading";
 
 /** PopUp used for the user to insert
@@ -63,7 +62,7 @@ export class Challenged extends Component {
         style={this.props.hidden ? { display: "none" } : null}
       >
         <div id="challenged-container" className="popUp">
-          <HideCross hide={this.props.hide} />
+          <i className="fas fa-times hide-cross" onClick={this.props.hide}></i>
           <p id="challenged-title">{it.insert_challenger_header}</p>
           <p id="challenged-text">{it.insert_challenger_text}</p>
           <form onSubmit={this.handleSubmit}>
@@ -96,7 +95,7 @@ export class Challenged extends Component {
         style={this.props.hidden ? { display: "none" } : null}
       >
         <div id="challenged-container" className="popUp">
-          <HideCross hide={this.props.hide} />
+          <i className="fas fa-times hide-cross" onClick={this.props.hide}></i>
           <Loading />
         </div>
       </div>

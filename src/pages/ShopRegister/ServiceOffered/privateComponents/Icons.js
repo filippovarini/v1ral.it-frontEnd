@@ -1,10 +1,4 @@
 import React, { Component } from "react";
-
-/**
- * AddInfo component
- */
-import HideCross from "../../../../components/HideCross/HideCross";
-
 import icons from "../../../../locales/serviceIcons";
 
 /** List of icons for services
@@ -22,7 +16,10 @@ export class Icons extends Component {
       >
         <p id="icons-header">Scegli un'icona</p>
         <div id="icons-image-container">
-          <HideCross hide={this.props.hideIcons} />
+          <i
+            className="fas fa-times hide-cross"
+            onClick={this.props.hideIcons}
+          ></i>
           {icons.map((icon, i) => {
             return (
               <div

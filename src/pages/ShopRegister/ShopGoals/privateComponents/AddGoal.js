@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import suggestedInfo from "../../../../locales/suggestedInfo";
 import it from "../../../../locales/it.json";
-import HideCross from "../../../../components/HideCross/HideCross";
 import Form from "./AddGoalForm";
 
 /** Pop up used to insert new goals
@@ -55,7 +54,7 @@ export class AddGoal extends Component {
         style={this.props.hidden ? { display: "none" } : null}
       >
         <div id="addInfo-container" className="box popUp">
-          <HideCross hide={() => this.props.hide()} />
+          <i className="fas fa-times hide-cross" onClick={this.props.hide}></i>
           <p id="addInfo-header">{it.shop_register_insert_goal}</p>
           <p id="addInfo-description">{it.goals_restart_index}</p>
           <p id="bestSelling-header">
