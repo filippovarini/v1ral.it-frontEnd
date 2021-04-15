@@ -4,7 +4,7 @@
  *  window.innerLength)
  */
 
-const bannerShopLength = 20;
+const bannerShopLength = 30;
 
 const getShopsForBanner = shops => {
   let sortedAndFormatted = shops

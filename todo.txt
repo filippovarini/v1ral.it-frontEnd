@@ -1,3 +1,4 @@
+- !!!city slidebar of existing ones!!!!
 - shopRegister using unique state (reducder, not local)
 - check services and goals are unique
 - order services to show virals at the bottom 
