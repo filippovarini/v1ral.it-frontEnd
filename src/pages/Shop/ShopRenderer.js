@@ -30,7 +30,6 @@ export class ShopRenderer extends Component {
     fetch(`/page/shop/${id}`)
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.success) {
           this.setState({
             shop: jsonRes.shop,

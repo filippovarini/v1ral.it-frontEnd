@@ -6,6 +6,7 @@ import Settings from "../Settings/Settings";
 import ProfileInfoBar from "./ProfileInfoBar";
 
 /** Renders shop profile header
+ * @param passesLeft boolean, represents whether all passes have been sold
  * @param profile: {name, city, province, description, currentprice, logourl}
  * @param info list of three info to show on the instagram-like header
  * @param dashboard?
@@ -18,7 +19,6 @@ export class ShopProfileHeader extends Component {
   state = { settingsHidden: true };
 
   toggleSettings = () => {
-    console.log("toggling");
     this.setState({ settingsHidden: !this.state.settingsHidden });
   };
 
@@ -38,6 +38,24 @@ export class ShopProfileHeader extends Component {
         />
       </div>
     ) : null;
+
+    let button = (
+      <p
+        className={"button profile-button " + buttonClassSuffix}
+        onClick={this.props.handleSubmit}
+        style={this.props.style}
+      >
+        {this.props.buttonText}
+      </p>
+    );
+
+    if (!this.props.passesLeft) {
+      button = (
+        <p className="profile-button button warning disabled">
+          {it.no_passese_left}
+        </p>
+      );
+    }
 
     return (
       <div className="profile-header">
@@ -64,13 +82,7 @@ export class ShopProfileHeader extends Component {
           <p id="shop-price-header">{it.shop_profile_currentprice}:</p>
           <p id="shop-price-value">{this.props.profile.currentprice} €</p>
         </div>
-        <p
-          className={"button profile-button " + buttonClassSuffix}
-          onClick={this.props.handleSubmit}
-          style={this.props.style}
-        >
-          {this.props.buttonText}
-        </p>
+        {button}
       </div>
     );
   }

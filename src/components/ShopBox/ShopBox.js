@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./shopBox.css";
 
 import errorHandler from "../../functions/errorHandler";
+import getGoalsDone from "../../functions/goalsDone";
 
 import it from "../../locales/it.json";
 
@@ -23,17 +24,6 @@ export class ShopBox extends Component {
 
   handleClick = () => {
     this.props.history.push(`/shop/${this.props.shop.id}`);
-  };
-
-  getPercentage = () => {
-    return Math.min(
-      Math.ceil(
-        (parseFloat(this.props.shop.financed_so_far) /
-          this.props.shop.disruption_index) *
-          100
-      ) || 0,
-      100
-    );
   };
 
   getPriceIncrease = () => {
@@ -65,6 +55,10 @@ export class ShopBox extends Component {
   };
 
   render() {
+    let goalsDone = getGoalsDone(
+      this.props.shop.financed_so_far,
+      this.props.shop.disruption_index
+    );
     let button = null;
 
     const isInCartButton = (
@@ -113,6 +107,8 @@ export class ShopBox extends Component {
         </div>
       );
 
+    console.log(goalsDone, this.props.shop.name);
+
     return (
       <div id="shopBox-container" className="box">
         <div id="shopBox-header" className="flex-line">
@@ -156,9 +152,9 @@ export class ShopBox extends Component {
           </p>
           <p className="small-data-box">{this.props.shop.category}</p>
           <div id="shopBox-goalsdone" className="flex-line">
-            <PercentageLoader percentage={this.getPercentage()} />
+            <PercentageLoader percentage={goalsDone} />
             <p id="shopBox-restart-perc">
-              {it.shop_goals_achieved_number} {this.getPercentage()}%
+              {it.shop_goals_achieved_number} {goalsDone}%
             </p>
           </div>
           <div id="shopBox-price" className="flex-line">

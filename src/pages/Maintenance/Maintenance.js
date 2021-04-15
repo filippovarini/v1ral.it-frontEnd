@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import it from "../../locales/it.json";
-import maintenanceImg from "../../images/logo-white.png";
+import maintenanceImg from "../../images/logo-long-black.png";
 import "./maintenance.css";
 
 export class Maintenance extends Component {

@@ -7,6 +7,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import CartController from "../../../functions/CartController";
+import goalsDone from "../../../functions/goalsDone";
 import "./shopProfile.css";
 
 import it from "../../../locales/it.json";
@@ -76,7 +77,6 @@ export class ShopProfile extends Component {
   };
 
   render() {
-    console.log(this.props.alreadyBought);
     /** Dynamic button props based on whether the user is logged,
      * as bought or added the shop to the cart */
     let profileHeaderButtonStyle = null;
@@ -103,6 +103,9 @@ export class ShopProfile extends Component {
       profileHeaderButtonStyle = { background: "var(--gray)" };
     }
 
+    const passesLeft =
+      this.props.shop.maxpremiums - this.props.shop.total_premiums;
+
     let bodyComponent = null;
     if (this.props.shop) {
       bodyComponent =
@@ -114,13 +117,11 @@ export class ShopProfile extends Component {
                 this.props.shop.initialprice -
                 100
             )}
-            placesLeft={
-              this.props.shop.maxpremiums - this.props.shop.total_premiums
-            }
-            goalsDone={(
-              parseFloat(this.props.shop.financed_so_far) /
+            placesLeft={passesLeft}
+            goalsDone={goalsDone(
+              this.props.shop.financed_so_far,
               this.getDisruptionIndex()
-            ).toFixed(2)}
+            )}
             cases={this.props.cases || {}}
           />
         ) : (
@@ -170,6 +171,7 @@ export class ShopProfile extends Component {
               handleSubmit={profileHeaderButtonClickHandler}
               buttonText={profileHeaderButtonText}
               style={profileHeaderButtonStyle}
+              passesLeft={passesLeft > 0}
             />
           </div>
           <div id="shopProfile-nav">

@@ -6,10 +6,10 @@
   position: fixed;
   z-index: 1;
   box-sizing: border-box;
-  padding: 0px 20px;
+  padding: 0px 30px;
   top: 0px;
   background: var(--white);
-  height: 100px;
+  height: 80px;
   box-shadow: var(--shadowBottom);
 }
 
@@ -21,6 +21,7 @@
 
 .nav-renderer {
   font-size: 1.2rem;
+  margin-top: 10px;
 }
 
 .topHalf .nav-renderer {

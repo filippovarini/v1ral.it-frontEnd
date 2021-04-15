@@ -1,6 +1,6 @@
 :root {
   --darkBlue: #3c82fa;
-  --lightBlue: #64d2fa;
+  --lightBlue: rgb(100, 200, 230);
   --pink: rgb(237, 33, 124);
   --green: #388659;
   --yellow: #fff05f;

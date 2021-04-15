@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import it from "../../../locales/it.json";
 import errorHandler from "../../../functions/errorHandler";
+import getGoalsDone from "../../../functions/goalsDone";
 import Table from "../../../components/Table/Table";
 import Loading from "../../../components/Loading/Loading";
 
@@ -75,10 +76,8 @@ export class Shops extends Component {
           [it.shop_place]: `${infoObj.city}, ${infoObj.province}`,
           [it.shop_donations]: infoObj.premiums,
           [it.shop_goals_achieved]:
-            (
-              parseFloat(infoObj.financed_so_far) /
-                parseFloat(infoObj.disruption_index) || 0
-            ).toFixed(2) + "%"
+            getGoalsDone(infoObj.financed_so_far, infoObj.disruption_index) +
+            "%"
         };
       });
   };
