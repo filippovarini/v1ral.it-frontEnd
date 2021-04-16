@@ -1,8 +1,23 @@
 #shop-profile {
-  max-width: var(--profileMaxWidth);
   margin: 0 auto;
+  position: relative;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+#shop-profile-body {
+  max-width: var(--profileMaxWidth);
 }
 
 #shop-nav {
   margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  /* put shop info in the footer */
+  #shop-profile {
+    display: block;
+    max-width: var(--profileMaxWidth);
+  }
 }

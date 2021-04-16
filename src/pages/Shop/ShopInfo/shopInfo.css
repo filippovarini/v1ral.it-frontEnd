@@ -1,0 +1,86 @@
+#info-wrapper {
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 350px;
+  min-width: 350px;
+  position: sticky;
+  top: 120px;
+  margin-left: 20px;
+}
+
+#shop-aside-info {
+  position: absolute;
+  left: -380px;
+  top: 50px;
+}
+
+.shop-aside-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 20px 20px 20px;
+  overflow: hidden;
+}
+
+.shop-aside-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.shop-aside-line {
+  margin: 10px 0px;
+}
+
+.shop-aside-text {
+  font-size: 0.8rem;
+  line-height: 15px;
+}
+
+a.shop-aside-text {
+  color: var(--darkBlue);
+}
+
+.shop-aside-icon {
+  width: 20px;
+  min-width: 20px;
+  text-align: center;
+  margin-right: 10px;
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+
+#shop-gallery-images-container {
+  display: grid;
+  grid-gap: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.shop-aside-image {
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+/* SHARE SHOP */
+.share-shop-icon {
+  font-size: 2rem;
+}
+
+#whatsapp-icon {
+  color: var(--green);
+}
+
+@media only screen and (max-width: 900px) {
+  /* put shop info in the footer */
+  #info-wrapper {
+    margin-top: 30px;
+    width: 100%;
+    margin-left: 0px;
+  }
+}

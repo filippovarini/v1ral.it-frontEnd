@@ -22,6 +22,7 @@
   "countdown": "Countdown alla libertà",
   "where_to_ship": "Spedisci a",
   "no_passese_left": "sold out!",
+  "gallery": "Galleria",
 
   "stats": "Statistiche",
   "shop_disruption_index": "Disruption index",
@@ -43,6 +44,8 @@
   "shop_name": "Nome",
   "shop_logo": "Logo",
   "shop_city": "Città",
+  "shop_aside_info": "Informazioni",
+  "share_shop_text": "Ti piace questo shop? Condividilo con i tuoi amici!",
 
   "edit_shipment_header": "Modifica l'indirizzo di spedizione",
   "edit_password_header": "Modifica la password",
