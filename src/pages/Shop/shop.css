@@ -1,0 +1,8 @@
+#shop-profile {
+  max-width: var(--profileMaxWidth);
+  margin: 0 auto;
+}
+
+#shop-nav {
+  margin-bottom: 20px;
+}

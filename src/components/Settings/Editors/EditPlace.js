@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-import "./settings.css";
+import it from "../../../locales/it.json";
+import errorHandler from "../../../functions/errorHandler";
 
-import errorHandler from "../../functions/errorHandler";
+import Loading from "../../Loading/Loading";
+import PlaceForm from "../../Forms/PlaceForm";
 
-import BioForm from "../Forms/BioForm";
-import Loading from "../Loading/Loading";
-
-/** Form used to see and edit bio
+/** Form used to see and edit place
  * @param hide function to hide component
  * @param hidden
  * @param isUser whether it is from user or shop
  */
-export class EditBio extends Component {
+export class EditPlace extends Component {
   state = {
-    bio: null,
+    city: null,
+    province: null,
+    street: null,
+    postcode: null,
     error: null,
     loading: false
   };
@@ -29,14 +31,15 @@ export class EditBio extends Component {
     });
   };
 
-  validBio = () => {
+  validPlace = () => {
     if (
-      !this.state.bio ||
-      this.state.bio.length > 250 ||
-      this.state.bio.length < 10
+      !this.state.city ||
+      !this.state.province ||
+      !this.state.street ||
+      !this.state.postcode
     ) {
       this.setState({
-        error: "La bio deve essere lunga minimo 10 massimo 250 caratteri"
+        error: "Compila tutti i campi"
       });
       return false;
     }
@@ -44,19 +47,30 @@ export class EditBio extends Component {
   };
 
   handleSubmit = () => {
-    if (this.validBio()) {
+    if (this.validPlace()) {
       this.setState({ loading: true });
       if (this.props.isUser)
         this.postUpdate("/user/updateInfo", {
-          update: { reason: this.state.bio }
+          update: {
+            city: this.state.city,
+            province: this.state.province,
+            street: this.state.street,
+            postcode: this.state.postcode
+          }
         });
       else
         this.postUpdate("/shop/updateInfo", {
-          update: { bio: this.state.bio }
+          update: {
+            city: this.state.city,
+            province: this.state.province,
+            street: this.state.street,
+            postcode: this.state.postcode
+          }
         });
     }
   };
 
+  /** Updates for both user and shop */
   postUpdate = (url, body) => {
     fetch(url, {
       method: "PUT",
@@ -93,23 +107,25 @@ export class EditBio extends Component {
         style={this.props.hidden ? { display: "none" } : null}
       >
         {this.state.loading ? (
-          <div id="editBio" className="settings-wrapper">
+          <div id="editPlace" className="settings-wrapper">
             <Loading />
           </div>
         ) : (
-          <div id="editBio" className="settings-wrapper">
+          <div id="editPlace" className="settings-wrapper">
             <i
               className="fas fa-times hide-cross"
               onClick={this.props.hide}
             ></i>
+            <p className="settings-name">{it.edit_shipment_header}</p>
             <div className="settings-container">
-              <p className="settings-name">
-                {this.props.isUser
-                  ? "Modifica il motivo per cui partecipi alla challenge"
-                  : "Modifica la tua bio"}
-              </p>
-              <BioForm handleChange={this.handleChange} bio={this.state.bio} />
-              <p className="form-error">{this.state.error}</p>
+              <PlaceForm
+                handleChange={this.handleChange}
+                city={this.state.city}
+                province={this.state.province}
+                street={this.state.street}
+                postcode={this.state.postcode}
+              />
+              <p className="form-error settings-error">{this.state.error}</p>
               <p
                 className="button settings-confirm"
                 onClick={this.handleSubmit}
@@ -124,4 +140,4 @@ export class EditBio extends Component {
   }
 }
 
-export default EditBio;
+export default EditPlace;

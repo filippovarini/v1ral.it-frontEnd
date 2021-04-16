@@ -10,6 +10,17 @@
   margin: 20px;
 }
 
+.aligned {
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+}
+
+.aligned .facts-container {
+  display: flex;
+  padding: 0px;
+}
+
 .quick-facts-flex {
   display: flex;
   flex-direction: column;
@@ -124,7 +135,9 @@
   .quick-facts.beside-chart {
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 20px;
   }
+
   .beside-chart .facts-container {
     /* fact beside bar chart */
     display: flex;
@@ -137,6 +150,7 @@
 
   .fact-title {
     font-size: 1rem;
+    line-height: 15px;
   }
 
   .fact-data {
@@ -152,6 +166,7 @@
 @media only screen and (max-width: 500px) {
   .fact-title {
     font-size: 0.8rem;
+    line-height: 12px;
   }
 
   .fact-data {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./shop.css";
 import errorHandler from "../../functions/errorHandler";
 
 import ShopProfile from "./ShopProfile/ShopProfile";
@@ -57,6 +58,15 @@ export class ShopRenderer extends Component {
       });
   };
 
+  copmputeBarChartWidth = () => {
+    let barChartWidth = null;
+    const div = document.getElementById("shop-profile");
+    if (div) {
+      barChartWidth = div.clientWidth;
+    }
+    return barChartWidth;
+  };
+
   render() {
     const body = this.state.dashboard ? (
       <ShopDashboard
@@ -68,6 +78,7 @@ export class ShopRenderer extends Component {
         cases={this.state.cases}
         totalSpent={this.state.totalSpent}
         chargesEnabled={this.state.chargesEnabled}
+        getBarChartWidth={this.copmputeBarChartWidth}
       />
     ) : (
       <ShopProfile
@@ -80,6 +91,7 @@ export class ShopRenderer extends Component {
         added={this.state.added}
         alreadyBought={this.state.alreadyBought}
         cases={this.state.cases}
+        getBarChartWidth={this.copmputeBarChartWidth}
       />
     );
 

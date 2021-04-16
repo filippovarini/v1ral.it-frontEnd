@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import it from "../../../../locales/it.json";
+import it from "../../../locales/it.json";
 
 /** Form for configuring the info of the pass
  * @param handleChange

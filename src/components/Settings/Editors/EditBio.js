@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 
-import errorHandler from "../../functions/errorHandler";
+import errorHandler from "../../../functions/errorHandler";
 
-import Loading from "../Loading/Loading";
-import PasswordForm from "../Forms/PasswordForm";
+import BioForm from "../../Forms/BioForm";
+import Loading from "../../Loading/Loading";
 
-/** Form used to see and edit place
+/** Form used to see and edit bio
  * @param hide function to hide component
  * @param hidden
  * @param isUser whether it is from user or shop
  */
-export class EditPassword extends Component {
+export class EditBio extends Component {
   state = {
-    oldPsw: null,
-    newPsw: null,
+    bio: null,
     error: null,
     loading: false
   };
@@ -29,36 +28,30 @@ export class EditPassword extends Component {
     });
   };
 
-  validCredentials = () => {
-    if (!this.state.oldPsw || !this.state.newPsw) {
+  validBio = () => {
+    if (
+      !this.state.bio ||
+      this.state.bio.length > 250 ||
+      this.state.bio.length < 10
+    ) {
       this.setState({
-        error:
-          "Compila tutti i campi nelle credenziali o annulla le modifiche in quel campo"
-      });
-      return false;
-    } else if (this.state.oldPsw.length < 8 || this.state.newPsw.length < 8) {
-      this.setState({
-        error: "Le password devono essere lunghe almeno 8 caratteri"
+        error: "La bio deve essere lunga minimo 10 massimo 250 caratteri"
       });
       return false;
     }
-
     return true;
   };
 
   handleSubmit = () => {
-    if (this.validCredentials()) {
+    if (this.validBio()) {
       this.setState({ loading: true });
       if (this.props.isUser)
         this.postUpdate("/user/updateInfo", {
-          update: {},
-          oldPsw: this.state.oldPsw,
-          newPsw: this.state.newPsw
+          update: { reason: this.state.bio }
         });
       else
-        this.postUpdate("/shop/updatePsw", {
-          oldPsw: this.state.oldPsw,
-          newPsw: this.state.newPsw
+        this.postUpdate("/shop/updateInfo", {
+          update: { bio: this.state.bio }
         });
     }
   };
@@ -75,13 +68,7 @@ export class EditPassword extends Component {
       .then(res => res.json())
       .then(jsonRes => {
         if (jsonRes.success) {
-          alert("Modifica salvata");
           window.location = window.location.pathname;
-          this.loaded();
-        } else if (jsonRes.pswInvalid) {
-          this.setState({
-            error: "La vecchia password fornita non è corretta"
-          });
           this.loaded();
         } else if (jsonRes.unauthorized) {
           this.setState({
@@ -105,23 +92,23 @@ export class EditPassword extends Component {
         style={this.props.hidden ? { display: "none" } : null}
       >
         {this.state.loading ? (
-          <div id="editPassword" className="settings-wrapper">
+          <div id="editBio" className="settings-wrapper">
             <Loading />
           </div>
         ) : (
-          <div id="editPassword" className="settings-wrapper">
+          <div id="editBio" className="settings-wrapper">
             <i
               className="fas fa-times hide-cross"
               onClick={this.props.hide}
             ></i>
+            <p className="settings-name">
+              {this.props.isUser
+                ? "Modifica il motivo per cui partecipi alla challenge"
+                : "Modifica la tua bio"}
+            </p>
             <div className="settings-container">
-              <p className="settings-name">Modifica la password</p>
-              <PasswordForm
-                handleChange={this.handleChange}
-                oldPsw={this.state.oldPsw}
-                newPsw={this.state.newPsw}
-              />
-              <p className="form-error">{this.state.error}</p>
+              <BioForm handleChange={this.handleChange} bio={this.state.bio} />
+              <p className="form-error settings-error">{this.state.error}</p>
               <p
                 className="button settings-confirm"
                 onClick={this.handleSubmit}
@@ -136,4 +123,4 @@ export class EditPassword extends Component {
   }
 }
 
-export default EditPassword;
+export default EditBio;

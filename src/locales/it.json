@@ -9,6 +9,7 @@
   "followers": "Followers",
   "challenger": "Sfidante",
   "success": "Successo!",
+  "rt_index": "Indice Rt",
 
   "pass_month_duration": "Durata pass",
   "cart_item_renew": "rinnovo pass",
@@ -20,7 +21,7 @@
   "take_part_in_the_challenge": "Supporta",
   "countdown": "Countdown alla libertà",
   "where_to_ship": "Spedisci a",
-  "no_passese_left": "Pass esauriti!",
+  "no_passese_left": "sold out!",
 
   "stats": "Statistiche",
   "shop_disruption_index": "Disruption index",
@@ -83,6 +84,15 @@
   "shop_step_2_description": "Configura il tuo token. Scegliendo i privilegi da offrire a chi ti supporta, il prezzo iniziale e il numero massimo di utenti. Il prezzo varia in base alla domanda e offerta",
   "shop_step_3_title": "Diffondi la voce",
   "shop_step_3_description": "Fai sapere agli utenti che anche il tuo shop è diventato v1rale. Attacca gli stickers che offriamo sulla vetrina del tuo negozio e condividi l'iniziativa sui social",
+
+  "settings_bio": "Modifica bio",
+  "settings_shipment": "Indirizzo spedizione",
+  "settings_password": "Modifica password",
+  "settings_background": "Modifica lo sfondo",
+  "settings_logo": "Modifica il logo",
+  "settings_add_priv": "Aggiungi un privilegio",
+  "settings_add_passes": "Vendi altri pass",
+  "settings_connect_dashboard": "Dashboard pagamenti",
 
   "home_description_above_button": "Supporta la nostra Italia e aiutaci a rendere il patriottismo v1rale!",
 

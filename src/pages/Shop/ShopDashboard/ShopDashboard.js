@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./shopDashboard.css";
 import goToDashboard from "../../../functions/goToDashboard";
+import getGoalsDone from "../../../functions/goalsDone";
 
 // language
 import it from "../../../locales/it.json";
 
 import ShopProfileHeader from "../../../components/ProfileHeaders/ShopProfileHeader";
 import Navigator from "../../../components/Navigator/Navigator";
-import ShopStats from "../../../components/ShopStats/ShopStats";
+import ShopStats from "../../../components/ShopStatsBar/ShopStats";
 import ServiceExplanaiton from "../../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
 import DashboardStats from "./DashboardStats";
 import ValidateStripeAccount from "../../../components/ValidateStripeAccount/ValidateStripeAccount";
 import ShopBackground from "../../../components/ShopBackgroundImage/ShopBackground";
+import BarChart from "../../../components/BarChart/BarChart";
 
 /**
  * @param shop
@@ -74,22 +76,12 @@ export class ShopDashboard extends Component {
           break;
         case 1:
           bodyComponent = (
-            <ShopStats
-              pass_month_duration={this.props.shop.pass_month_duration}
-              priceIncrement={(
-                (parseFloat(this.props.shop.currentprice) * 100) /
-                  this.props.shop.initialprice -
-                100
-              ).toFixed(2)}
-              placesLeft={
-                this.props.shop.maxpremiums - this.props.shop.total_premiums
-              }
-              goalsDone={(
-                parseFloat(this.props.shop.financed_so_far) /
-                this.getDisruptionIndex()
-              ).toFixed(2)}
-              cases={this.props.cases || {}}
-            />
+            <div id="shop-barChart">
+              <BarChart
+                cases={this.props.cases || {}}
+                width={this.props.getBarChartWidth()}
+              />
+            </div>
           );
           break;
         case 2:
@@ -107,7 +99,7 @@ export class ShopDashboard extends Component {
 
     const body = this.props.shop ? (
       <div className="page-wrapper">
-        <div className="shop-profile">
+        <div id="shop-profile">
           {this.props.chargesEnabled ? null : (
             <ValidateStripeAccount
               toggleLoading={this.props.toggleLoading}
@@ -145,9 +137,28 @@ export class ShopDashboard extends Component {
               handleSubmit={() => this.props.history.push("/spread")}
               buttonText={it.shop_buy_our_marketing_products}
               handleDashboardClick={this.goToDashboard}
+              passesLeft={
+                this.props.shop.maxpremiums - this.props.shop.total_premiums
+              }
             />
           </div>
-          <div id="shopProfile-nav" style={{ minWidth: "450px" }}>
+          <ShopStats
+            pass_month_duration={this.props.shop.pass_month_duration}
+            priceIncrement={(
+              (parseFloat(this.props.shop.currentprice) * 100) /
+                this.props.shop.initialprice -
+              100
+            ).toFixed(2)}
+            placesLeft={
+              this.props.shop.maxpremiums - this.props.shop.total_premiums
+            }
+            goalsDone={getGoalsDone(
+              this.props.shop.financed_so_far,
+              this.getDisruptionIndex()
+            )}
+            cases={this.props.cases || {}}
+          />
+          <div id="shop-nav">
             <Navigator
               active={this.state.navState}
               updateNav={this.updateNav}

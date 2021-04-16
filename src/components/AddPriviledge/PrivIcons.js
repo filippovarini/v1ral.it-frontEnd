@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import icons from "../../../../locales/serviceIcons";
+import icons from "../../locales/serviceIcons";
 
 /** List of icons for services
  * @param addIcon function to fire on click

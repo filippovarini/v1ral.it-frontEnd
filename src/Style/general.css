@@ -53,11 +53,6 @@
   justify-content: center;
 }
 
-.shop-profile {
-  max-width: var(--profileMaxWidth);
-  margin: 0 auto;
-}
-
 /* background for small data such as category, place filters etc */
 .small-data-box {
   background: var(--light);

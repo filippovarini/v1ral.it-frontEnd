@@ -14,10 +14,11 @@ import it from "../../../locales/it.json";
 
 import Navigator from "../../../components/Navigator/Navigator";
 import InsertChallenger from "../../../components/InsertChallenger/Challenger";
-import ShopStats from "../../../components/ShopStats/ShopStats";
 import ServiceExplanaiton from "../../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
 import ProfileHeader from "../../../components/ProfileHeaders/ShopProfileHeader";
 import ShopBackground from "../../../components/ShopBackgroundImage/ShopBackground";
+import ShopStats from "../../../components/ShopStatsBar/ShopStats";
+import BarChart from "../../../components/BarChart/BarChart";
 
 /**
  * @param toggleLoading
@@ -110,31 +111,23 @@ export class ShopProfile extends Component {
     if (this.props.shop) {
       bodyComponent =
         this.state.navState === 0 ? (
-          <ShopStats
-            pass_month_duration={this.props.shop.pass_month_duration}
-            priceIncrement={Math.ceil(
-              (parseFloat(this.props.shop.currentprice) * 100) /
-                this.props.shop.initialprice -
-                100
-            )}
-            placesLeft={passesLeft}
-            goalsDone={goalsDone(
-              this.props.shop.financed_so_far,
-              this.getDisruptionIndex()
-            )}
-            cases={this.props.cases || {}}
-          />
-        ) : (
           <ServiceExplanaiton
             goals={this.props.goals}
             services={this.props.services}
           />
+        ) : (
+          <div id="shop-barChart">
+            <BarChart
+              cases={this.props.cases || {}}
+              width={this.props.getBarChartWidth()}
+            />
+          </div>
         );
     }
 
     const body = this.props.shop ? (
       <div className="page-wrapper">
-        <div className="shop-profile">
+        <div id="shop-profile">
           <div id="shopProfile-header-container">
             <InsertChallenger
               hidden={this.state.insertChallengerHidden}
@@ -174,11 +167,24 @@ export class ShopProfile extends Component {
               passesLeft={passesLeft > 0}
             />
           </div>
-          <div id="shopProfile-nav">
+          <ShopStats
+            pass_month_duration={this.props.shop.pass_month_duration}
+            priceIncrement={Math.ceil(
+              (parseFloat(this.props.shop.currentprice) * 100) /
+                this.props.shop.initialprice -
+                100
+            )}
+            placesLeft={passesLeft}
+            goalsDone={goalsDone(
+              this.props.shop.financed_so_far,
+              this.getDisruptionIndex()
+            )}
+          />
+          <div id="shop-nav">
             <Navigator
               active={this.state.navState}
               updateNav={this.updateNav}
-              titles={[it.stats, "Dove vanno i soldi?"]}
+              titles={["Dove vanno i soldi?", it.stats]}
             />
           </div>
           {bodyComponent}

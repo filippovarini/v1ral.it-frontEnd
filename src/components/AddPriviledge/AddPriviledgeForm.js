@@ -47,6 +47,7 @@ export class ServiceForm extends Component {
             type="text"
             autoComplete="off"
             placeholder="nome servizio"
+            style={{ width: "100%" }}
             onChange={this.props.handleChange}
           />
         </div>

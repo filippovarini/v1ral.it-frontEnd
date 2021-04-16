@@ -1,14 +1,12 @@
 .settings-slidebar {
-  width: 150px;
-  height: 250px;
+  width: 200px;
   box-sizing: border-box;
-  padding: 10px;
   position: absolute;
   right: -10px;
-  box-shadow: var(--shadow);
-  background: var(--light);
   font-size: 0.9rem;
   border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0px 0px 5px var(--dark);
 }
 
 .settings-wrapper {
@@ -19,17 +17,35 @@
   position: relative;
   box-sizing: border-box;
   padding: 10px;
+  height: 250px;
+}
+
+.settings-wrapper.tall {
+  height: 400px;
+}
+
+.settings-wrapper.short {
+  height: 220px;
 }
 
 .settings-name {
-  margin-bottom: 20px;
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--darkBlue);
 }
 
-.setting-error {
-  margin-top: 80px;
+.settings-description {
+  font-weight: bold;
+  color: var(--gray);
+  width: 70%;
+}
+
+.settings-container {
+  margin-top: 20px;
+}
+
+.settings-error {
+  position: absolute;
 }
 
 .settings-confirm {
@@ -44,5 +60,18 @@
 }
 
 .settings-option:hover {
+  font-weight: bold;
+}
+
+.settings-footer {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+  background: var(--darkBlue);
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 3px 5px;
+  cursor: pointer;
+  color: var(--white);
   font-weight: bold;
 }

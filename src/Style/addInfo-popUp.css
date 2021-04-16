@@ -1,0 +1,52 @@
+/* For adding goals and priviledges */
+#addInfo-container {
+  width: 500px;
+  margin-left: -250px;
+  height: 400px;
+  margin-top: -175px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+#addInfo-header {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--darkBlue);
+  font-weight: bold;
+}
+
+#addInfo-description {
+  line-height: 15px;
+  font-size: 0.9rem;
+}
+
+#bestSelling-container {
+  width: 60%;
+  margin: 0px;
+}
+
+#bestSelling-header {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.bestSelling-title {
+  font-size: 0.8rem;
+  line-height: 20px;
+}
+
+.addInfo-form {
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#addInfo-submit {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#addInfo-error {
+  margin-top: 10px;
+}

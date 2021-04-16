@@ -1,21 +1,19 @@
 import React, { Component } from "react";
-import it from "../../locales/it.json";
-import errorHandler from "../../functions/errorHandler";
 
-import Loading from "../Loading/Loading";
-import PlaceForm from "../Forms/PlaceForm";
+import errorHandler from "../../../functions/errorHandler";
+
+import Loading from "../../Loading/Loading";
+import PasswordForm from "../../Forms/PasswordForm";
 
 /** Form used to see and edit place
  * @param hide function to hide component
  * @param hidden
  * @param isUser whether it is from user or shop
  */
-export class EditPlace extends Component {
+export class EditPassword extends Component {
   state = {
-    city: null,
-    province: null,
-    street: null,
-    postcode: null,
+    oldPsw: null,
+    newPsw: null,
     error: null,
     loading: false
   };
@@ -31,46 +29,39 @@ export class EditPlace extends Component {
     });
   };
 
-  validPlace = () => {
-    if (
-      !this.state.city ||
-      !this.state.province ||
-      !this.state.street ||
-      !this.state.postcode
-    ) {
+  validCredentials = () => {
+    if (!this.state.oldPsw || !this.state.newPsw) {
       this.setState({
-        error: "Compila tutti i campi"
+        error: "Compila tutti i campi o annulla le modifiche"
+      });
+      return false;
+    } else if (this.state.oldPsw.length < 8 || this.state.newPsw.length < 8) {
+      this.setState({
+        error: "Le password devono essere lunghe almeno 8 caratteri"
       });
       return false;
     }
+
     return true;
   };
 
   handleSubmit = () => {
-    if (this.validPlace()) {
+    if (this.validCredentials()) {
       this.setState({ loading: true });
       if (this.props.isUser)
         this.postUpdate("/user/updateInfo", {
-          update: {
-            city: this.state.city,
-            province: this.state.province,
-            street: this.state.street,
-            postcode: this.state.postcode
-          }
+          update: {},
+          oldPsw: this.state.oldPsw,
+          newPsw: this.state.newPsw
         });
       else
-        this.postUpdate("/shop/updateInfo", {
-          update: {
-            city: this.state.city,
-            province: this.state.province,
-            street: this.state.street,
-            postcode: this.state.postcode
-          }
+        this.postUpdate("/shop/updatePsw", {
+          oldPsw: this.state.oldPsw,
+          newPsw: this.state.newPsw
         });
     }
   };
 
-  /** Updates for both user and shop */
   postUpdate = (url, body) => {
     fetch(url, {
       method: "PUT",
@@ -83,7 +74,13 @@ export class EditPlace extends Component {
       .then(res => res.json())
       .then(jsonRes => {
         if (jsonRes.success) {
+          alert("Modifica salvata");
           window.location = window.location.pathname;
+          this.loaded();
+        } else if (jsonRes.pswInvalid) {
+          this.setState({
+            error: "La vecchia password fornita non è corretta"
+          });
           this.loaded();
         } else if (jsonRes.unauthorized) {
           this.setState({
@@ -107,25 +104,23 @@ export class EditPlace extends Component {
         style={this.props.hidden ? { display: "none" } : null}
       >
         {this.state.loading ? (
-          <div id="editPlace" className="settings-wrapper">
+          <div id="editPassword" className="settings-wrapper">
             <Loading />
           </div>
         ) : (
-          <div id="editPlace" className="settings-wrapper">
+          <div id="editPassword" className="settings-wrapper short">
             <i
               className="fas fa-times hide-cross"
               onClick={this.props.hide}
             ></i>
+            <p className="settings-name">Modifica la password</p>
             <div className="settings-container">
-              <p className="settings-name">{it.edit_shipment_header}</p>
-              <PlaceForm
+              <PasswordForm
                 handleChange={this.handleChange}
-                city={this.state.city}
-                province={this.state.province}
-                street={this.state.street}
-                postcode={this.state.postcode}
+                oldPsw={this.state.oldPsw}
+                newPsw={this.state.newPsw}
               />
-              <p className="form-error">{this.state.error}</p>
+              <p className="form-error settings-error">{this.state.error}</p>
               <p
                 className="button settings-confirm"
                 onClick={this.handleSubmit}
@@ -140,4 +135,4 @@ export class EditPlace extends Component {
   }
 }
 
-export default EditPlace;
+export default EditPassword;

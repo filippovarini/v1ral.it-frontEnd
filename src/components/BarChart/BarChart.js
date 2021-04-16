@@ -29,6 +29,7 @@ const getMovingAverage = cases => {
 
 /** Returns a barchart to display info
  * @param cases [{date, number}]
+ * @param shoprt
  */
 export class BarChart extends Component {
   state = {
@@ -39,16 +40,18 @@ export class BarChart extends Component {
   componentDidMount = () => this.updateGraphSize();
 
   updateGraphSize = () => {
+    let width, height;
     if (window.innerWidth <= 700) {
-      this.setState({
-        width: window.innerWidth - totalMargin,
-        height: 300
-      });
-    } else
-      this.setState({
-        width: window.innerWidth - totalMargin - quickFactsWidth - pageMargin,
-        height: Math.round((window.innerHeight * 4) / 10)
-      });
+      width = window.innerWidth - totalMargin;
+      height = 300;
+    } else {
+      width = window.innerWidth - totalMargin - quickFactsWidth - pageMargin;
+      height = Math.round((window.innerHeight * 4) / 10);
+    }
+
+    if (this.props.width) width = this.props.width;
+
+    this.setState({ width, height });
   };
 
   render() {

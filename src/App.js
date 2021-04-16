@@ -13,6 +13,7 @@ import "./style/buttons.css";
 import "./style/vars.css";
 import "./style/pageDescription.css";
 import "./style/general.css";
+import "./style/addInfo-popUp.css";
 
 import BugFound from "./components/BugFound/BugFound";
 import Footer from "./components/Footer/Footer";

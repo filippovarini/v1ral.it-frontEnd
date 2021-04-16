@@ -107,8 +107,6 @@ export class ShopBox extends Component {
         </div>
       );
 
-    console.log(goalsDone, this.props.shop.name);
-
     return (
       <div id="shopBox-container" className="box">
         <div id="shopBox-header" className="flex-line">
@@ -142,7 +140,7 @@ export class ShopBox extends Component {
         <div id="shopBox-body-container">
           <p id="shopBox-premiums">
             {it.passes_sold_number}{" "}
-            <span className="bold">{this.props.shop.premiums} </span>
+            <span className="bold">{this.props.shop.premiums || 0} </span>
             <span className="lowercase bold">
               {this.props.shop.premiums === "1" ? it.user : it.users}
             </span>

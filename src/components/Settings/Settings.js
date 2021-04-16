@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import "./settings.css";
 
 import postImage from "../../functions/postImage";
 import errorHandler from "../../functions/errorHandler";
+import it from "../../locales/it.json";
 
 import Loading from "../Loading/Loading";
-import EditBio from "./EditBio";
-import EditPlace from "./EditPlace";
-import EditPassword from "./EditPassword";
+import EditBio from "./Editors/EditBio";
+import EditPlace from "./Editors/EditPlace";
+import EditPassword from "./Editors/EditPassword";
+import AddPasses from "./Editors/AddPasses";
+import AddService from "./Editors/AddPriviledgeWrapper";
 
 /** Handles shop settings with a slidebar
  * @param hide
@@ -20,6 +24,8 @@ export class UserSettings extends Component {
     bioEditing: false,
     placeEditing: false,
     credentialsEditing: false,
+    addPassesEditing: false,
+    addPriviledgeEditing: false,
     loading: false
   };
 
@@ -82,7 +88,7 @@ export class UserSettings extends Component {
     const shopImageSetting = (
       <form>
         <label className="settings-option" htmlFor="backgroundurl">
-          Modifica sfondo
+          {it.settings_background}
         </label>
         <input
           id="backgroundurl"
@@ -92,7 +98,7 @@ export class UserSettings extends Component {
           accept="image/*"
         />
         <label className="settings-option" htmlFor="logourl">
-          Modifica logo
+          {it.settings_logo}
         </label>
         <input
           id="logourl"
@@ -105,12 +111,12 @@ export class UserSettings extends Component {
     );
 
     return this.state.loading ? (
-      <div className="settings-slidebar ">
+      <div className="settings-slidebar box">
         <Loading />
       </div>
     ) : (
       <div
-        className="settings-slidebar "
+        className="settings-slidebar box"
         onMouseLeave={this.props.hide}
         style={this.props.hidden ? { display: "none" } : null}
       >
@@ -118,30 +124,41 @@ export class UserSettings extends Component {
           className="settings-option"
           onClick={() => this.toggleEditing("bioEditing")}
         >
-          Modifica bio
+          {it.settings_bio}
         </p>
 
         <p
           className="settings-option"
           onClick={() => this.toggleEditing("placeEditing")}
         >
-          Modifica luogo spedizione
+          {it.settings_shipment}
         </p>
         <p
           className="settings-option"
           onClick={() => this.toggleEditing("credentialsEditing")}
         >
-          Modifica password
+          {it.settings_password}
         </p>
         {this.props.isUser ? null : (
           <div>
             {shopImageSetting}
             <p
               className="settings-option"
-              style={{ fontWeight: "bold" }}
+              onClick={() => this.toggleEditing("addPriviledgeEditing")}
+            >
+              {it.settings_add_priv}
+            </p>
+            <p
+              className="settings-option"
+              onClick={() => this.toggleEditing("addPassesEditing")}
+            >
+              {it.settings_add_passes}
+            </p>
+            <p
+              className="settings-option settings-footer"
               onClick={this.props.handleDashboardClick}
             >
-              Dashboard Pagamenti
+              {it.settings_connect_dashboard}
             </p>
           </div>
         )}
@@ -160,6 +177,14 @@ export class UserSettings extends Component {
           hidden={!this.state.credentialsEditing}
           hide={() => this.toggleEditing("credentialsEditing")}
           isUser={this.props.isUser}
+        />
+        <AddPasses
+          hidden={!this.state.addPassesEditing}
+          hide={() => this.toggleEditing("addPassesEditing")}
+        />
+        <AddService
+          hidden={!this.state.addPriviledgeEditing}
+          hide={() => this.toggleEditing("addPriviledgeEditing")}
         />
       </div>
     );

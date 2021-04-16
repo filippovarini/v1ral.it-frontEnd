@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import "./serviceOffered.css";
 import it from "../../../locales/it.json";
 import Header from "../../../components/Header/Header";
-import ServiceForm from "./privateComponents/ServicePriceForm";
+import ServiceForm from "./ServicePriceForm";
 import RegisterHeader from "../ShopRegisterHeader";
-import AddService from "./privateComponents/AddService";
 import Services from "../../../components/Services/Services";
+import AddPrivWrapper from "./AddPriviledgeWrapper";
 
 export class ServicesOffered extends Component {
   state = {
@@ -138,7 +138,7 @@ export class ServicesOffered extends Component {
                     this.setState({ check1: !this.state.check1, error: null })
                   }
                 />
-                <AddService
+                <AddPrivWrapper
                   hidden={this.state.addInfoHidden}
                   hide={this.toggleAddService}
                   handleAdd={this.addInfo}
