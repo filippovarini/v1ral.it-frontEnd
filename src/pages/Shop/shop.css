@@ -6,6 +6,15 @@
   position: relative;
 }
 
+#shopProfile-header-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+}
+
 #shop-profile-body {
   max-width: var(--profileMaxWidth);
 }

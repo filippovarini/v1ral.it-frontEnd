@@ -30,8 +30,8 @@ export class InfoWrapper extends Component {
           email={this.props.emial}
           category={this.props.category}
         />
-        <Gallery images={this.props.images} />
-        <ShareShop />
+        <Gallery images={this.props.images} zoomImage={this.props.zoomImage} />
+        <ShareShop shopName={this.props.name} />
       </div>
     );
   }

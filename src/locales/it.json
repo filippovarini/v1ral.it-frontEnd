@@ -45,7 +45,9 @@
   "shop_logo": "Logo",
   "shop_city": "Città",
   "shop_aside_info": "Informazioni",
+
   "share_shop_text": "Ti piace questo shop? Condividilo con i tuoi amici!",
+  "share_shop_text_whatsapp_message": "si è appena fatto v1ral e sta diventando v1rale! Guarda il suo profilo: ",
 
   "edit_shipment_header": "Modifica l'indirizzo di spedizione",
   "edit_password_header": "Modifica la password",

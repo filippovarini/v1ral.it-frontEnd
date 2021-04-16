@@ -4,7 +4,6 @@ import it from "../../../locales/it.json";
 
 export class Gallery extends Component {
   render() {
-    console.log(this.props.images);
     return (
       <div id="shop-aside-gallery" className="shop-aside-box box">
         <p className="shop-aside-header">{it.gallery}</p>
@@ -13,6 +12,7 @@ export class Gallery extends Component {
             <div
               key={i}
               className="shop-aside-image"
+              onClick={() => this.props.zoomImage(i)}
               style={{ backgroundImage: `url(${url}` }}
             ></div>
           ))}

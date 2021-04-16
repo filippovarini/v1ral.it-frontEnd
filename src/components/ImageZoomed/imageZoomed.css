@@ -1,0 +1,26 @@
+#image-zoomed-container {
+  width: 90vw;
+  margin-left: -45vw;
+  height: 80vh;
+  margin-top: -40vh;
+  justify-content: space-around;
+  background: transparent;
+}
+
+#image-zoomed {
+  width: 60%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-zoomed-icon {
+  font-size: 2rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.image-zoomed-icon.hide-cross {
+  color: var(--pink);
+}
