@@ -22,7 +22,7 @@ import Home from "./pages/Home/Home";
 import Shops from "./pages/Shops/Shops";
 
 // profiles
-import Shop from "./pages/Shop/ShopRenderer";
+import Shop from "./pages/Shop/Renderer";
 import User from "./pages/User/UserRenderer";
 // transaction
 import Checkout from "./pages/Checkout/CheckoutRenderer";

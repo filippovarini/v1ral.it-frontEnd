@@ -2,7 +2,7 @@
   width: 200px;
   box-sizing: border-box;
   position: absolute;
-  right: -10px;
+  right: -5px;
   font-size: 0.9rem;
   border-radius: 5px;
   padding: 15px;
@@ -56,11 +56,24 @@
 .settings-option {
   margin: 10px 5px;
   cursor: pointer;
-  display: block;
+  font-weight: bold;
+  color: var(--gray);
 }
 
 .settings-option:hover {
-  font-weight: bold;
+  color: var(--dark);
+}
+
+.settings-option-icon {
+  width: 20px;
+  font-size: 1.1rem;
+  margin-right: 5px;
+}
+
+.settings-option-text {
+  display: block;
+  line-height: 15px;
+  font-size: 0.8rem;
 }
 
 .settings-footer {

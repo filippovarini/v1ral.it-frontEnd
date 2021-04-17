@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import it from "../../../locales/it.json";
+import it from "../../../../locales/it.json";
 
 /** Renders body info to be showed in the shop profile
  * @param city, street, province

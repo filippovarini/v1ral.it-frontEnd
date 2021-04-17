@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import ServiceExplanaiton from "../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
-import BarChart from "../../components/BarChart/BarChart";
+import ServiceExplanaiton from "../../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
+import BarChart from "../../../components/BarChart/BarChart";
 
 /** Renders shop body different pages based on navstate
  * @param navState

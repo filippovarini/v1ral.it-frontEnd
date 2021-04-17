@@ -70,3 +70,50 @@
   font-weight: bold;
   font-size: 1.5rem;
 }
+
+/* SMALL */
+
+@keyframes ldio-351dmw22jn2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ldio-351dmw22jn2 div {
+  position: absolute;
+  animation: ldio-351dmw22jn2 0.98s linear infinite;
+  width: 80px;
+  height: 80px;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 0 #545454;
+  transform-origin: 40px 41px;
+}
+
+.loadingio-spinner-eclipse-hbomlyl697i {
+  width: 27px;
+  height: 27px;
+  display: inline-block;
+  overflow: hidden;
+  background: transparent;
+}
+
+.ldio-351dmw22jn2 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.27);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+
+.ldio-351dmw22jn2 div {
+  box-sizing: content-box;
+}

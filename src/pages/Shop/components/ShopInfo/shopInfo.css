@@ -29,6 +29,25 @@
   font-size: 1.2rem;
 }
 
+#gallery-header {
+  justify-content: space-between;
+}
+
+#gallery-addImage-label {
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: var(--darkBlue);
+  min-width: 130px;
+}
+
+#gallery-addImage-label i {
+  font-size: 1rem;
+}
+
+#gallery-addImage-label:hover {
+  font-weight: bold;
+}
+
 .shop-aside-line {
   margin: 10px 0px;
 }

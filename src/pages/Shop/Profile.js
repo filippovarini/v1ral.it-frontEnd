@@ -7,10 +7,10 @@ import goalsDone from "../../functions/goalsDone";
 import it from "../../locales/it.json";
 
 import InsertChallenger from "../../components/InsertChallenger/Challenger";
-import ShopHead from "./ShopHead";
-import ShopBody from "./ShopBody";
+import ShopHead from "./components/ShopHead";
+import ShopBody from "./components/ShopBody";
 import Navigator from "../../components/Navigator/Navigator";
-import ShopInfoWrapper from "./ShopInfo/InfoWrapper";
+import ShopInfoWrapper from "./components/ShopInfo/InfoWrapper";
 
 /** Renders shop profile
  * @param toggleLoading
@@ -23,6 +23,7 @@ import ShopInfoWrapper from "./ShopInfo/InfoWrapper";
  * @param added
  * @param alreadyBought
  * @param getBarChartWidth function to get current shop body width
+ * @param passesLeft
  */
 export class ShopProfile extends Component {
   state = {
@@ -61,9 +62,6 @@ export class ShopProfile extends Component {
   };
 
   render() {
-    const passesLeft =
-      this.props.shop.maxpremiums - this.props.shop.total_premiums;
-
     /** Dynamic button props based on whether the user is logged,
      * as bought or added the shop to the cart */
     let profileHeaderButtonStyle = null;
@@ -102,7 +100,7 @@ export class ShopProfile extends Component {
               totalPriviledges={this.props.services.length}
               totalPassesSold={this.props.shop.total_premiums}
               totalPassesToVirals={this.props.shop.viral_premiums}
-              passesLeft={passesLeft}
+              passesLeft={this.props.passesLeft}
               shopProfile={{
                 name: this.props.shop.name,
                 description: this.props.shop.bio,

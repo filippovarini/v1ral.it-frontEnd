@@ -3,7 +3,10 @@
   position: relative;
   align-items: flex-start;
   justify-content: center;
-  position: relative;
+}
+
+#shop-profile-body {
+  max-width: var(--profileMaxWidth);
 }
 
 #shopProfile-header-container {
@@ -13,10 +16,6 @@
   background: var(--white);
   box-shadow: var(--shadow);
   border-radius: 5px;
-}
-
-#shop-profile-body {
-  max-width: var(--profileMaxWidth);
 }
 
 #shop-nav {

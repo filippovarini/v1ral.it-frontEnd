@@ -15,6 +15,7 @@ import ShareShop from "./ShareShop";
  * @param tags
  * @param category
  * @param images
+ * @param dashboard
  */
 export class InfoWrapper extends Component {
   render() {
@@ -30,8 +31,15 @@ export class InfoWrapper extends Component {
           email={this.props.emial}
           category={this.props.category}
         />
-        <Gallery images={this.props.images} zoomImage={this.props.zoomImage} />
-        <ShareShop shopName={this.props.name} />
+        <Gallery
+          images={this.props.images}
+          zoomImage={this.props.zoomImage}
+          dashboard={this.props.dashboard}
+        />
+        <ShareShop
+          shopName={this.props.name}
+          dashboard={this.props.dashboard}
+        />
       </div>
     );
   }

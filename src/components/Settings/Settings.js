@@ -85,9 +85,58 @@ export class UserSettings extends Component {
   };
 
   render() {
-    const shopImageSetting = (
+    const editBio = (
+      <div
+        className="settings-option flex-line"
+        onClick={() => this.toggleEditing("bioEditing")}
+      >
+        <i className="fas fa-comment settings-option-icon"></i>
+        <p className="settings-option-text">{it.settings_bio}</p>
+        <EditBio
+          hidden={!this.state.bioEditing}
+          hide={() => this.toggleEditing("bioEditing")}
+          isUser={this.props.isUser}
+        />
+      </div>
+    );
+
+    const editShipmentAddress = (
+      <div
+        className="settings-option flex-line"
+        onClick={() => this.toggleEditing("placeEditing")}
+      >
+        <i className="fas fa-truck settings-option-icon"></i>
+        <p className="settings-option-text">{it.settings_shipment}</p>
+        <EditPlace
+          hidden={!this.state.placeEditing}
+          hide={() => this.toggleEditing("placeEditing")}
+          isUser={this.props.isUser}
+        />
+      </div>
+    );
+
+    const editPassword = (
+      <div
+        className="settings-option flex-line"
+        onClick={() => this.toggleEditing("credentialsEditing")}
+      >
+        <i className="fas fa-key settings-option-icon"></i>
+        <p className="settings-option-text">{it.settings_password}</p>
+        <EditPassword
+          hidden={!this.state.credentialsEditing}
+          hide={() => this.toggleEditing("credentialsEditing")}
+          isUser={this.props.isUser}
+        />
+      </div>
+    );
+
+    const editShopImages = this.props.isUser ? null : (
       <form>
-        <label className="settings-option" htmlFor="backgroundurl">
+        <label
+          className="settings-option settings-option-text"
+          htmlFor="backgroundurl"
+        >
+          <i className="fas fa-window-maximize settings-option-icon"></i>
           {it.settings_background}
         </label>
         <input
@@ -97,7 +146,11 @@ export class UserSettings extends Component {
           className="hidden"
           accept="image/*"
         />
-        <label className="settings-option" htmlFor="logourl">
+        <label
+          className="settings-option settings-option-text"
+          htmlFor="logourl"
+        >
+          <i className="fas fa-user-circle settings-option-icon"></i>
           {it.settings_logo}
         </label>
         <input
@@ -110,6 +163,34 @@ export class UserSettings extends Component {
       </form>
     );
 
+    const addPriviledge = this.props.isUser ? null : (
+      <div
+        className="settings-option flex-line"
+        onClick={() => this.toggleEditing("addPriviledgeEditing")}
+      >
+        <i className="fas fa-gem settings-option-icon"></i>
+        <p className="settings-option-text">{it.settings_add_priv}</p>
+        <AddService
+          hidden={!this.state.addPriviledgeEditing}
+          hide={() => this.toggleEditing("addPriviledgeEditing")}
+        />
+      </div>
+    );
+
+    const addPasses = this.props.isUser ? null : (
+      <div
+        className="settings-option flex-line"
+        onClick={() => this.toggleEditing("addPassesEditing")}
+      >
+        <i className="fas fa-address-card settings-option-icon"></i>
+        <p className="settings-option-text">{it.settings_add_passes}</p>
+        <AddPasses
+          hidden={!this.state.addPassesEditing}
+          hide={() => this.toggleEditing("addPassesEditing")}
+        />
+      </div>
+    );
+
     return this.state.loading ? (
       <div className="settings-slidebar box">
         <Loading />
@@ -120,72 +201,12 @@ export class UserSettings extends Component {
         onMouseLeave={this.props.hide}
         style={this.props.hidden ? { display: "none" } : null}
       >
-        <p
-          className="settings-option"
-          onClick={() => this.toggleEditing("bioEditing")}
-        >
-          {it.settings_bio}
-        </p>
-
-        <p
-          className="settings-option"
-          onClick={() => this.toggleEditing("placeEditing")}
-        >
-          {it.settings_shipment}
-        </p>
-        <p
-          className="settings-option"
-          onClick={() => this.toggleEditing("credentialsEditing")}
-        >
-          {it.settings_password}
-        </p>
-        {this.props.isUser ? null : (
-          <div>
-            {shopImageSetting}
-            <p
-              className="settings-option"
-              onClick={() => this.toggleEditing("addPriviledgeEditing")}
-            >
-              {it.settings_add_priv}
-            </p>
-            <p
-              className="settings-option"
-              onClick={() => this.toggleEditing("addPassesEditing")}
-            >
-              {it.settings_add_passes}
-            </p>
-            <p
-              className="settings-option settings-footer"
-              onClick={this.props.handleDashboardClick}
-            >
-              {it.settings_connect_dashboard}
-            </p>
-          </div>
-        )}
-
-        <EditBio
-          hidden={!this.state.bioEditing}
-          hide={() => this.toggleEditing("bioEditing")}
-          isUser={this.props.isUser}
-        />
-        <EditPlace
-          hidden={!this.state.placeEditing}
-          hide={() => this.toggleEditing("placeEditing")}
-          isUser={this.props.isUser}
-        />
-        <EditPassword
-          hidden={!this.state.credentialsEditing}
-          hide={() => this.toggleEditing("credentialsEditing")}
-          isUser={this.props.isUser}
-        />
-        <AddPasses
-          hidden={!this.state.addPassesEditing}
-          hide={() => this.toggleEditing("addPassesEditing")}
-        />
-        <AddService
-          hidden={!this.state.addPriviledgeEditing}
-          hide={() => this.toggleEditing("addPriviledgeEditing")}
-        />
+        {editBio}
+        {editShipmentAddress}
+        {editPassword}
+        {editShopImages}
+        {addPriviledge}
+        {addPasses}
       </div>
     );
   }

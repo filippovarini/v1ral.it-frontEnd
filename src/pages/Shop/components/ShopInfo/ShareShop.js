@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import it from "../../../locales/it.json";
+import it from "../../../../locales/it.json";
 
 /** Share shop button
  * @param shopName
+ * @param dashboard
  */
 export class ShareShop extends Component {
   render() {
     return (
       <div className="shop-aside-box box">
-        <p id="share-shop-header">{it.share_shop_text}</p>
+        <p id="share-shop-header">
+          {this.props.dashboard
+            ? it.share_shop_text_shop_owner
+            : it.share_shop_text_external_user}
+        </p>
         <div id="share-shop-icons">
           <a
             id="earn-whatsapp-link"

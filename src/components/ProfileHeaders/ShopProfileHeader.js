@@ -13,7 +13,6 @@ import ProfileInfoBar from "./ProfileInfoBar";
  * @param handleSubmit?
  * @param style
  * @param buttonText
- * @param handleDashboardClick
  */
 export class ShopProfileHeader extends Component {
   state = { settingsHidden: true };
@@ -34,7 +33,6 @@ export class ShopProfileHeader extends Component {
         <Settings
           hidden={this.state.settingsHidden}
           hide={this.toggleSettings}
-          handleDashboardClick={this.props.handleDashboardClick}
         />
       </div>
     ) : null;

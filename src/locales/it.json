@@ -46,7 +46,8 @@
   "shop_city": "Città",
   "shop_aside_info": "Informazioni",
 
-  "share_shop_text": "Ti piace questo shop? Condividilo con i tuoi amici!",
+  "share_shop_text_shop_owner": "Fai sapere a tutti che sei su v1ral per vendere più pass!",
+  "share_shop_text_external_user": "Ti piace questo shop? Condividilo con i tuoi amici!",
   "share_shop_text_whatsapp_message": "si è appena fatto v1ral e sta diventando v1rale! Guarda il suo profilo: ",
 
   "edit_shipment_header": "Modifica l'indirizzo di spedizione",
@@ -56,6 +57,7 @@
   "no_shops_found_description": "Nessuno shop trovato con questi paremtri. Prova a ripristinaere i filtri",
 
   "loading_image": "Caricando l'immagine, attendi qualche secondo...",
+  "loading_image_short": "Caricando l'immagine",
 
   "shops_page_description_header": "Scegli gli shops in cui comprare il privè",
   "shops_page_description_text": "Comprando il privè supporti gli shop nella ripresa dell'impatto Covid-19. Inoltre, il privè ti da accesso a privilegi speciali di cui puoi godere in quel shop.",
