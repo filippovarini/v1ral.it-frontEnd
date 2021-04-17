@@ -85,6 +85,10 @@
 }
 
 .fact-title {
+  font-size: 1.5rem;
+}
+
+.aligned .fact-title {
   font-size: 1.2rem;
   line-height: 18px;
 }
@@ -94,12 +98,16 @@
 }
 
 .fact-data {
+  font-size: 1.7rem;
   font-weight: bold;
-  font-size: 1.5rem;
-  line-height: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  line-height: 20px;
+}
+
+.aligned .fact-data {
+  font-size: 1.5rem;
 }
 
 .fact-data-small {
