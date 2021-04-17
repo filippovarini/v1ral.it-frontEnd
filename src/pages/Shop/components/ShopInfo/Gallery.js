@@ -35,15 +35,16 @@ export class Gallery extends Component {
     this.setState({ multerOperating: true });
     const url = await postImage(formData);
     fetch("/shop/addImage", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({ url: url })
+      body: JSON.stringify({ url })
     })
       .then(res => res.json())
       .then(jsonRes => {
+        console.log(jsonRes);
         if (!jsonRes.success) {
           alert(jsonRes.message);
           if (jsonRes.serverError) errorHandler.serverError(jsonRes);

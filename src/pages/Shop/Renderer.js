@@ -31,12 +31,7 @@ export class ShopRenderer extends Component {
     alreadyBought: null,
     imageZoomedIndex: 0,
     imagesZoomed: false,
-    images: [
-      "https://i.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U",
-      "https://i.picsum.photos/id/599/200/300.jpg?hmac=E2gUK85wncj5qALDLpEjQzqgfazui9pDGMgzVWMpqo4",
-      "https://i.picsum.photos/id/864/200/300.jpg?hmac=pHxnt4rXpNHIqBRpVSe-yL_pDtdwDfasgfub8GwI5mw",
-      "https://i.picsum.photos/id/939/200/300.jpg?hmac=cj4OIUh8I6eW-hwT25m1_dCA6ZsAmSYixKCgsbZZmXk"
-    ],
+    images: [],
     navState: 0
   };
 
@@ -57,6 +52,7 @@ export class ShopRenderer extends Component {
             dashboard: jsonRes.dashboard,
             totalSpent: jsonRes.totalSpent,
             chargesEnabled: jsonRes.chargesEnabled,
+            images: jsonRes.images,
             loading: false
           });
         } else if (jsonRes.invalidShopId) {
@@ -116,7 +112,31 @@ export class ShopRenderer extends Component {
       : 0;
   };
 
+  /** Deletes image from gallery */
+  deleteImage = () => {
+    this.setState({ loading: true, imagesZoomed: false });
+    fetch("/shop/image", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        url: this.state.images[this.state.imageZoomedIndex]
+      })
+    })
+      .then(res => res.json())
+      .then(jsonRes => {
+        console.log(jsonRes);
+        if (!jsonRes.success) {
+          alert(jsonRes.message);
+          if (jsonRes.serverError) errorHandler.serverError(jsonRes);
+        } else window.location = window.location.pathname;
+      });
+  };
+
   render() {
+    console.log(this.state.images);
     const passesLeft = this.state.shop
       ? this.state.shop.maxpremiums - this.state.shop.total_premiums
       : 0;
@@ -134,7 +154,6 @@ export class ShopRenderer extends Component {
         getBarChartWidth={this.copmputeBarChartWidth}
         passesLeft={passesLeft}
         images={this.state.images}
-        getBarChartWidth={this.copmputeBarChartWidth}
         zoomImage={i =>
           this.setState({ imageZoomedIndex: i, imagesZoomed: true })
         }
@@ -221,6 +240,7 @@ export class ShopRenderer extends Component {
               image={this.state.images[this.state.imageZoomedIndex]}
               handleClicks={this.getHandleClicks()}
               hide={() => this.setState({ imagesZoomed: false })}
+              deleteImage={this.state.dashboard ? this.deleteImage : null}
             />
           ) : null}
         </div>

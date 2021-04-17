@@ -24,3 +24,16 @@
 .image-zoomed-icon.hide-cross {
   color: var(--pink);
 }
+
+#image-zoomed-delete {
+  position: fixed;
+  bottom: 20px;
+  left: 50px;
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#image-zoomed-delete:hover {
+  color: var(--pink);
+}

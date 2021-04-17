@@ -34,6 +34,8 @@
   "initial_price": "Prezzo di partenza",
   "shop_price_increase": "Aumento valore",
   "resend_me_the_cart": "Spediscimi la carta",
+  "delete_image": "Elimina immagine",
+  "confirm_delete_image": "Sei sicuro di voler eliminare quest'immagine?",
 
   "passes_sold_number": "Scelto da",
   "shop_places_left": "Pass rimasti",

@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import "./imageZoomed.css";
+import it from "../../locales/it.json";
 
 /** Renders image zoomed
  * @param image
  * @param handleClicks
  * @param hide
+ * @param deleteImage function to fire to delete the image
  */
 export class ImageZoomed extends Component {
+  handleDelete = () => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm(it.confirm_delete_image)) {
+      this.props.deleteImage();
+    }
+  };
+
   render() {
     return (
       <div className="popUp-background">
@@ -36,6 +45,11 @@ export class ImageZoomed extends Component {
             }
           ></i>
         </div>
+        {this.props.deleteImage ? (
+          <p id="image-zoomed-delete" onClick={this.handleDelete}>
+            <i className="fas fa-trash-alt"></i> {it.delete_image}
+          </p>
+        ) : null}
       </div>
     );
   }
