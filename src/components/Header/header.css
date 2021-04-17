@@ -4,7 +4,7 @@
   align-items: center;
   width: 100vw;
   position: fixed;
-  z-index: 1;
+  z-index: 1001;
   box-sizing: border-box;
   padding: 0px 30px;
   top: 0px;

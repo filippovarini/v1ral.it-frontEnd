@@ -44,7 +44,6 @@ export class Gallery extends Component {
     })
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (!jsonRes.success) {
           alert(jsonRes.message);
           if (jsonRes.serverError) errorHandler.serverError(jsonRes);

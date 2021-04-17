@@ -1,4 +1,7 @@
 {
+  "client_service_number_formatted": "320 6265132",
+  "client_service_number_raw": "3206265132",
+
   "days": "giorni",
   "pass": "pass",
   "passes": "pass",
@@ -127,6 +130,8 @@
   "shop_profile_priviledges_goals": "Dove vanno i soldi?",
   "shop_profile_what_happens_with_money": "Comprando il pass supporti questo shop e contribuisci alla ripresa dall'impatto del Covid-19. Il pass ti da il diritto ai privilegi specificati. I soldi saranno utilizzati per raggiungere gli obbiettivi specificati.",
   "goals_restart_index": "Gli utenti vogliono sapere dove vanno i soldi",
+
+  "shop_register_help": "Vuoi una mano con l'iscrizione ed il pass? Chiamaci al",
   "shop_register_insert_goal": "Aggiungi un obbiettivo",
   "shop_register_add_product_suggestions": "Best selling:",
   "shop_register_priviledges_checkboxes": "Mi impegno a garantire i privilegi da me specificati ai clienti che ne hanno diritto",
@@ -134,7 +139,7 @@
   "shop_register_credentials_choose_password": "Scegli una password",
   "shop_register_credentials_place": "Indirizzo di consegna",
   "shop_register_how_it_works": "Come funziona?",
-  "shop_register_why_register": "Come ci guadagno?",
+  "shop_register_why_register": "Perchè registrarsi?",
   "shop_register_terms_privacy": "Accetto termini e condizioni e privacy policy",
   "shop_register_truthfullness": "Sono consapevole delle conseguenze penali derivanti dal registrarsi come shop non essendolo",
   "shop_register_prompt": "Rendi l'Italia più bella con il tuo shop?",

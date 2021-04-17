@@ -87,12 +87,29 @@
   line-height: 25px;
 }
 
-#shop-prompt-button {
+#shop-prompt-button-container {
   width: 30%;
-  height: 50px;
-  line-height: 50px;
-  font-size: 1.4rem;
   max-width: 250px;
+}
+
+#shop-prompt-button {
+  height: 40px;
+  width: 100%;
+  display: block;
+  line-height: 40px;
+  font-size: 1.4rem;
+}
+
+#shop-prompt-why {
+  color: var(--gray);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+#shop-prompt-why:hover {
+  color: var(--white);
 }
 
 @media only screen and (max-width: 900px) {
@@ -107,6 +124,7 @@
     background-position: right 50px;
     background-position-x: -300px;
   }
+
   #shop-prompt-container {
     height: 150px;
   }
@@ -118,8 +136,6 @@
   }
 
   #shop-prompt-button {
-    height: 40px;
-    line-height: 40px;
     font-size: 1rem;
   }
 }

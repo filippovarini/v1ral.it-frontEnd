@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./shopRegisterConvincers.css";
 
-/** Explains why the shop should do the challenge */
+/** Explains why the shop should do the challenge
+ * @param hide
+ * @param hidden
+ */
 export class WhyShouldShopDoIt extends Component {
   render() {
     return (

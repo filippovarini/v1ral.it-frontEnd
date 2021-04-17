@@ -119,14 +119,7 @@ textarea:focus {
 
 .header-button-container {
   flex-wrap: wrap;
-  padding-bottom: 10px;
-  /* justify-content: center; */
-}
-
-.header-button {
-  margin: 0 10px;
-  margin-top: 10px;
-  background: var(--pink);
+  gap: 10px;
 }
 
 .header-step-container {
@@ -154,6 +147,20 @@ textarea:focus {
 .header-step-icon {
   font-weight: bold;
   font-size: 1rem;
+}
+
+#header-line2 {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#shop-register-help {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+#shop-register-help-number {
+  color: var(--lightBlue);
 }
 
 /* ADD INFO COMPONENTS */

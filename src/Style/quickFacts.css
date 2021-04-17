@@ -143,6 +143,7 @@
     /* fact beside bar chart */
     display: flex;
     padding: 0;
+    justify-content: space-between;
   }
 
   .fact {

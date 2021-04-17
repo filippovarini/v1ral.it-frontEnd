@@ -54,7 +54,9 @@ export class ShopInfo extends Component {
     const phone = this.props.phone ? (
       <div className="flex-line shop-aside-line">
         <i className="fas fa-mobile shop-aside-icon"></i>
-        <p className="shop-aside-text">{this.props.phone}</p>
+        <a href={`tel:${this.props.phone}`} className="shop-aside-text">
+          {this.props.phone}
+        </a>
       </div>
     ) : null;
 
