@@ -4,13 +4,15 @@
   justify-content: space-between;
 }
 
-.page-description-textes {
+.page-description-text-container {
   width: 70%;
 }
 
 .page-description-header {
   font-weight: bold;
   font-size: 1.2rem;
+  line-height: 18px;
+  margin-bottom: 5px;
 }
 
 .page-description-text {
@@ -20,4 +22,16 @@
 .page-description-img {
   height: 100px;
   width: auto;
+}
+
+@media only screen and (max-width: 500px) {
+  .page-description-header {
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+    line-height: 12px;
+  }
+
+  .page-description-text {
+    font-size: 0.6rem;
+  }
 }

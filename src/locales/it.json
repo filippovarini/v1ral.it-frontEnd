@@ -1,6 +1,8 @@
 {
   "client_service_number_formatted": "320 6265132",
   "client_service_number_raw": "3206265132",
+  "client_service_email": "info@v1ral.it",
+  "client_service_link": "Assistenza",
 
   "days": "giorni",
   "pass": "pass",
@@ -13,6 +15,8 @@
   "challenger": "Sfidante",
   "success": "Successo!",
   "rt_index": "Indice Rt",
+  "contacts": "Contatti",
+  "faqs": "Domande Frequenti",
 
   "pass_month_duration": "Durata pass",
   "cart_item_renew": "rinnovo pass",
@@ -63,9 +67,6 @@
 
   "loading_image": "Caricando l'immagine, attendi qualche secondo...",
   "loading_image_short": "Caricando l'immagine",
-
-  "shops_page_description_header": "Scegli gli shops in cui comprare il privè",
-  "shops_page_description_text": "Comprando il privè supporti gli shop nella ripresa dell'impatto Covid-19. Inoltre, il privè ti da accesso a privilegi speciali di cui puoi godere in quel shop.",
 
   "checkout_page_header": "Checkout",
   "checkout_empty_cart": "Il carrello è vuoto",
@@ -190,7 +191,18 @@
   "reset_filters": "Ripristina filtri",
   "cities_available": "Città disponibili:",
   "categories_available": "Categorie disponibili",
+
   "not_found_header": "Oops!",
   "not_found_description": "Nessuna pagina trovata a questo indirizzo",
-  "maintenance_description": "Ci stiamo migliorando. Ripartiremo tra poco, insieme :)"
+
+  "maintenance_description": "Ci stiamo migliorando. Ripartiremo tra poco, insieme :)",
+
+  "error_header": "Houston, abbiamo un problema!",
+  "error_description": "Il server ha incontrato un errore improvviso. Se il problema persiste, non esitare a contattare il servizio clienti.",
+
+  "shops_page_description_header": "Scegli gli shops in cui comprare il pass",
+  "shops_page_description_text": "Comprando il pass supporti gli shop nella ripresa dell'impatto Covid-19. Inoltre, il pass ti da accesso a privilegi speciali di cui puoi godere in quel shop.",
+
+  "help_page_description_header": "Per ogni dubbio, facci uno squillo!",
+  "help_page_description_text": "Il nostro fantastico servizio clienti sarà felice di aiutarti. Se non vuoi attendere al telefono, dai un occhio alle nostre Domande Frequenti."
 }

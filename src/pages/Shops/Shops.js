@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import pageDescriptionImage from "../../images/user-step1.png";
 import "./shops.css";
 
 import errorHandler from "../../functions/errorHandler";
@@ -6,9 +7,8 @@ import it from "../../locales/it.json";
 
 import ShopBox from "../../components/ShopBox/ShopBox";
 import Loading from "../../components/Loading/Loading";
-import Header from "../../components/Header/Header";
 import Filter from "./Filter";
-import ShopPageDescription from "../../components/PageDescriptions/ShopPageDescription";
+import PageDescription from "../../components/PageDescription/PageDescription";
 import ViralUserTick from "../../components/ViralUserTick/ViralUserTick";
 import InsertedFilters from "./InsertedFilters";
 
@@ -80,8 +80,12 @@ export class Shops extends Component {
 
   render() {
     const body = this.state.shops ? (
-      <div className="page-wrapper">
-        <ShopPageDescription />
+      <div>
+        <PageDescription
+          header={it.shops_page_description_header}
+          text={it.shops_page_description_text}
+          image={pageDescriptionImage}
+        />
         <div id="shops-page-sub-header">
           {this.state.challenger ? (
             <p id="shops-challenger">
@@ -156,18 +160,8 @@ export class Shops extends Component {
         </div>
       </div>
     ) : null;
-    return (
-      <div>
-        <Header />
-        {this.state.loading ? (
-          <div className="page-wrapper">
-            <Loading class="page-loading" />
-          </div>
-        ) : (
-          body
-        )}
-      </div>
-    );
+
+    return this.state.loading ? <Loading class="page-loading" /> : body;
   }
 }
 

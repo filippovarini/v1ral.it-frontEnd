@@ -60,7 +60,7 @@ export class Shops extends Component {
   };
 
   handleClick = id => {
-    this.props.history.push("/shop/" + id);
+    window.location = "/shop/" + id;
   };
 
   /** Formats data for the table */

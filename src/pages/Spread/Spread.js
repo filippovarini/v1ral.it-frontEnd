@@ -4,7 +4,6 @@ import "./spread.css";
 import errorHandler from "../../functions/errorHandler";
 
 import Loading from "../../components/Loading/Loading";
-import Header from "../../components/Header/Header";
 import Product from "../../components/ProductBox/ProductBox";
 import SpreadStats from "./SpreadStats";
 
@@ -61,14 +60,7 @@ export class Spread extends Component {
         </div>
       </div>
     ) : null;
-    return (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? <Loading /> : body}
-        </div>
-      </div>
-    );
+    return this.state.loading ? <Loading /> : body;
   }
 }
 

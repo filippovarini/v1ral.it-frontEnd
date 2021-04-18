@@ -4,7 +4,6 @@ import "./shopGoals.css";
 
 import it from "../../../locales/it.json";
 
-import Header from "../../../components/Header/Header";
 import AddGoal from "./privateComponents/AddGoal";
 import RegisterHeader from "../ShopRegisterHeader";
 import Goals from "../../../components/Goals/Goals";
@@ -71,33 +70,30 @@ export class ShopGoals extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <div className="page-wrapper">
-          <RegisterHeader navState={3} />
+        <RegisterHeader navState={3} />
+        <div className="shop-register-body">
+          <p className="register-warning">{it.shop_register_insert_goals}</p>
           <div className="shop-register-body">
-            <p className="register-warning">{it.shop_register_insert_goals}</p>
-            <div className="shop-register-body">
-              <div id="shop-register-goals-container">
-                <Goals
-                  goals={this.state.goals}
-                  adding={true}
-                  handleAddClick={this.toggleAddGoal}
-                  deleteGoal={this.removeGoal}
-                />
-                <AddGoal
-                  handleAdd={this.addGoal}
-                  hidden={this.state.addGoalHidden}
-                  hide={this.toggleAddGoal}
-                />
-              </div>
-              <p className="form-error">{this.state.error}</p>
-              <p
-                className="button shop-register-button"
-                onClick={this.handleSubmit}
-              >
-                CONFERMA
-              </p>
+            <div id="shop-register-goals-container">
+              <Goals
+                goals={this.state.goals}
+                adding={true}
+                handleAddClick={this.toggleAddGoal}
+                deleteGoal={this.removeGoal}
+              />
+              <AddGoal
+                handleAdd={this.addGoal}
+                hidden={this.state.addGoalHidden}
+                hide={this.toggleAddGoal}
+              />
             </div>
+            <p className="form-error">{this.state.error}</p>
+            <p
+              className="button shop-register-button"
+              onClick={this.handleSubmit}
+            >
+              CONFERMA
+            </p>
           </div>
         </div>
       </div>

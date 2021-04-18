@@ -91,8 +91,8 @@ export class Gallery extends Component {
     );
 
     return (
-      <div id="shop-aside-gallery" className="shop-aside-box box">
-        <div id="gallery-header" className="shop-aside-header flex-line">
+      <div id="shop-aside-gallery" className="body-box box">
+        <div id="gallery-header" className="body-box-header flex-line">
           <p>{it.gallery}</p>
           {this.state.addImageLoading ? addImageLoading : addImage}
         </div>

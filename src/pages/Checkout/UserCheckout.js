@@ -9,7 +9,6 @@ import it from "../../locales/it.json";
 
 import Loading from "../../components/Loading/Loading";
 import TransactionLoading from "../../components/Loading/TransactionLoading";
-import Header from "../../components/Header/Header";
 import UserCheckoutProducts from "../../components/UserCheckoutProducts/UserCheckoutProducts";
 import Table from "../../components/Table/Table";
 import Bill from "../../components/Bill/Bill";
@@ -306,14 +305,7 @@ export class UserCheckout extends Component {
         emptyCart
       );
 
-    return (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? <Loading class="page-loading" /> : body}
-        </div>
-      </div>
-    );
+    return this.state.loading ? <Loading class="page-loading" /> : body;
   }
 }
 

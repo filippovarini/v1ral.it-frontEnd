@@ -48,7 +48,11 @@ export class ShopHead extends Component {
     this.setState({ buttonLoading: false });
   };
 
-  render() {
+  /** Gets the style, text and handleClick of the profile header button, based
+   * on the type of page (dashbaord or profile) and whether the user has bought
+   * already that shop (or added to cart)
+   */
+  getProfileButton = () => {
     /** Dynamic button props based on whether we are showing the dashboard or if
      * profile, whether the user as bought or added the shop to the cart */
     let profileHeaderButtonStyle = null;
@@ -82,6 +86,14 @@ export class ShopHead extends Component {
         this.props.history.push("/spread");
     }
 
+    return {
+      profileHeaderButtonText,
+      profileHeaderButtonStyle,
+      profileHeaderButtonClickHandler
+    };
+  };
+
+  render() {
     return (
       <div>
         <div id="shopProfile-header-container">
@@ -109,9 +121,9 @@ export class ShopHead extends Component {
                 data: this.props.shop.viral_premiums
               }
             ]}
-            handleSubmit={profileHeaderButtonClickHandler}
-            buttonText={profileHeaderButtonText}
-            style={profileHeaderButtonStyle}
+            handleSubmit={this.getProfileButton.profileHeaderButtonClickHandler}
+            buttonText={this.getProfileButton.profileHeaderButtonText}
+            style={this.getProfileButton.profileHeaderButtonStyle}
             passesLeft={this.props.passesLeft > 0}
             dashboard={this.props.dashboard}
           />

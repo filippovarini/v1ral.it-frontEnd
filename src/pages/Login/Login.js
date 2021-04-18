@@ -4,7 +4,6 @@ import errorHandler from "../../functions/errorHandler";
 
 import it from "../../locales/it.json";
 
-import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 
 export class UserLogin extends Component {
@@ -131,25 +130,22 @@ export class UserLogin extends Component {
 
     return (
       <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? (
-            <div className="log-form box box-background">
-              <Loading />
-            </div>
-          ) : (
-            body
-          )}
-          <Link to="/recover" className="log-form-subtext log-form-link">
-            Credenziali dimenticate?
+        {this.state.loading ? (
+          <div className="log-form box box-background">
+            <Loading />
+          </div>
+        ) : (
+          body
+        )}
+        <Link to="/recover" className="log-form-subtext log-form-link">
+          Credenziali dimenticate?
+        </Link>
+        <p className="log-form-subtext">
+          Sei nuovo?{" "}
+          <Link to="/" className="log-form-link">
+            partecipa alla challenge
           </Link>
-          <p className="log-form-subtext">
-            Sei nuovo?{" "}
-            <Link to="/" className="log-form-link">
-              partecipa alla challenge
-            </Link>
-          </p>
-        </div>
+        </p>
       </div>
     );
   }

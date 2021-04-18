@@ -8,7 +8,7 @@ import it from "../../../../locales/it.json";
 export class ShareShop extends Component {
   render() {
     return (
-      <div className="shop-aside-box box">
+      <div className="body-box box">
         <p id="share-shop-header">
           {this.props.dashboard
             ? it.share_shop_text_shop_owner

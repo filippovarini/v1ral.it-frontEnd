@@ -7,7 +7,6 @@ import errorHandler from "../../functions/errorHandler";
 import it from "../../locales/it.json";
 
 import Loading from "../../components/Loading/Loading";
-import Header from "../../components/Header/Header";
 import ShopRegisterHeader from "./ShopRegisterHeader";
 import ValidateStripeAccount from "../../components/ValidateStripeAccount/ValidateStripeAccount";
 
@@ -130,14 +129,7 @@ export class ShopRegisterDone extends Component {
         </div>
       </div>
     );
-    return (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? <Loading /> : body}
-        </div>
-      </div>
-    );
+    return this.state.loading ? <Loading /> : body;
   }
 }
 

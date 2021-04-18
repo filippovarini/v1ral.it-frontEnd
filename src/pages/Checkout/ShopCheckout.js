@@ -8,7 +8,6 @@ import "./checkout.css";
 import it from "../../locales/it.json";
 
 // loading
-import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import Table from "../../components/Table/Table";
 import Bill from "../../components/Bill/Bill";
@@ -215,14 +214,8 @@ export class Checkout extends Component {
       </div>
     );
     const body = this.state.products.length > 0 ? checkoutBody : emptyBody;
-    return (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? <Loading class="page-loading" /> : body}
-        </div>
-      </div>
-    );
+
+    return this.state.loading ? <Loading class="page-loading" /> : body;
   }
 }
 

@@ -6,7 +6,6 @@ import emailValid from "../../functions/emailValid";
 
 import it from "../../locales/it.json";
 
-import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 
 export class RecoverPassword extends Component {
@@ -125,16 +124,13 @@ export class RecoverPassword extends Component {
 
     return (
       <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? (
-            <div className="log-form box box-background">
-              <Loading />
-            </div>
-          ) : (
-            body
-          )}
-        </div>
+        {this.state.loading ? (
+          <div className="log-form box box-background">
+            <Loading />
+          </div>
+        ) : (
+          body
+        )}
       </div>
     );
   }

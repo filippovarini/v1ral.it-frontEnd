@@ -2,4 +2,20 @@
   height: 200px;
   background: var(--dark);
   margin-top: 300px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0px 10px;
+}
+
+#footer-body {
+  width: 70%;
+  min-width: 300px;
+}
+
+#footer-links {
+  margin-right: 10px;
+}
+
+.footer-text {
+  color: var(--white);
 }

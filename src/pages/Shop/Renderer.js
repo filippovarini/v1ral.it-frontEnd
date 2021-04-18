@@ -8,7 +8,6 @@ import it from "../../locales/it.json";
 // import ShopProfile from "./ShopProfile/ShopProfile";
 import ShopProfile from "./Profile";
 import ShopDashboard from "./Dashboard";
-import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import ZoomImage from "../../components/ImageZoomed/ImageZoomed";
 
@@ -91,11 +90,16 @@ export class ShopRenderer extends Component {
     return { prev, next };
   };
 
+  /** Sets the page to loading
+   * * @type dashboard, profile
+   */
   toggleLoading = () => {
     this.setState({ loading: !this.state.loading });
   };
 
-  /** Get optimal barChart width to fit into the shop-profile-body */
+  /** Get optimal barChart width to fit into the shop-profile-body
+   * @type dashboard, profile
+   */
   copmputeBarChartWidth = () => {
     let barChartWidth = null;
     const div = document.getElementById("shop-profile-body");
@@ -105,14 +109,18 @@ export class ShopRenderer extends Component {
     return barChartWidth;
   };
 
-  /** Get total money the shop has in the goals */
+  /** Get total money the shop has in the goals
+   * @type dashboard, profile
+   */
   getDisruptionIndex = () => {
     return this.state.goals
       ? this.state.goals.reduce((acc, goal) => acc + goal.amount, 0)
       : 0;
   };
 
-  /** Deletes image from gallery */
+  /** Deletes image from gallery
+   * @type dashboard
+   */
   deleteImage = () => {
     this.setState({ loading: true, imagesZoomed: false });
     fetch("/shop/image", {
@@ -232,18 +240,15 @@ export class ShopRenderer extends Component {
 
     return (
       <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? <Loading class="page-loading" /> : body}
-          {this.state.imagesZoomed ? (
-            <ZoomImage
-              image={this.state.images[this.state.imageZoomedIndex]}
-              handleClicks={this.getHandleClicks()}
-              hide={() => this.setState({ imagesZoomed: false })}
-              deleteImage={this.state.dashboard ? this.deleteImage : null}
-            />
-          ) : null}
-        </div>
+        {this.state.loading ? <Loading class="page-loading" /> : body}
+        {this.state.imagesZoomed ? (
+          <ZoomImage
+            image={this.state.images[this.state.imageZoomedIndex]}
+            handleClicks={this.getHandleClicks()}
+            hide={() => this.setState({ imagesZoomed: false })}
+            deleteImage={this.state.dashboard ? this.deleteImage : null}
+          />
+        ) : null}
       </div>
     );
   }

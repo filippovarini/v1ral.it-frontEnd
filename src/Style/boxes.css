@@ -55,3 +55,43 @@
   max-width: 700px;
   margin: 0 auto;
 }
+
+/* BODY BOX 
+is the box that shows body information (a box that takes the full width) */
+
+.body-box {
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 10px 20px 20px 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.body-box-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.body-box-line {
+  margin: 10px 0px;
+}
+
+.body-box-icon {
+  width: 20px;
+  min-width: 20px;
+  text-align: center;
+  margin-right: 10px;
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+
+.body-box-text {
+  font-size: 0.8rem;
+  line-height: 15px;
+}
+
+a.body-box-text {
+  color: var(--darkBlue);
+}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./serviceOffered.css";
 import it from "../../../locales/it.json";
-import Header from "../../../components/Header/Header";
 import ServiceForm from "./ServicePriceForm";
 import RegisterHeader from "../ShopRegisterHeader";
 import Services from "../../../components/Services/Services";
@@ -112,45 +111,42 @@ export class ServicesOffered extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <div className="page-wrapper">
-          <RegisterHeader navState={2} />
+        <RegisterHeader navState={2} />
+        <div className="shop-register-body">
+          <p className="register-warning">
+            {it.shop_register_choose_priviledges}
+          </p>
           <div className="shop-register-body">
-            <p className="register-warning">
-              {it.shop_register_choose_priviledges}
-            </p>
-            <div className="shop-register-body">
-              <div id="serviceOffered-body" className="flex-line">
-                <Services
-                  services={this.state.services}
-                  adding={true}
-                  handleAddClick={this.toggleAddService}
-                  deleteService={this.removeService}
-                />
-                <ServiceForm
-                  handleChange={this.handleChange}
-                  error={this.state.error}
-                  handleSubmit={this.handleSubmit}
-                  maxPremiums={this.state.maxPremiums}
-                  initialPrice={this.state.initialPrice}
-                  passExpiry={this.state.passExpiry}
-                  toggleCheck1={() =>
-                    this.setState({ check1: !this.state.check1, error: null })
-                  }
-                />
-                <AddPrivWrapper
-                  hidden={this.state.addInfoHidden}
-                  hide={this.toggleAddService}
-                  handleAdd={this.addInfo}
-                />
-              </div>
-              <p
-                className="button shop-register-button"
-                onClick={this.handleSubmit}
-              >
-                PROSEGUI
-              </p>
+            <div id="serviceOffered-body" className="flex-line">
+              <Services
+                services={this.state.services}
+                adding={true}
+                handleAddClick={this.toggleAddService}
+                deleteService={this.removeService}
+              />
+              <ServiceForm
+                handleChange={this.handleChange}
+                error={this.state.error}
+                handleSubmit={this.handleSubmit}
+                maxPremiums={this.state.maxPremiums}
+                initialPrice={this.state.initialPrice}
+                passExpiry={this.state.passExpiry}
+                toggleCheck1={() =>
+                  this.setState({ check1: !this.state.check1, error: null })
+                }
+              />
+              <AddPrivWrapper
+                hidden={this.state.addInfoHidden}
+                hide={this.toggleAddService}
+                handleAdd={this.addInfo}
+              />
             </div>
+            <p
+              className="button shop-register-button"
+              onClick={this.handleSubmit}
+            >
+              PROSEGUI
+            </p>
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import errorHandler from "../../functions/errorHandler";
 
 import UserProfile from "./UserProfile";
 import Loading from "../../components/Loading/Loading";
-import Header from "../../components/Header/Header";
 
 export class UserRenderer extends Component {
   state = {
@@ -49,16 +48,7 @@ export class UserRenderer extends Component {
         dashboard={this.state.dashboard}
       />
     );
-    return this.state.loading ? (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          <Loading class="page-loading" />
-        </div>
-      </div>
-    ) : (
-      body
-    );
+    return this.state.loading ? <Loading class="page-loading" /> : body;
   }
 }
 

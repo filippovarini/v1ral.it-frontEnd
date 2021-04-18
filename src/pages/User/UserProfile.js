@@ -4,7 +4,6 @@ import "./userProfile.css";
 
 import it from "../../locales/it.json";
 
-import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import ShopBox from "../../components/ShopBox/ShopBox";
 import UserProfileHeader from "../../components/ProfileHeaders/UserProfileHeader";
@@ -25,7 +24,7 @@ export class UserProfile extends Component {
 
   render() {
     const body = this.props.user ? (
-      <div className="page-wrapper">
+      <div>
         <div id="userProfile-header-container" className="box">
           <div id="userProfile-logo">
             <UserProfileLogo url={this.props.user.profileurl} />
@@ -73,14 +72,7 @@ export class UserProfile extends Component {
         )}
       </div>
     ) : null;
-    return (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.props.loading ? <Loading class="page-loading" /> : body}
-        </div>
-      </div>
-    );
+    return this.props.loading ? <Loading class="page-loading" /> : body;
   }
 }
 

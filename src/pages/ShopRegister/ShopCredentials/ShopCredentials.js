@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Header from "../../../components/Header/Header";
 import Form from "./ShopCredentialsForm";
 import RegisterHeader from "../ShopRegisterHeader";
 
@@ -106,34 +105,31 @@ export class ShopCredentials extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <div className="page-wrapper">
-          <RegisterHeader navState={1} />
-          <div className="shop-register-body">
-            <Form
-              handleChange={this.handleChange}
-              error={this.state.error}
-              handleSubmit={this.handleSubmit}
-              email={this.state.email}
-              psw={this.state.psw}
-              city={this.state.city}
-              street={this.state.street}
-              province={this.state.province}
-              postcode={this.state.postcode}
-              toggleCheck1={() =>
-                this.setState({ error: null, check1: !this.state.check1 })
-              }
-              toggleCheck2={() =>
-                this.setState({ error: null, check2: !this.state.check2 })
-              }
-            />
-            <p
-              className="button shop-register-button"
-              onClick={this.handleSubmit}
-            >
-              PROSEGUI
-            </p>
-          </div>
+        <RegisterHeader navState={1} />
+        <div className="shop-register-body">
+          <Form
+            handleChange={this.handleChange}
+            error={this.state.error}
+            handleSubmit={this.handleSubmit}
+            email={this.state.email}
+            psw={this.state.psw}
+            city={this.state.city}
+            street={this.state.street}
+            province={this.state.province}
+            postcode={this.state.postcode}
+            toggleCheck1={() =>
+              this.setState({ error: null, check1: !this.state.check1 })
+            }
+            toggleCheck2={() =>
+              this.setState({ error: null, check2: !this.state.check2 })
+            }
+          />
+          <p
+            className="button shop-register-button"
+            onClick={this.handleSubmit}
+          >
+            PROSEGUI
+          </p>
         </div>
       </div>
     );

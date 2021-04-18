@@ -24,11 +24,11 @@ export class ShopInfo extends Component {
 
   render() {
     const instagram = this.props.instagram_link ? (
-      <div className="flex-line shop-aside-line">
-        <i className="fab fa-instagram-square shop-aside-icon"></i>
+      <div className="flex-line body-box-line">
+        <i className="fab fa-instagram-square body-box-icon"></i>
         <a
           href={this.props.instagram_link}
-          className="shop-aside-text"
+          className="body-box-text"
           rel="noreferrer"
           target="_blank"
         >
@@ -38,11 +38,11 @@ export class ShopInfo extends Component {
     ) : null;
 
     const facebook = this.props.facebook_link ? (
-      <div className="flex-line shop-aside-line">
-        <i className="fab fa-facebook-square shop-aside-icon"></i>
+      <div className="flex-line body-box-line">
+        <i className="fab fa-facebook-square body-box-icon"></i>
         <a
           href={this.props.facebook_link}
-          className="shop-aside-text"
+          className="body-box-text"
           target="_blank"
           rel="noreferrer"
         >
@@ -52,38 +52,38 @@ export class ShopInfo extends Component {
     ) : null;
 
     const phone = this.props.phone ? (
-      <div className="flex-line shop-aside-line">
-        <i className="fas fa-mobile shop-aside-icon"></i>
-        <a href={`tel:${this.props.phone}`} className="shop-aside-text">
+      <div className="flex-line body-box-line">
+        <i className="fas fa-mobile body-box-icon"></i>
+        <a href={`tel:${this.props.phone}`} className="body-box-text">
           {this.props.phone}
         </a>
       </div>
     ) : null;
 
     const email = this.props.email ? (
-      <div className="flex-line shop-aside-line">
-        <i className="fas fa-envelope shop-aside-icon"></i>
-        <p className="shop-aside-text">{this.props.email}</p>
+      <div className="flex-line body-box-line">
+        <i className="fas fa-envelope body-box-icon"></i>
+        <p className="body-box-text">{this.props.email}</p>
       </div>
     ) : null;
 
     const category = this.props.category ? (
-      <div className="flex-line shop-aside-line">
-        <i className="fas fa-hashtag shop-aside-icon"></i>
-        <p className="shop-aside-text small-data-box">{this.props.category}</p>
+      <div className="flex-line body-box-line">
+        <i className="fas fa-hashtag body-box-icon"></i>
+        <p className="body-box-text small-data-box">{this.props.category}</p>
       </div>
     ) : null;
 
     const place = (
-      <div className="flex-line shop-aside-line">
-        <i className="fas fa-map-marker-alt shop-aside-icon"></i>
-        <p className="shop-aside-text">{this.computeAddress()}</p>
+      <div className="flex-line body-box-line">
+        <i className="fas fa-map-marker-alt body-box-icon"></i>
+        <p className="body-box-text">{this.computeAddress()}</p>
       </div>
     );
 
     return (
-      <div id="shop-aside-bodyInfo" className="shop-aside-box box">
-        <p className="shop-aside-header">{it.shop_aside_info}</p>
+      <div id="shop-aside-bodyInfo" className="body-box box">
+        <p className="body-box-header">{it.shop_aside_info}</p>
         {place}
         {phone}
         {email}

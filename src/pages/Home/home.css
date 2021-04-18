@@ -88,7 +88,7 @@
 }
 
 #shop-prompt-button-container {
-  width: 30%;
+  width: 35%;
   max-width: 250px;
 }
 
@@ -137,5 +137,10 @@
 
   #shop-prompt-button {
     font-size: 1rem;
+  }
+
+  #shop-prompt-why {
+    border: 1px solid beige;
+    font-size: 0.8rem;
   }
 }

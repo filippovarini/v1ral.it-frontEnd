@@ -6,7 +6,6 @@ import it from "../../../locales/it.json";
 
 import postImage from "../../../functions/postImage";
 
-import Header from "../../../components/Header/Header";
 import Form from "./components/BioInfoForm";
 import ShopImages from "./components/ShopImagesInput/ShopImages";
 import RegisterHeader from "../ShopRegisterHeader";
@@ -129,45 +128,42 @@ export class BioInfo extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <div className="page-wrapper">
-          <RegisterHeader navState={0} />
-          <div className="shop-register-body">
-            <p className="register-warning">
-              {it.shop_register_complete_profile}
-            </p>
-            <div id="bio-forms-container">
-              <div id="bioInfo-background-container">
-                <ShopImages
-                  logourl={this.state.logourl}
-                  backgroundurl={this.state.backgroundurl}
-                  resetUrl={this.resetImage}
-                  handleImageChange={this.handleImageChange}
-                  input={true}
-                />
-              </div>
-              <Form
-                handleChange={this.handleChange}
-                error={this.state.error}
-                handleSubmit={this.handleSubmit}
-                name={this.state.name}
-                category={this.state.category}
-                bio={this.state.bio}
+        <RegisterHeader navState={0} />
+        <div className="shop-register-body">
+          <p className="register-warning">
+            {it.shop_register_complete_profile}
+          </p>
+          <div id="bio-forms-container">
+            <div id="bioInfo-background-container">
+              <ShopImages
+                logourl={this.state.logourl}
+                backgroundurl={this.state.backgroundurl}
+                resetUrl={this.resetImage}
+                handleImageChange={this.handleImageChange}
+                input={true}
               />
             </div>
-            {this.multerOperating() ? (
-              <div className="shop-register-button">
-                <ImageLoading />
-              </div>
-            ) : (
-              <p
-                className="button shop-register-button"
-                onClick={this.handleSubmit}
-              >
-                PROSEGUI
-              </p>
-            )}
+            <Form
+              handleChange={this.handleChange}
+              error={this.state.error}
+              handleSubmit={this.handleSubmit}
+              name={this.state.name}
+              category={this.state.category}
+              bio={this.state.bio}
+            />
           </div>
+          {this.multerOperating() ? (
+            <div className="shop-register-button">
+              <ImageLoading />
+            </div>
+          ) : (
+            <p
+              className="button shop-register-button"
+              onClick={this.handleSubmit}
+            >
+              PROSEGUI
+            </p>
+          )}
         </div>
       </div>
     );

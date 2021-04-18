@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
 
-import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 
 export class AdminLogin extends Component {
@@ -111,19 +110,12 @@ export class AdminLogin extends Component {
       </form>
     );
 
-    return (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? (
-            <div className="log-form box background">
-              <Loading />
-            </div>
-          ) : (
-            body
-          )}
-        </div>
+    return this.state.loading ? (
+      <div className="log-form box background">
+        <Loading />
       </div>
+    ) : (
+      body
     );
   }
 }

@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import errorHandler from "../../functions/errorHandler";
 
 import Loading from "../../components/Loading/Loading";
-import Header from "../../components/Header/Header";
 
 export class TransactionSuccess extends Component {
   state = {
@@ -34,14 +33,7 @@ export class TransactionSuccess extends Component {
     ) : (
       <div>Codice transazione non valida!</div>
     );
-    return (
-      <div>
-        <Header />
-        <div className="page-wrapper">
-          {this.state.loading ? <Loading class="page-loading" /> : body}
-        </div>
-      </div>
-    );
+    return this.state.loading ? <Loading class="page-loading" /> : body;
   }
 }
 
