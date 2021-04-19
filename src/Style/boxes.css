@@ -74,6 +74,10 @@ is the box that shows body information (a box that takes the full width) */
   font-size: 1.2rem;
 }
 
+.body-box-header.dark {
+  color: var(--dark4);
+}
+
 .body-box-line {
   margin: 10px 0px;
 }
@@ -94,4 +98,36 @@ is the box that shows body information (a box that takes the full width) */
 
 a.body-box-text {
   color: var(--darkBlue);
+}
+
+/* DARK BOX */
+.dark-box-container {
+  background: #212121;
+  border-radius: 5px;
+}
+
+.dark-box {
+  background: #424242;
+  border-radius: 5px;
+  width: 200px;
+  height: 120px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.dark-box-header-container {
+  justify-content: space-between;
+  font-size: 1.7rem;
+}
+
+.dark-box-text {
+  color: var(--dark4);
+}
+
+.dark-box-data {
+  font-weight: bold;
+}
+
+.dark-box-title {
+  font-size: 1.5rem;
 }

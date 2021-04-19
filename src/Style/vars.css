@@ -17,4 +17,8 @@
   --shadowBottomLight: 0 1px 1px 0 var(--shadowColor);
   --boxMinWidth: 320px;
   --profileMaxWidth: 700px;
+  --dark1: #212121;
+  --dark2: #424242;
+  --dark3: #616161;
+  --dark4: #bdbdbd;
 }

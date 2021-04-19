@@ -20,9 +20,9 @@ export class Footer extends Component {
           </p>
         </div>
         <div id="footer-links">
-          <Link className="footer-text" to="/help">
+          <a className="footer-text" href="/help">
             {it.client_service_link}
-          </Link>
+          </a>
         </div>
       </div>
     );

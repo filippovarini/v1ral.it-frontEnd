@@ -41,7 +41,7 @@ export class Navigator extends Component {
           },
           {
             name: "login",
-            handleClick: () => this.props.history.push("/login")
+            handleClick: () => (window.location = "/login")
           }
         ];
 

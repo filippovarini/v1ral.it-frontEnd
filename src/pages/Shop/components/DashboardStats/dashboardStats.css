@@ -1,0 +1,28 @@
+#stats-header {
+  justify-content: space-between;
+}
+
+#dashbaord-stats-icon {
+  display: block;
+  font-size: 5rem;
+  margin-right: 20px;
+}
+
+#stats-redirect {
+  width: 200px;
+  color: var(--lightBlue);
+  cursor: pointer;
+}
+
+#stats-redirect:hover {
+  color: var(--darkBlue);
+}
+
+#stats-body {
+  margin-top: 20px;
+}
+
+#stats-footer {
+  margin-top: 20px;
+  gap: 20px;
+}

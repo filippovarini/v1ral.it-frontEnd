@@ -216,6 +216,7 @@ export class ShopRenderer extends Component {
               cases={this.state.cases}
               getBarChartWidth={this.copmputeBarChartWidth}
               navState={this.state.navState}
+              shop={this.state.shop}
             />
           </div>
           <ShopInfoWrapper

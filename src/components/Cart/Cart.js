@@ -55,7 +55,7 @@ export class Cart extends Component {
           <p
             id="cart-button"
             className="button"
-            onClick={() => this.props.history.push(redirectPage)}
+            onClick={() => (window.location = redirectPage)}
           >
             checkout
           </p>

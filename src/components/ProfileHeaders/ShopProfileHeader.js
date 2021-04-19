@@ -10,9 +10,7 @@ import ProfileInfoBar from "./ProfileInfoBar";
  * @param profile: {name, city, province, description, currentprice, logourl}
  * @param info list of three info to show on the instagram-like header
  * @param dashboard?
- * @param handleSubmit?
- * @param style
- * @param buttonText
+ * @param button Object with style, text and handleSubmit
  */
 export class ShopProfileHeader extends Component {
   state = { settingsHidden: true };
@@ -22,7 +20,7 @@ export class ShopProfileHeader extends Component {
   };
 
   render() {
-    const buttonClassSuffix = this.props.handleSubmit ? "" : "disabled";
+    const buttonClassSuffix = this.props.button.handleSubmit ? "" : "disabled";
 
     const settingsButton = this.props.dashboard ? (
       <div className="profile-header-settings">
@@ -40,10 +38,10 @@ export class ShopProfileHeader extends Component {
     let button = (
       <p
         className={"button profile-button " + buttonClassSuffix}
-        onClick={this.props.handleSubmit}
-        style={this.props.style}
+        onClick={this.props.button.handleSubmit}
+        style={this.props.button.style}
       >
-        {this.props.buttonText}
+        {this.props.button.text}
       </p>
     );
 

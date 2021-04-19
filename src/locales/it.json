@@ -67,6 +67,7 @@
 
   "loading_image": "Caricando l'immagine, attendi qualche secondo...",
   "loading_image_short": "Caricando l'immagine",
+  "loading_text": "attendi...",
 
   "checkout_page_header": "Checkout",
   "checkout_empty_cart": "Il carrello è vuoto",
@@ -105,7 +106,7 @@
   "settings_logo": "Modifica il logo",
   "settings_add_priv": "Aggiungi un privilegio",
   "settings_add_passes": "Vendi altri pass",
-  "settings_connect_dashboard": "Dashboard pagamenti",
+  "settings_connect_dashboard": "Piattaforma pagamenti",
 
   "home_description_above_button": "Non vivere le riaperture dei tuoi shops preferiti senza i privilegi offerti su v1ral! Ti godi di più l'esperienza ed aiuti gli shops a ripartire!",
 
@@ -123,7 +124,7 @@
   "shop_viral_donation_received": "Di cui virali",
   "shop_dashboard_stats": "Dati e Transati",
   "shop_email_place_container": "Dati personali",
-  "shop_clicks_and_earned": "Transato",
+  "shop_dashboard_data": "Dahboard",
   "shop_clicks": "Visualizzazioni",
   "shop_earned_so_far": "Fatturato",
   "shop_spent_so_far": "Spese di marketing",

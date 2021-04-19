@@ -12,9 +12,9 @@ export class Error extends Component {
         <img id="error-image" src={image} alt="errore" />
         <div id="error-body">
           <p id="error-description">{it.error_description}</p>
-          <Link to="/help" id="error-client-service-link" className="button">
+          <a href="/help" id="error-client-service-link" className="button">
             {it.client_service_link}
-          </Link>
+          </a>
         </div>
       </div>
     );

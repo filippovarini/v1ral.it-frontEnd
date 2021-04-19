@@ -55,41 +55,40 @@ export class ShopHead extends Component {
   getProfileButton = () => {
     /** Dynamic button props based on whether we are showing the dashboard or if
      * profile, whether the user as bought or added the shop to the cart */
-    let profileHeaderButtonStyle = null;
-    let profileHeaderButtonText = it.shop_button_add_to_cart;
-    let profileHeaderButtonClickHandler = this.handleSubmit;
+    let style = null;
+    let text = it.shop_button_add_to_cart;
+    let handleClick = this.handleSubmit;
     if (this.props.added || this.props.alreadyBought) {
-      profileHeaderButtonClickHandler = null;
-      profileHeaderButtonStyle = { background: "green" };
-      profileHeaderButtonText = this.props.added
+      handleClick = null;
+      style = { background: "green" };
+      text = this.props.added
         ? it.shop_button_already_added_cart
         : it.shop_button_already_bought;
     }
 
     if (this.props.user.name && this.props.user.name[0] === "#") {
       // a shop is logged
-      profileHeaderButtonText = "per selezionare, esci dall'account focolaio";
-      profileHeaderButtonClickHandler = null;
-      profileHeaderButtonStyle = { fontSize: ".8rem" };
+      text = "per selezionare, esci dall'account focolaio";
+      handleClick = null;
+      style = { fontSize: ".8rem" };
     }
 
     if (this.state.buttonLoading) {
-      profileHeaderButtonClickHandler = null;
-      profileHeaderButtonText = "loading...";
-      profileHeaderButtonStyle = { background: "var(--gray)" };
+      handleClick = null;
+      text = "loading...";
+      style = { background: "var(--gray)" };
     }
 
     if (this.props.dashboard) {
-      profileHeaderButtonStyle = null;
-      profileHeaderButtonText = it.shop_buy_our_marketing_products;
-      profileHeaderButtonClickHandler = () =>
-        this.props.history.push("/spread");
+      style = null;
+      text = it.shop_buy_our_marketing_products;
+      handleClick = () => this.props.history.push("/spread");
     }
 
     return {
-      profileHeaderButtonText,
-      profileHeaderButtonStyle,
-      profileHeaderButtonClickHandler
+      text,
+      style,
+      handleClick
     };
   };
 
@@ -121,9 +120,7 @@ export class ShopHead extends Component {
                 data: this.props.shop.viral_premiums
               }
             ]}
-            handleSubmit={this.getProfileButton.profileHeaderButtonClickHandler}
-            buttonText={this.getProfileButton.profileHeaderButtonText}
-            style={this.getProfileButton.profileHeaderButtonStyle}
+            button={this.getProfileButton()}
             passesLeft={this.props.passesLeft > 0}
             dashboard={this.props.dashboard}
           />
