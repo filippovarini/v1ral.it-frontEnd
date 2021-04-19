@@ -30,8 +30,7 @@ export class ShopRenderer extends Component {
     alreadyBought: null,
     imageZoomedIndex: 0,
     imagesZoomed: false,
-    images: [],
-    navState: 0
+    images: []
   };
 
   componentDidMount = () => {
@@ -68,8 +67,6 @@ export class ShopRenderer extends Component {
       });
   };
 
-  updateNav = i => this.setState({ navState: i });
-
   /** Get functions to fire when user clicks arrows when zooming images in
    * galley */
   getHandleClicks = () => {
@@ -95,18 +92,6 @@ export class ShopRenderer extends Component {
    */
   toggleLoading = () => {
     this.setState({ loading: !this.state.loading });
-  };
-
-  /** Get optimal barChart width to fit into the shop-profile-body
-   * @type dashboard, profile
-   */
-  copmputeBarChartWidth = () => {
-    let barChartWidth = null;
-    const div = document.getElementById("shop-profile-body");
-    if (div) {
-      barChartWidth = div.clientWidth;
-    }
-    return barChartWidth;
   };
 
   /** Get total money the shop has in the goals
@@ -144,48 +129,11 @@ export class ShopRenderer extends Component {
   };
 
   render() {
-    console.log(this.state.images);
     const passesLeft = this.state.shop
       ? this.state.shop.maxpremiums - this.state.shop.total_premiums
       : 0;
 
-    let body = this.state.dashboard ? (
-      <ShopDashboard
-        toggleLoading={this.toggleLoading}
-        loading={this.state.loading}
-        shop={this.state.shop}
-        services={this.state.services}
-        goals={this.state.goals}
-        cases={this.state.cases}
-        totalSpent={this.state.totalSpent}
-        chargesEnabled={this.state.chargesEnabled}
-        getBarChartWidth={this.copmputeBarChartWidth}
-        passesLeft={passesLeft}
-        images={this.state.images}
-        zoomImage={i =>
-          this.setState({ imageZoomedIndex: i, imagesZoomed: true })
-        }
-      />
-    ) : (
-      <ShopProfile
-        toggleLoading={this.toggleLoading}
-        loading={this.state.loading}
-        shop={this.state.shop}
-        services={this.state.services}
-        goals={this.state.goals}
-        cases={this.state.cases}
-        added={this.state.added}
-        alreadyBought={this.state.alreadyBought}
-        setAdded={() => this.setState({ added: true })}
-        images={this.state.images}
-        getBarChartWidth={this.copmputeBarChartWidth}
-        zoomImage={i =>
-          this.setState({ imageZoomedIndex: i, imagesZoomed: true })
-        }
-        passesLeft={passesLeft}
-      />
-    );
-
+    let body = null;
     if (this.state.shop) {
       body = (
         <div id="shop-profile" className="flex-line">
@@ -203,20 +151,12 @@ export class ShopRenderer extends Component {
               alreadyBought={this.state.alreadyBought}
               setAdded={() => this.setState({ added: true })}
             />
-            <div id="shop-nav">
-              <Navigator
-                active={this.state.navState}
-                updateNav={this.updateNav}
-                titles={["Dove vanno i soldi?", it.stats]}
-              />
-            </div>
             <ShopBody
               goals={this.state.goals}
               services={this.state.services}
               cases={this.state.cases}
-              getBarChartWidth={this.copmputeBarChartWidth}
-              navState={this.state.navState}
               shop={this.state.shop}
+              dashboard={this.state.dashboard}
             />
           </div>
           <ShopInfoWrapper

@@ -16,7 +16,7 @@ import serviceExplanaitonImg from "../../images/shop-support.png";
 export class ShopServiceExplanaiton extends Component {
   render() {
     return (
-      <div id="service-explanaiton-wrapper" className="box">
+      <div id="service-explanaiton-wrapper" className="box body-box">
         <div id="service-explanaiton-container" className="flex-line">
           <p id="service-explanaiton-text">
             {it.shop_profile_what_happens_with_money}

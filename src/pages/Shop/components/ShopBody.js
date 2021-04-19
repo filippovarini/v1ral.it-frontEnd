@@ -18,37 +18,39 @@ const faqDashboardStats = {
  * @param shop
  */
 export class ShopBody extends Component {
-  render() {
-    let bodyComponent = null;
-    switch (this.props.navState) {
-      case 0:
-        bodyComponent = (
-          <ServiceExplanaiton
-            goals={this.props.goals}
-            services={this.props.services}
-          />
-        );
-        break;
-      case 1:
-        bodyComponent = (
-          <div id="shop-barChart">
-            <BarChart
-              cases={this.props.cases || {}}
-              width={this.props.getBarChartWidth()}
-            />
-          </div>
-        );
-        break;
-      default:
-        throw Error("Illegal navstate");
+  /** Get optimal barChart width to fit into the shop-profile-body
+   * @type dashboard, profile
+   */
+  getBarChartWidth = () => {
+    const offset = 20;
+    let barChartWidth = null;
+    const div = document.getElementById("shop-profile-body");
+    if (div) {
+      barChartWidth = div.clientWidth - offset;
     }
+    return barChartWidth;
+  };
 
+  render() {
     return (
       <div id="shop-body">
-        <DashboardStats
-          data={faqDashboardStats}
-          connectedId={this.props.shop.connectedid}
+        {this.props.dashboard ? (
+          <DashboardStats
+            data={faqDashboardStats}
+            connectedId={this.props.shop.connectedid}
+          />
+        ) : null}
+        <ServiceExplanaiton
+          goals={this.props.goals}
+          services={this.props.services}
         />
+        <div id="shop-barChart" className="body-box box">
+          <p className="body-box-header">Prezzo giornaliero</p>
+          <BarChart
+            cases={this.props.cases || {}}
+            width={this.getBarChartWidth()}
+          />
+        </div>
       </div>
     );
   }
