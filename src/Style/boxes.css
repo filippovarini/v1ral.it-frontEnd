@@ -124,10 +124,11 @@ a.body-box-text {
   color: var(--dark4);
 }
 
-.dark-box-data {
+.dark-box-title {
   font-weight: bold;
 }
 
-.dark-box-title {
-  font-size: 1.5rem;
+.dark-box-description {
+  font-size: 0.8rem;
+  line-height: 13px;
 }

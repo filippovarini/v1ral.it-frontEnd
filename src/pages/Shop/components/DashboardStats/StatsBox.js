@@ -14,6 +14,9 @@ export class StatsBox extends Component {
           {this.props.icon}
         </div>
         <p className="dark-box-title dark-box-text">{this.props.title}</p>
+        <p className="dark-box-description dark-box-text">
+          {this.props.description}
+        </p>
       </div>
     );
   }

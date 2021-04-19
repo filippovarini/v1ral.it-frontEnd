@@ -42,22 +42,25 @@ export class DashboardStats extends Component {
             data={this.props.data.views}
             title={it.shop_clicks}
             icon={<i className="fas fa-eye dark-box-icon dark-box-text"></i>}
+            description={it.shop_clicks_description}
           />
 
           <div id="stats-footer" className="flex-line">
             <StatsBox
-              data={`${this.props.data.lordEarnings}€`}
+              data={`${this.props.data.lordEarnings} €`}
               title={it.shop_earned_so_far}
               icon={
                 <i className="fas fa-wallet dark-box-icon dark-box-text"></i>
               }
+              description={it.shop_earned_so_far_description}
             />
             <StatsBox
-              data={`${this.props.data.marketingExpenditures}€`}
+              data={`${this.props.data.marketingExpenditures} €`}
               title={it.shop_spent_so_far}
               icon={
                 <i className="fas fa-share-alt-square dark-box-icon dark-box-text"></i>
               }
+              description={it.shop_spent_so_far_description}
             />
           </div>
         </div>
