@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import it from "../../../locales/it.json";
 import ServiceExplanaiton from "../../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
 import BarChart from "../../../components/BarChart/BarChart";
 import DashboardStats from "./DashboardStats/DashboardStats";
@@ -18,16 +18,21 @@ const faqDashboardStats = {
  * @param shop
  */
 export class ShopBody extends Component {
+  state = {
+    barChartWidth: 0
+  };
+
   /** Get optimal barChart width to fit into the shop-profile-body
    * @type dashboard, profile
    */
   getBarChartWidth = () => {
     const offset = 20;
     let barChartWidth = null;
-    const div = document.getElementById("shop-profile-body");
+    const div = document.getElementById("shop-barChart");
     if (div) {
       barChartWidth = div.clientWidth - offset;
     }
+    console.log(barChartWidth);
     return barChartWidth;
   };
 
@@ -45,7 +50,7 @@ export class ShopBody extends Component {
           services={this.props.services}
         />
         <div id="shop-barChart" className="body-box box">
-          <p className="body-box-header">Prezzo giornaliero</p>
+          <p className="body-box-header">{it.shop_donations_received}</p>
           <BarChart
             cases={this.props.cases || {}}
             width={this.getBarChartWidth()}

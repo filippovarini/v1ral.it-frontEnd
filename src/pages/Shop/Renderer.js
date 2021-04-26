@@ -3,16 +3,10 @@ import "./shop.css";
 import errorHandler from "../../functions/errorHandler";
 import getGoalsDone from "../../functions/goalsDone";
 
-import it from "../../locales/it.json";
-
 // import ShopProfile from "./ShopProfile/ShopProfile";
-import ShopProfile from "./Profile";
-import ShopDashboard from "./Dashboard";
 import Loading from "../../components/Loading/Loading";
 import ZoomImage from "../../components/ImageZoomed/ImageZoomed";
-
 import ShopHead from "./components/ShopHead";
-import Navigator from "../../components/Navigator/Navigator";
 import ShopBody from "./components/ShopBody";
 import ShopInfoWrapper from "./components/ShopInfo/InfoWrapper";
 
@@ -180,7 +174,7 @@ export class ShopRenderer extends Component {
     }
 
     return (
-      <div>
+      <div className="page-wrapper">
         {this.state.loading ? <Loading class="page-loading" /> : body}
         {this.state.imagesZoomed ? (
           <ZoomImage

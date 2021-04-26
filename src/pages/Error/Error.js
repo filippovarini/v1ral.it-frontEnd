@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./error.css";
 import it from "../../locales/it.json";
 import image from "../../images/not-found.png";

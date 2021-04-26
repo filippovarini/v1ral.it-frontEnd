@@ -123,7 +123,7 @@ export class RecoverPassword extends Component {
     const body = this.state.success ? successBody : formBody;
 
     return (
-      <div>
+      <div className="page-wrapper">
         {this.state.loading ? (
           <div className="log-form box box-background">
             <Loading />

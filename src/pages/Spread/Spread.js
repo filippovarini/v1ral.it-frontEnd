@@ -60,7 +60,11 @@ export class Spread extends Component {
         </div>
       </div>
     ) : null;
-    return this.state.loading ? <Loading /> : body;
+    return (
+      <div className="page-wrapper">
+        {this.state.loading ? <Loading /> : body}
+      </div>
+    );
   }
 }
 

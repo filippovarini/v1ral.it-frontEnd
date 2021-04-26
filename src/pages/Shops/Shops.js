@@ -161,7 +161,11 @@ export class Shops extends Component {
       </div>
     ) : null;
 
-    return this.state.loading ? <Loading class="page-loading" /> : body;
+    return (
+      <div className="page-wrapper">
+        {this.state.loading ? <Loading class="page-loading" /> : body}
+      </div>
+    );
   }
 }
 

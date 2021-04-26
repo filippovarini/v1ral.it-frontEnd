@@ -79,10 +79,8 @@ export class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          {window.location.pathname === "/" ? null : <Header />}
-          <div
-            className={window.location.pathname === "/" ? null : "page-wrapper"}
-          >
+          <Header />
+          <div>
             {this.state.maintenance &&
             window.location.pathname !== "/admin/login" &&
             window.location.pathname !== "/admin" ? (

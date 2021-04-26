@@ -48,7 +48,11 @@ export class UserRenderer extends Component {
         dashboard={this.state.dashboard}
       />
     );
-    return this.state.loading ? <Loading class="page-loading" /> : body;
+    return (
+      <div className="page-wrapper">
+        {this.state.loading ? <Loading class="page-loading" /> : body}
+      </div>
+    );
   }
 }
 

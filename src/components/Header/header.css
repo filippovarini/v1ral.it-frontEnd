@@ -13,10 +13,10 @@
   box-shadow: var(--shadowBottom);
 }
 
-#header.topHalf {
+#header.home-header {
   background: transparent;
   box-shadow: none;
-  position: relative;
+  position: absolute;
 }
 
 .nav-renderer {
@@ -24,7 +24,7 @@
   margin-top: 10px;
 }
 
-.topHalf .nav-renderer {
+.home-header .nav-renderer {
   color: var(--white);
 }
 
@@ -48,7 +48,7 @@
   text-transform: uppercase;
 }
 
-.topHalf .header-nav-item {
+.home-header .header-nav-item {
   color: var(--white);
 }
 
@@ -121,7 +121,7 @@
     box-shadow: var(--shadow);
   }
 
-  .topHalf .header-nav-item {
+  .home-header .header-nav-item {
     font-weight: 600;
     color: var(--dark);
   }

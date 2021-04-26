@@ -215,7 +215,11 @@ export class Checkout extends Component {
     );
     const body = this.state.products.length > 0 ? checkoutBody : emptyBody;
 
-    return this.state.loading ? <Loading class="page-loading" /> : body;
+    return (
+      <div className="page-wrapper">
+        {this.state.loading ? <Loading class="page-loading" /> : body}
+      </div>
+    );
   }
 }
 

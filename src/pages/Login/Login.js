@@ -129,7 +129,7 @@ export class UserLogin extends Component {
     );
 
     return (
-      <div>
+      <div className="page-wrapper">
         {this.state.loading ? (
           <div className="log-form box box-background">
             <Loading />

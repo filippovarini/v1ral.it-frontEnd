@@ -15,8 +15,10 @@ export class Header extends Component {
   };
 
   render() {
+    const className =
+      this.props.history.location.pathname === "/" ? "home-header" : null;
     return (
-      <div id="header" className={this.props.class}>
+      <div id="header" className={className}>
         <Logo />
         <Navigator />
       </div>

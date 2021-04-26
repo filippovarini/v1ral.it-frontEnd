@@ -110,12 +110,16 @@ export class AdminLogin extends Component {
       </form>
     );
 
-    return this.state.loading ? (
-      <div className="log-form box background">
-        <Loading />
+    return (
+      <div className="page-wrapper">
+        {this.state.loading ? (
+          <div className="log-form box background">
+            <Loading />
+          </div>
+        ) : (
+          body
+        )}
       </div>
-    ) : (
-      body
     );
   }
 }

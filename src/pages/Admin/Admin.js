@@ -126,7 +126,9 @@ export class Admin extends Component {
       </div>
     );
     return (
-      <div>{this.state.loading ? <Loading class="page-loading" /> : body}</div>
+      <div className="page-wrapper">
+        {this.state.loading ? <Loading class="page-loading" /> : body}
+      </div>
     );
   }
 }
