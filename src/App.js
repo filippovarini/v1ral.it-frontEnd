@@ -24,7 +24,7 @@ import Checkout from "./pages/Checkout/CheckoutRenderer";
 import TransactionSuccess from "./pages/TransactionSuccess/TransactionSuccess";
 import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
 import ShopCredentials from "./pages/ShopRegister/ShopCredentials/ShopCredentials";
-import ServicesOffered from "./pages/ShopRegister/ServiceOffered/ServicesOffered";
+import Stock from "./pages/ShopRegister/Stock/Stock";
 import ShopGoals from "./pages/ShopRegister/ShopGoals/ShopGoals";
 import ShopRegisterDone from "./pages/ShopRegister/ShopRegisterDone";
 import GetPayed from "./pages/ShopRegister/GetPayed/GetPayed";
@@ -102,10 +102,7 @@ export class App extends Component {
                     path="/shop/register/credentials"
                     component={ShopCredentials}
                   />
-                  <Route
-                    path="/shop/register/services"
-                    component={ServicesOffered}
-                  />
+                  <Route path="/shop/register/stock" component={Stock} />
                   <Route path="/shop/register/goals" component={ShopGoals} />
                   <Route path="/shop/register/getPayed" component={GetPayed} />
                   <Route

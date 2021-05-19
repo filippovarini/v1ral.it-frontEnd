@@ -1,0 +1,38 @@
+#addPriv-form {
+  width: 100%;
+  margin-top: 10px;
+}
+
+#title {
+  font-weight: bold;
+}
+
+#description {
+  margin-top: 10px;
+  background: var(--dark3);
+  height: 60px;
+}
+
+#description::placeholder {
+  color: var(--dark4);
+}
+
+#addPriv-form-footer {
+  margin-top: 30px;
+  position: relative;
+}
+
+#addPriv-error {
+  position: absolute;
+  width: 100%;
+
+  top: -35px;
+}
+
+#suggestions {
+  margin-top: 40px;
+}
+
+#suggestions-header {
+  font-weight: bold;
+}

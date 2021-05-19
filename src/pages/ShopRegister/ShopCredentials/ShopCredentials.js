@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./shopCredentials.css";
 
 import Form from "./ShopCredentialsForm";
-import RegisterHeader from "../ShopRegisterHeader";
+import RegisterHeader from "../components/ShopRegisterHeader";
+import Buttons from "../components/Buttons";
 
 import it from "../../../locales/it.json";
 
@@ -14,6 +16,8 @@ export class ShopCredentials extends Component {
     postcode: null,
     email: null,
     psw: null,
+    owner_name: null,
+    owner_phone: null,
     error: null,
     check1: false,
     check2: false
@@ -81,9 +85,18 @@ export class ShopCredentials extends Component {
     return true;
   };
 
+  ownerValid = () => {
+    if (!this.state.owner_name || !this.state.owner_phone) {
+      this.setState({ error: "Completa tutti i campi" });
+      return false;
+    }
+    return true;
+  };
+
   handleSubmit = () => {
     if (
       this.credentialsValid() &&
+      this.ownerValid() &&
       this.placeValid() &&
       this.checkboxesValid()
     ) {
@@ -95,24 +108,30 @@ export class ShopCredentials extends Component {
           province: this.state.province,
           postcode: this.state.postcode,
           email: this.state.email,
-          psw: this.state.psw
+          psw: this.state.psw,
+          owner_name: this.state.owner_name,
+          owner_phone: this.state.owner_phone
         }
       });
-      this.props.history.push("/shop/register/services");
+      this.props.history.push("/shop/register/stock");
     }
   };
 
   render() {
     return (
-      <div>
+      <div className="page-wrapper">
         <RegisterHeader navState={1} />
         <div className="shop-register-body">
+          <p className="shop-register-body-header">
+            {it.shop_register_credentials_header}
+          </p>
           <Form
             handleChange={this.handleChange}
-            error={this.state.error}
             handleSubmit={this.handleSubmit}
             email={this.state.email}
             psw={this.state.psw}
+            owner_name={this.state.owner_name}
+            owner_phone={this.state.owner_phone}
             city={this.state.city}
             street={this.state.street}
             province={this.state.province}
@@ -124,12 +143,14 @@ export class ShopCredentials extends Component {
               this.setState({ error: null, check2: !this.state.check2 })
             }
           />
-          <p
-            className="button shop-register-button"
-            onClick={this.handleSubmit}
-          >
-            PROSEGUI
-          </p>
+
+          <Buttons
+            handleClickNext={this.handleSubmit}
+            handleClickPrev={() =>
+              this.props.history.push("/shop/register/bio")
+            }
+            error={this.state.error}
+          />
         </div>
       </div>
     );

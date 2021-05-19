@@ -1,18 +1,42 @@
-.shop-register-container {
-  height: 80vh;
-  position: relative;
+.shop-register-body {
+  margin: 0 auto;
+  margin-top: 50px;
+  max-width: 500px;
+  min-width: 300px;
 }
 
-.shop-register-button {
+.shop-register-body-header {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.shop-register-body-description {
+  box-sizing: border-box;
+  padding: 10px;
+  color: var(--gray);
+  margin-top: 20px;
+}
+
+.shop-register-button-container {
   width: 100%;
   margin: 0 auto;
   margin-top: 80px;
 }
 
-#shop-register-goals-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
+.input-container {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.input-line {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.input-box {
+  margin-bottom: 10px;
 }
 
 #shop-register-done-panel {
@@ -23,54 +47,9 @@
   width: 100%;
 }
 
-.shop-register-body {
-  width: 90%;
-  margin: 0 auto;
-}
-
-.register-warning {
-  font-size: 1.3rem;
-  margin: 20px 0;
-  line-height: 20px;
-}
-
-/* BIOINFO */
-#bio-forms-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-#bioInfo-background-container {
-  width: 100%;
-  max-width: 600px;
-  margin-right: 20px;
-}
-
 /* SHOP CREDENTIALS */
-#shop-credentials-checkboxes {
-  margin-top: 20px;
-}
-
 .shop-credentials-checkbox {
-  margin-top: 10px;
-}
-
-/* FORMS */
-#input-container {
-  display: grid;
-  grid-gap: 20px;
-  margin: 0 auto;
-  width: 80%;
-  margin-top: 50px;
-  max-width: 600px;
-}
-
-.shop-register-body input,
-select {
-  box-sizing: border-box;
-  margin: 0px;
-  width: 100%;
+  margin-top: 5px;
 }
 
 .shop-register-body input,
@@ -95,72 +74,6 @@ textarea:focus {
   font-weight: bold;
   font-size: 1.2rem;
   color: var(--pink);
-  margin-bottom: 5px;
-}
-
-.shopRegister-input-container {
-  display: grid;
-}
-
-/* HEADER */
-#shopRegister-header {
-  background: var(--white);
-  box-shadow: var(--shadow);
-  border-radius: 5px;
-}
-
-#shopRegister-header-container {
-  height: 80px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.header-button-container {
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.header-step-container {
-  cursor: pointer;
-}
-
-.header-step-title {
-  font-size: 0.8rem;
-}
-
-.header-step-container.active {
-  font-weight: bold;
-  border-bottom: 2px solid var(--green);
-  color: var(--green);
-}
-
-.header-step-container.active .header-step-title {
-  font-size: 1rem;
-}
-
-.header-step-container.active .header-step-icon {
-  font-size: 1.5rem;
-}
-
-.header-step-icon {
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-#header-line2 {
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-#shop-register-help {
-  font-size: 0.9rem;
-  margin-top: 5px;
-}
-
-#shop-register-help-number {
-  color: var(--lightBlue);
 }
 
 /* ADD INFO COMPONENTS */
@@ -179,19 +92,13 @@ textarea:focus {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 700px) {
-  .header-step-title {
-    display: none;
-  }
-
-  .header-step-container.active .header-step-title {
-    display: block;
-  }
-}
-
 @media only screen and (max-width: 500px) {
   #addInfo-container {
     width: 350px;
     margin-left: -175px;
+  }
+
+  .shop-register-body-header {
+    font-size: 1.3rem;
   }
 }

@@ -7,7 +7,7 @@ import errorHandler from "../../functions/errorHandler";
 import it from "../../locales/it.json";
 
 import Loading from "../../components/Loading/Loading";
-import ShopRegisterHeader from "./ShopRegisterHeader";
+import ShopRegisterHeader from "./components/ShopRegisterHeader";
 import ValidateStripeAccount from "../../components/ValidateStripeAccount/ValidateStripeAccount";
 
 export class ShopRegisterDone extends Component {

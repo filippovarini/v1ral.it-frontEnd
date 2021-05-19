@@ -167,7 +167,6 @@ export class InsertUser extends Component {
    */
   submitStep2 = () => {
     if (this.validStep2()) {
-      console.log("submitting step 2");
       this.setState({ loading: true });
       const newUser = {
         username: this.state.username,

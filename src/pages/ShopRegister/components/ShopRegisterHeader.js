@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import "./shopRegisterComponents.css";
 
-import it from "../../locales/it.json";
+import it from "../../../locales/it.json";
 
-import ShopHowItWorks from "../../components/ShopRegisterConvincers/ShopHowItWorks";
-import WhyShouldIDoIt from "../../components/ShopRegisterConvincers/WhyShouldShopDoIt";
+import ShopHowItWorks from "../../../components/ShopRegisterConvincers/ShopHowItWorks";
+import WhyShouldIDoIt from "../../../components/ShopRegisterConvincers/WhyShouldShopDoIt";
 
 /** Returns the header of component
  * @param navState
@@ -25,7 +26,7 @@ export class ServicesHeader extends Component {
 
   render() {
     return (
-      <div id="shopRegister-header">
+      <div id="shopRegister-header" className="box">
         <ShopHowItWorks
           hidden={this.state.howItWorksHidden}
           hide={this.toggleHowItWorks}
@@ -63,7 +64,7 @@ export class ServicesHeader extends Component {
             className={`header-step-container ${
               this.props.navState === 2 ? "active" : null
             }`}
-            onClick={() => this.props.history.push("/shop/register/services")}
+            onClick={() => this.props.history.push("/shop/register/stock")}
           >
             <p className="header-step-icon">03</p>
             <p className="header-step-title">
@@ -103,23 +104,21 @@ export class ServicesHeader extends Component {
             </p>
           </div>
         </div>
-        <div id="header-line2">
-          <div className="header-button-container flex-line">
-            <p
-              id="shopRegister-how-it-works"
-              className="button super-small style3 header-button"
-              onClick={this.toggleHowItWorks}
-            >
-              {it.shop_register_how_it_works}
-            </p>
-            <p
-              id="shopRegister-why-register"
-              className="button super-small style3 header-button"
-              onClick={this.toggleWhyShouldIDoIt}
-            >
-              {it.shop_register_why_register}
-            </p>
-          </div>
+        <div id="header-line2" className="flex-line">
+          <p
+            id="shopRegister-how-it-works"
+            className="button super-small style3 header-button"
+            onClick={this.toggleHowItWorks}
+          >
+            {it.shop_register_how_it_works}
+          </p>
+          <p
+            id="shopRegister-why-register"
+            className="button super-small style3 header-button"
+            onClick={this.toggleWhyShouldIDoIt}
+          >
+            {it.shop_register_why_register}
+          </p>
           <p id="shop-register-help">
             {it.shop_register_help}{" "}
             <a

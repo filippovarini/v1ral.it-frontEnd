@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import AddService from "../../../components/AddPriviledge/AddPriviledge";
+import AddPriviledge from "../../../components/AddPriviledge/AddPriviledge";
 
 /** Wrapps the form to add priviledge
  * @param hide
  * @param hidden
+ * @param type
  * @param handleAdd
  */
 export class AddPriviledgeWrapper extends Component {
@@ -18,7 +19,11 @@ export class AddPriviledgeWrapper extends Component {
         className="popUp-background"
         style={this.props.hidden ? { display: "none" } : null}
       >
-        <AddService hide={this.props.hide} handleAdd={this.handleSubmit} />
+        <AddPriviledge
+          type={this.props.type}
+          hide={this.props.hide}
+          handleAdd={this.handleSubmit}
+        />
       </div>
     );
   }

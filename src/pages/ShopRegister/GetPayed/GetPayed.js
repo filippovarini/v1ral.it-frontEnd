@@ -7,7 +7,7 @@ import errorHandler from "../../../functions/errorHandler";
 
 import it from "../../../locales/it.json";
 
-import RegisterHeader from "../ShopRegisterHeader";
+import RegisterHeader from "../components/ShopRegisterHeader";
 import Loading from "../../../components/Loading/Loading";
 
 export class GetPayed extends Component {
@@ -20,7 +20,7 @@ export class GetPayed extends Component {
     else if (!this.props.shopRegister.credentials)
       this.props.history.push("/shop/register/credentials");
     else if (!this.props.shopRegister.services)
-      this.props.history.push("/shop/register/services");
+      this.props.history.push("/shop/register/stock");
     else if (!this.props.shopRegister.goals)
       this.props.history.push("/shop/register/goals");
   };

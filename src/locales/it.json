@@ -110,9 +110,6 @@
 
   "home_description_above_button": "Non vivere le riaperture dei tuoi shops preferiti senza i privilegi offerti su v1ral! Ti godi di più l'esperienza ed aiuti gli shops a ripartire!",
 
-  "add_service": "Aggiungi un privilegio per chi ti supporta",
-  "add_service_description": "Scegli privilegi interessanti e ambiti per ricevere maggiore visibilità e supporto",
-
   "shop_background": "Sfondo",
   "user_username": "Username",
   "user_profile_image": "Profilo",
@@ -136,28 +133,44 @@
   "shop_profile_what_happens_with_money": "Comprando il pass supporti questo shop e contribuisci alla ripresa dall'impatto del Covid-19. Il pass ti da il diritto ai privilegi specificati. I soldi saranno utilizzati per raggiungere gli obiettivi specificati.",
   "goals_restart_index": "Gli utenti vogliono sapere dove vanno i soldi",
 
+  "shop_register_bio_header": "Configura il profilo del tuo shop",
+  "shop_register_credentials_header": "Inserisci le credenziali del tuo shop",
+  "shop_register_stock_header": "Scegli i privilegi da offrire ai clienti di v1ral",
+  "shop_register_stock_description": "Su v1ral gli shops offrono due tipi di privilegi. Privilegi convenienti sia all'utente che allo shop, come sconti e promozioni. Questi privilegi vengono offerti a tutti gli utenti che hanno il v1ral pass ed il locale non ci guadagna niente. Privilegi della Stock. La Stock è l'insieme dei privilegi esclusivi che lo shop offre solo a chi compra la suddetta stock, pagando lo shop stesso.",
+
+  "shop_register_nav_first_step": "Profilo",
+  "shop_register_nav_second_step": "Credenziali",
+  "shop_register_nav_third_step": "Stock",
+  "shop_register_nav_fourth_step": "Come userai i soldi?",
+  "shop_register_nav_fifth_step": "Ricevi il finanziamento",
+  "shop_register_nav_sixth_step": "Diffondi la voce",
+
+  "shop_register_credentials_email_label": "email ufficiale",
+  "shop_register_credentials_input": "Credenziali login",
+  "shop_register_credentials_place": "Indirizzo di consegna",
+  "shop_register_credentials_owner_label": "Contatti responsabile",
+  "shop_register_credentials_owner_name": "Nome responsabile",
+  "shop_register_credentials_owner_phone": "Telefono responsabile",
+
+  "shop_register_suggested_privs": "Privileggi suggeriti per la tua categoria",
+
+  "add_priv_header_stock": "Aggiungi un privilegio alla tua Stock",
+  "add_priv_description_stock": "Scegli un privilegio esclusivo e ambito aumentare il valore della tua stock e venderne di più.",
+  "add_priv_header_v1ralPass": "Aggiungi un privilegio al V1ral Pass",
+  "add_priv_description_v1ralPass": "Scegli un privilegio di convenienza da offrire a tutti gli utenti in possesso del V1ral Pass.",
+
   "shop_register_help": "Vuoi una mano con l'iscrizione ed il pass? Chiamaci al",
   "shop_register_insert_goal": "Aggiungi un obbiettivo",
-  "shop_register_add_product_suggestions": "Best selling:",
   "shop_register_priviledges_checkboxes": "Mi impegno a garantire i privilegi da me specificati ai clienti che ne hanno diritto",
-  "shop_register_credentials_email_label": "Email ufficiale",
-  "shop_register_credentials_choose_password": "Scegli una password",
-  "shop_register_credentials_place": "Indirizzo di consegna",
+
   "shop_register_how_it_works": "Come funziona?",
   "shop_register_why_register": "Perchè registrarsi?",
   "shop_register_terms_privacy": "Accetto termini e condizioni e privacy policy",
   "shop_register_truthfullness": "Sono consapevole delle conseguenze penali derivanti dal registrarsi come shop non essendolo",
   "shop_register_prompt": "Rendi l'Italia più bella con il tuo shop?",
   "shop_register_prompt_button": "Registrati",
-  "shop_register_complete_profile": "Inserisci le immagini dello shop e parlaci di te",
-  "shop_register_choose_priviledges": "Scegli i privilegi da offrire ai clienti che decidono di supportarti",
+
   "shop_register_insert_goals": "Seleziona obiettivi che vuoi raggiungere con i finanziamenti che riceverai",
-  "shop_register_nav_first_step": "Profilo",
-  "shop_register_nav_second_step": "Credenziali",
-  "shop_register_nav_third_step": "Configura il pass",
-  "shop_register_nav_fourth_step": "Come userai i soldi?",
-  "shop_register_nav_fifth_step": "Ricevi il finanziamento",
-  "shop_register_nav_sixth_step": "Diffondi la voce",
   "shop_register_get_payed_header": "Ricevi i finanziamenti",
   "shop_register_get_payed_text_line1": "Ricevi i pagamenti direttamente sul tuo conto corrente in maniera facile e sicura!",
   "shop_register_get_payed_text_line2": "Registrati sulla piattaforma di pagamenti e connetti l'IBAN della società per ricevere i soldi direttamente lì, instantaneamente.",

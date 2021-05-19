@@ -15,25 +15,7 @@ export class Form extends Component {
 
   render() {
     return (
-      <form
-        id="input-container"
-        className="shop-register-body"
-        onSubmit={this.handleSubmit}
-      >
-        <div className="shopRegister-input-container">
-          <label htmlFor="email">
-            {it.shop_register_credentials_email_label}
-          </label>
-          <input
-            type="text"
-            id="email"
-            autoComplete="off"
-            placeholder="email"
-            value={this.props.email || ""}
-            onChange={this.props.handleChange}
-          />
-        </div>
-
+      <form className="input-container" onSubmit={this.handleSubmit}>
         <PlaceForm
           header={it.shop_register_credentials_place}
           handleChange={this.props.handleChange}
@@ -42,10 +24,39 @@ export class Form extends Component {
           province={this.props.province}
           postcode={this.props.postcode}
         />
-        <div className="shopRegister-input-container">
-          <label htmlFor="password">
-            {it.shop_register_credentials_choose_password}
+
+        <div className="input-line input-box">
+          <label htmlFor="email">
+            {it.shop_register_credentials_owner_label}
           </label>
+          <input
+            type="text"
+            id="owner_name"
+            autoComplete="off"
+            placeholder={it.shop_register_credentials_owner_name}
+            value={this.props.owner_name || ""}
+            onChange={this.props.handleChange}
+          />
+          <input
+            type="text"
+            autoComplete="off"
+            id="owner_phone"
+            placeholder={it.shop_register_credentials_owner_phone}
+            value={this.props.owner_phone || ""}
+            onChange={this.props.handleChange}
+          />
+        </div>
+
+        <div className="input-line input-box">
+          <label htmlFor="email">{it.shop_register_credentials_input}</label>
+          <input
+            type="text"
+            id="email"
+            autoComplete="off"
+            placeholder={it.shop_register_credentials_email_label}
+            value={this.props.email || ""}
+            onChange={this.props.handleChange}
+          />
           <input
             type="password"
             autoComplete="off"

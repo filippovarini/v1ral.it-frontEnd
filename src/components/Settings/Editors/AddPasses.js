@@ -39,7 +39,6 @@ export class AddPasses extends Component {
       })
         .then(res => res.json())
         .then(jsonRes => {
-          console.log(jsonRes);
           if (jsonRes.success) {
             window.location = window.location.pathname;
           } else {

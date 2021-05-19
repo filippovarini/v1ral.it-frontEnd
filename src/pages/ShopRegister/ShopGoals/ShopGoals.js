@@ -5,7 +5,7 @@ import "./shopGoals.css";
 import it from "../../../locales/it.json";
 
 import AddGoal from "./privateComponents/AddGoal";
-import RegisterHeader from "../ShopRegisterHeader";
+import RegisterHeader from "../components/ShopRegisterHeader";
 import Goals from "../../../components/Goals/Goals";
 
 export class ShopGoals extends Component {
@@ -23,7 +23,7 @@ export class ShopGoals extends Component {
     else if (!this.props.shopRegister.credentials)
       this.props.history.push("/shop/register/credentials");
     else if (!this.props.shopRegister.services)
-      this.props.history.push("/shop/register/services");
+      this.props.history.push("/shop/register/stock");
     else if (this.props.shopRegister.goals) {
       this.setState({ goals: this.props.shopRegister.goals });
     }
@@ -69,7 +69,7 @@ export class ShopGoals extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page-wrapper">
         <RegisterHeader navState={3} />
         <div className="shop-register-body">
           <p className="register-warning">{it.shop_register_insert_goals}</p>

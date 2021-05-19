@@ -119,6 +119,13 @@ a.body-box-text {
   height: 120px;
   box-sizing: border-box;
   padding: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dark-box:hover {
+  height: auto;
+  min-height: 120px;
 }
 
 .dark-box-header-container {

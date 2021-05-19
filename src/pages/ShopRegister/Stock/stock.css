@@ -52,16 +52,6 @@
   margin: 10px 0;
 }
 
-#addService-form {
-  background: var(--light);
-  box-sizing: border-box;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.addService-form-line {
-  justify-content: space-between;
-}
 #viral-service-checkbox .check-label {
   font-size: 0.9rem;
 }

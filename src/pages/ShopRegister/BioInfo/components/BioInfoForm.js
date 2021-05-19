@@ -12,11 +12,11 @@ export class Form extends Component {
   render() {
     return (
       <form
-        id="input-container"
-        className="shop-register-body"
+        id="bioInfo-form"
+        className="input-container"
         onSubmit={this.handleSubmit}
       >
-        <div className="shopRegister-input-container">
+        <div className="input-line">
           <label htmlFor="name">{it.shop_name}</label>
           <input
             type="text"
@@ -27,7 +27,7 @@ export class Form extends Component {
             onChange={this.props.handleChange}
           />
         </div>
-        <div className="shopRegister-input-container">
+        <div className="input-line">
           <label htmlFor="name">{it.shop_category}</label>
           <select
             id="category"
@@ -44,7 +44,7 @@ export class Form extends Component {
             ))}
           </select>
         </div>
-        <div className="shopRegister-input-container">
+        <div id="shopRegister-bio" className="input-line">
           <label htmlFor="bio">Raccontatevi</label>
           <textarea
             rows={5}
@@ -54,8 +54,10 @@ export class Form extends Component {
             placeholder="Raccontaci la vostra storia, come rendete 
         l'italia un posto migliore e come il virus vi ha colpito"
           ></textarea>
+          <p id="bio-space-left">
+            {this.props.bio ? this.props.bio.length : 0}/500
+          </p>
         </div>
-        <p className="form-error">{this.props.error}</p>
         <input type="submit" className="hidden" />
       </form>
     );

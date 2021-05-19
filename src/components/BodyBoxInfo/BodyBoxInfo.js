@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 
-/** Render stat box (dark mode) with:
+/** Renders box info in body box
  * @param icon
  * @param data
  * @param title
- * @param description
  */
 export class StatsBox extends Component {
   render() {

@@ -1,0 +1,109 @@
+/* HEADER */
+#shopRegister-header-container {
+  height: 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header-step-container {
+  cursor: pointer;
+}
+
+.header-step-title {
+  font-size: 0.8rem;
+}
+
+.header-step-container.active {
+  font-weight: bold;
+  border-bottom: 2px solid var(--green);
+  color: var(--green);
+}
+
+.header-step-container.active .header-step-title {
+  font-size: 1rem;
+}
+
+.header-step-container.active .header-step-icon {
+  font-size: 1.5rem;
+}
+
+.header-step-icon {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#header-line2 {
+  box-sizing: border-box;
+  padding: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#shop-register-help {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+#shop-register-help-number {
+  color: var(--lightBlue);
+}
+
+/* BUTTONS */
+#shop-register-buttons-container {
+  width: 350px;
+  margin: 0 auto;
+  margin-top: 50px;
+  position: relative;
+}
+
+#shop-register-buttons-container .form-error {
+  position: absolute;
+  width: 350px;
+  top: -50px;
+  line-height: 15px;
+}
+
+#shop-register-buttons {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.shop-register-button {
+  font-size: 2rem;
+  width: 100px;
+}
+
+.shop-register-button .fas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: all 0.3s;
+}
+
+#next-icon {
+  left: 0px;
+}
+
+#prev-icon {
+  right: 0px;
+}
+
+#next-icon:hover {
+  left: 10px;
+}
+
+#prev-icon:hover {
+  right: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+  .header-step-title {
+    display: none;
+  }
+
+  .header-step-container.active .header-step-title {
+    display: block;
+  }
+}

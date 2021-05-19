@@ -1,40 +1,30 @@
 import React, { Component } from "react";
-import suggestedInfo from "../../locales/suggestedInfo";
+import "./addPriv.css";
 import it from "../../locales/it.json";
-import Icons from "./PrivIcons";
+
 import PrivForm from "./AddPriviledgeForm";
+import Suggestions from "./Suggestions";
 
 /** Pop up used to insert new goals and services
  * @param handleAdd function that fires on form submission
  * @param hidden
  * @param hide function to hide component
+ * @param type
  * */
 
 export class AddService extends Component {
   state = {
-    image: null,
     title: null,
-    viral: false,
-    error: null,
-    iconsHidden: true
+    description: null,
+    error: null
   };
 
   handleChange = e => {
-    if (e.target.id === "type") {
-      this.setState({ viral: !this.state.viral });
-    } else {
-      // title
-      this.setState({ title: e.target.value });
-    }
-    this.setState({ error: null });
-  };
-
-  handleImageChange = url => {
-    this.setState({ image: url, iconsHidden: true, error: null });
+    this.setState({ [e.target.id]: e.target.value, error: null });
   };
 
   validFields = () => {
-    if (!this.state.image || !this.state.title) {
+    if (!this.state.title || !this.state.description) {
       this.setState({ error: "Compila tutti i campi" });
       return false;
     }
@@ -44,60 +34,31 @@ export class AddService extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.validFields()) {
-      this.setState({ image: null, viral: false });
-      document.getElementById("addService-form").reset();
+      document.getElementById("addPriv-form").reset();
       this.props.handleAdd({
-        image: this.state.image,
-        name: this.state.title,
-        type: this.state.viral ? "viral" : "standard"
+        title: this.state.title,
+        description: this.state.description,
+        type: this.props.type
       });
     }
-  };
-
-  toggleIcons = () => {
-    this.setState({ iconsHidden: !this.state.iconsHidden });
   };
 
   render() {
     return (
       <div id="addInfo-container" className="box popUp">
         <i className="fas fa-times hide-cross" onClick={this.props.hide}></i>
-        <Icons
-          addIcon={this.handleImageChange}
-          hidden={this.state.iconsHidden}
-          hideIcons={this.toggleIcons}
-        />
-        <p id="addInfo-header">{it.add_service}</p>
-        <p id="addInfo-description">{it.add_service_description}</p>
-        <p id="bestSelling-header">
-          {it.shop_register_add_product_suggestions}
+        <p id="addInfo-header">
+          {this.props.type === "stock"
+            ? it.add_priv_header_stock
+            : it.add_priv_header_v1ralPass}
         </p>
-        <ul id="bestSelling-container" className="flex-col">
-          {suggestedInfo.services.map((service, i) => {
-            return (
-              <li key={i} className="bestSelling-title">
-                {service}
-              </li>
-            );
-          })}
-        </ul>
+        <p id="addInfo-description">{it.add_service_description}</p>
         <PrivForm
           handleSubmit={this.handleSubmit}
-          toggleIcons={this.toggleIcons}
-          url={this.state.image}
           handleChange={this.handleChange}
-          handleImageChange={this.handleImageChange}
+          error={this.state.error}
         />
-        <p
-          id="addInfo-submit"
-          className="button small"
-          onClick={this.handleSubmit}
-        >
-          AGGIUNGI
-        </p>
-        <p id="addInfo-error" className="form-error">
-          {this.state.error}
-        </p>
+        <Suggestions />
       </div>
     );
   }

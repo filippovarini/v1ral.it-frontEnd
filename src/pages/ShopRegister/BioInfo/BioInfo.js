@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../shopRegister.css";
+import "./bioInfo.css";
 
 import it from "../../../locales/it.json";
 
@@ -8,8 +9,9 @@ import postImage from "../../../functions/postImage";
 
 import Form from "./components/BioInfoForm";
 import ShopImages from "./components/ShopImagesInput/ShopImages";
-import RegisterHeader from "../ShopRegisterHeader";
+import RegisterHeader from "../components/ShopRegisterHeader";
 import ImageLoading from "../../../components/Loading/ImageLoading";
+import Buttons from "../components/Buttons";
 
 export class BioInfo extends Component {
   state = {
@@ -89,9 +91,9 @@ export class BioInfo extends Component {
       this.setState({ error: "Completa tutti i campi" });
       return false;
     }
-    if (this.state.bio && this.state.bio.length > 250) {
+    if (this.state.bio && this.state.bio.length > 500) {
       this.setState({
-        error: "La bio deve essere lunga massimo 250 caratteri"
+        error: "La bio deve essere lunga massimo 500 caratteri"
       });
       return false;
     }
@@ -127,25 +129,22 @@ export class BioInfo extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page-wrapper">
         <RegisterHeader navState={0} />
         <div className="shop-register-body">
-          <p className="register-warning">
-            {it.shop_register_complete_profile}
+          <p className="shop-register-body-header">
+            {it.shop_register_bio_header}
           </p>
-          <div id="bio-forms-container">
-            <div id="bioInfo-background-container">
-              <ShopImages
-                logourl={this.state.logourl}
-                backgroundurl={this.state.backgroundurl}
-                resetUrl={this.resetImage}
-                handleImageChange={this.handleImageChange}
-                input={true}
-              />
-            </div>
+          <div>
+            <ShopImages
+              logourl={this.state.logourl}
+              backgroundurl={this.state.backgroundurl}
+              resetUrl={this.resetImage}
+              handleImageChange={this.handleImageChange}
+              input={true}
+            />
             <Form
               handleChange={this.handleChange}
-              error={this.state.error}
               handleSubmit={this.handleSubmit}
               name={this.state.name}
               category={this.state.category}
@@ -153,16 +152,14 @@ export class BioInfo extends Component {
             />
           </div>
           {this.multerOperating() ? (
-            <div className="shop-register-button">
+            <div className="shop-register-button-container">
               <ImageLoading />
             </div>
           ) : (
-            <p
-              className="button shop-register-button"
-              onClick={this.handleSubmit}
-            >
-              PROSEGUI
-            </p>
+            <Buttons
+              handleClickNext={this.handleSubmit}
+              error={this.state.error}
+            />
           )}
         </div>
       </div>
