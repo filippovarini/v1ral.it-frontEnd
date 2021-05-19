@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import errorHandler from "../../../functions/errorHandler";
-import AddPriviledge from "../../AddPriviledge/AddPriviledge";
+import AddPriviledge from "../../Priviledge/AddPriviledge/AddPriviledge";
 import Loading from "../../Loading/Loading";
 
 /** Editor for adding a priviledge. Specifies the functions to fire

@@ -71,38 +71,6 @@ export class ServicesHeader extends Component {
               {it.shop_register_nav_third_step}
             </p>
           </div>
-          <div
-            className={`header-step-container ${
-              this.props.navState === 3 ? "active" : null
-            }`}
-            onClick={() => this.props.history.push("/shop/register/goals")}
-          >
-            <p className="header-step-icon">04</p>
-            <p className="header-step-title">
-              {it.shop_register_nav_fourth_step}
-            </p>
-          </div>
-          <div
-            className={`header-step-container ${
-              this.props.navState === 4 ? "active" : null
-            }`}
-            onClick={() => this.props.history.push("/shop/register/getPayed")}
-          >
-            <p className="header-step-icon">05</p>
-            <p className="header-step-title">
-              {it.shop_register_nav_fifth_step}
-            </p>
-          </div>
-          <div
-            className={`header-step-container ${
-              this.props.navState === 5 ? "active" : null
-            }`}
-          >
-            <p className="header-step-icon">06</p>
-            <p className="header-step-title">
-              {it.shop_register_nav_sixth_step}
-            </p>
-          </div>
         </div>
         <div id="header-line2" className="flex-line">
           <p

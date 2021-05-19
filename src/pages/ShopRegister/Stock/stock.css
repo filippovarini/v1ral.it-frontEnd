@@ -1,95 +1,29 @@
-#serviceOffered-body {
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 30px;
-  justify-content: center;
+#stock-form {
+  margin-top: 50px;
 }
 
-#serviceOffered-body {
-  margin-top: 30px;
+#stock-form-inputs {
+  display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  gap: 10px 20px;
 }
 
-#service-form {
-  width: 300px;
-}
-
-#icon-input-label {
-  margin-right: 10px;
-  position: relative;
-  left: -10px;
-  box-shadow: var(--shadow);
-  min-width: 40px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  text-align: center;
-  line-height: 40px;
-}
-
-.service-icon {
-  min-width: 40px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-  box-sizing: border-box;
-  position: relative;
-  box-shadow: var(--shadow);
-  background-size: cover;
+#stock-form-inputs .input-line {
+  width: 200px;
   overflow: hidden;
 }
 
-#hide-service-icon {
-  font-size: 0.7rem;
-  top: 0px;
-  right: 0px;
+#stock-form-inputs .input-line input,
+select {
+  width: 100%;
 }
 
-#service-form .shopRegister-input-container {
-  margin: 10px 0;
+#shop-credentials-checkboxes {
+  margin: 30px 0;
 }
 
-#viral-service-checkbox .check-label {
-  font-size: 0.9rem;
-}
-
-#viral-service-checkbox {
-  margin-top: 10px;
-  justify-content: flex-start;
-}
-
-/* ICONS */
-#icons-container {
-  width: 500px;
-  margin-left: -250px;
-  height: 350px;
-  margin-top: -175px;
-  box-sizing: border-box;
-  padding: 20px;
-  z-index: 1;
-}
-
-#icons-header {
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-#icons-image-container {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: auto auto auto auto auto;
-}
-
-@media only screen and (max-width: 500px) {
-  #icons-container {
-    width: 350px;
-    margin-left: -175px;
-  }
-
-  #icons-image-container {
-    grid-gap: 10px;
+@media only screen and (max-width: 420px) {
+  #stock-form-inputs {
+    justify-content: center;
   }
 }

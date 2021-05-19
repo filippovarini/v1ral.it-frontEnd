@@ -12,7 +12,7 @@
 }
 
 .header-step-title {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .header-step-container.active {
@@ -21,17 +21,9 @@
   color: var(--green);
 }
 
-.header-step-container.active .header-step-title {
-  font-size: 1rem;
-}
-
-.header-step-container.active .header-step-icon {
-  font-size: 1.5rem;
-}
-
 .header-step-icon {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 #header-line2 {
@@ -96,14 +88,4 @@
 
 #prev-icon:hover {
   right: 10px;
-}
-
-@media only screen and (max-width: 700px) {
-  .header-step-title {
-    display: none;
-  }
-
-  .header-step-container.active .header-step-title {
-    display: block;
-  }
 }

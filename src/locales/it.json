@@ -18,7 +18,10 @@
   "contacts": "Contatti",
   "faqs": "Domande Frequenti",
 
-  "pass_month_duration": "Durata pass",
+  "stock_number": "Stock in vendita",
+  "initial_price": "Prezzo di partenza",
+  "stock_month_duration": "Durata stock",
+
   "cart_item_renew": "rinnovo pass",
   "pass_expired": "pass scaduto!",
   "pass_expired_renew_button": "rinnova",
@@ -36,9 +39,7 @@
   "quickFacts_total_cases": "Utenti su v1ral",
   "quickFacts_daily_cases": "Casi giornalieri",
   "shop_donations": "Positivi",
-  "max_premiums": "Pass disponibili",
   "financed_shops": "Shops finanziati",
-  "initial_price": "Prezzo di partenza",
   "shop_price_increase": "Aumento valore",
   "resend_me_the_cart": "Spediscimi la carta",
   "delete_image": "Elimina immagine",

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./addPriv.css";
-import it from "../../locales/it.json";
+import it from "../../../locales/it.json";
 
 import PrivForm from "./AddPriviledgeForm";
 import Suggestions from "./Suggestions";

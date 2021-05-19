@@ -2,54 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./stock.css";
 import it from "../../../locales/it.json";
+import errorHandler from "../../../functions/errorHandler";
 
-import Priviledges from "../../../components/Priviledges/Priviledges";
+import Priviledges from "../../../components/Priviledge/Priviledges/Priviledges";
 import ServiceForm from "./StockForm";
 import RegisterHeader from "../components/ShopRegisterHeader";
 import AddPrivWrapper from "./AddPriviledgeWrapper";
+import Buttons from "../components/Buttons";
 
 export class ServicesOffered extends Component {
   state = {
-    priviledges: [
-      {
-        type: "stock",
-        title: "Sconto del 10% il sabato",
-        description:
-          "Irure deserunt velit amet est anim sunt est ea velit. Aliqua eiusmod aliqua Lorem ex culpa amet. Do elit duis dolor consequat ipsum quis deserunt incididunt anim ea pariatur."
-      },
-      {
-        type: "stock",
-        title: "Sconto del 10% il sabato",
-        description:
-          "Irure deserunt velit amet est anim sunt est ea velit. Aliqua eiusmod aliqua Lorem ex culpa amet. Do elit duis dolor consequat ipsum quis deserunt incididunt anim ea pariatur."
-      },
-      {
-        type: "v1ralPass",
-        title: "Sconto del 10% il sabato",
-        description:
-          "Irure deserunt velit amet est anim sunt est ea velit. Aliqua eiusmod aliqua Lorem ex culpa amet. Do elit duis dolor consequat ipsum quis deserunt incididunt anim ea pariatur."
-      },
-      {
-        type: "v1ralPass",
-        title: "Sconto del 10% il sabato",
-        description:
-          "Irure deserunt velit amet est anim sunt est ea velit. Aliqua eiusmod aliqua Lorem ex culpa amet. Do elit duis dolor consequat ipsum quis deserunt incididunt anim ea pariatur."
-      },
-      {
-        type: "v1ralPass",
-        title: "Sconto del 10% il sabato",
-        description:
-          "Irure deserunt velit amet est anim sunt est ea velit. Aliqua eiusmod aliqua Lorem ex culpa amet. Do elit duis dolor consequat ipsum quis deserunt incididunt anim ea pariatur."
-      }
-    ],
+    priviledges: [],
     addingV1ralPass: false,
     addingStock: false,
-
-    maxPremiums: null,
+    stockMonthDuration: null,
+    stockNumber: null,
     initialPrice: null,
-    passExpiry: null,
+    check1: false,
     error: null,
-    check1: false
+    loading: false
   };
 
   componentDidMount = () => {
@@ -59,17 +30,6 @@ export class ServicesOffered extends Component {
       this.props.history.push("/shop/register/bio");
     else if (!this.props.shopRegister.credentials)
       this.props.history.push("/shop/register/credentials");
-    else if (
-      this.props.shopRegister.services &&
-      this.props.shopRegister.services.maxPremiums
-    ) {
-      this.setState({
-        services: this.props.shopRegister.services.services,
-        maxPremiums: this.props.shopRegister.services.maxPremiums,
-        initialPrice: this.props.shopRegister.services.initialPrice,
-        passExpiry: this.props.shopRegister.services.passExpiry
-      });
-    }
   };
 
   /** Hides the box where user can add a priviledge. */
@@ -82,9 +42,20 @@ export class ServicesOffered extends Component {
 
   /** Adds priv to state */
   addPriv = priv => {
-    console.log(priv);
     this.setState({
-      priviledges: [...this.state.priviledges, priv]
+      priviledges: [...this.state.priviledges, priv],
+      error: null
+    });
+  };
+
+  /** Removes service by position in array */
+  removePriv = priv => {
+    this.setState({
+      priviledges: this.state.priviledges.filter(
+        statePriv =>
+          statePriv.title !== priv.title &&
+          statePriv.description !== priv.description
+      )
     });
   };
 
@@ -97,9 +68,9 @@ export class ServicesOffered extends Component {
 
   validFields = () => {
     if (
-      !this.state.maxPremiums ||
-      !this.state.initialPrice ||
-      !this.state.passExpiry
+      !this.state.stockMonthDuration ||
+      !this.state.stockNumber ||
+      !this.state.initialPrice
     ) {
       this.setState({ error: "Compila tutti i campi" });
       return false;
@@ -107,9 +78,17 @@ export class ServicesOffered extends Component {
     return true;
   };
 
-  validServices = () => {
-    if (this.state.services.length === 0) {
-      this.setState({ error: "Aggiungi almeno un privilegio" });
+  validPrivs = () => {
+    if (
+      this.state.priviledges.filter(priv => priv.type === "stock").length === 0
+    ) {
+      this.setState({ error: "Aggiungi almeno un privilegio nella Stock" });
+      return false;
+    } else if (
+      this.state.priviledges.filter(priv => priv.type === "v1ralPass")
+        .length === 0
+    ) {
+      this.setState({ error: "Aggiungi almeno un privilegio nel V1ral Pass" });
       return false;
     }
     return true;
@@ -123,25 +102,49 @@ export class ServicesOffered extends Component {
     return true;
   };
 
-  /** Removes service by position in array */
-  removeService = position => {
-    this.setState({
-      services: this.state.services.filter((_, i) => i !== position)
-    });
-  };
-
+  /** Stores new shop to db in backend */
   handleSubmit = () => {
-    if (this.validCheckboxes() && this.validFields() && this.validServices()) {
-      this.props.dispatch({
-        type: "SET-SERVICES",
-        services: {
-          services: this.state.services,
-          maxPremiums: this.state.maxPremiums,
-          initialPrice: this.state.initialPrice,
-          passExpiry: this.state.passExpiry
-        }
-      });
-      this.props.history.push("/shop/register/goals");
+    if (this.validPrivs() && this.validCheckboxes() && this.validFields()) {
+      this.setState({ loading: true });
+      const stock = {
+        priviledges: this.state.priviledges,
+        stockNumber: this.state.stockNumber,
+        initialPrice: this.state.initialPrice,
+        stockMonthDuration: this.state.stockMonthDuration
+      };
+
+      const body = {
+        stock,
+        profile: this.props.shopRegister.bio,
+        credentials: this.props.shopRegister.credentials
+      };
+
+      console.log(body);
+
+      fetch("/shop/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(body)
+      })
+        .then(res => res.json())
+        .then(jsonRes => {
+          console.log(jsonRes);
+          if (jsonRes.success) {
+            window.location = "/shop/register/done";
+          } else {
+            this.setState({ error: jsonRes.message, loading: false });
+            if (jsonRes.serverError) {
+              errorHandler.serverError(jsonRes);
+            }
+          }
+        })
+        .catch(e => {
+          console.log(e);
+          errorHandler.clientError();
+        });
     }
   };
 
@@ -160,6 +163,7 @@ export class ServicesOffered extends Component {
             )}
             header="V1ral Pass"
             addPriviledge={() => this.setState({ addingV1ralPass: true })}
+            removePriv={this.removePriv}
           />
 
           <Priviledges
@@ -168,18 +172,26 @@ export class ServicesOffered extends Component {
             )}
             header="Stock"
             addPriviledge={() => this.setState({ addingStock: true })}
+            removePriv={this.removePriv}
           />
 
           <ServiceForm
-            handleChange={this.handleChange}
-            error={this.state.error}
-            handleSubmit={this.handleSubmit}
-            maxPremiums={this.state.maxPremiums}
+            stockNumber={this.state.stockNumber}
             initialPrice={this.state.initialPrice}
-            passExpiry={this.state.passExpiry}
+            stockMonthDuration={this.state.stockMonthDuration}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
             toggleCheck1={() =>
               this.setState({ check1: !this.state.check1, error: null })
             }
+          />
+          <Buttons
+            handleClickNext={this.handleSubmit}
+            handleClickPrev={() =>
+              this.props.history.push("/shop/register/credentials")
+            }
+            error={this.state.error}
+            loading={this.state.loading}
           />
         </div>
         <AddPrivWrapper

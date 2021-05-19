@@ -10,7 +10,7 @@ import Faqs from "./components/Faqs/Faqs";
 export class Help extends Component {
   render() {
     return (
-      <div>
+      <div className="page-wrapper">
         <PageDescription
           header={it.help_page_description_header}
           text={it.help_page_description_text}

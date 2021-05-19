@@ -6,6 +6,7 @@ import PrivBox from "./PrivBox";
  * @param header
  * @param addPriviledge
  * @param priviledges [{ title, description}]
+ * @param removePriv
  */
 export class Priviledges extends Component {
   render() {
@@ -22,7 +23,7 @@ export class Priviledges extends Component {
         </div>
         <div className="flex-line dark-box-body">
           {priviledges.map((priv, i) => (
-            <PrivBox priv={priv} key={i} />
+            <PrivBox priv={priv} key={i} removePriv={this.props.removePriv} />
           ))}
         </div>
       </div>

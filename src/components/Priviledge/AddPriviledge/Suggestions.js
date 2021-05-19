@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PrivBox from "../Priviledges/PrivBox";
-import it from "../../locales/it.json";
+import it from "../../../locales/it.json";
 
 // faq data
 const choosenPriviledges = [

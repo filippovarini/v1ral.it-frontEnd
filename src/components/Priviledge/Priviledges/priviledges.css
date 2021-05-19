@@ -1,0 +1,17 @@
+#priv-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.priv-box {
+  position: relative;
+}
+
+.priv-box .hide-cross {
+  top: 2px;
+  right: 3px;
+  font-size: 0.8rem;
+  color: red;
+}

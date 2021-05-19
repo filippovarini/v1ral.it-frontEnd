@@ -25,7 +25,6 @@ import TransactionSuccess from "./pages/TransactionSuccess/TransactionSuccess";
 import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
 import ShopCredentials from "./pages/ShopRegister/ShopCredentials/ShopCredentials";
 import Stock from "./pages/ShopRegister/Stock/Stock";
-import ShopGoals from "./pages/ShopRegister/ShopGoals/ShopGoals";
 import ShopRegisterDone from "./pages/ShopRegister/ShopRegisterDone";
 import GetPayed from "./pages/ShopRegister/GetPayed/GetPayed";
 import Spread from "./pages/Spread/Spread";
@@ -103,7 +102,6 @@ export class App extends Component {
                     component={ShopCredentials}
                   />
                   <Route path="/shop/register/stock" component={Stock} />
-                  <Route path="/shop/register/goals" component={ShopGoals} />
                   <Route path="/shop/register/getPayed" component={GetPayed} />
                   <Route
                     path="/shop/register/done/:connectedId"

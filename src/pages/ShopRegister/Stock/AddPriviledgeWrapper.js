@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AddPriviledge from "../../../components/AddPriviledge/AddPriviledge";
+import AddPriviledge from "../../../components/Priviledge/AddPriviledge/AddPriviledge";
 
 /** Wrapps the form to add priviledge
  * @param hide

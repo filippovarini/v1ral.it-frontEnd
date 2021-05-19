@@ -38,7 +38,9 @@ export class ShopCredentials extends Component {
         province: this.props.shopRegister.credentials.province,
         postcode: this.props.shopRegister.credentials.postcode,
         email: this.props.shopRegister.credentials.email,
-        psw: this.props.shopRegister.credentials.psw
+        psw: this.props.shopRegister.credentials.psw,
+        owner_name: this.props.shopRegister.credentials.owner_name,
+        owner_phone: this.props.shopRegister.credentials.owner_phone
       });
     }
   };
