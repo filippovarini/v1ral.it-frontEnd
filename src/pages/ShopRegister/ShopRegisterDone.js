@@ -105,28 +105,6 @@ export class ShopRegisterDone extends Component {
             connectedId={connectedId}
           />
         )}
-
-        <div className="shop-register-body">
-          <div
-            id="shop-register-done-panel"
-            className="communication-panel big"
-          >
-            <p className="communication-panel-header">{it.success}</p>
-            <p className="communication-panel-text">
-              {it.shop_register_completed_text}
-            </p>
-            <p className="communication-panel-text">
-              {it.shop_register_completed_buy_marketing_products_header}
-            </p>
-            <Link
-              to="/spread"
-              id="shop-register-done-marketing-button"
-              className="communication-panel-button button small"
-            >
-              {it.buy_marketing_products_button}
-            </Link>
-          </div>
-        </div>
       </div>
     );
     return this.state.loading ? <Loading /> : body;

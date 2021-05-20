@@ -6,8 +6,8 @@ export class SmallLoading extends Component {
   render() {
     return (
       <div id="loading-container" className={`small ${this.props.class}`}>
-        <div class="loadingio-spinner-eclipse-hbomlyl697i">
-          <div class="ldio-351dmw22jn2">
+        <div className="loadingio-spinner-eclipse-hbomlyl697i">
+          <div className="ldio-351dmw22jn2">
             <div></div>
           </div>
         </div>

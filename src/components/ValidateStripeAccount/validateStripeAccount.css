@@ -1,14 +1,31 @@
-#validate-stripe-account {
-  border: 1px solid black;
-  background: var(--coloredBackground);
-  color: red;
-  box-sizing: border-box;
-  padding: 10px 30px;
-  justify-content: space-between;
-  margin-top: 20px;
+#validate-account {
+  position: relative;
 }
 
-#validate-stripe-account {
-  font-size: 1.5rem;
-  font-weight: bold;
+#warning-icon {
+  color: red;
+  margin-left: 10px;
+}
+
+#validate-account-warning {
+  color: red;
+  font-style: italic;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.validate-account-button-container {
+  height: 100px;
+}
+
+#validate-account-button {
+  width: 100%;
+  margin-top: 30px;
+}
+
+#validate-account-step-counter {
+  color: var(--lightBlue);
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }

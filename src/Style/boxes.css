@@ -23,7 +23,8 @@
 .box {
   box-shadow: var(--shadow);
   background: var(--white);
-  border-radius: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .flex-col {
@@ -92,7 +93,7 @@ is the box that shows body information (a box that takes the full width) */
 }
 
 .body-box-text {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 15px;
 }
 

@@ -25,8 +25,7 @@ import TransactionSuccess from "./pages/TransactionSuccess/TransactionSuccess";
 import BioInfo from "./pages/ShopRegister/BioInfo/BioInfo";
 import ShopCredentials from "./pages/ShopRegister/ShopCredentials/ShopCredentials";
 import Stock from "./pages/ShopRegister/Stock/Stock";
-import ShopRegisterDone from "./pages/ShopRegister/ShopRegisterDone";
-import GetPayed from "./pages/ShopRegister/GetPayed/GetPayed";
+import RegisterDone from "./pages/ShopRegister/RegisterDone/RegisterDone";
 import Spread from "./pages/Spread/Spread";
 import AdminLogin from "./pages/Admin/Login";
 import AdminDashboard from "./pages/Admin/Admin";
@@ -50,7 +49,7 @@ export class App extends Component {
     fetch("/page/header")
       .then(res => res.json())
       .then(jsonRes => {
-        if (jsonRes.success)
+        if (jsonRes.success) {
           this.props.dispatch({
             type: "SET-USER",
             user: {
@@ -61,6 +60,8 @@ export class App extends Component {
               address: jsonRes.address
             }
           });
+          console.log(jsonRes);
+        }
       })
       .catch(e => {
         console.log(e);
@@ -102,11 +103,7 @@ export class App extends Component {
                     component={ShopCredentials}
                   />
                   <Route path="/shop/register/stock" component={Stock} />
-                  <Route path="/shop/register/getPayed" component={GetPayed} />
-                  <Route
-                    path="/shop/register/done/:connectedId"
-                    component={ShopRegisterDone}
-                  />
+                  <Route path="/shop/register/done" component={RegisterDone} />
                   <Route exact path="/spread" component={Spread} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/recover" component={RecoverPassword} />
