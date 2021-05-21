@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import goToDashboard from "../../functions/goToDashboard";
-import getGoalsDone from "../../functions/goalsDone";
 
 // language
 import it from "../../locales/it.json";
@@ -83,10 +82,7 @@ export class ShopDashboard extends Component {
                   this.props.shop.initialPrice -
                   100
               )}
-              goalsDone={getGoalsDone(
-                this.props.shop.financed_so_far,
-                this.getDisruptionIndex()
-              )}
+              goalsDone={-1}
             />
             <div id="shop-nav">
               <Navigator

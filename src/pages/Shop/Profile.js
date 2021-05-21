@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import CartController from "../../functions/CartController";
-import goalsDone from "../../functions/goalsDone";
 
 import it from "../../locales/it.json";
 
@@ -115,10 +114,7 @@ export class ShopProfile extends Component {
                   this.props.shop.initialPrice -
                   100
               )}
-              goalsDone={goalsDone(
-                this.props.shop.financed_so_far,
-                this.getDisruptionIndex()
-              )}
+              goalsDone={-1}
             />
             <div id="shop-nav">
               <Navigator

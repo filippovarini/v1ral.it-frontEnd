@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./shop.css";
 import errorHandler from "../../functions/errorHandler";
-import getGoalsDone from "../../functions/goalsDone";
 
 // import ShopProfile from "./ShopProfile/ShopProfile";
 import Loading from "../../components/Loading/Loading";
@@ -15,9 +14,7 @@ export class ShopRenderer extends Component {
     loading: true,
     dashboard: false,
     shop: null,
-    goals: null,
-    services: null,
-    cases: null,
+    priviledges: null,
     totalSpent: 0,
     chargesEnabled: false,
     added: false,
@@ -36,9 +33,7 @@ export class ShopRenderer extends Component {
         if (jsonRes.success) {
           this.setState({
             shop: jsonRes.shop,
-            goals: jsonRes.goals,
-            services: jsonRes.services,
-            cases: jsonRes.cases,
+            priviledges: jsonRes.priviledges,
             added: jsonRes.added,
             alreadyBought: jsonRes.alreadyBought,
             dashboard: jsonRes.dashboard,
@@ -88,15 +83,6 @@ export class ShopRenderer extends Component {
     this.setState({ loading: !this.state.loading });
   };
 
-  /** Get total money the shop has in the goals
-   * @type dashboard, profile
-   */
-  getDisruptionIndex = () => {
-    return this.state.goals
-      ? this.state.goals.reduce((acc, goal) => acc + goal.amount, 0)
-      : 0;
-  };
-
   /** Deletes image from gallery
    * @type dashboard
    */
@@ -124,39 +110,36 @@ export class ShopRenderer extends Component {
 
   render() {
     const passesLeft = this.state.shop
-      ? this.state.shop.maxpremiums - this.state.shop.total_premiums
+      ? this.state.shop.stocksNumber - this.state.shop.premiums
       : 0;
 
     let body = null;
+
+    console.log(this.state.shop);
     if (this.state.shop) {
       body = (
         <div id="shop-profile" className="flex-line">
           <div id="shop-profile-body">
             <ShopHead
               shop={this.state.shop}
-              services={this.state.services}
+              priviledges={this.state.priviledges}
               passesLeft={passesLeft}
-              goalsDone={getGoalsDone(
-                this.state.shop.financed_so_far,
-                this.getDisruptionIndex()
-              )}
               dashboard={this.state.dashboard}
               added={this.state.added}
               alreadyBought={this.state.alreadyBought}
               setAdded={() => this.setState({ added: true })}
             />
             <ShopBody
-              goals={this.state.goals}
-              services={this.state.services}
-              cases={this.state.cases}
+              priviledges={this.state.priviledges}
               shop={this.state.shop}
               dashboard={this.state.dashboard}
             />
           </div>
           <ShopInfoWrapper
-            phone={3206265132}
-            instagram_link="https://www.instagram.com/sant.ippo/"
-            facebook_link="https://www.facebook.com/thejackalweb/"
+            phone={this.state.shop.phone}
+            instagram_link={this.state.shop.instaLink}
+            facebook_link={this.state.shop.fbLink}
+            website={this.state.shop.website}
             city={this.state.shop.city}
             province={this.state.shop.province}
             street={this.state.shop.street}

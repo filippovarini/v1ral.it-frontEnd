@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import "./shopBox.css";
 
 import errorHandler from "../../functions/errorHandler";
-import getGoalsDone from "../../functions/goalsDone";
 
 import it from "../../locales/it.json";
 
@@ -55,10 +54,7 @@ export class ShopBox extends Component {
   };
 
   render() {
-    let goalsDone = getGoalsDone(
-      this.props.shop.financed_so_far,
-      this.props.shop.disruption_index
-    );
+    let goalsDone = -1;
     let button = null;
 
     const isInCartButton = (

@@ -12,9 +12,8 @@ import InsertChallenger from "../../../components/InsertChallenger/Challenger";
 /** Returns the top box of shop profile (images and profile header)
  * @param shop
  * @param passesLeft
- * @param services
+ * @param priviledges
  * @param passesLeft
- * @param goalsDone
  * @param dashboard
  * @param added?
  * @param alreadyBought?
@@ -109,7 +108,7 @@ export class ShopHead extends Component {
             info={[
               {
                 title: it.shop_priviledges_offered,
-                data: this.props.services.length
+                data: this.props.priviledges.length
               },
               {
                 title: it.shop_donations_received,
@@ -133,7 +132,7 @@ export class ShopHead extends Component {
               100
           )}
           placesLeft={this.props.passesLeft}
-          goalsDone={this.props.goalsDone}
+          goalsDone={-1}
         />
         <InsertChallenger
           hidden={this.state.insertChallengerHidden}

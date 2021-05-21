@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+
 import it from "../../../locales/it.json";
-import ServiceExplanaiton from "../../../components/ShopServiceExplanaiton/ShopServiceExplanaiton";
-import BarChart from "../../../components/BarChart/BarChart";
+
 import DashboardStats from "./DashboardStats/DashboardStats";
+import Priviledges from "../../../components/Priviledge/Priviledges/Priviledges";
 
 const faqDashboardStats = {
   views: 123,
@@ -12,9 +13,7 @@ const faqDashboardStats = {
 
 /** Renders shop body different pages based on navstate
  * @param navState
- * @param services
- * @param goals
- * @param getBarChartWidth
+ * @param priviledges
  * @param shop
  */
 export class ShopBody extends Component {
@@ -22,22 +21,8 @@ export class ShopBody extends Component {
     barChartWidth: 0
   };
 
-  /** Get optimal barChart width to fit into the shop-profile-body
-   * @type dashboard, profile
-   */
-  getBarChartWidth = () => {
-    const offset = 20;
-    let barChartWidth = null;
-    const div = document.getElementById("shop-barChart");
-    if (div) {
-      barChartWidth = div.clientWidth - offset;
-    }
-    console.log(barChartWidth);
-    return barChartWidth;
-  };
-
   render() {
-    return (
+    return this.props.priviledges ? (
       <div id="shop-body">
         {this.props.dashboard ? (
           <DashboardStats
@@ -45,19 +30,22 @@ export class ShopBody extends Component {
             connectedId={this.props.shop.connectedId}
           />
         ) : null}
-        <ServiceExplanaiton
-          goals={this.props.goals}
-          services={this.props.services}
+
+        <Priviledges
+          header={it.v1ral_pass_privs}
+          priviledges={this.props.priviledges.filter(
+            priv => priv.type === "v1ralPass"
+          )}
         />
-        <div id="shop-barChart" className="body-box box">
-          <p className="body-box-header">{it.shop_donations_received}</p>
-          <BarChart
-            cases={this.props.cases || {}}
-            width={this.getBarChartWidth()}
-          />
-        </div>
+
+        <Priviledges
+          header={it.stock_privs}
+          priviledges={this.props.priviledges.filter(
+            priv => priv.type === "stock"
+          )}
+        />
       </div>
-    );
+    ) : null;
   }
 }
 

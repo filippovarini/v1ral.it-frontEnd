@@ -22,9 +22,10 @@ export class InfoWrapper extends Component {
     return (
       <div id="info-wrapper">
         <BodyInfo
-          phone={3206265132}
-          instagram_link="https://www.instagram.com/sant.ippo/"
-          facebook_link="https://www.facebook.com/thejackalweb/"
+          phone={this.props.phone}
+          instaLink={this.props.instaLink}
+          fbLink={this.props.fbLink}
+          website={this.props.website}
           city={this.props.city}
           province={this.props.province}
           street={this.props.street}

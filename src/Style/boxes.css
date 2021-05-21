@@ -121,7 +121,7 @@ a.body-box-text {
   box-sizing: border-box;
   padding: 10px;
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
 }
 
 .dark-box:hover {

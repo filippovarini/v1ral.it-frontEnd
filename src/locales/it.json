@@ -1,4 +1,9 @@
 {
+  "v1ral_pass": "V1ral Pass",
+  "stock": "Stock",
+  "v1ral_pass_privs": "Privilegi V1ral Pass",
+  "stock_privs": "Privilegi Stock",
+
   "client_service_number_formatted": "320 6265132",
   "client_service_number_raw": "3206265132",
   "client_service_email": "info@v1ral.it",

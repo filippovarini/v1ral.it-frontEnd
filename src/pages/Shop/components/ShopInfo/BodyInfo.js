@@ -4,8 +4,9 @@ import it from "../../../../locales/it.json";
 /** Renders body info to be showed in the shop profile
  * @param city, street, province
  * @param email
- * @param instagram_link
- * @param facebook_link
+ * @param instaLink
+ * @param fbLink
+ * @param website
  * @param phone
  * @param tags
  * @param category
@@ -23,30 +24,44 @@ export class ShopInfo extends Component {
   };
 
   render() {
-    const instagram = this.props.instagram_link ? (
+    const instagram = this.props.instaLink ? (
       <div className="flex-line body-box-line">
         <i className="fab fa-instagram-square body-box-icon"></i>
         <a
-          href={this.props.instagram_link}
+          href={this.props.instaLink}
           className="body-box-text"
           rel="noreferrer"
           target="_blank"
         >
-          {this.props.instagram_link}
+          {this.props.instaLink}
         </a>
       </div>
     ) : null;
 
-    const facebook = this.props.facebook_link ? (
+    const facebook = this.props.fbLink ? (
       <div className="flex-line body-box-line">
         <i className="fab fa-facebook-square body-box-icon"></i>
         <a
-          href={this.props.facebook_link}
+          href={this.props.fbLink}
           className="body-box-text"
           target="_blank"
           rel="noreferrer"
         >
-          {this.props.facebook_link}
+          {this.props.fbLink}
+        </a>
+      </div>
+    ) : null;
+
+    const website = this.props.website ? (
+      <div className="flex-line body-box-line">
+        <i className="fas fa-globe body-box-icon"></i>
+        <a
+          href={this.props.website}
+          className="body-box-text"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {this.props.website}
         </a>
       </div>
     ) : null;
@@ -89,6 +104,7 @@ export class ShopInfo extends Component {
         {email}
         {instagram}
         {facebook}
+        {website}
         {category}
       </div>
     );
