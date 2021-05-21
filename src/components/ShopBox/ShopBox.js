@@ -28,7 +28,7 @@ export class ShopBox extends Component {
 
   getPriceIncrease = () => {
     return Math.ceil(
-      (this.props.shop.currentprice / this.props.shop.initialprice - 1) * 100
+      (this.props.shop.currentPrice / this.props.shop.initialPrice - 1) * 100
     );
   };
 
@@ -111,7 +111,7 @@ export class ShopBox extends Component {
       <div id="shopBox-container" className="box">
         <div id="shopBox-header" className="flex-line">
           <img
-            src={this.props.shop.logourl}
+            src={this.props.shop.logo}
             id="shopBox-logo"
             alt="logo del negozio"
           />
@@ -136,7 +136,7 @@ export class ShopBox extends Component {
             </div>
           </div>
         </div>
-        <ShopBackground url={this.props.shop.backgroundurl} />
+        <ShopBackground url={this.props.shop.background} />
         <div id="shopBox-body-container">
           <p id="shopBox-premiums">
             {it.passes_sold_number}{" "}
@@ -156,7 +156,7 @@ export class ShopBox extends Component {
             </p>
           </div>
           <div id="shopBox-price" className="flex-line">
-            <p id="shopBox-current">{this.props.shop.currentprice} €</p>
+            <p id="shopBox-current">{this.props.shop.currentPrice} €</p>
             <p id="shopBox-price-increment">+ {this.getPriceIncrease()}%</p>
           </div>
           {button}

@@ -19,14 +19,14 @@ export class ShopBackground extends Component {
       <div id="shop-background-image">
         <label
           id="background-input-label"
-          htmlFor="backgroundurl"
+          htmlFor="background"
           className="centering input-label"
         >
           <i className="fas fa-camera"></i>
           <span>sfondo</span>
         </label>
         <input
-          id="backgroundurl"
+          id="background"
           type="file"
           onChange={this.props.handleImageChange}
           className="hidden"

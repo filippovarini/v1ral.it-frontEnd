@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./shopImages.css";
 
 /** Renders images header of shop profile
- * @param backgroundurl
- * @param logourl
+ * @param background
+ * @param logo
  * @param handleImageChange function to call to post url
  * @param resetUrl function to reset image
  * @param input whether we are in a form or not
@@ -17,14 +17,14 @@ export class ShopImages extends Component {
       >
         <label
           id="background-input-label"
-          htmlFor="backgroundurl"
+          htmlFor="background"
           className="centering input-label"
         >
           <i className="fas fa-camera"></i>
           <span>sfondo</span>
         </label>
         <input
-          id="backgroundurl"
+          id="background"
           type="file"
           onChange={this.props.handleImageChange}
           className="hidden"
@@ -37,14 +37,14 @@ export class ShopImages extends Component {
       <div className="centering shop-logo box">
         <img
           className="shop-image"
-          src={this.props.logourl}
+          src={this.props.logo}
           alt="logo dell'impresa"
         />
         {this.props.input ? (
           <i
             id="logo-hide"
             className="fas fa-times hide-cross centering"
-            onClick={() => this.props.resetUrl("logourl")}
+            onClick={() => this.props.resetUrl("logo")}
           ></i>
         ) : null}
       </div>
@@ -55,13 +55,13 @@ export class ShopImages extends Component {
         <label
           id="logo-input-label"
           className="centering input-label"
-          htmlFor="logourl"
+          htmlFor="logo"
         >
           <i className="fas fa-camera"></i>
           <span>logo</span>
         </label>
         <input
-          id="logourl"
+          id="logo"
           type="file"
           onChange={this.props.handleImageChange}
           className="hidden"
@@ -70,17 +70,17 @@ export class ShopImages extends Component {
       </div>
     );
 
-    const logoBody = this.props.logourl ? logoSubmitted : logoInput;
+    const logoBody = this.props.logo ? logoSubmitted : logoInput;
 
     const backgroundSubmitted = (
       <div
         id="background-submitted"
         className="shop-images"
-        style={{ backgroundImage: `url(${this.props.backgroundurl})` }}
+        style={{ backgroundImage: `url(${this.props.background})` }}
       >
         <i
           className="fas fa-times hide-cross centering"
-          onClick={() => this.props.resetUrl("backgroundurl")}
+          onClick={() => this.props.resetUrl("background")}
         ></i>
         {logoBody}
       </div>
@@ -93,7 +93,7 @@ export class ShopImages extends Component {
       </div>
     );
 
-    const body = this.props.backgroundurl
+    const body = this.props.background
       ? backgroundSubmitted
       : backgroundSubmitting;
 

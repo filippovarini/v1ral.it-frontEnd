@@ -134,27 +134,24 @@ export class UserSettings extends Component {
       <form>
         <label
           className="settings-option settings-option-text"
-          htmlFor="backgroundurl"
+          htmlFor="background"
         >
           <i className="fas fa-window-maximize settings-option-icon"></i>
           {it.settings_background}
         </label>
         <input
-          id="backgroundurl"
+          id="background"
           type="file"
           onChange={this.handleImageChange}
           className="hidden"
           accept="image/*"
         />
-        <label
-          className="settings-option settings-option-text"
-          htmlFor="logourl"
-        >
+        <label className="settings-option settings-option-text" htmlFor="logo">
           <i className="fas fa-user-circle settings-option-icon"></i>
           {it.settings_logo}
         </label>
         <input
-          id="logourl"
+          id="logo"
           type="file"
           onChange={this.handleImageChange}
           className="hidden"

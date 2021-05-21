@@ -32,8 +32,8 @@ export class GetPayed extends Component {
       name,
       category,
       bio,
-      backgroundurl,
-      logourl
+      background,
+      logo
     } = this.props.shopRegister.bio;
     const {
       city,
@@ -54,8 +54,8 @@ export class GetPayed extends Component {
       name,
       category,
       bio,
-      backgroundurl,
-      logourl,
+      background,
+      logo,
       city,
       province,
       street,

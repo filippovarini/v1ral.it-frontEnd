@@ -18,7 +18,7 @@ export class BottomHalf extends Component {
   render() {
     return (
       <div id="bottomHalf">
-        <div id="bottomHalf-nav-container">
+        {/* <div id="bottomHalf-nav-container">
           <Navigator
             updateNav={this.updateNav}
             active={this.state.navigatorIndex}
@@ -27,7 +27,8 @@ export class BottomHalf extends Component {
         </div>
         <Statistics class={this.state.navigatorIndex === 0 ? null : "hidden"} />
         <Shops class={this.state.navigatorIndex === 1 ? null : "hidden"} />
-        <Cases class={this.state.navigatorIndex === 2 ? null : "hidden"} />
+        <Cases class={this.state.navigatorIndex === 2 ? null : "hidden"} /> */}
+        static shit
       </div>
     );
   }

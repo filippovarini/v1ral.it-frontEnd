@@ -18,10 +18,10 @@ export class BioInfo extends Component {
     name: null,
     category: null,
     bio: null,
-    logourl: null,
-    backgroundurl: null,
-    backgroundurlMulterOperating: false,
-    logourlMulterOperating: false,
+    logo: null,
+    background: null,
+    backgroundMulterOperating: false,
+    logoMulterOperating: false,
     error: null
   };
 
@@ -37,8 +37,8 @@ export class BioInfo extends Component {
         name: this.props.shopRegister.bio.name,
         bio: this.props.shopRegister.bio.bio,
         category: this.props.shopRegister.bio.category,
-        logourl: this.props.shopRegister.bio.logourl,
-        backgroundurl: this.props.shopRegister.bio.backgroundurl
+        logo: this.props.shopRegister.bio.logo,
+        background: this.props.shopRegister.bio.background
       });
     }
   };
@@ -81,8 +81,7 @@ export class BioInfo extends Component {
 
   multerOperating = () => {
     return (
-      this.state.logourlMulterOperating ||
-      this.state.backgroundurlMulterOperating
+      this.state.logoMulterOperating || this.state.backgroundMulterOperating
     );
   };
 
@@ -101,7 +100,7 @@ export class BioInfo extends Component {
   };
 
   imagesValid = () => {
-    if (!this.state.backgroundurl || !this.state.logourl) {
+    if (!this.state.background || !this.state.logo) {
       this.setState({ error: "Inserisci entrambe le immagini richieste" });
       return false;
     } else if (this.multerOperating()) {
@@ -116,8 +115,8 @@ export class BioInfo extends Component {
       this.props.dispatch({
         type: "SET-BIO",
         bio: {
-          logourl: this.state.logourl,
-          backgroundurl: this.state.backgroundurl,
+          logo: this.state.logo,
+          background: this.state.background,
           name: this.state.name,
           category: this.state.category,
           bio: this.state.bio
@@ -137,8 +136,8 @@ export class BioInfo extends Component {
           </p>
           <div>
             <ShopImages
-              logourl={this.state.logourl}
-              backgroundurl={this.state.backgroundurl}
+              logo={this.state.logo}
+              background={this.state.background}
               resetUrl={this.resetImage}
               handleImageChange={this.handleImageChange}
               input={true}

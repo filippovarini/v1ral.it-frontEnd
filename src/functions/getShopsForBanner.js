@@ -10,10 +10,10 @@ const getShopsForBanner = shops => {
   let sortedAndFormatted = shops
     .map(shop => {
       return {
-        current: shop.currentprice,
+        current: shop.currentPrice,
         name: shop.name,
-        logourl: shop.logourl,
-        increase: Math.ceil((shop.currentprice / shop.initialprice - 1) * 100)
+        logo: shop.logo,
+        increase: Math.ceil((shop.currentPrice / shop.initialPrice - 1) * 100)
       };
     })
     .sort((a, b) => b.increase - a.increase);

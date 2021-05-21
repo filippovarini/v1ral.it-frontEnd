@@ -85,7 +85,7 @@ export class UserCheckout extends Component {
         name: it.checkout_bill_renewalPasses,
         price: this.state.shops
           .filter(shop => shop.cartType === "pass")
-          .reduce((acc, shop) => shop.currentprice + acc, 0)
+          .reduce((acc, shop) => shop.currentPrice + acc, 0)
       });
     }
 
@@ -105,7 +105,7 @@ export class UserCheckout extends Component {
   formatDateForTable = shopsArray => {
     return shopsArray.map((shop, i) => {
       return {
-        logo: shop.logourl,
+        logo: shop.logo,
         nome: shop.name,
         prodotto: (
           <p
@@ -114,7 +114,7 @@ export class UserCheckout extends Component {
             {shop.cartType}
           </p>
         ),
-        totale: shop.renewalPrice || shop.currentprice,
+        totale: shop.renewalPrice || shop.currentPrice,
         rimuovi: (
           <i
             className="fas fa-times pointer"
@@ -129,7 +129,7 @@ export class UserCheckout extends Component {
   getShopsPrice = () => {
     if (this.state.shops.length !== 0) {
       return this.state.shops.reduce(
-        (acc, shop) => (shop.renewalPrice || shop.currentprice) + acc,
+        (acc, shop) => (shop.renewalPrice || shop.currentPrice) + acc,
         0
       );
     } else return 0;

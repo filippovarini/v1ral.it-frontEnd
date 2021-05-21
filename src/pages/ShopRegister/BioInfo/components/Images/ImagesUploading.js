@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./imagesUploading.css";
 
 /** Displays images
- * @param logourl
- * @param backgroundurl
+ * @param logo
+ * @param background
  * @param handleImageChange function to call to post url
  * @param resetUrl function to reset image
  */
@@ -13,12 +13,12 @@ export class ImagesUploading extends Component {
       <div className="bioInfo-bacground bioInfo-image-input">
         <img
           id="background"
-          src={this.props.backgroundurl}
+          src={this.props.background}
           alt="imagine di sfondo del focolaio"
         />
         <i
           className="fas fa-times hide-cross"
-          onClick={() => this.props.resetUrl("backgroundurl")}
+          onClick={() => this.props.resetUrl("background")}
         ></i>
       </div>
     );
@@ -28,12 +28,12 @@ export class ImagesUploading extends Component {
         <label
           id="background-input-label"
           className="box "
-          htmlFor="backgroundurl"
+          htmlFor="background"
         >
           <i className="fas fa-camera"></i>
         </label>
         <input
-          id="backgroundurl"
+          id="background"
           type="file"
           onChange={this.props.handleImageChange}
           className="hidden"
@@ -45,10 +45,10 @@ export class ImagesUploading extends Component {
     const logoSubmitted = (
       <div className="bioInfo-logo-container">
         <div className="bioInfo-image-input bioInfo-logo">
-          <img id="logo" src={this.props.logourl} alt="logo focolaio" />
+          <img id="logo" src={this.props.logo} alt="logo focolaio" />
           <i
             className="fas fa-times hide-cross"
-            onClick={() => this.props.resetUrl("logourl")}
+            onClick={() => this.props.resetUrl("logo")}
           ></i>
         </div>
       </div>
@@ -60,11 +60,11 @@ export class ImagesUploading extends Component {
           className="bioInfo-image-input bioInfo-logo box"
           style={{ border: "none" }}
         >
-          <label id="logo-input-label" htmlFor="logourl">
+          <label id="logo-input-label" htmlFor="logo">
             <i className="fas fa-camera"></i>
           </label>
           <input
-            id="logourl"
+            id="logo"
             type="file"
             onChange={this.props.handleImageChange}
             className="hidden"
@@ -74,11 +74,11 @@ export class ImagesUploading extends Component {
       </div>
     );
 
-    const backgroundBody = this.props.backgroundurl
+    const backgroundBody = this.props.background
       ? backgroundSubmitted
       : backgroundInput;
 
-    const logoBody = this.props.logourl ? logoSubmitted : logoInput;
+    const logoBody = this.props.logo ? logoSubmitted : logoInput;
 
     return (
       <div id="bioInfo-images">

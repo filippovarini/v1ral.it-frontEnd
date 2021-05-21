@@ -16,7 +16,7 @@ export class UserCartItem extends Component {
     return (
       <div className="cart-item-container">
         <div className="cart-item-image">
-          <ShopBackground url={this.props.shop.backgroundurl} />
+          <ShopBackground url={this.props.shop.background} />
         </div>
         <div className="cart-item-info">
           <p className="cart-item-name">{this.props.shop.name}</p>
@@ -37,7 +37,7 @@ export class UserCartItem extends Component {
           <p className="cart-item-price">
             {this.props.shop.cartType === "renewal"
               ? this.props.shop.renewalPrice
-              : this.props.shop.currentprice}{" "}
+              : this.props.shop.currentPrice}{" "}
             €
           </p>
         </div>

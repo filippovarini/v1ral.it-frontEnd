@@ -96,15 +96,15 @@ export class ShopHead extends Component {
     return (
       <div>
         <div id="shopProfile-header-container">
-          <ShopBackground url={this.props.shop.backgroundurl} />
+          <ShopBackground url={this.props.shop.background} />
           <ProfileHeader
             profile={{
               name: this.props.shop.name,
               description: this.props.shop.bio,
               city: this.props.shop.city,
               province: this.props.shop.province,
-              currentprice: this.props.shop.currentprice,
-              logourl: this.props.shop.logourl || ""
+              currentPrice: this.props.shop.currentPrice,
+              logo: this.props.shop.logo || ""
             }}
             info={[
               {
@@ -128,8 +128,8 @@ export class ShopHead extends Component {
         <ShopStatsBar
           pass_month_duration={this.props.shop.pass_month_duration}
           priceIncrement={Math.ceil(
-            (parseFloat(this.props.shop.currentprice) * 100) /
-              this.props.shop.initialprice -
+            (parseFloat(this.props.shop.currentPrice) * 100) /
+              this.props.shop.initialPrice -
               100
           )}
           placesLeft={this.props.passesLeft}

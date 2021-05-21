@@ -70,7 +70,7 @@ export class Shops extends Component {
       return this.state.info.map(infoObj => {
         return {
           id: infoObj.id,
-          [it.shop_logo]: infoObj.logourl,
+          [it.shop_logo]: infoObj.logo,
           [it.shop_name]: infoObj.name,
           [it.shop_category]: infoObj.category,
           [it.shop_place]: `${infoObj.city}, ${infoObj.province}`,

@@ -7,7 +7,7 @@ import ProfileInfoBar from "./ProfileInfoBar";
 
 /** Renders shop profile header
  * @param passesLeft boolean, represents whether all passes have been sold
- * @param profile: {name, city, province, description, currentprice, logourl}
+ * @param profile: {name, city, province, description, currentPrice, logo}
  * @param info list of three info to show on the instagram-like header
  * @param dashboard?
  * @param button Object with style, text and handleSubmit
@@ -58,7 +58,7 @@ export class ShopProfileHeader extends Component {
         {settingsButton}
         <div className="profile-name flex-line">
           <img
-            src={this.props.profile.logourl}
+            src={this.props.profile.logo}
             alt="logo dell'impresa"
             id="profile-shop-logo"
           />
@@ -75,8 +75,8 @@ export class ShopProfileHeader extends Component {
           </p>
         </div>
         <div id="shop-price" className="flex-line">
-          <p id="shop-price-header">{it.shop_profile_currentprice}:</p>
-          <p id="shop-price-value">{this.props.profile.currentprice} €</p>
+          <p id="shop-price-header">{it.shop_profile_currentPrice}:</p>
+          <p id="shop-price-value">{this.props.profile.currentPrice} €</p>
         </div>
         {button}
       </div>

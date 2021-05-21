@@ -41,7 +41,7 @@ export class ShopDashboard extends Component {
     this.props.toggleLoading();
     goToDashboard(
       window.location.pathname.slice(1),
-      this.props.shop.connectedid
+      this.props.shop.connectedId
     );
   };
 
@@ -54,7 +54,7 @@ export class ShopDashboard extends Component {
               <ValidateStripeAccount
                 toggleLoading={this.props.toggleLoading}
                 redirectPath="shop/dashboard"
-                connectedId={this.props.shop.connectedid}
+                connectedId={this.props.shop.connectedId}
               />
             )}
             <ShopHead
@@ -64,7 +64,7 @@ export class ShopDashboard extends Component {
                 this.props.history.push("/spread")
               }
               profileHeaderButtonStyle={null}
-              backgroundUrl={this.props.shop.backgroundurl}
+              backgroundUrl={this.props.shop.background}
               totalPriviledges={this.props.services.length}
               totalPassesSold={this.props.shop.total_premiums}
               totalPassesToVirals={this.props.shop.viral_premiums}
@@ -74,13 +74,13 @@ export class ShopDashboard extends Component {
                 description: this.props.shop.bio,
                 city: this.props.shop.city,
                 province: this.props.shop.province,
-                currentprice: this.props.shop.currentprice,
-                logourl: this.props.shop.logourl
+                currentPrice: this.props.shop.currentPrice,
+                logo: this.props.shop.logo
               }}
               passMonthDuration={this.props.shop.pass_month_duration}
               priceIncrement={Math.ceil(
-                (parseFloat(this.props.shop.currentprice) * 100) /
-                  this.props.shop.initialprice -
+                (parseFloat(this.props.shop.currentPrice) * 100) /
+                  this.props.shop.initialPrice -
                   100
               )}
               goalsDone={getGoalsDone(

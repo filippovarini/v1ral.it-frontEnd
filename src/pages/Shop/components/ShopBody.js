@@ -42,7 +42,7 @@ export class ShopBody extends Component {
         {this.props.dashboard ? (
           <DashboardStats
             data={faqDashboardStats}
-            connectedId={this.props.shop.connectedid}
+            connectedId={this.props.shop.connectedId}
           />
         ) : null}
         <ServiceExplanaiton
