@@ -16,8 +16,8 @@ export class ShopCredentials extends Component {
     postcode: null,
     email: null,
     psw: null,
-    owner_name: null,
-    owner_phone: null,
+    ownerName: null,
+    ownerPhone: null,
     error: null,
     check1: false,
     check2: false
@@ -39,8 +39,8 @@ export class ShopCredentials extends Component {
         postcode: this.props.shopRegister.credentials.postcode,
         email: this.props.shopRegister.credentials.email,
         psw: this.props.shopRegister.credentials.psw,
-        owner_name: this.props.shopRegister.credentials.owner_name,
-        owner_phone: this.props.shopRegister.credentials.owner_phone
+        ownerName: this.props.shopRegister.credentials.ownerName,
+        ownerPhone: this.props.shopRegister.credentials.ownerPhone
       });
     }
   };
@@ -88,7 +88,7 @@ export class ShopCredentials extends Component {
   };
 
   ownerValid = () => {
-    if (!this.state.owner_name || !this.state.owner_phone) {
+    if (!this.state.ownerName || !this.state.ownerPhone) {
       this.setState({ error: "Completa tutti i campi" });
       return false;
     }
@@ -109,10 +109,10 @@ export class ShopCredentials extends Component {
           street: this.state.street,
           province: this.state.province,
           postcode: this.state.postcode,
-          email: this.state.email,
+          email: this.state.email.toLowerCase(),
           psw: this.state.psw,
-          owner_name: this.state.owner_name,
-          owner_phone: this.state.owner_phone
+          ownerName: this.state.ownerName,
+          ownerPhone: this.state.ownerPhone
         }
       });
       this.props.history.push("/shop/register/stock");
@@ -132,8 +132,8 @@ export class ShopCredentials extends Component {
             handleSubmit={this.handleSubmit}
             email={this.state.email}
             psw={this.state.psw}
-            owner_name={this.state.owner_name}
-            owner_phone={this.state.owner_phone}
+            ownerName={this.state.ownerName}
+            ownerPhone={this.state.ownerPhone}
             city={this.state.city}
             street={this.state.street}
             province={this.state.province}

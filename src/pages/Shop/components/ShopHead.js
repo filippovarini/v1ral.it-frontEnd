@@ -6,7 +6,7 @@ import it from "../../../locales/it.json";
 
 import ShopBackground from "../../../components/ShopBackgroundImage/ShopBackground";
 import ProfileHeader from "../../../components/ProfileHeaders/ShopProfileHeader";
-import ShopStatsBar from "../../../components/ShopStatsBar/ShopStats";
+import ShopStatsBar from "./ShopStatsBar/ShopStats";
 import InsertChallenger from "../../../components/InsertChallenger/Challenger";
 
 /** Returns the top box of shop profile (images and profile header)
@@ -125,12 +125,14 @@ export class ShopHead extends Component {
           />
         </div>
         <ShopStatsBar
-          pass_month_duration={this.props.shop.pass_month_duration}
-          priceIncrement={Math.ceil(
-            (parseFloat(this.props.shop.currentPrice) * 100) /
-              this.props.shop.initialPrice -
-              100
-          )}
+          stockMonthDuration={this.props.shop.stockMonthDuration}
+          priceIncrement={
+            Math.ceil(
+              (parseFloat(this.props.shop.currentPrice) * 100) /
+                this.props.shop.initialPrice -
+                100
+            ) || 0
+          }
           placesLeft={this.props.passesLeft}
           goalsDone={-1}
         />

@@ -55,13 +55,13 @@ export class ShopImages extends Component {
         <label
           id="logo-input-label"
           className="centering input-label"
-          htmlFor="logo"
+          htmlFor="logoInput"
         >
           <i className="fas fa-camera"></i>
           <span>logo</span>
         </label>
         <input
-          id="logo"
+          id="logoInput"
           type="file"
           onChange={this.props.handleImageChange}
           className="hidden"

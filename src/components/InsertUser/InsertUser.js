@@ -227,7 +227,7 @@ export class InsertUser extends Component {
           className="button small insertUser-button"
           onClick={this.submitStep1}
         >
-          {it.insertUser_confirm1}
+          {it.save}
         </p>
       </div>
     );

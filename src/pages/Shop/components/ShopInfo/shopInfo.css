@@ -56,6 +56,28 @@
   cursor: pointer;
 }
 
+.bodyInfo-input {
+  height: 15px;
+  width: 200px;
+}
+
+.bodyInfo-input::placeholder {
+  color: var(--lightBlue);
+}
+
+.bodyInfo-submit {
+  border: none;
+  background: var(--darkBlue);
+  color: var(--white);
+  border-radius: 2px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.bodyInfo-submit:hover {
+  font-weight: bold;
+}
+
 /* SHARE SHOP */
 .share-shop-icon {
   font-size: 2rem;

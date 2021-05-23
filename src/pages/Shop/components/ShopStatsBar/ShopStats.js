@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import "./shopStats.css";
 
 // language
-import it from "../../locales/it.json";
+import it from "../../../../locales/it.json";
 
 /** Show shop stats and chart
- * @param pass_month_duration
+ * @param stockMonthDuration
  * @param priceIncrement
  * @param placesLeft
- * @param goalsDone
- * @param cases list of cases
  */
 export class ShopStats extends Component {
   render() {
@@ -31,15 +29,15 @@ export class ShopStats extends Component {
             </div>
             <div className="fact">
               <div className="fact-data">
-                <p>{this.props.pass_month_duration} mesi</p>
+                <p>{this.props.stockMonthDuration} mesi</p>
               </div>
-              <p className="fact-title">{it.pass_month_duration}</p>
+              <p className="fact-title">{it.stock_month_duration}</p>
             </div>
             <div className="fact">
               <div className="fact-data">
-                <p>{this.props.goalsDone}%</p>
+                <p>-1</p>
               </div>
-              <p className="fact-title">{it.shop_goals_achieved}</p>
+              <p className="fact-title">altro dato</p>
             </div>
           </div>
         </div>

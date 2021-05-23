@@ -5,6 +5,24 @@
 #warning-icon {
   color: red;
   margin-left: 10px;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes bounce {
+  0% {
+    font-size: 1rem;
+  }
+
+  50% {
+    font-size: 1.4rem;
+  }
+
+  100% {
+    font-size: 1rem;
+  }
 }
 
 #validate-account-warning {
@@ -12,10 +30,11 @@
   font-style: italic;
   margin-top: 20px;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .validate-account-button-container {
-  height: 100px;
+  height: 70px;
 }
 
 #validate-account-button {

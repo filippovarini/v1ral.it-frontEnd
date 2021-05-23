@@ -18,15 +18,14 @@ export class RegisterDone extends Component {
   };
 
   componentDidMount = () => {
-    fetch("/page/registerDone")
+    fetch("/shop/stripeStatus")
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         if (jsonRes.success) {
           this.setState({
             loading: false,
             connectedId: jsonRes.connectedId,
-            shopId: jsonRes.loginId,
+            shopId: jsonRes.shopId,
             chargesEnabled: jsonRes.chargesEnabled
           });
         } else if (jsonRes.unauthorized) {

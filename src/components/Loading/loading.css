@@ -15,6 +15,10 @@
   font-size: 0.8rem;
 }
 
+#loading-container.small {
+  width: 50px;
+}
+
 @keyframes ldio-8aeouegdt7b {
   0% {
     transform: rotate(0deg);

@@ -31,18 +31,18 @@ export class Form extends Component {
           </label>
           <input
             type="text"
-            id="owner_name"
+            id="ownerName"
             autoComplete="off"
             placeholder={it.shop_register_credentials_owner_name}
-            value={this.props.owner_name || ""}
+            value={this.props.ownerName || ""}
             onChange={this.props.handleChange}
           />
           <input
             type="text"
             autoComplete="off"
-            id="owner_phone"
+            id="ownerPhone"
             placeholder={it.shop_register_credentials_owner_phone}
-            value={this.props.owner_phone || ""}
+            value={this.props.ownerPhone || ""}
             onChange={this.props.handleChange}
           />
         </div>

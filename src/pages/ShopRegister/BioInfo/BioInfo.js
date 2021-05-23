@@ -57,11 +57,12 @@ export class BioInfo extends Component {
    * 3. Saves new shorter url to state
    */
   handleImageChange = async e => {
+    const stateId = e.target.id === "logoInput" ? "logo" : e.target.id;
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
       reader.onload = function(event) {
         this.setState({
-          [e.target.id]: event.target.result,
+          [stateId]: event.target.result,
           error: false
         });
       }.bind(this);
@@ -74,7 +75,7 @@ export class BioInfo extends Component {
     this.setState({ [`${e.target.id}MulterOperating`]: true });
     const url = await postImage(formData);
     this.setState({
-      [e.target.id]: url,
+      [stateId]: url,
       [`${e.target.id}MulterOperating`]: false
     });
   };

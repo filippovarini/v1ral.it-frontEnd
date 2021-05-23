@@ -119,8 +119,6 @@ export class ServicesOffered extends Component {
         credentials: this.props.shopRegister.credentials
       };
 
-      console.log(body);
-
       fetch("/shop/register", {
         method: "POST",
         headers: {

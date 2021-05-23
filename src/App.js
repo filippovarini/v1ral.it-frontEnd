@@ -60,7 +60,6 @@ export class App extends Component {
               address: jsonRes.address
             }
           });
-          console.log(jsonRes);
         }
       })
       .catch(e => {

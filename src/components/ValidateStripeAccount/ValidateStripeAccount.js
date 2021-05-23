@@ -51,7 +51,6 @@ export class ValidateStripeAccount extends Component {
   };
 
   render() {
-    console.log(this.props.shopId);
     return (
       <div id="validate-account" className="body-box dark-box-container">
         <p className="body-box-header dark">

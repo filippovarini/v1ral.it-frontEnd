@@ -30,6 +30,7 @@ export class ShopRenderer extends Component {
     fetch(`/page/shop/${id}`)
       .then(res => res.json())
       .then(jsonRes => {
+        console.log(jsonRes);
         if (jsonRes.success) {
           this.setState({
             shop: jsonRes.shop,
@@ -115,7 +116,6 @@ export class ShopRenderer extends Component {
 
     let body = null;
 
-    console.log(this.state.shop);
     if (this.state.shop) {
       body = (
         <div id="shop-profile" className="flex-line">
@@ -137,13 +137,13 @@ export class ShopRenderer extends Component {
           </div>
           <ShopInfoWrapper
             phone={this.state.shop.phone}
-            instagram_link={this.state.shop.instaLink}
-            facebook_link={this.state.shop.fbLink}
+            instaLink={this.state.shop.instaLink}
+            fbLink={this.state.shop.fbLink}
             website={this.state.shop.website}
             city={this.state.shop.city}
             province={this.state.shop.province}
             street={this.state.shop.street}
-            email={this.state.shop.emial}
+            email={this.state.shop.email}
             category={this.state.shop.category}
             name={this.state.shop.name}
             images={this.state.images}
